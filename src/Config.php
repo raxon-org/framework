@@ -70,11 +70,11 @@ class Config extends Data {
     const MODULE = 'module';
     const VALUE_MODULE = 'Module';
     const FRAMEWORK = 'framework';
-    const VALUE_FRAMEWORK = 'raxon_org/framework';
+    const VALUE_FRAMEWORK = 'raxon/framework';
     const ENVIRONMENT = 'environment';
     const VALUE_ENVIRONMENT = Config::MODE_INIT;
     const FUNCTION = 'function';
-    const VALUE_FUNCTION = 'Orgction';
+    const VALUE_FUNCTION = 'Function';
     const PLUGIN = 'plugin';
     const VALUE_PLUGIN = 'Plugin';
     const CONTROLLER = 'controller';
