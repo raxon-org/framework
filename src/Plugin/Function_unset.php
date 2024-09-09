@@ -12,7 +12,7 @@ use Raxon\Org\Module\Parse;
 use Raxon\Org\Module\Data;
 
 function function_unset(Parse $parse, Data $data){
-    $attribute = orgc_get_args();
+    $attribute = func_get_args();
     array_shift($attribute);
     array_shift($attribute);
     foreach($attribute as $unset){

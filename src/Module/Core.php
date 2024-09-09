@@ -1671,7 +1671,7 @@ class Core
      */
     public static function object_merge(): mixed
     {
-        $objects = orgc_get_args();
+        $objects = func_get_args();
         $main = array_shift($objects);
         if (empty($main) && !is_array($main)) {
             $main = (object) [];

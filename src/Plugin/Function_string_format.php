@@ -12,7 +12,7 @@ use Raxon\Org\Module\Parse;
 use Raxon\Org\Module\Data;
 
 function function_string_format(Parse $parse, Data $data, $string='', $format=''){
-    $attribute = orgc_get_args();
+    $attribute = func_get_args();
     array_shift($attribute);
     array_shift($attribute);
     array_shift($attribute);
