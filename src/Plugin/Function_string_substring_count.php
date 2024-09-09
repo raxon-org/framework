@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_string_substring_count(Parse $parse, Data $data, $haystack='', $needle='', $offset=0, $length=null){
     if($length === null){

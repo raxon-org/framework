@@ -8,21 +8,21 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Cli\Rewrite\Controller;
+namespace Raxon\Cli\Rewrite\Controller;
 
-use Raxon\Org\App;
+use Raxon\App;
 
-use Raxon\Org\Module\Controller;
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\Event;
-use Raxon\Org\Module\File;
+use Raxon\Module\Controller;
+use Raxon\Module\Dir;
+use Raxon\Module\Event;
+use Raxon\Module\File;
 
 use Exception;
 
-use Raxon\Org\Exception\LocateException;
-use Raxon\Org\Exception\UrlEmptyException;
-use Raxon\Org\Exception\UrlNotExistException;
-use Raxon\Org\Exception\ObjectException;
+use Raxon\Exception\LocateException;
+use Raxon\Exception\UrlEmptyException;
+use Raxon\Exception\UrlNotExistException;
+use Raxon\Exception\ObjectException;
 
 
 
@@ -42,7 +42,7 @@ class Rewrite extends Controller {
     const EXCEPTION_COMMAND_PARAMETER = '{{$command}}';
     const EXCEPTION_COMMAND = 'invalid command (' . Rewrite::EXCEPTION_COMMAND_PARAMETER . ')' . PHP_EOL;
 
-    const INFO = '{{binary()}} license                        | raxon_org/framework license';
+    const INFO = '{{binary()}} license                        | raxon/framework license';
 
     /**
      * @throws Exception

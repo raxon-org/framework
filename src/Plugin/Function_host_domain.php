@@ -9,9 +9,9 @@
  *     -            all
  */
 use stdClass;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Host;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\Host;
 
 
 function function_host_domain(Parse $parse, Data $data){

@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function modifier_float(Parse $parse, Data $data, $value){
     return (float) $value;

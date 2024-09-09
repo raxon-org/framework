@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_capture_append(Parse $parse, Data $data, $name, $value=null){
     if(substr($name, 0, 1) === '$'){

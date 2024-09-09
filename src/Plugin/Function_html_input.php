@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_html_input(Parse $parse, Data $data, $options=[]){
     $object= $parse->object();

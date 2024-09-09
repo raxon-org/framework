@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_in_array(Parse $parse, Data $data, $needle='', $haystack=[], $strict=false){
     if(!empty($strict)){

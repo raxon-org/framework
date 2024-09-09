@@ -8,9 +8,9 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Controller;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Controller;
+use Raxon\Module\Data;
 
 function function_controller_name(Parse $parse, Data $data, $name=null){
     return Controller::name($name);

@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_array_sort(Parse $parse, Data $data, $list=[], $order='asc', $flags=SORT_NATURAL){
     if(is_string($flags)){

@@ -8,43 +8,43 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org;
+namespace Raxon;
 
-use Raxon\Org\Exception\RouteNotExistException;
-use Raxon\Org\Module\SharedMemory;
+use Raxon\Exception\RouteNotExistException;
+use Raxon\Module\SharedMemory;
 use stdClass;
 
-use Raxon\Org\Module\Autoload;
-use Raxon\Org\Module\Cache;
-use Raxon\Org\Module\Cli;
-use Raxon\Org\Module\Controller;
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Database;
-use Raxon\Org\Module\Destination;
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\Domain;
-use Raxon\Org\Module\Event;
-use Raxon\Org\Module\File;
-use Raxon\Org\Module\FileRequest;
-use Raxon\Org\Module\Filter;
-use Raxon\Org\Module\Handler;
-use Raxon\Org\Module\Host;
-use Raxon\Org\Module\Logger;
-use Raxon\Org\Module\Middleware;
-use Raxon\Org\Module\OutputFilter;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Response;
-use Raxon\Org\Module\Route;
-use Raxon\Org\Module\Server;
+use Raxon\Module\Autoload;
+use Raxon\Module\Cache;
+use Raxon\Module\Cli;
+use Raxon\Module\Controller;
+use Raxon\Module\Core;
+use Raxon\Module\Data;
+use Raxon\Module\Database;
+use Raxon\Module\Destination;
+use Raxon\Module\Dir;
+use Raxon\Module\Domain;
+use Raxon\Module\Event;
+use Raxon\Module\File;
+use Raxon\Module\FileRequest;
+use Raxon\Module\Filter;
+use Raxon\Module\Handler;
+use Raxon\Module\Host;
+use Raxon\Module\Logger;
+use Raxon\Module\Middleware;
+use Raxon\Module\OutputFilter;
+use Raxon\Module\Parse;
+use Raxon\Module\Response;
+use Raxon\Module\Route;
+use Raxon\Module\Server;
 
 use Psr\Log\LoggerInterface;
 
 use Exception;
 
-use Raxon\Org\Exception\ObjectException;
-use Raxon\Org\Exception\FileWriteException;
-use Raxon\Org\Exception\LocateException;
+use Raxon\Exception\ObjectException;
+use Raxon\Exception\FileWriteException;
+use Raxon\Exception\LocateException;
 
 class App extends Data {
     const NAMESPACE = __NAMESPACE__;
@@ -232,7 +232,7 @@ class App extends Data {
                             $object->config('project.dir.root') .
                             'vendor' .
                             $object->config('ds') .
-                            'raxon_org' .
+                            'raxon' .
                             $object->config('ds') .
                             'framework' .
                             $object->config('ds') .
@@ -301,7 +301,7 @@ class App extends Data {
                                 $object->config('project.dir.root') .
                                 'vendor' .
                                 $object->config('ds') .
-                                'raxon_org' .
+                                'raxon' .
                                 $object->config('ds') .
                                 'framework' .
                                 $object->config('ds') .
@@ -375,7 +375,7 @@ class App extends Data {
                         $object->config('project.dir.root') .
                         'vendor' .
                         $object->config('ds') .
-                        'raxon_org' .
+                        'raxon' .
                         $object->config('ds') .
                         'framework' .
                         $object->config('ds') .

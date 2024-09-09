@@ -8,12 +8,12 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Core;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\Core;
 
 /**
- * @throws \Raxon\Org\Exception\ObjectException
+ * @throws \Raxon\Exception\ObjectException
  */
 function modifier_object(Parse $parse, Data $data, $value, $output=Core::OBJECT_OBJECT){
     return Core::object($value, $output);

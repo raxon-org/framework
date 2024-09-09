@@ -8,7 +8,7 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\App;
+use Raxon\App;
 
 function validate_string_not_contains(App $object, $string='', $field='', $argument='', $function=false): bool
 {

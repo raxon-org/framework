@@ -8,18 +8,18 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
-use Raxon\Org\App;
-use Raxon\Org\Config;
+use Raxon\App;
+use Raxon\Config;
 
-use Raxon\Org\Node\Model\Node;
+use Raxon\Node\Model\Node;
 
 use Exception;
 
-use Raxon\Org\Exception\DirectoryCreateException;
-use Raxon\Org\Exception\FileWriteException;
-use Raxon\Org\Exception\ObjectException;
+use Raxon\Exception\DirectoryCreateException;
+use Raxon\Exception\FileWriteException;
+use Raxon\Exception\ObjectException;
 
 class Host {
     const SCHEME_HTTP = 'http';

@@ -9,9 +9,9 @@
  *     -            all
  */
 
-use Raxon\Org\App;
+use Raxon\App;
 
-use Raxon\Org\Module\Parse\Token;
+use Raxon\Module\Parse\Token;
 
 /**
  * @throws Exception

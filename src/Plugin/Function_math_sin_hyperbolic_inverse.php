@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_math_sin_hyperbolic_inverse(Parse $parse, Data $data, $float=null){
     $result = asinh($float);

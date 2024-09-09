@@ -8,16 +8,16 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
-use Raxon\Org\App;
-use Raxon\Org\Config;
+use Raxon\App;
+use Raxon\Config;
 
 use Exception;
 
-use Raxon\Org\Exception\DirectoryCreateException;
-use Raxon\Org\Exception\FileWriteException;
-use Raxon\Org\Exception\ObjectException;
+use Raxon\Exception\DirectoryCreateException;
+use Raxon\Exception\FileWriteException;
+use Raxon\Exception\ObjectException;
 
 class Cache {
     const NAME = 'Cache';

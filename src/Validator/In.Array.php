@@ -8,7 +8,7 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\App;
+use Raxon\App;
 
 function validate_in_array(App $object, $in='', $field='', $array='', $function=false): bool
 {

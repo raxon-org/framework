@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function modifier_nbsp(Parse $parse, Data $data, $value){
     $value = str_replace(' ', '&nbsp;', $value);

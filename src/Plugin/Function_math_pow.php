@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_math_pow(Parse $parse, Data $data, $base=null, $exponent=null){
     $result = pow($base, $exponent);

@@ -9,32 +9,32 @@
  *  -    all
  */
 
-namespace Raxon\Org\Module\Parse;
+namespace Raxon\Module\Parse;
 
 use stdClass;
 
-use Raxon\Org\App;
-use Raxon\Org\Config;
+use Raxon\App;
+use Raxon\Config;
 
-use Raxon\Org\Module\Autoload;
-use Raxon\Org\Module\Controller;
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\File;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Event;
-use Raxon\Org\Module\SharedMemory;
+use Raxon\Module\Autoload;
+use Raxon\Module\Controller;
+use Raxon\Module\Core;
+use Raxon\Module\Data;
+use Raxon\Module\Dir;
+use Raxon\Module\File;
+use Raxon\Module\Parse;
+use Raxon\Module\Event;
+use Raxon\Module\SharedMemory;
 
 use Exception;
 
-use Raxon\Org\Exception\DirectoryCreateException;
-use Raxon\Org\Exception\ObjectException;
-use Raxon\Org\Exception\PluginNotFoundException;
-use Raxon\Org\Exception\PluginNotAllowedException;
-use Raxon\Org\Exception\FileWriteException;
-use Raxon\Org\Exception\FileAppendException;
-use Raxon\Org\Exception\FileMoveException;
+use Raxon\Exception\DirectoryCreateException;
+use Raxon\Exception\ObjectException;
+use Raxon\Exception\PluginNotFoundException;
+use Raxon\Exception\PluginNotAllowedException;
+use Raxon\Exception\FileWriteException;
+use Raxon\Exception\FileAppendException;
+use Raxon\Exception\FileMoveException;
 
 class Build {
     const NAME = 'Build';
@@ -341,7 +341,7 @@ class Build {
                 $config->data('project.dir.root') .
                 'vendor' .
                 $config->data('ds') .
-                'raxon_org' .
+                'raxon' .
                 $config->data('ds') .
                 'framework' .
                 $config->data('ds') .
@@ -1035,7 +1035,7 @@ class Build {
         $document[] = ' * @version                  ' . $config->data('framework.version');
         $document[] = ' * @license                  MIT';
         $document[] = ' * @note                     Auto generated file, do not modify!';
-        $document[] = ' * @author                   Raxon\Org\Module\Parse\Build';
+        $document[] = ' * @author                   Raxon\Module\Parse\Build';
         $document[] = ' * @author                   Remco van der Velde development@universeorange.com';
         if($this->storage()->data('parent')){
             $document[] = ' * @parent                   ' . $this->storage()->data('parent');

@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_string_position_first_occurrence_case_insensitive(Parse $parse, Data $data, $haystack='', $needle='', $offset=0){
     $result = stripos($haystack, $needle, $offset);

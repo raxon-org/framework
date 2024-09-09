@@ -8,11 +8,11 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
-use Raxon\Org\Exception\DirectoryCreateException;
-use Raxon\Org\Exception\FileWriteException;
-use Raxon\Org\Exception\ObjectException;
+use Raxon\Exception\DirectoryCreateException;
+use Raxon\Exception\FileWriteException;
+use Raxon\Exception\ObjectException;
 
 use stdClass;
 

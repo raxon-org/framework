@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_string_levenhstein(Parse $parse, Data $data, $string1='', $string2='', $cost_insert=null, $cost_replace=null, $cost_delete=null){
     if($cost_insert===null){

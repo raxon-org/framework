@@ -8,9 +8,9 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\App;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\App;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_plugin_append(Parse $parse, Data $data, $url=null){
     $config = $parse->object()->data(App::CONFIG);

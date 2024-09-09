@@ -9,11 +9,11 @@
  *     -            all
  */
 
-use Raxon\Org\App;
-use Raxon\Org\Module\Database;
+use Raxon\App;
+use Raxon\Module\Database;
 
-use Raxon\Org\Exception\ObjectException;
-use Raxon\Org\Exception\FileWriteException;
+use Raxon\Exception\ObjectException;
+use Raxon\Exception\FileWriteException;
 
 /**
  * @throws ObjectException

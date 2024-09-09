@@ -3,10 +3,10 @@
  * @author          Remco van der Velde
  * @since           2021-03-05
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\File;
-use Raxon\Org\Module\Core;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\File;
+use Raxon\Module\Core;
 
 function function_import(Parse $parse, Data $data, $url=null, $controller=null, $collection=null, $locate=false){
     $object = $parse->object();

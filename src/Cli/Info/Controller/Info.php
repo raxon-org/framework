@@ -8,18 +8,18 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Cli\Info\Controller;
+namespace Raxon\Cli\Info\Controller;
 
-use Raxon\Org\App;
-use Raxon\Org\Exception\ObjectException;
-use Raxon\Org\Module\Controller;
-use Raxon\Org\Module\Event;
+use Raxon\App;
+use Raxon\Exception\ObjectException;
+use Raxon\Module\Controller;
+use Raxon\Module\Event;
 
 use Exception;
 
-use Raxon\Org\Exception\LocateException;
-use Raxon\Org\Exception\UrlEmptyException;
-use Raxon\Org\Exception\UrlNotExistException;
+use Raxon\Exception\LocateException;
+use Raxon\Exception\UrlEmptyException;
+use Raxon\Exception\UrlNotExistException;
 
 
 class Info extends Controller {

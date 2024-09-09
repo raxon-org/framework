@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_array_merge(Parse $parse, Data $data, $array=[], ...$merge){
     $result = array_merge($array, ...$merge);

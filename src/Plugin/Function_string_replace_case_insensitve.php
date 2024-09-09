@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_string_replace_case_insensitive(Parse $parse, Data $data, $search='', $replace='', $subject='', $attribute=null){
     if(!empty($attribute)){

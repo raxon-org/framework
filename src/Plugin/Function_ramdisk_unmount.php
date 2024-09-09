@@ -8,10 +8,10 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\Core;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\Dir;
+use Raxon\Module\Core;
 
 /**
  * @throws Exception
@@ -30,7 +30,7 @@ function function_ramdisk_unmount(Parse $parse, Data $data, $url=''){
         Dir::remove($url);
         //property unset of name && url of ramdisk
         $command = Core::binary($object) .
-            ' raxon_org/node unset -class=System.Config.Ramdisk -uuid=' .
+            ' raxon/node unset -class=System.Config.Ramdisk -uuid=' .
             $object->config('ramdisk.uuid') .
             ' -name -url'
         ;

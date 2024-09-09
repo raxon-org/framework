@@ -8,9 +8,9 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\App;
+use Raxon\App;
 
-use Raxon\Org\Module\Core;
+use Raxon\Module\Core;
 
 function validate_is_uuid(App $object, $string='', $field='', $argument='', $function=false): bool
 {

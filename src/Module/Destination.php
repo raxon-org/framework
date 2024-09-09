@@ -1,6 +1,6 @@
 <?php
 
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
 class Destination extends Data {
 

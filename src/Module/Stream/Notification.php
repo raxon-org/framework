@@ -8,21 +8,21 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module\Stream;
+namespace Raxon\Module\Stream;
 
 
-use Raxon\Org\App;
+use Raxon\App;
 
-use Raxon\Org\Config;
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\File;
-use Raxon\Org\Module\Parse\Token;
+use Raxon\Config;
+use Raxon\Module\Core;
+use Raxon\Module\Dir;
+use Raxon\Module\File;
+use Raxon\Module\Parse\Token;
 
 use Exception;
 
-use Raxon\Org\Exception\FileWriteException;
-use Raxon\Org\Exception\ObjectException;
+use Raxon\Exception\FileWriteException;
+use Raxon\Exception\ObjectException;
 
 class Notification {
 

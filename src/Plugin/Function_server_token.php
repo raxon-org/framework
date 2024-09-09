@@ -1,8 +1,8 @@
 <?php
 
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Core;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\Core;
 
 function function_server_token(Parse $parse, Data $data){
     if(array_key_exists('HTTP_AUTHORIZATION', $_SERVER)){

@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_terminal_color(Parse $parse, Data $data, $color, $background=null){
     $result = '';
@@ -105,7 +105,7 @@ function function_terminal_color(Parse $parse, Data $data, $color, $background=n
             $command = 'color';
             $argument[] = $color;
         }
-        $result .= \Raxon\Org\Module\Cli::tput($command, $argument);
+        $result .= \Raxon\Module\Cli::tput($command, $argument);
         $reset = false;
     }
 
@@ -201,7 +201,7 @@ function function_terminal_color(Parse $parse, Data $data, $color, $background=n
                 $command = 'background';
                 $argument[] = $color;
             }
-            $result .= \Raxon\Org\Module\Cli::tput($command, $argument);
+            $result .= \Raxon\Module\Cli::tput($command, $argument);
         }
     }
     return $result;

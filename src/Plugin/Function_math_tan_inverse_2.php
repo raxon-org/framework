@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_math_tan_inverse_2(Parse $parse, Data $data, $y=null, $x=null){
     $result = atan2($y, $x);

@@ -8,10 +8,10 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
-use Raxon\Org\Config;
-use Raxon\Org\Exception\ObjectException;
+use Raxon\Config;
+use Raxon\Exception\ObjectException;
 use stdClass;
 use Exception;
 

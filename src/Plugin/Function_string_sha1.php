@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_string_sha1(Parse $parse, Data $data, $string='', $raw_output=false){
     $result = sha1($string, $raw_output);

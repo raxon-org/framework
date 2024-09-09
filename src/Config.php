@@ -8,20 +8,20 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org;
+namespace Raxon;
 
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\File;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Parse\Token;
+use Raxon\Module\Core;
+use Raxon\Module\Data;
+use Raxon\Module\Dir;
+use Raxon\Module\File;
+use Raxon\Module\Parse;
+use Raxon\Module\Parse\Token;
 
-use Raxon\Org\Node\Model\Node;
+use Raxon\Node\Model\Node;
 
 use Exception;
 
-use Raxon\Org\Exception\ObjectException;
+use Raxon\Exception\ObjectException;
 
 class Config extends Data {
     const DIR = __DIR__ . '/';

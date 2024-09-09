@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function modifier_json_decode(Parse $parse, Data $data, $value, $associative=false, $depth=512, $flags=0){
     if(is_string($flags)){

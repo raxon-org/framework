@@ -8,7 +8,7 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
 use stdClass;
 use ReflectionObject;
@@ -16,8 +16,8 @@ use ReflectionProperty;
 
 use Defuse\Crypto\Key;
 
-use Raxon\Org\App;
-use Raxon\Org\Config;
+use Raxon\App;
+use Raxon\Config;
 
 use Defuse\Crypto\Exception\BadFormatException;
 use Defuse\Crypto\Exception\EnvironmentIsBrokenException;
@@ -26,9 +26,9 @@ use Error;
 use Exception;
 use ReflectionException;
 
-use Raxon\Org\Exception\UrlEmptyException;
-use Raxon\Org\Exception\ObjectException;
-use Raxon\Org\Exception\FileWriteException;
+use Raxon\Exception\UrlEmptyException;
+use Raxon\Exception\ObjectException;
+use Raxon\Exception\FileWriteException;
 
 class Core
 {
@@ -76,7 +76,7 @@ class Core
      */
     public static function binary(App $object): string | null
     {
-        $url = $object->config(Config::DATA_PROJECT_DIR_BINARY) . \Raxon\Org\Cli\Bin\Controller\Bin::BINARY;
+        $url = $object->config(Config::DATA_PROJECT_DIR_BINARY) . \Raxon\Cli\Bin\Controller\Bin::BINARY;
         if(File::exist($url)){
             $read = trim(File::read($url));
             return $read;

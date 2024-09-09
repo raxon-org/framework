@@ -8,7 +8,7 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
 use Doctrine\Common\EventManager;
 use Doctrine\DBAL\Connection;
@@ -36,13 +36,13 @@ use Doctrine\DBAL\Platforms\MariaDBPlatform;
 
 use Doctrine\ORM\ORMSetup;
 
-use Raxon\Org\App;
-use Raxon\Org\Config;
+use Raxon\App;
+use Raxon\Config;
 
 use Exception;
 
-use Raxon\Org\Exception\ObjectException;
-use Raxon\Org\Exception\FileWriteException;
+use Raxon\Exception\ObjectException;
+use Raxon\Exception\FileWriteException;
 
 class Database {
     const NAMESPACE = __NAMESPACE__;

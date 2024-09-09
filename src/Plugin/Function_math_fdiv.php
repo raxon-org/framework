@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_math_fdiv(Parse $parse, Data $data, $x=null, $y=null){
     if(function_exists('fdiv')){

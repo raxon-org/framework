@@ -8,14 +8,14 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\File;
-use Raxon\Org\Module\Core;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\File;
+use Raxon\Module\Core;
 
 /**
- * @throws \Raxon\Org\Exception\ObjectException
- * @throws \Raxon\Org\Exception\FileWriteException
+ * @throws \Raxon\Exception\ObjectException
+ * @throws \Raxon\Exception\FileWriteException
  */
 function function_json_select(Parse $parse, Data $data, $url, $select=null, $compile=false, $cache=true){
     $object = $parse->object();

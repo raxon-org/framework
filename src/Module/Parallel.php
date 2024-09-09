@@ -1,5 +1,5 @@
 <?php
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
 
 use Spatie\Fork\Fork;

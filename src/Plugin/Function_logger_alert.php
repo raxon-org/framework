@@ -3,9 +3,9 @@
  * @author          Remco van der Velde
  * @since           2021-03-05
  */
-use Raxon\Org\App;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\App;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_logger_alert(Parse $parse, Data $data, $message=null, $context=[], $channel=''){
     $object = $parse->object();

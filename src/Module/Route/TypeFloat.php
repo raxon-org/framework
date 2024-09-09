@@ -9,9 +9,9 @@
  *  -    all
  */
 
-namespace Raxon\Org\Module\Route;
+namespace Raxon\Module\Route;
 
-use Raxon\Org\App;
+use Raxon\App;
 
 class TypeFloat {
 

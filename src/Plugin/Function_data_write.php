@@ -8,15 +8,15 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\File;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\Core;
+use Raxon\Module\File;
 
 
 /**
- * @throws \Raxon\Org\Exception\ObjectException
- * @throws \Raxon\Org\Exception\FileWriteException
+ * @throws \Raxon\Exception\ObjectException
+ * @throws \Raxon\Exception\FileWriteException
  */
 function function_data_write(Parse $parse, Data $data, $url='', $write=false, $output='json'){
     $write = Core::object($write, $output);

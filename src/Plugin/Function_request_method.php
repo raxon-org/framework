@@ -8,9 +8,9 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Handler;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\Handler;
 function function_request_method(Parse $parse, Data $data){
     return Handler::method();
 }

@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function modifier_symbol(Parse $parse, Data $data, $value, $length=1){
     return mb_substr($value, 0, $length);

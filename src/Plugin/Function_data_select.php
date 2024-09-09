@@ -8,11 +8,11 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\File;
-use Raxon\Org\Module\Core;
-use Raxon\Org\Exception\ObjectException;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\File;
+use Raxon\Module\Core;
+use Raxon\Exception\ObjectException;
 
 function function_data_select(Parse $parse, Data $data, $url='', $select=''){
     return Core::object_select($parse, $data, $url, $select, false);

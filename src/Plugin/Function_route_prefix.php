@@ -9,9 +9,9 @@
  *     -            all
  */
 
-use Raxon\Org\Config;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Config;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_route_prefix(Parse $parse, Data $data, $prefix=null){
     $object = $parse->object();

@@ -8,18 +8,18 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
 
-use Raxon\Org\Exception\LocateException;
+use Raxon\Exception\LocateException;
 use stdClass;
 
-use Raxon\Org\App;
-use Raxon\Org\Config;
+use Raxon\App;
+use Raxon\Config;
 
 use Exception;
 
-use Raxon\Org\Exception\ObjectException;
+use Raxon\Exception\ObjectException;
 
 class Autoload {
     const DIR = __DIR__;
@@ -661,7 +661,7 @@ class Autoload {
                                 } else {
                                     if(Autoload::ramdisk_exclude_load($object, $load)){
                                         //controllers cannot be cached
-                                        //don't cache Raxon\Org\Module\Compile because they are already cached
+                                        //don't cache Raxon\Module\Compile because they are already cached
                                     }
                                     else {
                                         //from disk
@@ -770,7 +770,7 @@ class Autoload {
                 }
                 $output[$i] = $debug[$i];
             }
-            $attribute = 'Raxon\Org\Exception\LocateException';
+            $attribute = 'Raxon\Exception\LocateException';
             if(!empty($this->expose())){
                 $attribute = $load;
             }

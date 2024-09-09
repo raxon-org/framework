@@ -8,10 +8,10 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\File;
+use Raxon\Module\Parse;
+use Raxon\Module\Core;
+use Raxon\Module\Data;
+use Raxon\Module\File;
 
 /**
  * @throws Exception

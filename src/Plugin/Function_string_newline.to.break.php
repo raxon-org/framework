@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_string_newline_to_break(Parse $parse, Data $data, $string='', $is_xhtml=true){
     $result = nl2br($string, $is_xhtml);

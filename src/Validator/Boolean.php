@@ -9,7 +9,7 @@
  *     -            all
  */
 
-use Raxon\Org\App;
+use Raxon\App;
 
 function validate_boolean(App $object, $string='', $field='', $argument='', $function=false): bool
 {

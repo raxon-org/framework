@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_math_avg(Parse $parse, Data $data, $array=[], $precision=0, $mode=PHP_ROUND_HALF_UP){
     if(is_string($mode)){

@@ -9,11 +9,11 @@
  *     -            all
  */
 
-use Raxon\Org\Config;
+use Raxon\Config;
 
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Dir;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\Dir;
 
 function function_package_dir(Parse $parse, Data $data, $prefix='', $package=''){
     $object = $parse->object();

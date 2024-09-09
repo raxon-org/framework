@@ -8,19 +8,19 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Cli\Install\Controller;
+namespace Raxon\Cli\Install\Controller;
 
-use Raxon\Org\App;
-use Raxon\Org\Config;
+use Raxon\App;
+use Raxon\Config;
 
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\Controller;
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\Event;
-use Raxon\Org\Module\File;
-use Raxon\Org\Module\Parse;
+use Raxon\Module\Core;
+use Raxon\Module\Controller;
+use Raxon\Module\Dir;
+use Raxon\Module\Event;
+use Raxon\Module\File;
+use Raxon\Module\Parse;
 
-use Raxon\Org\Node\Model\Node;
+use Raxon\Node\Model\Node;
 
 use Exception;
 

@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_preg_filter(Parse $parse, Data $data, $pattern=null, $replacement=null, $subject=null, $limit=-1, $count=null){
     if($count !== null){

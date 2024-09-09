@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_string_contains_case_insensitive(Parse $parse, Data $data, $haystack='', $needle='', $before_needle=false){
     $result = stristr($haystack, $needle, $before_needle);

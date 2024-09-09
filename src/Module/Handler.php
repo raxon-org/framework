@@ -8,16 +8,16 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
 
 use stdClass;
-use Raxon\Org\App;
+use Raxon\App;
 use DateTimeImmutable;
 
 use Exception;
 
-use Raxon\Org\Exception\ObjectException;
+use Raxon\Exception\ObjectException;
 
 class Handler {
     const NAMESPACE = __NAMESPACE__;

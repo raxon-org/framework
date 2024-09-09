@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_config(Parse $parse, Data $data, $attribute=null, $value=null){
     if(substr($attribute, 0, 1) === '$'){

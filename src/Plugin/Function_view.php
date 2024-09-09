@@ -8,13 +8,13 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_view(Parse $parse, Data $data, $template=null, $storage=[]){
-    $url = \Raxon\Org\Module\Controller::locate($parse->object(), $template);
-    $read = \Raxon\Org\Module\File::read($url);
-    $mtime = \Raxon\Org\Module\File::mtime($url);
+    $url = \Raxon\Module\Controller::locate($parse->object(), $template);
+    $read = \Raxon\Module\File::read($url);
+    $mtime = \Raxon\Module\File::mtime($url);
     if(empty($storage)){
         $data->data('raxon.org.parse.view.source.url', $url);
         $parse->storage()->data('raxon.org.parse.view.source.mtime', $mtime);

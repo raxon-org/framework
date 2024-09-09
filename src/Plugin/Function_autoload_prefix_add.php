@@ -9,9 +9,9 @@
  *     -            all
  */
 
-use Raxon\Org\App;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\App;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_autoload_prefix_add(Parse $parse, Data $data, $prefix='',$directory='', $extension=''){
     $object = $parse->object();

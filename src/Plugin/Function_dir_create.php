@@ -8,9 +8,9 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Dir;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_dir_create(Parse $parse, Data $data, $url='', $chmod=''){
     return Dir::create($url, $chmod);

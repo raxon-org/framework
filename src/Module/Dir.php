@@ -8,14 +8,14 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
 use stdClass;
 use Exception;
 
-use Raxon\Org\Exception\ErrorException;
-use Raxon\Org\Exception\DirectoryCreateException;
-use Raxon\Org\Exception\FileMoveException;
+use Raxon\Exception\ErrorException;
+use Raxon\Exception\DirectoryCreateException;
+use Raxon\Exception\FileMoveException;
 
 class Dir {
     const CHMOD = 0750;

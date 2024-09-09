@@ -8,9 +8,9 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\File;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\File;
 
 function function_is_writeable(Parse $parse, Data $data, $url=null){
     return File::is_writeable($url);

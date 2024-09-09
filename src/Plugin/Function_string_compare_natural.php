@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_string_compare_natural(Parse $parse, Data $data, $string1='', $string2=''){
     $result = strnatcmp($string1, $string2);

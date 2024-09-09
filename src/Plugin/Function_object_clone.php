@@ -8,9 +8,9 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Core;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_object_clone(Parse $parse, Data $data, $object=''){
     $object= Core::deep_clone($object);

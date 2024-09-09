@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_string_substring_compare(Parse $parse, Data $data, $string1='', $string2='', $offset=0, $length=null, $case_insensitive=false){
     if($length === null){

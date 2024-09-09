@@ -8,18 +8,18 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
 use stdClass;
-use Raxon\Org\App;
-use Raxon\Org\Config;
+use Raxon\App;
+use Raxon\Config;
 
-use Raxon\Org\Node\Model\Node;
+use Raxon\Node\Model\Node;
 
 use Exception;
 
-use Raxon\Org\Exception\ObjectException;
-use Raxon\Org\Exception\UrlEmptyException;
+use Raxon\Exception\ObjectException;
+use Raxon\Exception\UrlEmptyException;
 
 class Route extends Data {
     const NAMESPACE = __NAMESPACE__;

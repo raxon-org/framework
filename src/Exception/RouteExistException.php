@@ -8,11 +8,11 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Exception;
+namespace Raxon\Exception;
 
-use Raxon\Org\App;
-use Raxon\Org\Module\File;
-use Raxon\Org\Module\Parse;
+use Raxon\App;
+use Raxon\Module\File;
+use Raxon\Module\Parse;
 
 use Throwable;
 

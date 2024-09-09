@@ -8,11 +8,11 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\App;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Dir;
+use Raxon\App;
+use Raxon\Module\Parse;
+use Raxon\Module\Core;
+use Raxon\Module\Data;
+use Raxon\Module\Dir;
 
 /**
  * @throws Exception
@@ -40,7 +40,7 @@ function function_ramdisk_mount(Parse $parse, Data $data, $size='1G', $url='', $
     $uuid = $object->config('ramdisk.uuid');
     if($uuid){
         $command = Core::binary($object) .
-            ' raxon_org/node patch -class=System.Config.Ramdisk -uuid=' .
+            ' raxon/node patch -class=System.Config.Ramdisk -uuid=' .
             $uuid .
             ' -name="'.
             $name .

@@ -9,10 +9,10 @@
  *  -    all
  */
 
-namespace Raxon\Org\Module\Route;
+namespace Raxon\Module\Route;
 
 use stdClass;
-use Raxon\Org\App;
+use Raxon\App;
 
 class TypeObject {
 

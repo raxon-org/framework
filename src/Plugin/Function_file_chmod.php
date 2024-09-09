@@ -8,9 +8,9 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\File;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\File;
 
 function function_file_chmod(Parse $parse, Data $data, $url='', $mode=0640){
 	return File::chmod($url, $mode);

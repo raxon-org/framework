@@ -8,22 +8,22 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Cli\Parse\Controller;
+namespace Raxon\Cli\Parse\Controller;
 
-use Raxon\Org\App;
-use Raxon\Org\Exception\ObjectException;
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\Event;
-use Raxon\Org\Module\File;
-use Raxon\Org\Module\Controller;
-use Raxon\Org\Module\Parse as Parser;
+use Raxon\App;
+use Raxon\Exception\ObjectException;
+use Raxon\Module\Core;
+use Raxon\Module\Event;
+use Raxon\Module\File;
+use Raxon\Module\Controller;
+use Raxon\Module\Parse as Parser;
 
 use Exception;
 
-use Raxon\Org\Exception\LocateException;
-use Raxon\Org\Exception\UrlEmptyException;
-use Raxon\Org\Exception\UrlNotExistException;
-use Raxon\Org\Module\Parse\Token;
+use Raxon\Exception\LocateException;
+use Raxon\Exception\UrlEmptyException;
+use Raxon\Exception\UrlNotExistException;
+use Raxon\Module\Parse\Token;
 
 class Parse extends Controller {
     const NAME = 'Parse';
@@ -176,8 +176,8 @@ class Parse extends Controller {
 
                     unset($data->{App::NAMESPACE});
                     $read = $parse->compile($read, $data, $parse->storage());
-                    $object->set('script', \Raxon\Org\Module\Parse::readback($object, $parse, App::SCRIPT));
-                    $object->set('link', \Raxon\Org\Module\Parse::readback($object, $parse, App::LINK));
+                    $object->set('script', \Raxon\Module\Parse::readback($object, $parse, App::SCRIPT));
+                    $object->set('link', \Raxon\Module\Parse::readback($object, $parse, App::LINK));
                     if($is_json){
                         $read = Core::object($read, Core::OBJECT_JSON);
                     }

@@ -8,9 +8,9 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\CLi;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\CLi;
 
 function function_terminal_put(Parse $parse, Data $data, $command, $argument=null){
     $result = Cli::tput($command, $argument);

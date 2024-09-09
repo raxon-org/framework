@@ -8,13 +8,13 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module\Parse;
+namespace Raxon\Module\Parse;
 
-use Raxon\Org\Config;
+use Raxon\Config;
 
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\File;
+use Raxon\Module\Core;
+use Raxon\Module\Data;
+use Raxon\Module\File;
 
 use Exception;
 

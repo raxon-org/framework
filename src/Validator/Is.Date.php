@@ -8,7 +8,7 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\App;
+use Raxon\App;
 
 function validate_is_date(App $object, $string='', $field='', $argument='', $function=false): bool
 {

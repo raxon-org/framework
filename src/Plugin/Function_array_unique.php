@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_array_unique(Parse $parse, Data $data, $array=[], $sort=SORT_STRING){
     if(is_string($sort)){

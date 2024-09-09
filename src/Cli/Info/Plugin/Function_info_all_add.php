@@ -1,8 +1,8 @@
     <?php
 
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Cli;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\Cli;
 
 function function_info_all_add(Parse $parse, Data $data, $list){
     $result = [];

@@ -3,10 +3,10 @@
  * @author          Remco van der Velde
  * @since           2021-03-05
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\File;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\Dir;
+use Raxon\Module\File;
 
 function function_import_translation(Parse $parse, Data $data){
     $object = $parse->object();

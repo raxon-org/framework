@@ -3,8 +3,8 @@
  * @author          Remco van der Velde
  * @since           2021-03-05
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_logger_info(Parse $parse, Data $data, $message=null, $context=[], $channel=''){
     $object = $parse->object();

@@ -8,14 +8,14 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
-use Raxon\Org\App;
-use Raxon\Org\Config;
+use Raxon\App;
+use Raxon\Config;
 
 use Exception;
 
-use Raxon\Org\Exception\LocateException;
+use Raxon\Exception\LocateException;
 
 
 class FileRequest {

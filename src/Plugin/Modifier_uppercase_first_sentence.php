@@ -9,9 +9,9 @@
  *     -            all
  */
 
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Core;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function modifier_uppercase_first_sentence(Parse $parse, Data $data, $value, $delimiter='.'){
     return Core::ucfirst_sentence($value, $delimiter);

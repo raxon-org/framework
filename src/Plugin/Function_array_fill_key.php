@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_array_fill(Parse $parse, Data $data, $start_index=0, $entries=1, $value=''){
     $result = array_fill($start_index, $entries, $value);

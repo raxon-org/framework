@@ -8,20 +8,20 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
 use SplFileObject;
 use stdClass;
 
-use Raxon\Org\App;
-use Raxon\Org\Config;
+use Raxon\App;
+use Raxon\Config;
 
 use Exception;
 
-use Raxon\Org\Exception\ErrorException;
-use Raxon\Org\Exception\FileAppendException;
-use Raxon\Org\Exception\FileMoveException;
-use Raxon\Org\Exception\FileWriteException;
+use Raxon\Exception\ErrorException;
+use Raxon\Exception\FileAppendException;
+use Raxon\Exception\FileMoveException;
+use Raxon\Exception\FileWriteException;
 
 class File {
     const CHMOD = 0640;

@@ -3,12 +3,12 @@
  * @author          Remco van der Velde
  * @since           2021-03-05
  */
-use Raxon\Org\App;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\File;
+use Raxon\App;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\Core;
+use Raxon\Module\Dir;
+use Raxon\Module\File;
 
 function function_export_translation(Parse $parse, Data $data, $type='object'){
     $object = $parse->object();

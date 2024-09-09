@@ -1,13 +1,13 @@
 <?php
 
-use Raxon\Org\App;
+use Raxon\App;
 
-use Raxon\Org\Module\Event;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\File;
+use Raxon\Module\Event;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\File;
 
-use Raxon\Org\Exception\ObjectException;
+use Raxon\Exception\ObjectException;
 
 /**
  * @throws ObjectException

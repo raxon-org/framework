@@ -8,9 +8,9 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_terminal_default(Parse $parse, Data $data){
-    return \Raxon\Org\Module\Cli::default();
+    return \Raxon\Module\Cli::default();
 }

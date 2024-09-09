@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_string_pad(Parse $parse, Data $data, $input='',  $pad_length=0, $pad_string=' ', $pad_type=null){
     if(empty($pad_type)){

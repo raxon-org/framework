@@ -8,10 +8,10 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module\Parse;
+namespace Raxon\Module\Parse;
 
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Core;
+use Raxon\Module\Data;
+use Raxon\Module\Core;
 
 use Exception;
 

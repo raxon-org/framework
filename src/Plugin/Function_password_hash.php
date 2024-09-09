@@ -8,11 +8,11 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 use Exception;
-use Raxon\Org\Exception\ErrorException;
+use Raxon\Exception\ErrorException;
 
 function function_password_hash(Parse $parse, Data $data, $password='', $cost=13, $options=null){
     $result = '';

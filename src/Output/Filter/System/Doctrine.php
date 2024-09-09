@@ -1,10 +1,10 @@
 <?php
 
-namespace Raxon\Org\Output\Filter\System;
+namespace Raxon\Output\Filter\System;
 
-use Raxon\Org\App;
+use Raxon\App;
 
-use Raxon\Org\Module\Controller;
+use Raxon\Module\Controller;
 
 class Doctrine extends Controller {
     const DIR = __DIR__ . '/';

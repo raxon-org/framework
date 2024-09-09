@@ -8,9 +8,9 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_content_type(Parse $parse, Data $data){
-    return $parse->object()->data(\Raxon\Org\App::CONTENT_TYPE);
+    return $parse->object()->data(\Raxon\App::CONTENT_TYPE);
 }

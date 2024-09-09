@@ -8,13 +8,13 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Exception;
+namespace Raxon\Exception;
 
-use Raxon\Org\App;
+use Raxon\App;
 
-use Raxon\Org\Module\Cli;
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\File;
+use Raxon\Module\Cli;
+use Raxon\Module\Core;
+use Raxon\Module\File;
 
 use Throwable;
 

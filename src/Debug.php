@@ -10,7 +10,7 @@
  */
 
 use JetBrains\PhpStorm\NoReturn;
-use Raxon\Org\Module\Cli;
+use Raxon\Module\Cli;
 
 if(!function_exists('d')){
     function d($data=null): void

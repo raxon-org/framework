@@ -8,16 +8,16 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Cli\Init\Controller;
+namespace Raxon\Cli\Init\Controller;
 
-use Raxon\Org\App;
+use Raxon\App;
 
-use Raxon\Org\Module\Controller;
-use Raxon\Org\Module\Event;
+use Raxon\Module\Controller;
+use Raxon\Module\Event;
 
 use Exception;
 
-use Raxon\Org\Exception\ObjectException;
+use Raxon\Exception\ObjectException;
 
 class   Init extends Controller {
     const DIR = __DIR__;

@@ -8,24 +8,24 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
-use Package\Raxon\Org\Raxon\Service\ForkMultiple;
+use Package\Raxon\Raxon\Service\ForkMultiple;
 use stdClass;
 
-use Raxon\Org\App;
-use Raxon\Org\Config;
+use Raxon\App;
+use Raxon\Config;
 
-use Raxon\Org\Module\Parse\Build;
-use Raxon\Org\Module\Parse\Literal;
-use Raxon\Org\Module\Parse\Value;
-use Raxon\Org\Module\Parse\Token;
+use Raxon\Module\Parse\Build;
+use Raxon\Module\Parse\Literal;
+use Raxon\Module\Parse\Value;
+use Raxon\Module\Parse\Token;
 
 use Exception;
 use ParseError;
 
-use Raxon\Org\Exception\ObjectException;
-use Raxon\Org\Exception\FileWriteException;
+use Raxon\Exception\ObjectException;
+use Raxon\Exception\FileWriteException;
 
 class Parse {
     const PLUGIN = 'Plugin';

@@ -1,10 +1,10 @@
 <?php
 
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\File;
-use Raxon\Org\App;
+use Raxon\Module\Dir;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\File;
+use Raxon\App;
 
 function function_zip_archive(Parse $parse, Data $data){
     $object = $parse->object();

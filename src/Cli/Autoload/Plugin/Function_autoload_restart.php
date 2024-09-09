@@ -1,9 +1,9 @@
 <?php
 
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\File;
-use Raxon\Org\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\Dir;
+use Raxon\Module\File;
+use Raxon\Module\Parse;
 
 function function_autoload_restart(Parse $parse, Data $data){
     $object = $parse->object();
@@ -16,8 +16,8 @@ function function_autoload_restart(Parse $parse, Data $data){
             if($file->type === Dir::TYPE){
                 if(
                     (
-                        stristr($file->url, strtolower(\Raxon\Org\Module\Autoload::NAME)) !== false ||
-                        stristr($file->url, strtolower(\Raxon\Org\App::NAME)) !== false
+                        stristr($file->url, strtolower(\Raxon\Module\Autoload::NAME)) !== false ||
+                        stristr($file->url, strtolower(\Raxon\App::NAME)) !== false
                     )
                     &&
                     file_exists($file->url)

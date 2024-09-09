@@ -8,13 +8,13 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\App;
+use Raxon\App;
 
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Filter;
+use Raxon\Module\Data;
+use Raxon\Module\Filter;
 
-use Raxon\Org\Exception\ObjectException;
-use Raxon\Org\Exception\FileWriteException;
+use Raxon\Exception\ObjectException;
+use Raxon\Exception\FileWriteException;
 
 /**
  * @throws ObjectException

@@ -1,7 +1,7 @@
 <?php
 
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_filter(Parse $parse, Data $data, $list, $options){
     $result = [];

@@ -8,18 +8,18 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Cli\License\Controller;
+namespace Raxon\Cli\License\Controller;
 
-use Raxon\Org\App;
-use Raxon\Org\Exception\ObjectException;
-use Raxon\Org\Module\Controller;
+use Raxon\App;
+use Raxon\Exception\ObjectException;
+use Raxon\Module\Controller;
 
 use Exception;
 
-use Raxon\Org\Exception\LocateException;
-use Raxon\Org\Exception\UrlEmptyException;
-use Raxon\Org\Exception\UrlNotExistException;
-use Raxon\Org\Module\Event;
+use Raxon\Exception\LocateException;
+use Raxon\Exception\UrlEmptyException;
+use Raxon\Exception\UrlNotExistException;
+use Raxon\Module\Event;
 
 class License extends Controller {
     const NAME = 'License';
@@ -34,7 +34,7 @@ class License extends Controller {
     const EXCEPTION_COMMAND_PARAMETER = '{{$command}}';
     const EXCEPTION_COMMAND = 'invalid command (' . License::EXCEPTION_COMMAND_PARAMETER . ')' . PHP_EOL;
 
-    const INFO = '{{binary()}} license                        | raxon_org/framework license';
+    const INFO = '{{binary()}} license                        | raxon/framework license';
 
     /**
      * @throws Exception

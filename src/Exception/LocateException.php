@@ -8,9 +8,9 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Exception;
+namespace Raxon\Exception;
 
-use Raxon\Org\App;
+use Raxon\App;
 
 use Throwable;
 

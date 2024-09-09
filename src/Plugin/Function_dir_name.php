@@ -8,9 +8,9 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Dir;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\Dir;
 
 function function_dir_name(Parse $parse, Data $data, $url='', $levels=null){
     try {

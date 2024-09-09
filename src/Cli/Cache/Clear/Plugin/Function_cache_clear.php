@@ -1,16 +1,16 @@
 <?php
 
-use Raxon\Org\Config;
+use Raxon\Config;
 
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\File;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\Dir;
+use Raxon\Module\Core;
+use Raxon\Module\File;
 
 /**
- * @throws \Raxon\Org\Exception\ObjectException
- * @throws \Raxon\Org\Exception\FileWriteException
+ * @throws \Raxon\Exception\ObjectException
+ * @throws \Raxon\Exception\FileWriteException
  */
 function function_cache_clear(Parse $parse, Data $data){
     $object = $parse->object();
@@ -22,7 +22,7 @@ function function_cache_clear(Parse $parse, Data $data){
         $object->config('ramdisk.size') &&
         empty($object->config(Config::POSIX_ID))
     ){
-        $command = \Raxon\Org\Cli\Cache\Controller\Cache::RAMDISK_CLEAR_COMMAND;
+        $command = \Raxon\Cli\Cache\Controller\Cache::RAMDISK_CLEAR_COMMAND;
         $execute = $parse->compile($command);
         echo 'Executing: ' . $execute . "...\n";
         Core::execute($object, $execute, $output);

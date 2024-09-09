@@ -8,7 +8,7 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Exception;
+namespace Raxon\Exception;
 
 use Exception;
 

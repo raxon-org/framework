@@ -1,7 +1,7 @@
 <?php
 /**
  * @author          Remco van der Velde
- * @author          Raxon\Org\Module\Parse\Build
+ * @author          Raxon\Module\Parse\Build
  * @since           04-01-2019
  * @copyright       (c) Remco van der Velde
  * @license         MIT
@@ -10,15 +10,15 @@
  *  -    all
  * @note            Auto generated file, do not modify!
  */
-namespace Raxon\Org\Module\Template;
+namespace Raxon\Module\Template;
 
 use stdClass;
 
-use Raxon\Org\App;
+use Raxon\App;
 
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Parse\Token;
+use Raxon\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Parse\Token;
 
 use Exception;
 use ErrorException;

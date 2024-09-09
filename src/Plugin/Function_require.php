@@ -8,16 +8,16 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Config;
-use Raxon\Org\Module\Autoload;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\File;
+use Raxon\Config;
+use Raxon\Module\Autoload;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\Dir;
+use Raxon\Module\File;
 
 /**
- * @throws \Raxon\Org\Exception\ObjectException
- * @throws \Raxon\Org\Exception\FileWriteException
+ * @throws \Raxon\Exception\ObjectException
+ * @throws \Raxon\Exception\FileWriteException
  * @throws Exception
  */
 function function_require(Parse $parse, Data $data, $url='', $storage=[]){

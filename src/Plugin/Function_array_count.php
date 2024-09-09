@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_array_count(Parse $parse, Data $data, $array=[], $mode=COUNT_NORMAL){
     if(is_string($mode)){

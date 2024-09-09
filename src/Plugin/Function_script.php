@@ -3,10 +3,10 @@
  * @author          Remco van der Velde
  * @since           2021-03-05
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Module\File;
-use Raxon\Org\Module\Core;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Module\File;
+use Raxon\Module\Core;
 
 function function_script(Parse $parse, Data $data, $name='script', $script=null){
     $object = $parse->object();

@@ -9,11 +9,11 @@
  *     -            all
  */
 
-use Raxon\Org\App;
-use Raxon\Org\Config;
+use Raxon\App;
+use Raxon\Config;
 
 /**
- * @throws \Raxon\Org\Exception\ObjectException
+ * @throws \Raxon\Exception\ObjectException
  * @throws Exception
  */
 function validate_is_unique_json(App $object, $string='', $field='', $argument='', $function=false): bool

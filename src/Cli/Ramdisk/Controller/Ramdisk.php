@@ -8,19 +8,19 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Cli\Ramdisk\Controller;
+namespace Raxon\Cli\Ramdisk\Controller;
 
-use Raxon\Org\App;
+use Raxon\App;
 
-use Raxon\Org\Exception\ObjectException;
-use Raxon\Org\Module\Controller;
-use Raxon\Org\Module\Event;
+use Raxon\Exception\ObjectException;
+use Raxon\Module\Controller;
+use Raxon\Module\Event;
 
 use Exception;
 
-use Raxon\Org\Exception\LocateException;
-use Raxon\Org\Exception\UrlEmptyException;
-use Raxon\Org\Exception\UrlNotExistException;
+use Raxon\Exception\LocateException;
+use Raxon\Exception\UrlEmptyException;
+use Raxon\Exception\UrlNotExistException;
 
 class Ramdisk extends Controller {
     const DIR = __DIR__;

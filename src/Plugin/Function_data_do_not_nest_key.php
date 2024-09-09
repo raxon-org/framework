@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_data_do_not_nest_key(Parse $parse, Data $data, $do_not_nest_key=true){
     $data->do_not_nest_key($do_not_nest_key);

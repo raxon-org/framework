@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_array_chunk(Parse $parse, Data $data, $array=[], $size=1, $preserve_key=false){
     if(empty($preserve_key)){

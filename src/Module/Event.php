@@ -8,22 +8,22 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module;
+namespace Raxon\Module;
 
 use stdClass;
 
-use Raxon\Org\App;
+use Raxon\App;
 
-use Raxon\Org\Module\Data as Storage;
-use Raxon\Org\Module\Template\Main;
+use Raxon\Module\Data as Storage;
+use Raxon\Module\Template\Main;
 
-use Raxon\Org\Node\Model\Node;
+use Raxon\Node\Model\Node;
 
 use Exception;
 
-use Raxon\Org\Exception\LocateException;
-use Raxon\Org\Exception\ObjectException;
-use Raxon\Org\Exception\FileWriteException;
+use Raxon\Exception\LocateException;
+use Raxon\Exception\ObjectException;
+use Raxon\Exception\FileWriteException;
 
 class Event extends Main {
 

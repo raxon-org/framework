@@ -1,8 +1,8 @@
 <?php
 
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
-use Raxon\Org\Config;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
+use Raxon\Config;
 
 /**
  * @throws Exception

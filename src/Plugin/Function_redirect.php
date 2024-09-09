@@ -9,11 +9,11 @@
  *     -            all
  */
 
-use Raxon\Org\Module\Core;
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Core;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
-use Raxon\Org\Exception\UrlEmptyException;
+use Raxon\Exception\UrlEmptyException;
 
 function function_redirect(Parse $parse, Data $data, $url=null): ?string{
     try {

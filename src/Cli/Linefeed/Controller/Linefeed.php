@@ -8,15 +8,15 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Cli\Linefeed\Controller;
+namespace Raxon\Cli\Linefeed\Controller;
 
-use Raxon\Org\App;
+use Raxon\App;
 
-use Raxon\Org\Module\Cli;
-use Raxon\Org\Module\Dir;
-use Raxon\Org\Module\Event;
-use Raxon\Org\Module\File;
-use Raxon\Org\Module\Controller;
+use Raxon\Module\Cli;
+use Raxon\Module\Dir;
+use Raxon\Module\Event;
+use Raxon\Module\File;
+use Raxon\Module\Controller;
 
 use Exception;
 

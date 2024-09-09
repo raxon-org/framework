@@ -8,7 +8,7 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Org\Module\Parse;
+namespace Raxon\Module\Parse;
 
 class Set {
 

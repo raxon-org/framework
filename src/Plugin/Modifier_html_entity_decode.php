@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function modifier_html_entity_decode(Parse $parse, Data $data, $string='', $flags = ENT_QUOTES | ENT_SUBSTITUTE, $encoding=null){
     if(is_string($flags)){

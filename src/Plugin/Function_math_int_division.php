@@ -8,8 +8,8 @@
  * @changeLog
  *     -            all
  */
-use Raxon\Org\Module\Parse;
-use Raxon\Org\Module\Data;
+use Raxon\Module\Parse;
+use Raxon\Module\Data;
 
 function function_math_int_division(Parse $parse, Data $data, $dividend=null, $divisor=null){
     $result = intdiv($dividend, $divisor);
