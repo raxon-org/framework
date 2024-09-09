@@ -1,0 +1,8 @@
+/.idea/
+/Log/
+/.settings/
+/vendor/
+/src/Temp/
+.buildpath
+.project
+composer.lock

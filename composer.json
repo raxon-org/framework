@@ -1,0 +1,56 @@
+{
+	"name" : "raxon/framework",
+	"description" : "raxon/framework see https://raxon.org for detailed usage",
+	"type" : "library",
+	"keywords" : ["framework", "raxon", "raxon.org", "org","library", "language", "template", "engine"],
+	"homepage": "https://raxon.org",
+	"require" : {
+		"php": ">=8.0",
+		"ext-mbstring": "*",
+		"ext-json": "*",
+		"ext-pdo": "*",
+		"ext-posix": "*",
+		"ext-zend-opcache": "*",
+		"ext-openssl": "*",
+		"ext-readline": "*",
+		"ext-pcntl": "*",
+		"ext-zlib": "*",
+		"ext-zip": "*",
+		"ext-shmop": "*",
+		"raxon_org/autoload": ">=2024.09.08",
+		"raxon_org/boot": ">=2024.09.08",
+		"raxon_org/basic": ">=2024.09.08",
+		"raxon_org/event": ">=2024.09.08",
+		"raxon_org/config": ">=2024.09.08",
+		"raxon_org/host": ">=2024.09.08",
+		"raxon_org/middleware": ">=2024.09.08",
+		"raxon_org/node": ">=2024.09.08",
+		"raxon_org/output_filter": ">=2024.09.08",
+		"raxon_org/log": ">=2024.09.08",
+		"raxon_org/route": ">=2024.09.08",
+		"raxon_org/server": ">=2024.09.08",
+		"raxon_org/account": ">=2024.09.08",
+		"monolog/monolog" : "^3.6",
+		"defuse/php-encryption": "^2.3",
+		"spatie/fork": "^1.2.2"
+    },
+	"require-dev" : {
+		"pestphp/pest": "^2.34"
+	},
+	"config": {
+		"allow-plugins": {
+			"pestphp/pest-plugin": true
+		}
+	},
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "Remco van der Velde",
+			"email" : "development@universeorange.com"
+		}
+	],
+	"autoload" : {
+		"psr-4" : {
+			"Raxon\\Org\\" : "src/"
+		}
+	}
+}
