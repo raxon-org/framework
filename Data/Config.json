@@ -26,10 +26,10 @@
         "name": "raxon/framework",
         "url": "https://raxon.org",
         "major": 2024,
-        "minor": "04",
-        "patch": "6940",
-        "version": "2024.04.6940",
-        "built": "2024-04-26 19:54:16"
+        "minor": "09",
+        "patch": "18",
+        "version": "2024.09.18",
+        "built": "2024-09-09 23:54:16"
     },
     "contentType": {
         "btree":"text\/plain",
