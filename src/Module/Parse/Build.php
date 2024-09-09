@@ -566,7 +566,7 @@ class Build {
                 }
                 if($exist === false){
                     $text = $name . ' near ' . $record['value'] . ' on line: ' . $record['row'] . ' column: ' . $record['column'] . ' in: ' . $storage->data('source');
-                    $exception = new PluginNotFoundException('Orgction not found: ' . $text, $dir_plugin);
+                    $exception = new PluginNotFoundException('Function not found: ' . $text, $dir_plugin);
                     Event::trigger($object, 'parse.build.plugin.not_found', [
                         'url' => $url,
                         'name' => $name,
@@ -575,7 +575,7 @@ class Build {
                     throw $exception;
                 }
             } elseif(array_key_exists('function', $limit)) {
-                $exception = new PluginNotAllowedException('Orgction (' . $name . ') not allowed, allowed: ' . implode(',', $limit['function']));
+                $exception = new PluginNotAllowedException('Function (' . $name . ') not allowed, allowed: ' . implode(',', $limit['function']));
                 Event::trigger($object, 'parse.build.plugin.not_allowed', [
                     'url' => $url,
                     'name' => $name,
@@ -1269,7 +1269,7 @@ class Build {
     {
         switch($type){
             case 'function':
-                $tree = $this->requireOrgction($tree);
+                $tree = $this->requireFunction($tree);
                 break;
             case 'modifier':
                 $tree = $this->requireModifier($tree);
@@ -1327,7 +1327,7 @@ class Build {
     /**
      * @throws Exception
      */
-    private function requireOrgction($tree=[]): array
+    private function requireFunction($tree=[]): array
     {
         $storage = $this->storage();
         if(!$storage){

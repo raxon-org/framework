@@ -58,7 +58,7 @@ config('framework.environment') === 'development') &&
         <tr class="trace">
             <td class="tab">&nbsp;</td>
             <td class="title">{{$trace.file}} ({{$trace.line}})</td>
-            <td class="orgction">{{$trace.orgction}}</td>
+            <td class="function">{{$trace.function}}</td>
             <td class="class">{{$trace.class}}</td>
         </tr>
         <tr class="trace-source">

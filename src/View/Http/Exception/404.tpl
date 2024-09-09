@@ -84,7 +84,7 @@ config('framework.environment') === 'development' &&
             <td class="class"><b>Class:</b> {{$trace.class}}</td>
         </tr>
         <tr class="trace">
-            <td class="orgction"><b>Orgction:</b> {{$trace.orgction}}</td>
+            <td class="function"><b>Function:</b> {{$trace.function}}</td>
         </tr>
         <tr class="trace-source">
             <td colspan="4">
