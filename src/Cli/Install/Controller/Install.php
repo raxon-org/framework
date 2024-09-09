@@ -86,9 +86,9 @@ class Install extends Controller {
         $role_system = $node->role_system();
         if(empty($role_system)){
             //install role system...
-            $node->role_system_create('raxon_org/boot');
-            $node->role_system_create('raxon_org/node');
-            $node->role_system_create('raxon_org/route');
+            $node->role_system_create('raxon/boot');
+            $node->role_system_create('raxon/node');
+            $node->role_system_create('raxon/route');
         }
         if(
             $package->has('copy') &&
