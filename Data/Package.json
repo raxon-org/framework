@@ -417,6 +417,11 @@
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Event/",
           "to" : "{{config('project.dir.event')}}",
           "recursive": true
+        },
+        {
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Validator/",
+          "to" : "{{config('project.dir.validator')}}",
+          "recursive": true
         }
       ],
       "command" : [
