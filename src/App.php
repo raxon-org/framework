@@ -1723,7 +1723,7 @@ class App extends Data {
                 if($load_part !== $prefix){
                     continue;
                 }
-                $part = str_replace('Raxon\\Org\\', '', $load);
+                $part = str_replace('Raxon\\', '', $load);
                 $part = str_replace('\\', '/', $part);
                 $url = $this->config('framework.dir.source') . $part . $this->config('extension.php');
                 $ramdisk_dir = false;
