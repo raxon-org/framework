@@ -638,8 +638,6 @@ class App extends Data {
         } else {
             throw new Exception('Missing controller in destination');
         }
-
-
     }
 
     /**
