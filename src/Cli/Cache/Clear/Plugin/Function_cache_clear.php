@@ -61,6 +61,7 @@ function function_cache_clear(Parse $parse, Data $data){
         $cacheDriver->deleteAll();
     }
     opcache_reset();
+    Dir::create($temp_dir . '33/', Dir::CHMOD);
     File::permission($object, [
         'dir' => $temp_dir,
         'dir_www' => $temp_dir . '33/'
