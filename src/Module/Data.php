@@ -583,8 +583,9 @@ class Data {
      */
     public function write($url='', $options=[]): array | bool | int
     {
+        $object = $this->object();
         $dir = Dir::name($url);
-        Dir::create($dir);
+        Dir::create($dir, Dir::CHMOD);
         if(is_array($options)){
             if(array_key_exists('return', $options)){
                 $return = $options['return'];

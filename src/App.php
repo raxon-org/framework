@@ -629,6 +629,7 @@ class App extends Data {
      */
     public static function controller(App $object, Destination $destination): void
     {
+        d($destination);
         $controller = $destination->get('controller');
         if(!empty($controller)){
             $check = class_exists($controller);
