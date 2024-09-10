@@ -11,6 +11,7 @@ function function_server_url(Parse $parse, Data $data, $name=''){
     $object = $parse->object();
     $name = str_replace('.', '-', $name);
     $url = $object->config('server.url.' . $name . '.' . $object->config('framework.environment'));
+    ddd($url);
     if(
         $url &&
         substr($url, 0, -1) !== '/'
