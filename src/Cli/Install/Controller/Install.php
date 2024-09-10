@@ -84,6 +84,11 @@ class Install extends Controller {
         }
         $node = new Node($object);
         $role_system = $node->role_system();
+        $dir_source = $object->config('project.dir.source');
+        Dir::create($dir_source, Dir::CHMOD);
+        File::permission($object, [
+            'source' => $dir_source
+        ]);
         if(empty($role_system)){
             //install role system...
             $node->role_system_create('raxon/boot');
