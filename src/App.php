@@ -629,12 +629,11 @@ class App extends Data {
      */
     public static function controller(App $object, Destination $destination): void
     {
-        d($destination);
         $controller = $destination->get('controller');
         if(!empty($controller)){
             $check = class_exists($controller);
             if(empty($check)){
-                throw new Exception('Cannot call controller (' . $controller .')');
+                throw new Exception('Cannot call controller (' . $controller .') for host: ' . $destination->get('host') . ' name: ' . $destination->get('name'));
             }
         } else {
             throw new Exception('Missing controller in destination');
