@@ -376,6 +376,7 @@ class Host {
                     'ramdisk' => true
                 ]
             );
+            ddd($map);
             if(empty($map)){
                 Cache::write(
                     $object,
