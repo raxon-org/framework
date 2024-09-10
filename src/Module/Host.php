@@ -376,19 +376,6 @@ class Host {
                     'ramdisk' => true
                 ]
             );
-            $test = $node->list(
-                'System.Host.Mapper',
-                $node->role_system(),
-                [
-                    'sort' => [
-                        'source' => 'ASC',
-                        'destination' => 'ASC'
-                    ],
-                    'ttl' => $ttl,
-                    'ramdisk' => true
-                ]
-            );
-            ddd($test);
             if(empty($map)){
                 Cache::write(
                     $object,
