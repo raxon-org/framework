@@ -163,9 +163,7 @@ class Host {
         } else {
             $name = $object->config('host.domain') . '.' . $object->config('host.extension');
         }
-        d($name);
         $map = Host::map($object, $node, $name);
-        d($map);
         $host = Host::get($object, $node, $name, $map);
         $object->config('host.map', $map);
         $object->config('host', Core::object_merge($object->config('host'), $host));
