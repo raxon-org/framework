@@ -280,7 +280,7 @@ class App extends Data {
                                         $object->config('host.extension')
                                     ;
                                 }
-                                $object->logger($logger_error)->error('Couldn\'t determine route (wildcard) domain: ' . $domain . '(' . $object->request('request') . ')...');
+                                $object->logger($logger_error)->error('Couldn\'t determine route (wildcard) domain: ' . $domain . ' (' . $object->request('request') . ')...');
                             }
                             $subdomain = $object->config('host.subdomain');
                             $domain = $object->config('host.domain');
