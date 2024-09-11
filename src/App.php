@@ -96,6 +96,7 @@ class App extends Data {
         $this->data(App::AUTOLOAD_COMPOSER, $autoload);
         $this->data(App::CONFIG, $config);
         $data = new Data();
+        $this->data(App::REQUEST, clone $data);
         $this->data(App::EVENT, clone $data);
         $this->data(App::MIDDLEWARE, clone $data);
         $this->data(App::OUTPUTFILTER, clone $data);
