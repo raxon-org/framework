@@ -12,6 +12,6 @@ namespace Raxon\Exception;
 
 use Exception;
 
-class AssertExistException extends Exception {
+class AssertException extends Exception {
 
 }
