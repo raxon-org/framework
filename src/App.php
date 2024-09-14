@@ -124,7 +124,6 @@ class App extends Data {
         if(App::is_cli() === false){
             $domains = $object->config('server.cors.domain');
             if(!empty($domains)){
-                $object->logger($object->config('project.log.debug'))->info('enable-cors');
                 $info .= ' and enabling cors';
                 Server::cors($object);
             }
