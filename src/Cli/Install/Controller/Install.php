@@ -250,6 +250,7 @@ class Install extends Controller {
                                         'validation' => false
                                     ]
                                 );
+                                echo 'Route create: ' . $import->name . PHP_EOL;
                             }
                             elseif(
                                 property_exists($options, 'force') &&
@@ -266,6 +267,7 @@ class Install extends Controller {
                                         'validation' => false
                                     ]
                                 );
+                                echo 'Route put: ' . $import->name . PHP_EOL;
                             }
                             elseif(
                                 property_exists($options, 'patch') &&
@@ -274,7 +276,7 @@ class Install extends Controller {
                                 property_exists($record['node'], 'uuid')
                             ){
                                 $import->uuid = $record['node']->uuid;
-                                $put = $node->patch(
+                                $patch = $node->patch(
                                     $class,
                                     $node->role_system(),
                                     $import,
@@ -282,6 +284,7 @@ class Install extends Controller {
                                         'validation' => false
                                     ]
                                 );
+                                echo 'Route patch: ' . $import->name . PHP_EOL;
                             }
                         }
                     }
@@ -342,6 +345,7 @@ class Install extends Controller {
                                     'validation' => false
                                 ]
                             );
+                            echo 'Route create: ' . $import->name . PHP_EOL;
                         }
                         elseif(
                             property_exists($options, 'force') &&
@@ -358,6 +362,7 @@ class Install extends Controller {
                                     'validation' => false
                                 ]
                             );
+                            echo 'Route put: ' . $import->name . PHP_EOL;
                         }
                         elseif(
                             property_exists($options, 'patch') &&
@@ -374,6 +379,7 @@ class Install extends Controller {
                                     'validation' => false
                                 ]
                             );
+                            echo 'Route patch: ' . $import->name . PHP_EOL;
                         }
                     }
                 }
