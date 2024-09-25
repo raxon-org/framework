@@ -745,13 +745,16 @@ class App extends Data {
     {
         $logger_error = $object->config('project.log.error');
         if($output instanceof Exception){
+            d('yes');
             if(App::is_cli()){
+                d('yes1');
                 if($logger_error){
                     $object->logger($logger_error)->error($output->getMessage());
                 }
                 fwrite(STDERR, App::exception_to_cli($object, $output));
                 exit(1);
             } else {
+                d('yes2');
                 if(!headers_sent()){
                     header('Content-Type: application/json');
                 }
