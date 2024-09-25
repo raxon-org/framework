@@ -762,8 +762,10 @@ class App extends Data {
             }
         }
         elseif($output instanceof Response){
+            d('yes3');
             return Response::output($object, $output);
         } else {
+            d('yes4');
             $response = new Response($output, $object->config('response.output'));
             return Response::output($object, $response);
         }
