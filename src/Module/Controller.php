@@ -414,7 +414,26 @@ class Controller {
         }
         if(empty($url)){
             if($logger_error){
-                $object->logger($logger_error)->error('Cannot find view file ('. $name . ') ', [$template, $list, trace()]);
+                $debug = debug_backtrace(1);
+                $trace = [];
+                for($i=0; $i<5; $i++){
+                    if(array_key_exists($i, $debug)){
+                        if(
+                            array_key_exists('file', $debug[$i]) &&
+                            array_key_exists('line', $debug[$i]) &&
+                            array_key_exists('function', $debug[$i])
+                        ){
+                            $trace[] = $debug[$i]['function'] . ':' . $debug[$i]['file'] .':' . $debug[$i]['line'];
+                        }
+                        elseif(
+                            array_key_exists('file', $debug[$i]) &&
+                            array_key_exists('line', $debug[$i])
+                        ) {
+                            $trace[] = $debug[$i]['file'] .':' . $debug[$i]['line'];
+                        }
+                    }
+                }
+                $object->logger($logger_error)->error('Cannot find view file ('. $name . ') ', [$template, $trace]);
             }
             if (
                 $config->data(Config::DATA_FRAMEWORK_ENVIRONMENT) === Config::MODE_INIT ||
