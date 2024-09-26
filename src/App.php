@@ -183,7 +183,7 @@ class App extends Data {
                 App::configure($object);
                 Route::configure($object);
                 $destination = Route::request($object);
-                $object->logger($logger_error)->info('Destination: ' . $destination->get('name') . ' (' . $object->request('request') . ')...', [ Core::object($destination, Core::OBJECT_JSON) ]);
+                $object->logger($logger_error)->info('Destination: ' . $object->request('request'), [ Core::object($destination, Core::OBJECT_JSON) ]);
                 if ($destination === false) {
 //                    $object->config('framework.environment', Config::MODE_PRODUCTION);
                     if ($object->config('framework.environment') === Config::MODE_DEVELOPMENT) {
