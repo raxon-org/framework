@@ -709,6 +709,12 @@ class App extends Data {
     {
         $class = get_class($exception);
         $width = Cli::tput('width');
+        $background = '75;150;245';
+        $output = chr(27) . '[48;2;' . $background . 'm';
+        $output .= str_repeat(' ', $width);
+        $output .= PHP_EOL;
+        $output .= '{{rax}}' . PHP_EOL;
+        $output .= PHP_EOL;
         $background = '200;0;0';
         $output = chr(27) . '[48;2;' . $background . 'm';
         $output .= str_repeat(' ', $width);
