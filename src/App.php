@@ -716,7 +716,7 @@ class App extends Data {
         $output .= '{{rax}}' . PHP_EOL;
         $output .= PHP_EOL;
         $background = '200;0;0';
-        $output = chr(27) . '[48;2;' . $background . 'm';
+        $output .= chr(27) . '[48;2;' . $background . 'm';
         $output .= str_repeat(' ', $width);
         $output .= PHP_EOL;
         $output .= $class . PHP_EOL;
