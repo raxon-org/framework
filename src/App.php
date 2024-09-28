@@ -724,7 +724,9 @@ class App extends Data {
             $object->config('framework.environment') === Config::MODE_INIT ||
             $object->config('framework.environment') === Config::MODE_DEVELOPMENT
         ){
-            $output .= (string) $exception;
+            $message = $exception->getMessage();
+            $result = (string) $exception;
+            $output .= str_replace($message, '', $result);
         }
         return $output;
     }
