@@ -727,6 +727,7 @@ class App extends Data {
             $message = $exception->getMessage();
             $result = (string) $exception;
             $output .= str_replace($message, '', $result);
+            $output = str_replace('  in', ' in', $output);
         }
         return $output;
     }
