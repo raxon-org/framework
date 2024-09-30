@@ -218,6 +218,13 @@ class Cache {
             $key['host'] = $object->config('host.uuid');
         }
         if(
+            array_key_exists('domain', $options) &&
+            !empty($options['domain'])
+        ) {
+            //per host cache, cannot be used in cli
+            $key['domain'] = $options['domain'];
+        }
+        if(
             array_key_exists('request', $options) &&
             $options['request'] === true
         ){
