@@ -206,8 +206,6 @@ class Install extends Controller {
                     $class = Controller::name(File::basename($url_route, $object->config('extension.json')));
                     $read = $object->data_read($url_route);
                     if($read){
-                        d($url_route);
-                        ddd($read);
                         foreach($read->data($class) as $import){
                             if(!property_exists($import, 'name')){
                                 continue;
