@@ -200,7 +200,7 @@ class Value {
      */
     private static function getCast($record=[]): string
     {
-        switch(strtolower($record['value'])){
+        switch(mb_strtolower($record['value'])){
             case 'bool':
             case 'boolean':
                 $result = Value::TYPE_CAST_BOOLEAN;

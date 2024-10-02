@@ -17,7 +17,7 @@ class TypeHexadecimal {
 
     public static function validate(App $object, $string=''): bool
     {
-        if(strtolower($string) == 'nan'){
+        if(mb_strtolower($string) == 'nan'){
             $string = NAN;
         }
         return ctype_xdigit($string);

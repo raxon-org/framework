@@ -83,7 +83,7 @@ class Data {
                         $param = array_shift($tmp);
                         $value = implode('=', $tmp);
                     }
-                    if(strtolower($param) == strtolower($parameter)){
+                    if(mb_strtolower($param) == mb_strtolower($parameter)){
                         if($offset !== 0){
                             if(property_exists($data, (string) ($key + $offset))){
                                 if(is_scalar($data->{($key + $offset)})){
@@ -614,7 +614,7 @@ class Data {
                         'algorithm' => 'none'
                     ];
                 }
-                switch(strtolower($options['compress']['algorithm'])) {
+                switch(mb_strtolower($options['compress']['algorithm'])) {
                     case 'gz':
                     case 'gzencode':
                         $data = Core::object($this->data(), Core::OBJECT_JSON_LINE);

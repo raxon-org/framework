@@ -17,7 +17,7 @@ class TypeNull {
 
     public static function validate(App $object, $string=''): bool
     {
-        if(strtolower($string) == 'null'){
+        if(mb_strtolower($string) == 'null'){
             return true;
         }
         return false;

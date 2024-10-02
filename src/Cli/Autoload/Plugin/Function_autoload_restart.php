@@ -16,8 +16,8 @@ function function_autoload_restart(Parse $parse, Data $data){
             if($file->type === Dir::TYPE){
                 if(
                     (
-                        stristr($file->url, strtolower(\Raxon\Module\Autoload::NAME)) !== false ||
-                        stristr($file->url, strtolower(\Raxon\App::NAME)) !== false
+                        stristr($file->url, mb_strtolower(\Raxon\Module\Autoload::NAME)) !== false ||
+                        stristr($file->url, mb_strtolower(\Raxon\App::NAME)) !== false
                     )
                     &&
                     file_exists($file->url)

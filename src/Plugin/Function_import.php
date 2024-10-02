@@ -14,7 +14,7 @@ function function_import(Parse $parse, Data $data, $url=null, $controller=null, 
         $collection = $controller;
         $controller = null;
     }
-    $extension = strtolower(File::extension($url));
+    $extension = mb_strtolower(File::extension($url));
     $name = '';
     $value = null;
     switch($extension){

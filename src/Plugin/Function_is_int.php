@@ -12,7 +12,7 @@ use Raxon\Module\Parse;
 use Raxon\Module\Data;
 
 function function_is_int(Parse $parse, Data $data, $int=null){
-    if(strtolower($int) == 'nan'){
+    if(mb_strtolower($int) == 'nan'){
         $int = NAN;
     }
     return is_int($int);

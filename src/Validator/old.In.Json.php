@@ -42,21 +42,21 @@ function validate_in_json(App $object, $request=null, $field='', $argument='', $
                     if(is_array($attribute)){
                         foreach($attribute as $attr){
                             if ($ignore_case) {
-                                $result[] = strtolower($node->get($attr));
+                                $result[] = mb_strtolower($node->get($attr));
                             } else {
                                 $result[] = $node->get($attr);
                             }
                         }
                     } else {
                         if ($ignore_case) {
-                            $result[] = strtolower($node->get($attribute));
+                            $result[] = mb_strtolower($node->get($attribute));
                         } else {
                             $result[] = $node->get($attribute);
                         }
                     }
                 } elseif(is_scalar($record)) {
                     if($ignore_case){
-                        $result[] = strtolower($record);
+                        $result[] = mb_strtolower($record);
                     } else {
                         $result[] = $record;
                     }
@@ -64,7 +64,7 @@ function validate_in_json(App $object, $request=null, $field='', $argument='', $
             }
             foreach($request as $post){
                 if($ignore_case){
-                    $post = strtolower($post);
+                    $post = mb_strtolower($post);
                 }
                 if(!in_array($post, $result, true)) {
                     return false;
@@ -96,7 +96,7 @@ function validate_in_json(App $object, $request=null, $field='', $argument='', $
                             $value = [];
                              foreach($attribute as $attr){
                                 if ($ignore_case) {
-                                    $value[] = strtolower($node->get($attr));
+                                    $value[] = mb_strtolower($node->get($attr));
                                 } else {
                                     $value[] = $node->get($attr);
                                 }
@@ -104,7 +104,7 @@ function validate_in_json(App $object, $request=null, $field='', $argument='', $
                              $result[] = implode('', $value);
                         } else {
                             if ($ignore_case) {
-                                $result[] = strtolower($node->get($attribute));
+                                $result[] = mb_strtolower($node->get($attribute));
                             } else {
                                 $result[] = $node->get($attribute);
                             }
@@ -112,7 +112,7 @@ function validate_in_json(App $object, $request=null, $field='', $argument='', $
                     }
                     elseif(is_scalar($record)) {
                         if ($ignore_case) {
-                            $result[] = strtolower($record);
+                            $result[] = mb_strtolower($record);
                         } else {
                             $result[] = $record;
                         }
@@ -120,7 +120,7 @@ function validate_in_json(App $object, $request=null, $field='', $argument='', $
                 }
             }
             if($ignore_case){
-                $string = strtolower($request);
+                $string = mb_strtolower($request);
             } else {
                 $string = $request;
             }

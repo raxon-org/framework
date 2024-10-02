@@ -101,7 +101,7 @@ class Cli {
         if(!is_array($arguments)){
             $arguments = (array) $arguments;
         }
-        switch(strtolower($tput)){
+        switch(mb_strtolower($tput)){
             case 'screen.save' :
             case 'screen.write' :
             case 'smcup' :
@@ -189,7 +189,7 @@ class Cli {
         ob_start();
         $result = system('tput ' . $tput);
         ob_end_clean();
-        switch(strtolower($tput)){
+        switch(mb_strtolower($tput)){
             case 'rows':
             case 'row':
             case 'height':
@@ -253,7 +253,7 @@ class Cli {
             array_key_exists('uppercase', $options) &&
             $options['uppercase'] === true
         ){
-            $text = strtoupper($text);
+            $text = mb_strtoupper($text);
         }
         $text = ' ' . $text . ' ';
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>175, 'g'=>175, 'b'=>175]) . $text . Cli::tput('reset');
@@ -265,7 +265,7 @@ class Cli {
             array_key_exists('uppercase', $options) &&
             $options['uppercase'] === true
         ){
-            $text = strtoupper($text);
+            $text = mb_strtoupper($text);
         }
         $text = ' ' . $text . ' ';
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>200, 'g'=>0, 'b'=>200]) . $text . Cli::tput('reset');
@@ -277,7 +277,7 @@ class Cli {
             array_key_exists('uppercase', $options) &&
             $options['uppercase'] === true
         ){
-            $text = strtoupper($text);
+            $text = mb_strtoupper($text);
         }
         $text = ' ' . $text . ' ';
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>0, 'g'=>200, 'b'=>0]) . $text . Cli::tput('reset');
@@ -289,7 +289,7 @@ class Cli {
             array_key_exists('uppercase', $options) &&
             $options['uppercase'] === true
         ){
-            $text = strtoupper($text);
+            $text = mb_strtoupper($text);
         }
         $text = ' ' . $text . ' ';
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>255, 'g'=>0, 'b'=>0]) . $text . Cli::tput('reset');
@@ -301,7 +301,7 @@ class Cli {
             array_key_exists('uppercase', $options) &&
             $options['uppercase'] === true
         ){
-            $text = strtoupper($text);
+            $text = mb_strtoupper($text);
         }
         $text = ' ' . $text . ' ';
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>200, 'g'=>0, 'b'=>0]) . $text . Cli::tput('reset');
@@ -313,7 +313,7 @@ class Cli {
             array_key_exists('uppercase', $options) &&
             $options['uppercase'] === true
         ){
-            $text = strtoupper($text);
+            $text = mb_strtoupper($text);
         }
         $text = ' ' . $text . ' ';
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>0, 'g'=>150, 'b'=>200]) . $text . Cli::tput('reset');
@@ -325,7 +325,7 @@ class Cli {
             array_key_exists('uppercase', $options) &&
             $options['uppercase'] === true
         ){
-            $text = strtoupper($text);
+            $text = mb_strtoupper($text);
         }
         $text = ' ' . $text . ' ';
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>0, 'g'=>0, 'b'=>0]) . $text . Cli::tput('reset');
@@ -337,7 +337,7 @@ class Cli {
             array_key_exists('uppercase', $options) &&
             $options['uppercase'] === true
         ){
-            $text = strtoupper($text);
+            $text = mb_strtoupper($text);
         }
         $text = ' ' . $text . ' ';
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>255, 'g'=>124, 'b'=>13]) . $text . Cli::tput('reset');

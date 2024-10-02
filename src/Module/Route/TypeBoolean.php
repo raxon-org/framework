@@ -17,10 +17,10 @@ class TypeBoolean {
 
     public static function validate(App $object, $string=''): bool
     {
-        if(strtolower($string) === 'true'){
+        if(mb_strtolower($string) === 'true'){
             return true;
         }
-        elseif(strtolower($string) === 'false'){
+        elseif(mb_strtolower($string) === 'false'){
             return true;
         }
         return false;

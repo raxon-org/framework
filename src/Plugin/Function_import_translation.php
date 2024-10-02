@@ -18,7 +18,7 @@ function function_import_translation(Parse $parse, Data $data){
             $file->basename = File::basename($file->name, $object->config('extension.json'));
             $translation = $object->data_read($file->url, sha1($file->url), true);
             if($translation){
-                $object->data('translation.' . strtolower($file->basename), $translation->data());
+                $object->data('translation.' . mb_strtolower($file->basename), $translation->data());
             }
         }
     }

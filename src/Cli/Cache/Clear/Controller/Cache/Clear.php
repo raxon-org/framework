@@ -57,14 +57,14 @@ class Clear extends Controller {
                 Clear::EXCEPTION_COMMAND
             );
             $exception = new Exception($exception);
-            Event::trigger($object, 'cli.' . strtolower(Clear::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Clear::NAME) . '.' . __FUNCTION__, [
                 'command' => $command,
                 'exception' => $exception
             ]);
             throw $exception;
         }
         $response = Clear::{$command}($object);
-        Event::trigger($object, 'cli.' . strtolower(Clear::NAME) . '.' . __FUNCTION__, [
+        Event::trigger($object, 'cli.' . mb_strtolower(Clear::NAME) . '.' . __FUNCTION__, [
             'command' => $command
         ]);
         return $response;
@@ -80,13 +80,13 @@ class Clear extends Controller {
             $name = Clear::name(__FUNCTION__, Clear::NAME);
             $url = Clear::locate($object, $name);
             $response = Clear::response($object, $url);
-            Event::trigger($object, 'cli.' . strtolower(Clear::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Clear::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url
             ]);
             return $response;
         } catch(Exception | LocateException | UrlEmptyException | UrlNotExistException $exception){
-            Event::trigger($object, 'cli.' . strtolower(Clear::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Clear::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url,
                 'exception' => $exception
@@ -107,13 +107,13 @@ class Clear extends Controller {
             $name = Clear::name(__FUNCTION__, Clear::NAME);
             $url = Clear::locate($object, $name);
             $response = Clear::response($object, $url);
-            Event::trigger($object, 'cli.' . strtolower(Clear::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Clear::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url
             ]);
             return $response;
         } catch(Exception | LocateException | UrlEmptyException | UrlNotExistException $exception){
-            Event::trigger($object, 'cli.' . strtolower(Clear::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Clear::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url,
                 'exception' => $exception

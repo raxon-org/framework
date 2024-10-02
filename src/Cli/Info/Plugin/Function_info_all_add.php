@@ -13,7 +13,7 @@ function function_info_all_add(Parse $parse, Data $data, $list){
         ){
             try {
                 $class = $record->controller;
-                $constant =  $class . '::INFO_' . strtoupper($record->function);
+                $constant =  $class . '::INFO_' . mb_strtoupper($record->function);
                 $info = false;
                 if(defined($constant)) {
                     $info = constant($constant);

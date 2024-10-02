@@ -24,7 +24,7 @@ class Server extends Controller {
                     array_key_exists('name', $record) &&
                     array_key_exists('options', $record)
                 ){
-                    $name = str_replace('.', '-', strtolower($record['name']));
+                    $name = str_replace('.', '-', mb_strtolower($record['name']));
                     $result[$name] = $record['options'];
                     $count++;
                 }
@@ -33,8 +33,8 @@ class Server extends Controller {
                     property_exists($record, 'name') &&
                     property_exists($record, 'options')
                 ){
-                    $name = str_replace('.', '-', strtolower($record->name));
-                    $result[strtolower($name)] = $record->options;
+                    $name = str_replace('.', '-', mb_strtolower($record->name));
+                    $result[mb_strtolower($name)] = $record->options;
                     $count++;
                 }
             }

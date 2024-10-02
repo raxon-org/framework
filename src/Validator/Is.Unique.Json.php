@@ -66,14 +66,14 @@ function validate_is_unique_json(App $object, $string='', $field='', $argument='
                         continue;
                     }
                     if(empty($list)){
-                        $match = strtolower($data->data($nr . '.' . $field));
+                        $match = mb_strtolower($data->data($nr . '.' . $field));
                     } else {
-                        $match = strtolower($data->data($list . '.' . $nr . '.' . $field));
+                        $match = mb_strtolower($data->data($list . '.' . $nr . '.' . $field));
                     }
                     if(empty($match)){
                         continue;
                     }
-                    if($match == strtolower($string)){
+                    if($match == mb_strtolower($string)){
                         $is_unique = false;
                         break;
                     }

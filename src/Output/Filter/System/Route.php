@@ -21,15 +21,15 @@ class Route extends Controller {
                     is_array($record) &&
                     array_key_exists('name', $record)
                 ){
-                    $name = str_replace('.', '-', strtolower($record['name']));
+                    $name = str_replace('.', '-', mb_strtolower($record['name']));
                     $result[$name] = $record;
                 }
                 elseif(
                     is_object($record) &&
                     property_exists($record, 'name')
                 ){
-                    $name = str_replace('.', '-', strtolower($record->name));
-                    $result[strtolower($name)] = $record;
+                    $name = str_replace('.', '-', mb_strtolower($record->name));
+                    $result[mb_strtolower($name)] = $record;
                 }
             }
         }

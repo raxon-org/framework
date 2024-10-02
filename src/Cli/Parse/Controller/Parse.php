@@ -65,14 +65,14 @@ class Parse extends Controller {
                 Parse::EXCEPTION_COMMAND
             );
             $exception = new Exception($exception);
-            Event::trigger($object, 'cli.' . strtolower(Parse::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Parse::NAME) . '.' . __FUNCTION__, [
                 'command' => $command,
                 'exception' => $exception
             ]);
             throw $exception;
         }
         $response = Parse::{$command}($object);
-        Event::trigger($object, 'cli.' . strtolower(Parse::NAME) . '.' . __FUNCTION__, [
+        Event::trigger($object, 'cli.' . mb_strtolower(Parse::NAME) . '.' . __FUNCTION__, [
             'command' => $command,
         ]);
         return $response;

@@ -67,13 +67,13 @@ class Data extends Controller {
             $name = Data::name(__FUNCTION__, Data::NAME);
             $url = Data::locate($object, $name);
             $result = Data::response($object, $url);
-            Event::trigger($object, 'cli.' . strtolower(Data::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Data::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url
             ]);
             return $result;
         } catch (Exception | LocateException | UrlEmptyException | UrlNotExistException $exception) {
-            Event::trigger($object, 'cli.' . strtolower(Data::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Data::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url,
                 'exception' => $exception
@@ -375,7 +375,7 @@ class Data extends Controller {
                     !empty($includes) &&
                     empty($excludes) &&
                     in_array(
-                        strtolower($file->name),
+                        mb_strtolower($file->name),
                         $includes,
                         true
                     )
@@ -400,7 +400,7 @@ class Data extends Controller {
                 }
                 elseif(empty($includes) && !empty($excludes)){
                     if(in_array(
-                        strtolower($file->name),
+                        mb_strtolower($file->name),
                         $excludes,
                         true
                     )){
@@ -426,14 +426,14 @@ class Data extends Controller {
                 }
                 elseif(!empty($includes) && !empty($excludes)){
                     if(in_array(
-                        strtolower($file->name),
+                        mb_strtolower($file->name),
                         $excludes,
                         true
                     )){
                         continue;
                     }
                     if(in_array(
-                        strtolower($file->name),
+                        mb_strtolower($file->name),
                         $includes,
                         true
                     )){

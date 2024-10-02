@@ -12,7 +12,7 @@ use Raxon\Module\Parse;
 use Raxon\Module\Data;
 
 function function_is_hex(Parse $parse, Data $data, $hex=null){
-    if(strtolower($hex) == 'nan'){
+    if(mb_strtolower($hex) == 'nan'){
         $hex = NAN;
     }
     return ctype_xdigit($hex);

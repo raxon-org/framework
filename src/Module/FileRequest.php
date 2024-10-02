@@ -190,7 +190,7 @@ class FileRequest {
         if (empty($file_extension)) {
             return false;
         }
-        $file_extension_lowercase = strtolower($file_extension);
+        $file_extension_lowercase = mb_strtolower($file_extension);
         $location = $object->config('host.file.request');
         if (empty($location)) {
             $location = FileRequest::location($object, $dir);

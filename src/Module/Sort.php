@@ -104,7 +104,7 @@ class Sort extends Data {
                     }
                 }
                 unset($sort[$attribute]);                
-                if(strtoupper($sortable_1) === Sort::ASC){
+                if(mb_strtoupper($sortable_1) === Sort::ASC){
                     if($attribute === 'uuid'){
                         usort($result, array($this,"uuid_compare_ascending"));
                     } else {
@@ -236,13 +236,13 @@ class Sort extends Data {
                         }
                     }
                     unset($sort[$attribute]);
-                    if(strtoupper($sortable_1) === Sort::ASC){
+                    if(mb_strtoupper($sortable_1) === Sort::ASC){
                         ksort($result, $flags);
                     } else {
                         krsort($result, $flags);
                     }                
                     foreach($result as $key => $list){
-                        if(strtoupper($sortable_2) === Sort::ASC){
+                        if(mb_strtoupper($sortable_2) === Sort::ASC){
                             ksort($list, $flags);
                         } else {
                             krsort($list, $flags);

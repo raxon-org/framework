@@ -486,13 +486,13 @@ class Token {
                     $test_value = $record['value'] . $token[$next]['value'] . $token[$next_next]['value'];
                     if(
                         in_array(
-                            strtolower($test_value),
+                            mb_strtolower($test_value),
                             $options['extra_operators'],
                             true
                         )
                     ){
                         $token[$nr]['value'] = $test_value;
-                        $token[$nr]['type'] = strtolower($test_value);
+                        $token[$nr]['type'] = mb_strtolower($test_value);
                         $token[$nr]['direction'] = Token::DIRECTION_LTR;
                         $token[$nr]['is_operator'] = true;
                         unset($token[$next]);
@@ -507,13 +507,13 @@ class Token {
                     $test_value = $record['value'] . $token[$next]['value'];
                     if(
                         in_array(
-                            strtolower($test_value),
+                            mb_strtolower($test_value),
                             $options['extra_operators'],
                             true
                         )
                     ){
                         $token[$nr]['value'] = $test_value;
-                        $token[$nr]['type'] = strtolower($test_value);
+                        $token[$nr]['type'] = mb_strtolower($test_value);
                         $token[$nr]['direction'] = Token::DIRECTION_LTR;
                         $token[$nr]['is_operator'] = true;
                         unset($token[$next]);
@@ -1535,7 +1535,7 @@ class Token {
                             true
                         )
                     ){
-                        $token[$is_tag_close_nr]['tag']['name'] = strtolower($tag_close);
+                        $token[$is_tag_close_nr]['tag']['name'] = mb_strtolower($tag_close);
                         $is_tag_close_nr = null;
                     } else {
                         $tag_close .= $record['value'];
@@ -1960,7 +1960,7 @@ class Token {
                         $token[$nr]['value'] .= $token[$next]['value'];
                         $token[$nr]['type'] = Token::TYPE_TAG_CLOSE;
                         $token[$nr]['is_operator'] = false;
-                        $token[$nr]['tag']['name'] = strtolower($tag_close);
+                        $token[$nr]['tag']['name'] = mb_strtolower($tag_close);
                         $previous_nr = $nr;
                         $skip_unset += 1;
                     }
@@ -1976,7 +1976,7 @@ class Token {
                             $token[$next_next]['value'];
                         $token[$nr]['type'] = Token::TYPE_TAG_CLOSE;
                         $token[$nr]['is_operator'] = false;
-                        $token[$nr]['tag']['name'] = strtolower($tag_close);
+                        $token[$nr]['tag']['name'] = mb_strtolower($tag_close);
                         $previous_nr = $nr;
                         $skip_unset += 2;
                     }
@@ -2090,7 +2090,7 @@ class Token {
                         Token::is_hex($record['value']) &&
                         $hex === null
                     ){
-                        $token[$nr]['execute'] = strtoupper($record['value']);
+                        $token[$nr]['execute'] = mb_strtoupper($record['value']);
                         $token[$nr]['is_executed'] = true;
                         $token[$nr]['type'] = Token::TYPE_HEX;
                         $hex = $token[$nr];
@@ -2164,20 +2164,20 @@ class Token {
                         if($method_count === 1){
                             $token[$method_nr]['method']['namespace'] = null;
                             $token[$method_nr]['method']['trait'] = null;
-                            $token[$method_nr]['method']['name'] = strtolower(trim($value));
+                            $token[$method_nr]['method']['name'] = mb_strtolower(trim($value));
                         } elseif($method_count === 2) {
                             $token[$method_nr]['method']['namespace'] = null;
                             $token[$method_nr]['method']['trait'] = $explode[0];
-                            $token[$method_nr]['method']['name'] = strtolower(trim($explode[1]));
+                            $token[$method_nr]['method']['name'] = mb_strtolower(trim($explode[1]));
                         } elseif($method_count === 3){
                             $temp = explode('.', $explode[0]);
                             $temp_count = count($temp);
-                            if(strtolower($temp[$temp_count - 1]) !== 'trait'){
+                            if(mb_strtolower($temp[$temp_count - 1]) !== 'trait'){
                                 $temp[] = 'Trait';
                             }
                             $token[$method_nr]['method']['namespace'] = implode('.', $temp);
                             $token[$method_nr]['method']['trait'] = $explode[1];
-                            $token[$method_nr]['method']['name'] = strtolower(trim($explode[2]));
+                            $token[$method_nr]['method']['name'] = mb_strtolower(trim($explode[2]));
                         } else {
                             throw new Exception('wrong amount of ":" in traited function');
                         }
@@ -2188,7 +2188,7 @@ class Token {
                     $is_hex = Token::is_hex($record['value']);
                     if($is_hex){
                         $hex['value'] .= $record['value'];
-                        $hex['execute'] .= strtoupper($record['value']);
+                        $hex['execute'] .= mb_strtoupper($record['value']);
                         unset($token[$nr]);
                         $previous_nr = $nr;
                         continue;
@@ -2226,7 +2226,7 @@ class Token {
                     $record['value'] == '0' &&
                     $next !== null &&
                     $token[$next]['type'] === Token::TYPE_STRING &&
-                    strtolower(substr($token[$next]['value'], 0, 1)) == 'x'
+                    mb_strtolower(substr($token[$next]['value'], 0, 1)) == 'x'
                 ){
                     $hex = $record;
                     $hex['value'] .= substr($token[$next]['value'], 0, 1);
@@ -2238,7 +2238,7 @@ class Token {
                         $is_hex = Token::is_hex($tmp['value']);
                         if($is_hex){
                             $hex['value'] .= $tmp['value'];
-                            $hex['execute'] .= strtoupper($tmp['value']);
+                            $hex['execute'] .= mb_strtoupper($tmp['value']);
                             $hex['type'] = Token::TYPE_HEX;
                             if(
                                 isset($previous_nr) &&
@@ -2289,7 +2289,7 @@ class Token {
                     ){
                         $hex = $token[$previous_nr];
                         $hex['type'] = Token::TYPE_HEX;
-                        $hex['execute'] = strtoupper($token[$previous_nr]['value']);
+                        $hex['execute'] = mb_strtoupper($token[$previous_nr]['value']);
                         $hex['execute'] .= $record['value'];
                         $hex['value'] .= $record['value'];
                         $start = $previous_nr;
@@ -2306,7 +2306,7 @@ class Token {
                         $hex['type'] = Token::TYPE_HEX;
                         $hex['execute'] = (string) $record['value'];
                         $hex['value'] .= $token[$next]['value'];
-                        $hex['execute'] .= strtoupper($token[$next]['value']);
+                        $hex['execute'] .= mb_strtoupper($token[$next]['value']);
                         $skip_unset += 1;
                         $start = $nr;
                     }
@@ -2379,7 +2379,7 @@ class Token {
 
     private static function is_hex($hex=''): bool
     {
-        if(strtolower($hex) == 'nan'){
+        if(mb_strtolower($hex) == 'nan'){
             $hex = NAN;
         }
         return ctype_xdigit($hex);

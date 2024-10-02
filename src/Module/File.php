@@ -186,8 +186,8 @@ class File {
         if(count($explode) == 2){
             $ext = strrev($explode[0]);
             $node->extension = $ext;
-            $node->filetype = ucfirst($ext) . ' ' . strtolower(File::TYPE);
-            $node->contentType = $object->config('contentType.' . strtolower($ext));
+            $node->filetype = ucfirst($ext) . ' ' . mb_strtolower(File::TYPE);
+            $node->contentType = $object->config('contentType.' . mb_strtolower($ext));
         } else {
             $node->extension = '';
             if($node->type === Dir::TYPE){
@@ -590,13 +590,13 @@ class File {
 
     public static function size_calculation($calculation=''): float|int
     {
-        $b = str_contains(strtolower($calculation), 'b');
-        $k = str_contains(strtolower($calculation), 'k');
-        $m = str_contains(strtolower($calculation), 'm');
-        $g = str_contains(strtolower($calculation), 'g');
-        $t = str_contains(strtolower($calculation), 't');
-        $p = str_contains(strtolower($calculation), 'p');
-        $e = str_contains(strtolower($calculation), 'e');
+        $b = str_contains(mb_strtolower($calculation), 'b');
+        $k = str_contains(mb_strtolower($calculation), 'k');
+        $m = str_contains(mb_strtolower($calculation), 'm');
+        $g = str_contains(mb_strtolower($calculation), 'g');
+        $t = str_contains(mb_strtolower($calculation), 't');
+        $p = str_contains(mb_strtolower($calculation), 'p');
+        $e = str_contains(mb_strtolower($calculation), 'e');
         $number = false;
         if (preg_match('/[0-9]+(?:\.[0-9]+)?/', $calculation, $matches)) {
             $number = (float) $matches[0];

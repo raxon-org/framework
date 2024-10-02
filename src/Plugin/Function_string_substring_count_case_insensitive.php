@@ -12,8 +12,8 @@ use Raxon\Module\Parse;
 use Raxon\Module\Data;
 
 function function_string_substring_count_case_insensitive(Parse $parse, Data $data, $haystack='', $needle='', $offset=0, $length=null){
-    $haystack = strtolower($haystack);
-    $needle = strtolower($needle);
+    $haystack = mb_strtolower($haystack);
+    $needle = mb_strtolower($needle);
     if($length === null){
         $result = substr_count($haystack, $needle, $offset);
     } else {

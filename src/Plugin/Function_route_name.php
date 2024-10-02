@@ -13,7 +13,7 @@ use Raxon\Module\Data;
 
 function function_route_name(Parse $parse, Data $data, $name=null){
     $options=[];
-    $result = strtolower(str_replace(
+    $result = mb_strtolower(str_replace(
         [
             '.',
             ' '

@@ -12,6 +12,6 @@ use Raxon\Module\Parse;
 use Raxon\Module\Data;
 
 function function_string_uppercase(Parse $parse, Data $data, $string=''){
-    $result = strtoupper($string);
+    $result = mb_strtoupper($string);
     return $result;
 }

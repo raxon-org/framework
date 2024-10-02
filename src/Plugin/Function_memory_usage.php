@@ -13,7 +13,7 @@ use Raxon\Module\Data;
 
 function function_memory_usage(Parse $parse, Data $data, $format=''){
     $usage = memory_get_peak_usage(true);
-    switch(strtoupper($format)){
+    switch(mb_strtoupper($format)){
         case 'B' :
             $result = $usage . ' B';
         break;

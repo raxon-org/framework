@@ -400,7 +400,7 @@ class App extends Data {
                     $url = $parameters[0];
                     $destination->set('url', $url);
                     $extension = File::extension($url);
-                    $extension_lowercase = strtolower($extension);
+                    $extension_lowercase = mb_strtolower($extension);
                     if ($extension_lowercase === $object->config('extension.json')) {
                         $response = new Response(
                             File::read($url),

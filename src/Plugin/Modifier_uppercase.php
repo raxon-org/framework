@@ -12,5 +12,5 @@ use Raxon\Module\Parse;
 use Raxon\Module\Data;
 
 function modifier_uppercase(Parse $parse, Data $data, $value){
-    return strtoupper($value);
+    return mb_strtoupper($value);
 }

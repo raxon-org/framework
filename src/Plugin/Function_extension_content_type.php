@@ -20,5 +20,5 @@ function function_extension_content_type(Parse $parse, Data $data, $extension=''
     if(substr($extension,0, 1) === '.'){
         $extension = substr($extension, 1);
     }
-    return $object->config('contentType.' . strtolower($extension));
+    return $object->config('contentType.' . mb_strtolower($extension));
 }

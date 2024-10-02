@@ -73,14 +73,14 @@ class Cache extends Controller {
                 Cache::EXCEPTION_COMMAND
             );
             $exception = new Exception($exception);
-            Event::trigger($object, 'cli.' . strtolower(Cache::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Cache::NAME) . '.' . __FUNCTION__, [
                 'command' => $command,
                 'exception' => $exception
             ]);
             throw $exception;
         }
         $response = Cache::{$command}($object);
-        Event::trigger($object, 'cli.' . strtolower(Cache::NAME) . '.' . __FUNCTION__, [
+        Event::trigger($object, 'cli.' . mb_strtolower(Cache::NAME) . '.' . __FUNCTION__, [
             'command' => $command,
         ]);
         return $response;
@@ -96,13 +96,13 @@ class Cache extends Controller {
             $name = Cache::name(__FUNCTION__, Cache::NAME);
             $url = Cache::locate($object, $name);
             $response = Cache::response($object, $url);
-            Event::trigger($object, 'cli.' . strtolower(Cache::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Cache::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url
             ]);
             return $response;
         } catch(Exception | LocateException | UrlEmptyException | UrlNotExistException $exception){
-            Event::trigger($object, 'cli.' . strtolower(Cache::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Cache::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url,
                 'exception' => $exception
@@ -123,13 +123,13 @@ class Cache extends Controller {
             $name = Cache::name(__FUNCTION__, Cache::NAME);
             $url = Cache::locate($object, $name);
             $response = Cache::response($object, $url);
-            Event::trigger($object, 'cli.' . strtolower(Cache::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Cache::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url
             ]);
             return $response;
         } catch(Exception | LocateException | UrlEmptyException | UrlNotExistException $exception){
-            Event::trigger($object, 'cli.' . strtolower(Cache::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Cache::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url,
                 'exception' => $exception
@@ -149,13 +149,13 @@ class Cache extends Controller {
             $name = Cache::name(__FUNCTION__, Cache::NAME);
             $url = Cache::locate($object, $name);
             $response = Cache::response($object, $url);
-            Event::trigger($object, 'cli.' . strtolower(Cache::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Cache::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url
             ]);
             return $response;
         } catch(Exception | LocateException | UrlEmptyException | UrlNotExistException $exception){
-            Event::trigger($object, 'cli.' . strtolower(Cache::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Cache::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url,
                 'exception' => $exception
@@ -259,7 +259,7 @@ class Cache extends Controller {
                                     $object->logger($object->config('project.log.name'))->info('Garbage Collector: amount freed: ' . $counter . ' size: ' . $size_freed . ' bytes' . PHP_EOL, [ $dir_cache, $duration * 1000 . ' ms' ]);
                                 }
                             }
-                            Event::trigger($object, 'cli.' . strtolower(Cache::NAME) . '.' . __FUNCTION__, [
+                            Event::trigger($object, 'cli.' . mb_strtolower(Cache::NAME) . '.' . __FUNCTION__, [
                                 'command' => $command,
                                 'url' => $dir_cache,
                                 'options' => $options,

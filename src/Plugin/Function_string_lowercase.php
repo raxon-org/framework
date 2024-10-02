@@ -12,6 +12,6 @@ use Raxon\Module\Parse;
 use Raxon\Module\Data;
 
 function function_string_lowercase(Parse $parse, Data $data, $string=''){
-    $result = strtolower($string);
+    $result = mb_strtolower($string);
     return $result;
 }

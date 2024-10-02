@@ -12,7 +12,7 @@ use Raxon\Module\Parse;
 use Raxon\Module\Data;
 
 function function_is_float(Parse $parse, Data $data, $float=null){
-    if(strtolower($float) == 'nan'){
+    if(mb_strtolower($float) == 'nan'){
         $float = NAN;
     }
     return is_float($float);

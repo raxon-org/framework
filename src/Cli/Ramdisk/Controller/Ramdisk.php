@@ -42,16 +42,16 @@ class Ramdisk extends Controller {
         try {
             $command = App::parameter($object, lcfirst(Ramdisk::NAME), 1);
             $name = false;
-            switch (strtolower($command)){
+            switch (mb_strtolower($command)){
                 case 'mount':
                 case 'unmount':
                 case 'speedtest':
                 case 'clear':
-                    $name = Ramdisk::name(strtolower($command), Ramdisk::NAME);
+                    $name = Ramdisk::name(mb_strtolower($command), Ramdisk::NAME);
                 break;
                 default:
                     $exception = new Exception('Unknown ramdisk command...');
-                    Event::trigger($object, 'cli.' . strtolower(Ramdisk::NAME) . '.' . __FUNCTION__, [
+                    Event::trigger($object, 'cli.' . mb_strtolower(Ramdisk::NAME) . '.' . __FUNCTION__, [
                         'command' => $command,
                         'exception' => $exception
                     ]);
@@ -60,14 +60,14 @@ class Ramdisk extends Controller {
             if($name){
                 $url = Ramdisk::locate($object, $name);
                 $response = Ramdisk::response($object, $url);
-                Event::trigger($object, 'cli.' . strtolower(Ramdisk::NAME) . '.' . strtolower($command), [
+                Event::trigger($object, 'cli.' . mb_strtolower(Ramdisk::NAME) . '.' . mb_strtolower($command), [
                     'name' => $name,
                     'url' => $url
                 ]);
                 return $response;
             }
         } catch(Exception | LocateException | UrlEmptyException | UrlNotExistException $exception){
-            Event::trigger($object, 'cli.' . strtolower(Ramdisk::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . mb_strtolower(Ramdisk::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url,
                 'command' => $command,

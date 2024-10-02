@@ -13,9 +13,9 @@ use Raxon\Module\Data;
 
 function function_constant(Parse $parse, Data $data, $name, $value=null){
     if($value !== null){
-        define(strtoupper(str_replace('.','_', $name)), $value);
+        define(mb_strtoupper(str_replace('.','_', $name)), $value);
     }
-    $name = strtoupper(str_replace('.','_', $name));
+    $name = mb_strtoupper(str_replace('.','_', $name));
     if(defined($name)){
         return constant($name);
     }

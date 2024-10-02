@@ -77,7 +77,7 @@ class Route extends Data {
         if(property_exists($select, 'host')){
             /*
             foreach($select->host as $host){
-                $host = strtolower($host);
+                $host = mb_strtolower($host);
                 if(substr($host, 0, 1) == '!'){
                     $disallowed_host[] = substr($host, 1);
                     continue;
@@ -516,7 +516,7 @@ class Route extends Data {
                 array_pop($select->attribute);
             }
             $select->method = Handler::method();
-            $select->host = strtolower($object->config('host.name'));
+            $select->host = mb_strtolower($object->config('host.name'));
             $request = Route::route_select($object, $select);
             $route =  $object->data(App::ROUTE);
             Route::add_request($object, $request);
@@ -879,7 +879,7 @@ class Route extends Data {
             if(array_key_exists($nr, $attribute) === false){
                 return false;
             }
-            if(strtolower($part) != strtolower($attribute[$nr])){
+            if(mb_strtolower($part) != mb_strtolower($attribute[$nr])){
                 return false;
             }
         }
@@ -940,12 +940,12 @@ class Route extends Data {
                     foreach($route->condition as $condition_nr => $value){
                         if(substr($value, 0, 1) == '!'){
                             //invalid conditions
-                            if(strtolower(substr($value, 1)) == strtolower($attribute[$nr])){
+                            if(mb_strtolower(substr($value, 1)) == mb_strtolower($attribute[$nr])){
                                 return false;
                             }
                         } else {
                             //valid conditions
-                            if(strtolower($value) == strtolower($attribute[$nr])){
+                            if(mb_strtolower($value) == mb_strtolower($attribute[$nr])){
                                 return true;
                             }
                         }
@@ -956,7 +956,7 @@ class Route extends Data {
             if(array_key_exists($nr, $attribute) === false){
                 return false;
             }
-            if(strtolower($part) != strtolower($attribute[$nr])){
+            if(mb_strtolower($part) != mb_strtolower($attribute[$nr])){
                 return false;
             }
         }
@@ -973,7 +973,7 @@ class Route extends Data {
             return false;
         }
         foreach($route->method as $method){
-            if(strtoupper($method) == strtoupper($select->method)){
+            if(mb_strtoupper($method) == mb_strtoupper($select->method)){
                 return true;
             }
         }
@@ -1107,7 +1107,7 @@ class Route extends Data {
             $route = new Route();
             $object->data(App::ROUTE, $route);
         }
-        $host = strtolower($object->config('host.name'));
+        $host = mb_strtolower($object->config('host.name'));
         if(empty($host) && Core::is_cli()){
             Route::framework($object);
             $node = new Node($object);
@@ -1307,8 +1307,8 @@ class Route extends Data {
         $priority = 1000;
         if(is_array($default_route) || is_object($default_route)){
             foreach($default_route as $record){
-                $path = strtolower($record);
-                $attribute = strtolower(str_replace(['.', ':'], ['-','-'], $record));
+                $path = mb_strtolower($record);
+                $attribute = mb_strtolower(str_replace(['.', ':'], ['-','-'], $record));
                 $control = Core::ucfirst_sentence($record,':');
                 $attribute = 'raxon-org-cli-' . $attribute;
                 $item = new stdClass();

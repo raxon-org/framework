@@ -15,7 +15,7 @@ function function_array_sort(Parse $parse, Data $data, $list=[], $order='asc', $
     if(is_string($flags)){
         $flags = constant($flags);
     }
-    if(strtolower(substr($order, 0, 3)) === 'asc'){
+    if(mb_strtolower(substr($order, 0, 3)) === 'asc'){
         sort($list, $flags);
     } else {
         rsort($list, $flags);

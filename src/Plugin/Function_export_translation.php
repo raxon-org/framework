@@ -23,8 +23,8 @@ function function_export_translation(Parse $parse, Data $data, $type='object'){
         foreach($read as $nr => $file){
             $file->basename = File::basename($file->name, $object->config('extension.json'));
             $export->data(
-                'translation.' . strtolower($file->basename),
-                $object->data('translation.' . strtolower($file->basename))
+                'translation.' . mb_strtolower($file->basename),
+                $object->data('translation.' . mb_strtolower($file->basename))
             );
         }
     }

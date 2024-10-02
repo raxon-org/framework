@@ -627,7 +627,7 @@ class Controller {
         } else {
             $config->data(Config::DATA_CONTROLLER_CLASS, get_called_class());
         }
-        $config->data(Config::DATA_CONTROLLER_NAME, strtolower(File::basename($config->data(Config::DATA_CONTROLLER_CLASS))));
+        $config->data(Config::DATA_CONTROLLER_NAME, mb_strtolower(File::basename($config->data(Config::DATA_CONTROLLER_CLASS))));
         $config->data(Config::DATA_CONTROLLER_TITLE, File::basename($config->data(Config::DATA_CONTROLLER_CLASS)));
         $host_dir_public = $config->data(Config::DATA_HOST_DIR_PUBLIC);
         $explode = explode($config->data('ds'), $host_dir_public);
@@ -661,7 +661,7 @@ class Controller {
             if(array_key_exists(1, $explode)){
                 $explode = explode($config->data('ds'), $explode[1]);
                 if(array_key_exists(1, $explode)){
-                    $extension = strtolower($explode[1]);
+                    $extension = mb_strtolower($explode[1]);
                     $domain = Host::domain();
                     $subdomain = Host::subdomain();
                     if($subdomain){

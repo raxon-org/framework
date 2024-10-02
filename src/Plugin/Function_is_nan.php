@@ -12,7 +12,7 @@ use Raxon\Module\Parse;
 use Raxon\Module\Data;
 
 function function_is_nan(Parse $parse, Data $data, $nan=null){
-    if(strtolower($nan) == 'nan'){
+    if(mb_strtolower($nan) == 'nan'){
         $nan = NAN;
     }
     return is_nan($nan);
