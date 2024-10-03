@@ -40,6 +40,12 @@ class Core
         '.'
     ];
 
+    const ARRAY = 'array';
+    const OBJECT = 'object';
+    const JSON = 'json';
+    const JSON_DATA = 'json-data';
+    const JSON_LINE = 'json-line';
+
     const OBJECT_ARRAY = 'array';
     const OBJECT_OBJECT = 'object';
     const OBJECT_JSON = 'json';
