@@ -1710,6 +1710,7 @@ class App extends Data {
         $autoload = require $autoload;
         $config = new Config([
             'dir.vendor' => $dir_vendor,
+            'time.start' => microtime(true),
             ...$configuration
         ]);
         return new App($autoload, $config);
