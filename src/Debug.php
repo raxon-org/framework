@@ -42,6 +42,7 @@ if(!function_exists('breakpoint')){
         if(!defined('IS_CLI')){
             echo '</pre>' . PHP_EOL;
         }
+        //make 5 seconds hold in web and then continue
         Cli::read('input-hidden','press any key to continue or ctrl-c to break...');
     }
 }
