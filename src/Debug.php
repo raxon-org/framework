@@ -36,14 +36,16 @@ if(!function_exists('breakpoint')){
         $trace = debug_backtrace(1);
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">' . PHP_EOL;
-        }
-        echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
-        var_dump($data);
-        if(!defined('IS_CLI')){
+            echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+            var_dump($data);
             echo '</pre>' . PHP_EOL;
+            flush();
+            sleep(5);
+        } else {
+            echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+            var_dump($data);
+            Cli::read('input-hidden','press any key to continue or ctrl-c to break...');
         }
-        //make 5 seconds hold in web and then continue
-        Cli::read('input-hidden','press any key to continue or ctrl-c to break...');
     }
 }
 
