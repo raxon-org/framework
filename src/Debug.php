@@ -42,7 +42,7 @@ if(!function_exists('breakpoint')){
         if(!defined('IS_CLI')){
             echo '</pre>' . PHP_EOL;
         }
-        Cli::read('press any key to continue');
+        Cli::read('input-hidden','press any key to continue');
     }
 }
 
