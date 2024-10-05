@@ -619,7 +619,7 @@ class Core
             }
         }
         if (stristr($output, Core::OBJECT_JSON) !== false && stristr($output, 'data') !== false) {
-            $data = str_replace('"', '&quot;', json_encode($input));
+            $data = str_replace('\'', '\\\'', json_encode($input));
         } elseif (stristr($output, Core::OBJECT_JSON) !== false && stristr($output, 'line') !== false) {
             $data = json_encode($input);
         } else {
