@@ -27,6 +27,26 @@ if(!function_exists('d')){
     }
 }
 
+if(!function_exists('breakpoint')){
+    /**
+     * @throws \Raxon\Exception\ObjectException
+     */
+    function breakpoint($data=null): void
+    {
+        $trace = debug_backtrace(1);
+        if(!defined('IS_CLI')){
+            echo '<pre class="priya-debug">' . PHP_EOL;
+        }
+        echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+        var_dump($data);
+        if(!defined('IS_CLI')){
+            echo '</pre>' . PHP_EOL;
+        }
+        Cli::read('press any key to continue');
+    }
+}
+
+
 if(!function_exists('dd')){
     #[NoReturn]
     function dd($data=null): void
