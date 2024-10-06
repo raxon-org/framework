@@ -43,13 +43,16 @@ class Core
     const ARRAY = 'array';
     const OBJECT = 'object';
     const JSON = 'json';
+    const DATA = 'data';
+    const DATA_LINE = 'data-line';
+    const TRANSFER = 'transfer';
+    const FINALIZE = 'finalize';
     const JSON_DATA = 'json-data';
     const JSON_LINE = 'json-line';
 
     const OBJECT_ARRAY = 'array';
     const OBJECT_OBJECT = 'object';
     const OBJECT_JSON = 'json';
-    const OBJECT_JSON_DATA = 'json-data';
     const OBJECT_JSON_LINE = 'json-line';
 
     const OBJECT_TYPE_ROOT = 'root';
@@ -504,45 +507,113 @@ class Core
             $type = Core::OBJECT_TYPE_ROOT;
         }
         if (is_bool($input)) {
-            if ($output == Core::OBJECT_OBJECT || $output == Core::OBJECT_JSON) {
+            if(
+                in_array(
+                    $output,
+                    [
+                        Core::OBJECT_OBJECT,
+                        Core::OBJECT_JSON,
+                        Core::TRANSFER
+                    ],
+                    true
+                )
+            ){
                 $data = (object) [];
                 if (empty($input)) {
                     $data->false = false;
                 } else {
                     $data->true = true;
                 }
-                if ($output == Core::OBJECT_JSON) {
+                if(
+                    in_array(
+                        $output,
+                        [
+                            Core::OBJECT_JSON,
+                            Core::TRANSFER
+                        ],
+                        true
+                    )
+                ){
                     $data = json_encode($data);
+                    if($output === Core::TRANSFER){
+                        $data = str_replace('\'', '\\\'', $data);
+                    }
                 }
                 return $data;
-            } elseif ($output == Core::OBJECT_ARRAY) {
+            }
+            elseif ($output == Core::OBJECT_ARRAY) {
                 return array($input);
             } else {
                 throw new ObjectException(Core::EXCEPTION_OBJECT_OUTPUT);
             }
-        } elseif (is_null($input)) {
+        }
+        elseif (is_null($input)) {
             if ($output == Core::OBJECT_OBJECT) {
                 return (object) [];
-            } elseif ($output == Core::OBJECT_ARRAY) {
+            }
+            elseif ($output == Core::OBJECT_ARRAY) {
                 return array();
-            } elseif ($output == Core::OBJECT_JSON) {
+            }
+            elseif (
+                in_array(
+                    $output,
+                    [
+                        Core::OBJECT_JSON,
+                        Core::TRANSFER
+                    ],
+                    true
+                )
+            ) {
                 return '{}';
             }
-        } elseif (is_object($input) && $output === Core::OBJECT_JSON) {
+        }
+        elseif (
+            is_object($input) &&
+            in_array(
+                $output,
+                [
+                    Core::OBJECT_JSON,
+                    Core::TRANSFER
+                ],
+                true
+            )
+        ) {
             $json = json_encode($input, JSON_PRETTY_PRINT);
             if (json_last_error()) {
                 throw new ObjectException(json_last_error_msg());
             }
+            if ($output == Core::TRANSFER) {
+                $json = str_replace('\'', '\\\'', $json);
+            }
             return $json;
-        } elseif (is_array($input) && $output === Core::OBJECT_OBJECT) {
+        }
+        elseif (
+            is_array($input) &&
+            $output === Core::OBJECT_OBJECT
+        ) {
             return Core::array_object($input);
-        } elseif (is_array($input) && $output === Core::OBJECT_JSON) {
+        }
+        elseif (
+            is_array($input) &&
+            in_array(
+                $output,
+                [
+                    Core::OBJECT_JSON,
+                    Core::TRANSFER
+                ],
+                true
+            )
+        ) {
             $json = json_encode($input, JSON_PRETTY_PRINT);
             if (json_last_error()) {
                 throw new ObjectException(json_last_error_msg());
             }
+            if ($output == Core::TRANSFER) {
+                $json = str_replace('\'', '\\\'', $json);
+            }
             return $json;
-        } elseif (is_string($input)) {
+        }
+        elseif (is_string($input)) {
             $input = trim($input);
             if ($output == Core::OBJECT_OBJECT) {
                 if (substr($input, 0, 1) == '{' && substr($input, -1, 1) == '}') {
@@ -560,7 +631,8 @@ class Core
                         }
                     }
                     return $json;
-                } elseif (substr($input, 0, 1) == '[' && substr($input, -1, 1) == ']') {
+                }
+                elseif (substr($input, 0, 1) == '[' && substr($input, -1, 1) == ']') {
                     try {
                         if(function_exists('simd_json_decode')){
                             $json = @simd_json_decode($input);
@@ -576,7 +648,20 @@ class Core
                     }
                     return $json;
                 }
-            } elseif (stristr($output, Core::OBJECT_JSON) !== false) {
+            }
+            elseif (
+                in_array(
+                    $output,
+                    [
+                        Core::OBJECT_JSON,
+                        Core::TRANSFER,
+                        Core::DATA,
+                        Core::DATA_LINE,
+                        Core::JSON_LINE
+                    ],
+                    true
+                )
+            ){
                 if (substr($input, 0, 1) == '{' && substr($input, -1, 1) == '}') {
                     try {
                         if(function_exists('simd_json_decode')){
@@ -592,7 +677,8 @@ class Core
                         }
                     }
                 }
-            } elseif ($output == Core::OBJECT_ARRAY) {
+            }
+            elseif ($output == Core::OBJECT_ARRAY) {
                 if (substr($input, 0, 1) == '{' && substr($input, -1, 1) == '}') {
                     try {
                         if(function_exists('simd_json_decode')){
@@ -618,9 +704,20 @@ class Core
                 }
             }
         }
+        /*
         if (stristr($output, Core::OBJECT_JSON) !== false && stristr($output, 'data') !== false) {
             $data = str_replace('\'', '\\\'', json_encode($input));
-        } elseif (stristr($output, Core::OBJECT_JSON) !== false && stristr($output, 'line') !== false) {
+        }
+        */
+        if (
+            in_array(
+                $output,
+                [
+                    Core::OBJECT_DATA_LINE,
+                    Core::OBJECT_JSON_LINE
+                ],
+                true
+            ){
             $data = json_encode($input);
         } else {
             $data = json_encode($input, JSON_PRETTY_PRINT);
@@ -636,13 +733,27 @@ class Core
             catch (Exception $exception){
                 return json_decode($data);
             }
-        } elseif (stristr($output, Core::OBJECT_JSON) !== false) {
+        }
+        elseif (
+            in_array(
+                $output,
+                [
+                    Core::OBJECT_JSON,
+                    Core::OBJECT_JSON_LINE,
+                    Core::DATA,
+                    Core::DATA_LINE,
+                    Core::TRANSFER
+                ],
+                true
+            )
+        ) {
             if ($type == Core::OBJECT_TYPE_CHILD) {
                 return substr($data, 1, -1);
             } else {
                 return $data;
             }
-        } elseif ($output == Core::OBJECT_ARRAY) {
+        }
+        elseif ($output == Core::OBJECT_ARRAY) {
             try {
                 if(function_exists('simd_json_decode')){
                     return simd_json_decode($data, true);
