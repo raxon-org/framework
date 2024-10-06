@@ -541,17 +541,17 @@ class Core
                 }
                 return $data;
             }
-            elseif ($output == Core::OBJECT_ARRAY) {
+            elseif ($output === Core::OBJECT_ARRAY) {
                 return array($input);
             } else {
                 throw new ObjectException(Core::EXCEPTION_OBJECT_OUTPUT);
             }
         }
         elseif (is_null($input)) {
-            if ($output == Core::OBJECT_OBJECT) {
+            if ($output === Core::OBJECT_OBJECT) {
                 return (object) [];
             }
-            elseif ($output == Core::OBJECT_ARRAY) {
+            elseif ($output === Core::OBJECT_ARRAY) {
                 return array();
             }
             elseif (
@@ -582,7 +582,7 @@ class Core
             if (json_last_error()) {
                 throw new ObjectException(json_last_error_msg());
             }
-            if ($output == Core::TRANSFER) {
+            if ($output === Core::TRANSFER) {
                 $json = str_replace('\'', '\\\'', $json);
             }
             return $json;
@@ -615,8 +615,8 @@ class Core
         }
         elseif (is_string($input)) {
             $input = trim($input);
-            if ($output == Core::OBJECT_OBJECT) {
-                if (substr($input, 0, 1) == '{' && substr($input, -1, 1) == '}') {
+            if ($output === Core::OBJECT_OBJECT) {
+                if (substr($input, 0, 1) === '{' && substr($input, -1, 1) === '}') {
                     try {
                         if(function_exists('simd_json_decode')){
                             $json = @simd_json_decode($input);
@@ -632,7 +632,7 @@ class Core
                     }
                     return $json;
                 }
-                elseif (substr($input, 0, 1) == '[' && substr($input, -1, 1) == ']') {
+                elseif (substr($input, 0, 1) === '[' && substr($input, -1, 1) === ']') {
                     try {
                         if(function_exists('simd_json_decode')){
                             $json = @simd_json_decode($input);
@@ -662,7 +662,7 @@ class Core
                     true
                 )
             ){
-                if (substr($input, 0, 1) == '{' && substr($input, -1, 1) == '}') {
+                if (substr($input, 0, 1) === '{' && substr($input, -1, 1) === '}') {
                     try {
                         if(function_exists('simd_json_decode')){
                             $input = @simd_json_decode($input);
@@ -678,8 +678,8 @@ class Core
                     }
                 }
             }
-            elseif ($output == Core::OBJECT_ARRAY) {
-                if (substr($input, 0, 1) == '{' && substr($input, -1, 1) == '}') {
+            elseif ($output === Core::OBJECT_ARRAY) {
+                if (substr($input, 0, 1) === '{' && substr($input, -1, 1) === '}') {
                     try {
                         if(function_exists('simd_json_decode')){
                             return simd_json_decode($input, true);
@@ -690,7 +690,7 @@ class Core
                     catch (Exception $exception){
                         return json_decode($input, true);
                     }
-                } elseif (substr($input, 0, 1) == '[' && substr($input, -1, 1) == ']') {
+                } elseif (substr($input, 0, 1) === '[' && substr($input, -1, 1) === ']') {
                     try {
                         if(function_exists('simd_json_decode')){
                             return simd_json_decode($input, true);
@@ -723,7 +723,7 @@ class Core
         } else {
             $data = json_encode($input, JSON_PRETTY_PRINT);
         }
-        if ($output == Core::OBJECT_OBJECT) {
+        if ($output === Core::OBJECT_OBJECT) {
             try {
                 if(function_exists('simd_json_decode')){
                     return simd_json_decode($data);
@@ -748,13 +748,13 @@ class Core
                 true
             )
         ) {
-            if ($type == Core::OBJECT_TYPE_CHILD) {
+            if ($type === Core::OBJECT_TYPE_CHILD) {
                 return substr($data, 1, -1);
             } else {
                 return $data;
             }
         }
-        elseif ($output == Core::OBJECT_ARRAY) {
+        elseif ($output === Core::OBJECT_ARRAY) {
             try {
                 if(function_exists('simd_json_decode')){
                     return simd_json_decode($data, true);
@@ -765,7 +765,11 @@ class Core
             catch (Exception $exception){
                 return json_decode($data, true);
             }
-        } else {
+        }
+        elseif($output === Core::FINALIZE){
+            ddd($input);
+        }
+        else {
             throw new ObjectException(Core::EXCEPTION_OBJECT_OUTPUT);
         }
     }
