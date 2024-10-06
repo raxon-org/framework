@@ -767,8 +767,17 @@ class Core
             }
         }
         elseif($output === Core::FINALIZE){
-            $json = str_replace('\\\'', '\'', $input);
-            return $json;
+            $data = str_replace('\\\'', '\'', $input);
+            try {
+                if(function_exists('simd_json_decode')){
+                    return simd_json_decode($data);
+                } else {
+                    throw new Exception('simd_json_decode failed');
+                }
+            }
+            catch (Exception $exception){
+                return json_decode($data);
+            }
         }
         else {
             throw new ObjectException(Core::EXCEPTION_OBJECT_OUTPUT);
