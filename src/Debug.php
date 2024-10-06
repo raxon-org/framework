@@ -59,7 +59,7 @@ if(!function_exists('breakpoint')){
                 echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
             }
             var_dump($data);
-            Cli::read('input-hidden','press '. Cli::info('enter') . ' to continue or ctrl-c to break...');
+            Cli::read('input-hidden','press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
         }
     }
 }
