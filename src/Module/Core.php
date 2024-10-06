@@ -767,7 +767,8 @@ class Core
             }
         }
         elseif($output === Core::FINALIZE){
-            ddd($input);
+            $json = str_replace('\\\'', '\'', $input);
+            return $json;
         }
         else {
             throw new ObjectException(Core::EXCEPTION_OBJECT_OUTPUT);
