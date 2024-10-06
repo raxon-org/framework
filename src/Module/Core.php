@@ -713,11 +713,12 @@ class Core
             in_array(
                 $output,
                 [
-                    Core::OBJECT_DATA_LINE,
+                    Core::DATA_LINE,
                     Core::OBJECT_JSON_LINE
                 ],
                 true
-            ){
+            )
+        ){
             $data = json_encode($input);
         } else {
             $data = json_encode($input, JSON_PRETTY_PRINT);
