@@ -608,7 +608,11 @@ class Core
                 true
             )
         ) {
-            $json = json_encode($input, JSON_PRETTY_PRINT);
+            if($output === Core::TRANSFER){
+                $json = json_encode($input);
+            } else {
+                $json = json_encode($input, JSON_PRETTY_PRINT);
+            }
             if (json_last_error()) {
                 throw new ObjectException(json_last_error_msg());
             }
@@ -718,7 +722,8 @@ class Core
                 $output,
                 [
                     Core::DATA_LINE,
-                    Core::OBJECT_JSON_LINE
+                    Core::OBJECT_JSON_LINE,
+                    Core::TRANSFER
                 ],
                 true
             )
