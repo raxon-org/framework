@@ -13,8 +13,11 @@ use JetBrains\PhpStorm\NoReturn;
 use Raxon\Module\Cli;
 
 if(!function_exists('d')){
-    function d($data=null): void
+    function d($data=null, $options=[]): void
     {
+        if(!array_key_exists('trace', $options)){
+            $options['trace'] = true;
+        }
         $trace = debug_backtrace(1);
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">' . PHP_EOL;
@@ -31,34 +34,53 @@ if(!function_exists('breakpoint')){
     /**
      * @throws \Raxon\Exception\ObjectException
      */
-    function breakpoint($data=null): void
+    function breakpoint($data=null, $options=[]): void
     {
+        if(!array_key_exists('trace', $options)){
+            $options['trace'] = true;
+        }
         $trace = debug_backtrace(1);
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">' . PHP_EOL;
-            echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+            if(
+                array_key_exists('trace', $options) &&
+                $options['trace'] === true
+            ){
+                echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+            }
             var_dump($data);
             echo '</pre>' . PHP_EOL;
             flush();
-            sleep(5);
         } else {
-            echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+            if(
+                array_key_exists('trace', $options) &&
+                $options['trace'] === true
+            ){
+                echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+            }
             var_dump($data);
             Cli::read('input-hidden','press any key to continue or ctrl-c to break...');
         }
     }
 }
 
-
 if(!function_exists('dd')){
     #[NoReturn]
-    function dd($data=null): void
+    function dd($data=null, $options=[]): void
     {
+        if(!array_key_exists('trace', $options)){
+            $options['trace'] = true;
+        }
         $trace = debug_backtrace(1);
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">' . PHP_EOL;
         }
-        echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+        if(
+            array_key_exists('trace', $options) &&
+            $options['trace'] === true
+        ){
+            echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+        }
         var_dump($data);
         if(!defined('IS_CLI')){
             echo '</pre>' . PHP_EOL;
@@ -69,13 +91,21 @@ if(!function_exists('dd')){
 
 if(!function_exists('ddd')){
     #[NoReturn]
-    function ddd($data=null): void
+    function ddd($data=null, $options=[]): void
     {
+        if(!array_key_exists('trace', $options)){
+            $options['trace'] = true;
+        }
         $trace = debug_backtrace(1);
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">';
         }
-        echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+        if(
+            array_key_exists('trace', $options) &&
+            $options['trace'] === true
+        ){
+            echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+        }
         if(!defined('IS_CLI')){
             echo '</pre>';
         }
