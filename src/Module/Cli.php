@@ -46,44 +46,42 @@ class Cli {
             $type = 'input';
         }
         $input = null;
-        $output = fopen('php://output', 'w');
         switch($type){
             case Cli::INPUT:
-                fwrite($output, $text);
-                fclose($output);
-                $data = trim(fgets(STDIN));
-//                $input = fopen('php://input', 'r');
-//                $data = trim(fgets($input));
-//                fclose($input);
-
+                fwrite(STDOUT, $text);
+                if($is_flush){
+                    ob_flush();
+                }
+                fflush('php://output');
+                if($is_flush){
+                    ob_flush();
+                }
+                $input = trim(fgets(STDIN));
             break;
             case Cli::INPUT_HIDDEN:
             case Cli::HIDDEN:
-                fwrite($output, $text);
+                fwrite(STDOUT, $text);
+                if($is_flush){
+                    ob_flush();
+                }
+                fflush(STDOUT);
                 system('stty -echo');
-                $data = trim(fgets(STDIN));
-//                $input = fopen('php://input', 'r');
-//                $data = trim(fgets($input));
-//                fclose($input);
-                fwrite($output, PHP_EOL);
-                fclose($output);
+                $input = fopen('php://input', 'r');
+                $data = trim(fgets($input));
+                fclose($input);
 //            $input = trim(fgets(STDIN));
                 system('stty echo');
+                echo PHP_EOL;
             break;
             case Cli::STREAM :
-                fclose($output);
-                $data = trim(fgets(STDIN));
-                $data = Core::object($data);
-                /*
                 $input = trim(fgets(STDIN));
                 $input = Core::object($input);
-                */
             break;
             default:
                 throw new Exception('Could not detect type: (input | input-hidden | hidden | stream)');
 
         }
-        return $data;
+        return $input;
     }
 
     public static function default(): void
