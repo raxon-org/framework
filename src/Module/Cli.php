@@ -46,39 +46,49 @@ class Cli {
             $type = 'input';
         }
         $input = null;
+        $output = fopen('php://output', 'w');
         switch($type){
             case Cli::INPUT:
-                fwrite(STDOUT, $text);
-                if($is_flush){
-                    ob_flush();
-                }
-                fflush(STDOUT);
-                if($is_flush){
-                    ob_flush();
-                }
-                $input = trim(fgets(STDIN));
+                fwrite($output, $text);
+                fclose($output);
+                $input = fopen('php://input', 'r');
+                $data = trim(fgets($input));
+                fclose($input);
+//                $input = trim(fgets(STDIN));
             break;
             case Cli::INPUT_HIDDEN:
             case Cli::HIDDEN:
+                fwrite($output, $text);
+                fclose($output);
+                /*
                 fwrite(STDOUT, $text);
                 if($is_flush){
                     ob_flush();
                 }
                 fflush(STDOUT);
+                */
                 system('stty -echo');
-                $input = trim(fgets(STDIN));
+                $input = fopen('php://input', 'r');
+                $data = trim(fgets($input));
+                fclose($input);
+//            $input = trim(fgets(STDIN));
                 system('stty echo');
-                echo PHP_EOL;
             break;
             case Cli::STREAM :
+                $input = fopen('php://input', 'r');
+                $data = trim(fgets($input));
+                $data = Core::object($data);
+                fclose($input);
+                /*
                 $input = trim(fgets(STDIN));
                 $input = Core::object($input);
+                */
             break;
             default:
                 throw new Exception('Could not detect type: (input | input-hidden | hidden | stream)');
 
         }
-        return $input;
+        return $data;
     }
 
     public static function default(): void
