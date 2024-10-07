@@ -72,10 +72,8 @@ class Cli {
             break;
             case Cli::STREAM :
                 fclose($output);
-                $input = fopen('php://input', 'r');
-                $data = trim(fgets($input));
+                $data = trim(fgets(STDIN));
                 $data = Core::object($data);
-                fclose($input);
                 /*
                 $input = trim(fgets(STDIN));
                 $input = Core::object($input);
