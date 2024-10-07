@@ -55,13 +55,14 @@ if(!function_exists('breakpoint')){
                 ob_flush();
             }
         } else {
+            $export = var_export($data, true);
             if(
                 array_key_exists('trace', $options) &&
                 $options['trace'] === true
             ){
-                Cli::read('input-hidden',$trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL . var_export($data, true) . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
+                Cli::read('input-hidden',$trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL . $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
             } else {
-                Cli::read('input-hidden', var_export($data, true) . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
+                Cli::read('input-hidden', $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
             }
         }
     }
