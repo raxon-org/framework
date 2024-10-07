@@ -62,7 +62,6 @@ if(!function_exists('breakpoint')){
                 Cli::read('input-hidden',$trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL . var_export($data, true) . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
             } else {
                 Cli::read('input-hidden', var_export($data, true) . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
-//                Cli::read('input-hidden','press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
             }
         }
     }
