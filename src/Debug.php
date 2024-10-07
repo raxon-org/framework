@@ -55,6 +55,7 @@ if(!function_exists('breakpoint')){
                 ob_flush();
             }
         } else {
+            ob_end_flush();
             $export = var_export($data, true);
             if(
                 array_key_exists('trace', $options) &&
