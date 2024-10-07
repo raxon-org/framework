@@ -51,6 +51,9 @@ if(!function_exists('breakpoint')){
             var_dump($data);
             echo '</pre>' . PHP_EOL;
             flush();
+            if(ob_get_level() > 0){
+                ob_flush();
+            }
         } else {
             if(
                 array_key_exists('trace', $options) &&
@@ -60,6 +63,9 @@ if(!function_exists('breakpoint')){
             }
             var_dump($data);
             flush();
+            if(ob_get_level() > 0){
+                ob_flush();
+            }
             Cli::read('input-hidden','press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
         }
     }
