@@ -76,6 +76,7 @@ class Cli {
                 system('stty echo');
             break;
             case Cli::STREAM :
+                fclose($output);
                 $input = fopen('php://input', 'r');
                 $data = trim(fgets($input));
                 $data = Core::object($data);
