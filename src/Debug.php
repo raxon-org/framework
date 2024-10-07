@@ -60,17 +60,15 @@ if(!function_exists('breakpoint')){
                 array_key_exists('trace', $options) &&
                 $options['trace'] === true
             ){
-                Cli::read('input-hidden',$trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL . $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...' . PHP_EOL);
+                Cli::read('input-hidden',$trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL . $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
             }
             elseif(
                 array_key_exists('trace', $options) &&
                 is_string($options['trace'])
             ){
-                Cli::read('input-hidden',$options['trace'] . $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...' . PHP_EOL);
-            }
-
-            else {
-                Cli::read('input-hidden', $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...' . PHP_EOL);
+                Cli::read('input-hidden',$options['trace'] . $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
+            } else {
+                Cli::read('input-hidden', $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
             }
         }
     }
