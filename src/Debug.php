@@ -19,7 +19,9 @@ if(!function_exists('d')){
             $options['trace'] = true;
         }
         $trace = debug_backtrace(1);
-        ob_end_flush();
+        if(ob_get_level() > 0){
+            ob_end_flush();
+        }
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">' . PHP_EOL;
         }
@@ -42,6 +44,9 @@ if(!function_exists('breakpoint')){
             $options['trace'] = true;
         }
         $trace = debug_backtrace(1);
+        if(ob_get_level() > 0){
+            ob_end_flush();
+        }
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">' . PHP_EOL;
             if(
@@ -53,9 +58,6 @@ if(!function_exists('breakpoint')){
             var_dump($data);
             echo '</pre>' . PHP_EOL;
             flush();
-            if(ob_get_level() > 0){
-                ob_flush();
-            }
         } else {
             $export = var_export($data, true);
             if(
@@ -84,6 +86,9 @@ if(!function_exists('dd')){
             $options['trace'] = true;
         }
         $trace = debug_backtrace(1);
+        if(ob_get_level() > 0){
+            ob_end_flush();
+        }
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">' . PHP_EOL;
         }
