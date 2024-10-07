@@ -66,12 +66,9 @@ class Cli {
                 }
                 fflush(STDOUT);
                 system('stty -echo');
-                $input = fopen('php://input', 'r');
-                $data = trim(fgets($input));
-                fclose($input);
-//            $input = trim(fgets(STDIN));
+                $input = trim(fgets(STDIN));
                 system('stty echo');
-                echo PHP_EOL;
+                fwrite(STDOUT, PHP_EOL);
             break;
             case Cli::STREAM :
                 $input = trim(fgets(STDIN));
