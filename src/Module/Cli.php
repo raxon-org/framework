@@ -59,13 +59,6 @@ class Cli {
             case Cli::INPUT_HIDDEN:
             case Cli::HIDDEN:
                 fwrite($output, $text);
-                /*
-                fwrite(STDOUT, $text);
-                if($is_flush){
-                    ob_flush();
-                }
-                fflush(STDOUT);
-                */
                 system('stty -echo');
                 $input = fopen('php://input', 'r');
                 $data = trim(fgets($input));
