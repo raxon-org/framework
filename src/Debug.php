@@ -19,6 +19,7 @@ if(!function_exists('d')){
             $options['trace'] = true;
         }
         $trace = debug_backtrace(1);
+        ob_end_flush();
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">' . PHP_EOL;
         }
@@ -55,7 +56,6 @@ if(!function_exists('breakpoint')){
                 ob_flush();
             }
         } else {
-            ob_end_flush();
             $export = var_export($data, true);
             if(
                 array_key_exists('trace', $options) &&
