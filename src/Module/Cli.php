@@ -66,7 +66,8 @@ class Cli {
                 }
                 fflush(STDOUT);
                 system('stty -echo');
-                $input = trim(fgets(STDIN));
+                $input = readline();
+//                $input = trim(fgets(STDIN));
                 system('stty echo');
                 fwrite(STDOUT, PHP_EOL);
             break;
