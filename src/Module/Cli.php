@@ -52,7 +52,7 @@ class Cli {
                 if($is_flush){
                     ob_flush();
                 }
-                fflush('php://output');
+                fflush(STDOUT);
                 if($is_flush){
                     ob_flush();
                 }
