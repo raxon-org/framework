@@ -59,7 +59,6 @@ class Cli {
             case Cli::INPUT_HIDDEN:
             case Cli::HIDDEN:
                 fwrite($output, $text);
-                fclose($output);
                 /*
                 fwrite(STDOUT, $text);
                 if($is_flush){
@@ -71,6 +70,8 @@ class Cli {
                 $input = fopen('php://input', 'r');
                 $data = trim(fgets($input));
                 fclose($input);
+                fwrite($output, PHP_EOL);
+                fclose($output);
 //            $input = trim(fgets(STDIN));
                 system('stty echo');
             break;
