@@ -64,7 +64,6 @@ if(!function_exists('breakpoint')){
                 Cli::read('input-hidden', var_dump($data) . 'press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
 //                Cli::read('input-hidden','press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
             }
-
         }
     }
 }
