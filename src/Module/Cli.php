@@ -51,18 +51,20 @@ class Cli {
             case Cli::INPUT:
                 fwrite($output, $text);
                 fclose($output);
-                $input = fopen('php://input', 'r');
-                $data = trim(fgets($input));
-                fclose($input);
-//                $input = trim(fgets(STDIN));
+                $data = trim(fgets(STDIN));
+//                $input = fopen('php://input', 'r');
+//                $data = trim(fgets($input));
+//                fclose($input);
+
             break;
             case Cli::INPUT_HIDDEN:
             case Cli::HIDDEN:
                 fwrite($output, $text);
                 system('stty -echo');
-                $input = fopen('php://input', 'r');
-                $data = trim(fgets($input));
-                fclose($input);
+                $data = trim(fgets(STDIN));
+//                $input = fopen('php://input', 'r');
+//                $data = trim(fgets($input));
+//                fclose($input);
                 fwrite($output, PHP_EOL);
                 fclose($output);
 //            $input = trim(fgets(STDIN));
