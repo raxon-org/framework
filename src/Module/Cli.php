@@ -56,7 +56,8 @@ class Cli {
                 if($is_flush){
                     ob_flush();
                 }
-                $input = trim(fgets(STDIN));
+                $input = readline();
+//                $input = trim(fgets(STDIN));
             break;
             case Cli::INPUT_HIDDEN:
             case Cli::HIDDEN:
