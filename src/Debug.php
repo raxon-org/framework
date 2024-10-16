@@ -9,8 +9,9 @@
  *  -    all
  */
 
-use JetBrains\PhpStorm\NoReturn;
 use Raxon\Module\Cli;
+
+use Raxon\Exception\ObjectException;
 
 if(!function_exists('d')){
     function d($data=null, $options=[]): void
@@ -45,9 +46,6 @@ if(!function_exists('d')){
 }
 
 if(!function_exists('breakpoint')){
-    /**
-     * @throws \Raxon\Exception\ObjectException
-     */
     function breakpoint($data=null, $options=[]): void
     {
         if(!array_key_exists('trace', $options)){
@@ -70,26 +68,30 @@ if(!function_exists('breakpoint')){
             flush();
         } else {
             $export = var_export($data, true);
-            if(
-                array_key_exists('trace', $options) &&
-                $options['trace'] === true
-            ){
-                Cli::read('input-hidden',$trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL . $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
+            try {
+                if(
+                    array_key_exists('trace', $options) &&
+                    $options['trace'] === true
+                ){
+                    Cli::read('input-hidden',$trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL . $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
+                }
+                elseif(
+                    array_key_exists('trace', $options) &&
+                    is_string($options['trace'])
+                ){
+                    Cli::read('input-hidden',$options['trace'] . $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
+                } else {
+                    Cli::read('input-hidden', $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
+                }
             }
-            elseif(
-                array_key_exists('trace', $options) &&
-                is_string($options['trace'])
-            ){
-                Cli::read('input-hidden',$options['trace'] . $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
-            } else {
-                Cli::read('input-hidden', $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
+            catch(Exception | ObjectException $exception){
+                echo (string) $exception;
             }
         }
     }
 }
 
 if(!function_exists('dd')){
-    #[NoReturn]
     function dd($data=null, $options=[]): void
     {
         if(!array_key_exists('trace', $options)){
@@ -122,7 +124,6 @@ if(!function_exists('dd')){
 }
 
 if(!function_exists('ddd')){
-    #[NoReturn]
     function ddd($data=null, $options=[]): void
     {
         if(!array_key_exists('trace', $options)){
