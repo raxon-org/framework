@@ -25,7 +25,17 @@ if(!function_exists('d')){
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">' . PHP_EOL;
         }
-        echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+        if(
+            array_key_exists('trace', $options) &&
+            $options['trace'] === true
+        ){
+            echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+        }
+        elseif(
+            array_key_exists('trace', $options)
+        ){
+            echo $options['trace'];
+        }
         var_dump($data);
         if(!defined('IS_CLI')){
             echo '</pre>' . PHP_EOL;
@@ -98,6 +108,11 @@ if(!function_exists('dd')){
         ){
             echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
         }
+        elseif(
+            array_key_exists('trace', $options)
+        ){
+            echo $options['trace'];
+        }
         var_dump($data);
         if(!defined('IS_CLI')){
             echo '</pre>' . PHP_EOL;
@@ -122,6 +137,11 @@ if(!function_exists('ddd')){
             $options['trace'] === true
         ){
             echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+        }
+        elseif(
+            array_key_exists('trace', $options)
+        ){
+            echo $options['trace'];
         }
         if(!defined('IS_CLI')){
             echo '</pre>';
