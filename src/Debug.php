@@ -55,19 +55,10 @@ if(!function_exists('breakpoint')){
         if(ob_get_level() > 0){
             ob_end_flush();
         }
-        if(!defined('IS_CLI')){
-            echo '<pre class="priya-debug">' . PHP_EOL;
-            if(
-                array_key_exists('trace', $options) &&
-                $options['trace'] === true
-            ){
-                echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
-            }
+        if(defined('IS_CLI')){
+            ob_start();
             var_dump($data);
-            echo '</pre>' . PHP_EOL;
-            flush();
-        } else {
-            $export = var_export($data, true);
+            $export = ob_get_clean();
             try {
                 if(
                     array_key_exists('trace', $options) &&
