@@ -56,7 +56,6 @@ class LocateException extends Exception {
     public function __toString()
     {
         if(App::is_cli()){
-            echo 'HERE';
             $string = parent::__toString();
             $location = $this->getLocation();
             $string .= PHP_EOL . 'Locations: ' . PHP_EOL;
@@ -76,7 +75,6 @@ class LocateException extends Exception {
             }
             return $string;
         } else {
-            echo 'HERE2';
             return parent::__toString();
         }
     }
