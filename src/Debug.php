@@ -23,6 +23,7 @@ if(!function_exists('d')){
         if(ob_get_level() > 0){
             ob_end_flush();
         }
+        echo PHP_EOL;
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">' . PHP_EOL;
         }
@@ -64,15 +65,15 @@ if(!function_exists('breakpoint')){
                     array_key_exists('trace', $options) &&
                     $options['trace'] === true
                 ){
-                    Cli::read('input-hidden',$trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL . $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
+                    Cli::read('input-hidden',PHP_EOL . $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL . $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
                 }
                 elseif(
                     array_key_exists('trace', $options) &&
                     is_string($options['trace'])
                 ){
-                    Cli::read('input-hidden',$options['trace'] . $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
+                    Cli::read('input-hidden',PHP_EOL . $options['trace'] . $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
                 } else {
-                    Cli::read('input-hidden', $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
+                    Cli::read('input-hidden', PHP_EOL . $export . PHP_EOL . 'Press '. Cli::info('enter') . ' to continue or ' . Cli::error('ctrl-c') . ' to break...');
                 }
             }
             catch(Exception | ObjectException $exception){
@@ -92,6 +93,7 @@ if(!function_exists('dd')){
         if(ob_get_level() > 0){
             ob_end_flush();
         }
+        echo PHP_EOL;
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">' . PHP_EOL;
         }
