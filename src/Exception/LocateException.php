@@ -75,6 +75,7 @@ class LocateException extends Exception {
             }
             return $string;
         } else {
+            breakpoint('here');
             return parent::__toString();
         }
     }
