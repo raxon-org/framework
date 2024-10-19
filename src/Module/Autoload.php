@@ -164,7 +164,7 @@ class Autoload {
         $autoload->cache_dir($cache_dir);
         $autoload->register();
         $autoload->environment($object->config('framework.environment'));
-        $object->data(App::AUTOLOAD_DIFFERENCE, $autoload);
+        $object->data(App::AUTOLOAD_RAXON, $autoload);
     }
 
     public function register($method='load', $prepend=false): bool

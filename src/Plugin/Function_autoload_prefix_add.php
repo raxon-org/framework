@@ -15,6 +15,6 @@ use Raxon\Module\Data;
 
 function function_autoload_prefix_add(Parse $parse, Data $data, $prefix='',$directory='', $extension=''){
     $object = $parse->object();
-    $autoload = $object->data(App::AUTOLOAD_DIFFERENCE);
+    $autoload = $object->data(App::AUTOLOAD_RAXON);
     $autoload->addPrefix($prefix, $directory, $extension);
 }

@@ -1179,7 +1179,7 @@ class Build {
             if(empty($dir)){
                 throw new Exception('Cache dir empty in Build');
             }
-            $autoload = $this->object()->data(App::NAMESPACE . '.' . Autoload::NAME . '.' . App::DIFFERENCE);
+            $autoload = $this->object()->data(App::NAMESPACE . '.' . Autoload::NAME . '.' . App::RAXON);
             if($autoload) {
                 $prefixList = $autoload->getPrefixList();
                 $autoload->unregister();

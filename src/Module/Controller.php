@@ -50,7 +50,7 @@ class Controller {
         if($object->config('framework.environment') == Config::MODE_DEVELOPMENT){
             $logger = $object->config('project.log.debug');
         }
-        $autoload = $object->data(App::AUTOLOAD_DIFFERENCE);
+        $autoload = $object->data(App::AUTOLOAD_RAXON);
         if($read === null){
             $url = $object->config('controller.dir.data') . 'Config' . $object->config('extension.json');
             $read = $object->data_read($url);

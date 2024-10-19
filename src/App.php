@@ -50,6 +50,7 @@ class App extends Data {
     const NAMESPACE = __NAMESPACE__;
     const NAME = 'App';
     const DIFFERENCE = 'Raxon';
+    const RAXON = 'Raxon';
 
     const SCRIPT = 'script';
     const LINK = 'link';
@@ -81,9 +82,8 @@ class App extends Data {
     const REQUEST_HEADER = App::NAMESPACE . '.' . Handler::NAME_REQUEST . '.' . Handler::NAME_HEADER;
     const REQUEST_FILE = App::NAMESPACE . '.' . Handler::NAME_REQUEST . '.' . Handler::NAME_FILE;
     const DATABASE = App::NAMESPACE . '.' . Database::NAME;
-
     const AUTOLOAD_COMPOSER = App::NAMESPACE . '.' . 'Autoload' . '.' . 'Composer';
-    const AUTOLOAD_DIFFERENCE = App::NAMESPACE . '.' . 'Autoload' . '.' . App::DIFFERENCE;
+    const AUTOLOAD_RAXON = App::NAMESPACE . '.' . 'Autoload' . '.' . App::RAXON;
 
     const DIR = __DIR__ . DIRECTORY_SEPARATOR;
 
