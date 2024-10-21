@@ -27,7 +27,21 @@ function function_zip_extract(Parse $parse, Data $data){
         File::exist($target) &&
         !Dir::is($target)
     ){
-        throw new Exception('Target exists directory...');
+        if(
+            (
+                property_exists('force', $options) &&
+                $options->force === true
+            ) ||
+            (
+                property_exists('patch', $options) &&
+                $options->patch === true
+            )
+
+        ){
+            File::delete($target);
+        } else {
+            throw new Exception('Target exists directory...');
+        }
     }
     $zip = new \ZipArchive();
     $zip->open($source);
