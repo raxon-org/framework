@@ -29,7 +29,7 @@ function function_zip_extract(Parse $parse, Data $data){
     ){
         if(
             (
-                property_exists($options, 'force' &&
+                property_exists($options, 'force') &&
                 $options->force === true
             ) ||
             (
