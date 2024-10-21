@@ -29,8 +29,6 @@ function function_zip_extract(Parse $parse, Data $data){
         echo 'Target exists already...';
         trace();
         d($object->request());
-        d($object->flags());
-        d($object->options());
         breakpoint('what');
         return;
     }
