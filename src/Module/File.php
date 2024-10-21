@@ -328,7 +328,6 @@ class File {
 
     public static function chmod($url, $mode=0640): bool
     {
-        d($url);
         return chmod($url, $mode);
     }
 

@@ -36,7 +36,6 @@ function function_zip_extract(Parse $parse, Data $data){
                 property_exists($options, 'patch') &&
                 $options->patch === true
             )
-
         ){
             File::delete($target);
         } else {
