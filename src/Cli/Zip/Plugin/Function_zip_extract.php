@@ -21,15 +21,13 @@ function function_zip_extract(Parse $parse, Data $data){
         $target = getcwd();
     }
     if(!File::exist($source)){
-        echo 'Cannot find source file...';
-        return;
+        throw Exception('Cannot find source file...');
     }
     if(
         File::exist($target) &&
         !Dir::is($target)
     ){
-        echo 'Target exists already...';
-        return;
+        throw Exception('Target exists directory...');
     }
     $zip = new \ZipArchive();
     $zip->open($source);
