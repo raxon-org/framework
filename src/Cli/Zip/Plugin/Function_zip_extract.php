@@ -15,6 +15,8 @@ function function_zip_extract(Parse $parse, Data $data){
     $object = $parse->object();
     $source = App::parameter($object, 'extract', 1);
     $target = App::parameter($object, 'extract', 2);
+    $options = App::options($object);
+    breakpoint($options);
     if(empty($target)){
         $target = getcwd();
     }
@@ -27,9 +29,6 @@ function function_zip_extract(Parse $parse, Data $data){
         !Dir::is($target)
     ){
         echo 'Target exists already...';
-        trace();
-        d($object->request());
-        breakpoint('what');
         return;
     }
     $zip = new \ZipArchive();
