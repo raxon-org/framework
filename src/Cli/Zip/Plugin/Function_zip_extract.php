@@ -27,6 +27,7 @@ function function_zip_extract(Parse $parse, Data $data){
         !Dir::is($target)
     ){
         echo 'Target exists already...';
+        trace();
         breakpoint('what');
         return;
     }
