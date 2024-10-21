@@ -16,7 +16,6 @@ function function_zip_extract(Parse $parse, Data $data){
     $source = App::parameter($object, 'extract', 1);
     $target = App::parameter($object, 'extract', 2);
     $options = App::options($object);
-    breakpoint($options);
     if(empty($target)){
         $target = getcwd();
     }
