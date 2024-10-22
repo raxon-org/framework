@@ -1300,4 +1300,8 @@ class Filter extends Data {
                 throw new Exception('Unknown type: ' . $type);
         }
     }
+
+    public static function operator($operator=''){
+        return '===';
+    }
 }
