@@ -1304,4 +1304,9 @@ class Filter extends Data {
     public static function operator($operator=''){
         return '===';
     }
+
+    public static function operator_smaller_equal($operator=''){
+        return '>=';
+    }
+
 }
