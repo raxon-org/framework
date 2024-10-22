@@ -48,9 +48,13 @@ class Filter extends Data {
     const OPERATOR_PARTIAL = 'partial';
     const OPERATOR_NOT_PARTIAL = 'not-partial';
     const OPERATOR_START = 'start';
+    const OPERATOR_STRICTLY_START = 'strictly-start';
     const OPERATOR_NOT_START = 'not-start';
+    const OPERATOR_NOT_STRICTLY_START = 'not-strictly-start';
     const OPERATOR_END = 'end';
+    const OPERATOR_STRICTLY_END = 'strictly-end';
     const OPERATOR_NOT_END = 'not-end';
+    const OPERATOR_NOT_STRICTLY_END = 'not-strictly-end';
 
     const OPERATOR_LIST_NAME = [
         Filter::OPERATOR_STRICTLY_EXACT,
@@ -82,7 +86,11 @@ class Filter extends Data {
         Filter::OPERATOR_EQUAL,
         Filter::OPERATOR_NOT_EQUAL,
         Filter::OPERATOR_STRICTLY_EQUAL,
-        Filter::OPERATOR_NOT_STRICTLY_EQUAL
+        Filter::OPERATOR_NOT_STRICTLY_EQUAL,
+        Filter::OPERATOR_STRICTLY_START,
+        Filter::OPERATOR_NOT_STRICTLY_START,
+        Filter::OPERATOR_STRICTLY_END,
+        Filter::OPERATOR_NOT_STRICTLY_END,
     ];
 
     private $type;
