@@ -1307,7 +1307,7 @@ class Filter extends Data {
 
     public static function operator_smaller_equal($operator=''){
         breakpoint($operator);
-        return '>=';
+        return '<=';
     }
 
 }
