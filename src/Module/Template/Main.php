@@ -29,7 +29,7 @@ class Main {
 	private $storage;
 
 	public function __construct(Parse $parse, Data $storage){
-	    set_time_limit(600);
+	    set_time_limit(3600);
 		$this->parse($parse);
         $this->object($parse->object());
 		$this->storage($storage);
