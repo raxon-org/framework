@@ -182,6 +182,7 @@ class App extends Data {
             if ($file === false) {
                 App::configure($object);
                 Route::configure($object);
+                d($object->request());
                 $destination = Route::request($object);
                 d($destination);
                 if ($destination === false) {
