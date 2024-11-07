@@ -104,7 +104,6 @@ class App extends Data {
         App::is_cli();
         require_once __DIR__ . '/Debug.php';
         require_once __DIR__ . '/Error.php';
-        ddd($config);
         Config::configure($this);
         Logger::configure($this);
         Host::configure($this);
@@ -184,6 +183,7 @@ class App extends Data {
                 App::configure($object);
                 Route::configure($object);
                 $destination = Route::request($object);
+                ddd($config);
                 breakpoint($destination);
                 if ($destination === false) {
 //                    $object->config('framework.environment', Config::MODE_PRODUCTION);
