@@ -93,6 +93,7 @@ class App extends Data {
      * @throws Exception
      */
     public function __construct($autoload, $config){
+        breakpoint($config);
         $this->data(App::AUTOLOAD_COMPOSER, $autoload);
         $this->data(App::CONFIG, $config);
         $data = new Data();
