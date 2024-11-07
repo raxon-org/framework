@@ -183,7 +183,7 @@ class App extends Data {
                 App::configure($object);
                 Route::configure($object);
                 $destination = Route::request($object);
-                ddd($object->config());
+                d($object->config());
                 breakpoint($destination);
                 if ($destination === false) {
 //                    $object->config('framework.environment', Config::MODE_PRODUCTION);
