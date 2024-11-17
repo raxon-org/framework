@@ -60,7 +60,7 @@
         "wav": "audio\/wav",
         "mp3": "audio\/mp3",
         "wma": "audio\/x-ms-wma",
-        "ogg": "audio\/ogg",
+                                                                                                                        "ogg": "audio\/ogg",
         "onnx": "binary\/octet-stream",
         "zip": "application\/zip",
         "rar": "application\/vnd.rar",
