@@ -85,7 +85,7 @@
         "wasm": "application\/wasm"
     },
     "extension": {
-        "wget-log": "wget-log",
+        "wget-log": ".wget-log",
         "txt": ".txt",
         "log": ".log",
         "ini": ".ini",
