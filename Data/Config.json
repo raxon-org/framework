@@ -32,7 +32,7 @@
         "built": "2024-09-09 23:54:16"
     },
     "contentType": {
-        "wget-log":"text\/html",
+        "3":"text\/html",
         "btree":"text\/plain",
         "lock":"text\/plain",
         "connect":"text\/plain",
@@ -85,7 +85,7 @@
         "wasm": "application\/wasm"
     },
     "extension": {
-        "wget-log": ".wget-log",
+        "3": ".3",
         "txt": ".txt",
         "log": ".log",
         "ini": ".ini",
