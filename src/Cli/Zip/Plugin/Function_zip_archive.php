@@ -35,9 +35,6 @@ function function_zip_archive(Parse $parse, Data $data){
             return null;
         }
         foreach($read as $file){
-            if($file->type === Dir::TYPE){
-                continue;
-            }
             $host[] = $file;
         }
         $dir = Dir::name($target);
@@ -63,7 +60,11 @@ function function_zip_archive(Parse $parse, Data $data){
                 $location = $file->url;
             }
             if(!empty($location)){
-                $zip->addFile($source, $location);
+                if($file->type === Dir::TYPE){
+                    $zip->addEmptyDir($location);
+                } else {
+                    $zip->addFile($source, $location);
+                }
             }
             d($location);
         }
@@ -96,7 +97,7 @@ function function_zip_archive(Parse $parse, Data $data){
             $location = $source;
         }
         if(!empty($location)){
-            d($location);
+            breakpoint($location);
             $zip->addFile($source, $location);
         }
         $zip->close();
