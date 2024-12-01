@@ -67,7 +67,7 @@ function function_zip_archive(Parse $parse, Data $data){
             if(!empty($location)){
                 $zip->addFile($source, $location);
             }
-
+            d($location);
         }
         $zip->close();
         echo $target;
@@ -98,6 +98,7 @@ function function_zip_archive(Parse $parse, Data $data){
             $location = $source;
         }
         if(!empty($location)){
+            d($location);
             $zip->addFile($source, $location);
         }
         $zip->close();
