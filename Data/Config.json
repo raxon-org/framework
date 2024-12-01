@@ -61,7 +61,7 @@
         "wav": "audio\/wav",
         "mp3": "audio\/mp3",
         "wma": "audio\/x-ms-wma",
-                                                                                                                        "ogg": "audio\/ogg",
+        "ogg": "audio\/ogg",
         "onnx": "binary\/octet-stream",
         "zip": "application\/zip",
         "rar": "application\/vnd.rar",
@@ -82,7 +82,8 @@
         "pptx": "application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         "xml": "application\/xml",
         "vob": "video\/vob",
-        "wasm": "application\/wasm"
+        "wasm": "application\/wasm",
+        "iso": "binary\/octet-stream"
     },
     "extension": {
         "3": ".3",
@@ -137,7 +138,8 @@
         "btree": ".btree",
         "connect": ".connect",
         "response": ".response",
-        "sh": ".sh"
+        "sh": ".sh",
+        "iso": ".iso"
     },
     "error": {
         "extension": {
