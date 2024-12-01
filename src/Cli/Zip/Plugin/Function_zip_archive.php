@@ -57,12 +57,16 @@ function function_zip_archive(Parse $parse, Data $data){
         $zip = new \ZipArchive();
         $zip->open($target, \ZipArchive::CREATE);
         foreach($host as $file){
+            $location = false;
             if(substr($file->url, 0, 1) === $object->config('ds')){
                 $location = substr($file->url, 1);
             } else {
                 $location = $file->url;
             }
-            $zip->addFile($file->url, $location);
+            if(!empty($location)){
+                $zip->addFile($source, $location);
+            }
+
         }
         $zip->close();
         echo $target;
@@ -86,12 +90,15 @@ function function_zip_archive(Parse $parse, Data $data){
         }
         $zip = new \ZipArchive();
         $zip->open($target, \ZipArchive::CREATE);
+        $location = false;
         if(substr($source, 0, 1) === $object->config('ds')){
             $location = substr($source, 1);
         } else {
             $location = $source;
         }
-        $zip->addFile($source, $location);
+        if(!empty($location)){
+            $zip->addFile($source, $location);
+        }
         $zip->close();
         echo $target;
     }
