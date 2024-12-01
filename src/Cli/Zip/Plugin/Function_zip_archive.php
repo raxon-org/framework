@@ -35,12 +35,10 @@ function function_zip_archive(Parse $parse, Data $data){
             return null;
         }
         foreach($read as $file){
-            $host[] = $file;
-        }
-        foreach($host as $nr => $file){
             if($file->type === Dir::TYPE){
-                unset($host[$nr]);
+                continue;
             }
+            $host[] = $file;
         }
         $dir = Dir::name($target);
         if(
