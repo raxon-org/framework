@@ -208,6 +208,11 @@ class Cli {
         return $result;
     }
 
+    public static function gotoxy($x=0, $y=0): void
+    {
+        echo chr(27) . '[' . $y . ';' . $x . 'H';
+    }
+
     public static function color($color=null, $background=null): string
     {
         $result = [];
