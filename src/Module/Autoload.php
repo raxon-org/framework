@@ -682,7 +682,7 @@ class Autoload {
                                             //files with content __DIR__, __FILE__ cannot be cached
                                         } else {
                                             //save to file
-                                            breakpoint($file);
+                                            echo $file . PHP_EOL;
                                             file_put_contents($object->config('autoload.cache.file.name'), $read);
                                             touch($object->config('autoload.cache.file.name'), filemtime($file));
                                             if(
