@@ -466,7 +466,6 @@ class Autoload {
         ){
             $data[] = $this->read->autoload->{$caller}->{$item['load']};
         }
-        $item['file'] = str_replace('Smiley/Smiley.', 'Smiley/.Smiley.', $item['file']);
         $item['file_dot'] = str_replace('_', '.', $item['file']);
         $data[] = $item['directory'] . $item['file_dot'] . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
         $data[] = $item['directory'] . $item['file'] . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
@@ -488,6 +487,7 @@ class Autoload {
         $this->fileList[$item['baseName']][] = $data;
         $result = [];
         foreach($data as $nr => $file){
+            $file = str_replace('Smiley/Smiley.', 'Smiley/.Smiley.', $file);
             $result[$file] = $file;
         }
         return $result;
