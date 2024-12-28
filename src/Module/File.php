@@ -281,7 +281,7 @@ class File {
         }
         $exist = File::exist($source);
         if($exist === false){
-            throw new FileMoveException('Source file doesn\'t exist...');
+            throw new FileMoveException('Source ('. $source . ') file doesn\'t exist...');
         }
         $exist = File::exist($destination);
         if(
