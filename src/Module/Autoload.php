@@ -487,7 +487,7 @@ class Autoload {
         $this->fileList[$item['baseName']][] = $data;
         $result = [];
         foreach($data as $nr => $file){
-            $file = str_replace('Smiley/Smiley.', 'Smiley/.Smiley.', $file);
+            $file = str_replace('CodePoint/CodePoint.', 'CodePoint/.CodePoint.', $file);
             $result[$file] = $file;
         }
         return $result;
