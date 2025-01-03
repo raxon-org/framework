@@ -627,6 +627,7 @@ class Autoload {
                             $file  . ' --> ' . is_readable($file) . '-' .file_exists($file) . PHP_EOL
                         );
                         */
+                        d($file);
                         if(file_exists($file)){
                             if(
                                 empty($object->config('ramdisk.is.disabled')) &&
