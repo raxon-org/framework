@@ -489,7 +489,12 @@ class Autoload {
         foreach($data as $nr => $file){
             $file_hidden = str_replace('CodePoint/CodePoint', 'CodePoint/.CodePoint', $file);
             if($file !== $file_hidden){
-                $result[$file_hidden] = $file_hidden;
+                if(array_key_exists($file_hidden, $result)){
+                    $file_hidden = str_replace('CodePoint/.CodePoint', 'CodePoint/CodePoint', $file_hidden);
+                    $result[$file_hidden] = $file_hidden;
+                } else {
+                    $result[$file_hidden] = $file_hidden;
+                }
             }
             $result[$file] = $file;
         }
