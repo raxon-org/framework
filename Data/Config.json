@@ -1,0 +1,451 @@
+{
+    "framework": {
+        "default": {
+            "language": "en",
+            "route": [
+                "info",
+                "autoload",
+                "parse",
+                "cache",
+                "cache:clear",
+                "data",
+                "init",
+                "install",
+                "license",
+                "linefeed",
+                "ln",
+                "version",
+                "uuid",
+                "password",
+                "ramdisk",
+                "rewrite",
+                "bin",
+                "zip"
+            ]
+        },
+        "name": "raxon/framework",
+        "url": "https://raxon.org",
+        "major": 2024,
+        "minor": "04",
+        "patch": "6940",
+        "version": "2024.04.6940",
+        "built": "2024-04-26 19:54:16"
+    },
+    "contentType": {
+        "btree":"text\/plain",
+        "lock":"text\/plain",
+        "connect":"text\/plain",
+        "response":"text\/plain",
+        "txt": "text\/plain",
+        "log": "text\/plain",
+        "ini": "text\/plain",
+        "sh": "text\/plain",
+        "html": "text\/html",
+        "tpl": "text\/html",
+        "css": "text\/css",
+        "js": "application\/javascript",
+        "map": "application\/json",
+        "json": "application\/json",
+        "md": "text\/html",
+        "ico": "image\/x-icon",
+        "png": "image\/png",
+        "jpg": "image\/jpeg",
+        "bmp": "image\/bmp",
+        "gif": "image\/gif",
+        "svg": "image\/svg+xml",
+        "woff": "application\/font-woff",
+        "woff2": "application\/font-woff2",
+        "ttf": "font\/ttf",
+        "wav": "audio\/wav",
+        "mp3": "audio\/mp3",
+        "wma": "audio\/x-ms-wma",
+        "ogg": "audio\/ogg",
+        "onnx": "binary\/octet-stream",
+        "zip": "application\/zip",
+        "rar": "application\/vnd.rar",
+        "pdf": "application\/pdf",
+        "webp": "image\/webp",
+        "mp4": "video\/mp4",
+        "avi": "video\/x-msvideo",
+        "wmv": "video\/x-ms-wmv",
+        "mov": "video\/quicktime",
+        "webm": "video\/webm",
+        "csv": "text\/csv",
+        "php": "text\/html",
+        "xls": "application\/vnd.ms-excel",
+        "doc": "application\/msword",
+        "ppt": "application\/vnd.ms-powerpoint",
+        "xlsx": "application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "docx": "application\/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "pptx": "application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "xml": "application\/xml",
+        "vob": "video\/vob",
+        "wasm": "application\/wasm"
+    },
+    "extension": {
+        "txt": ".txt",
+        "log": ".log",
+        "ini": ".ini",
+        "html": ".html",
+        "css": ".css",
+        "js": ".js",
+        "map": ".map",
+        "json": ".json",
+        "md": ".md",
+        "ico": ".ico",
+        "png": ".png",
+        "jpg": ".jpg",
+        "bmp": ".bmp",
+        "gif": ".gif",
+        "svg": ".svg",
+        "woff": ".woff",
+        "woff2": ".woff2",
+        "ttf": ".ttf",
+        "wav": ".wav",
+        "mp3": ".mp3",
+        "wma": ".wma",
+        "ogg": ".ogg",
+        "onnx": ".onnx",
+        "wasm": ".wasm",
+        "zip": ".zip",
+        "gz": ".gz",
+        "rar": ".rar",
+        "tpl": ".tpl",
+        "conf": ".conf",
+        "pdf": ".pdf",
+        "php": ".php",
+        "webp": ".webp",
+        "mp4": ".mp4",
+        "avi": ".avi",
+        "webm": ".webm",
+        "xls": ".xls",
+        "ppt": ".ppt",
+        "doc": ".doc",
+        "csv": ".csv",
+        "xlsx": ".xlsx",
+        "docx": ".docx",
+        "pptx": ".pptx",
+        "mov": ".mov",
+        "wmv": ".wmv",
+        "xml": ".xml",
+        "vob": ".vob",
+        "lock": ".lock",
+        "btree": ".btree",
+        "connect": ".connect",
+        "response": ".response",
+        "sh": ".sh"
+    },
+    "error": {
+        "extension": {
+            "tpl": [
+                "htm",
+                "html",
+                "php",
+                "xml",
+                "asp",
+                "aspx",
+                "pdf"
+            ],
+            "text": [
+                "env",
+                "txt",
+                "log",
+                "cgi"
+            ],
+            "js": [
+                "js"
+            ],
+            "json": [
+                "json"
+            ]
+        }
+    },
+    "cache" : {
+        "autoload": {
+            "url": {
+                "name_length": 100,
+                "name_separator": "_",
+                "name_pop_or_shift": "shift",
+                "directory_length": 75,
+                "directory_separator": "/",
+                "directory_pop_or_shift": "pop"
+            }
+        },
+        "fileRequest": {
+            "url" : {
+                "name_length": 100,
+                "name_separator": "_",
+                "name_pop_or_shift": "shift",
+                "directory_length": 75,
+                "directory_separator": "_",
+                "directory_pop_or_shift": "pop"
+            }
+        },
+        "cache": {
+            "url": {
+                "name_length": 80,
+                "name_separator": "-",
+                "name_pop_or_shift": "shift"
+            }
+        },
+        "controller": {
+            "url": {
+                "name_length": 175,
+                "name_separator": "_",
+                "name_pop_or_shift": "shift"
+            },
+            "ttl": 600
+        },
+        "parse": {
+            "url": {
+                "name_length": 175,
+                "name_separator": "_",
+                "name_pop_or_shift": "shift"
+            },
+            "plugin": {
+                "url" : {
+                    "name_length": 100,
+                    "name_separator": "_",
+                    "name_pop_or_shift": "shift",
+                    "directory_length": 75,
+                    "directory_separator": "_",
+                    "directory_pop_or_shift": "pop"
+                },
+                "list" : [
+                    {
+                        "name": "require",
+                        "name_length": 175,
+                        "name_separator": "_",
+                        "name_pop_or_shift": "shift"
+                    }
+                ]
+            }
+        }
+    },
+    "parse": {
+        "prefix": "Raxon\\Org\\Module\\Compile",
+        "read": {
+            "parser": "{{R3M}}",
+            "row_mismatch": 1,
+            "object": {
+                "use_this": true,
+                "this": {
+                    "parentNode": "#parentNode",
+                    "rootNode": "#rootNode",
+                    "attribute": "#attribute",
+                    "key": "#key",
+                    "url": "#url",
+                    "parallel": "#parallel",
+                    "output": "#output"
+                },
+                "#copy": {
+                    "#key": "name--debug"
+                }
+            }
+        },
+        "plugin": {
+            "parallel": {
+                "thread": 96
+            },
+            "multi_line": [
+                "block.code",
+                "block.html",
+                "block.json",
+                "capture.prepend",
+                "capture.append",
+                "script",
+                "trait"
+            ],
+            "literal": [
+                {
+                    "name": "unset",
+                    "count": "*"
+                },
+                {
+                    "name":  "array_current",
+                    "count": 1
+                },
+                {
+                    "name":  "array_cycle",
+                    "count": 1
+                },
+                {
+                    "name": "array_end",
+                    "count": 1
+                },
+                {
+                    "name": "array_next",
+                    "count": 1
+                },
+                {
+                    "name": "array_pop",
+                    "count": 1
+                },
+                {
+                    "name": "array_previous",
+                    "count": 1
+                },
+                {
+                    "name": "array_push",
+                    "count": 1
+                },
+                {
+                    "name": "array_reset",
+                    "count": 1
+                },
+                {
+                    "name": "array_shift",
+                    "count": 1
+                },
+                {
+                    "name": "array_unshift",
+                    "count": 1
+                },
+                {
+                    "name": "capture_append",
+                    "count": 1
+                },
+                {
+                    "name": "capture_prepend",
+                    "count": 1
+                },
+                {
+                    "name": "config",
+                    "count": 1
+                },
+                {
+                    "name": "core_exec",
+                    "count": 1,
+                    "index": 1
+                },
+                {
+                    "name": "core_execute",
+                    "count": 1,
+                    "index": 1
+                },
+                {
+                    "name": "core_stream",
+                    "count": 1,
+                    "index": 1
+                },
+                {
+                    "name": "core_stream_app",
+                    "count": 1,
+                    "index": 1
+                },
+                {
+                    "name": "data",
+                    "count": 1
+                },
+                {
+                    "name": "data_delete",
+                    "count": 1
+                },
+                {
+                    "name": "data_extract",
+                    "count": 1
+                },
+                {
+                    "name": "data_get",
+                    "count": 1
+                },
+                {
+                    "name": "data_has",
+                    "count": 1
+                },
+                {
+                    "name": "data_index",
+                    "count": 1
+                },
+                {
+                    "name": "data_set",
+                    "count": 1
+                },
+                {
+                    "name": "execute",
+                    "count": 1,
+                    "index": 1
+                },
+                {
+                    "name": "preg_match",
+                    "count": 1,
+                    "index": 2
+                },
+                {
+                    "name": "preg_match_all",
+                    "count": 1,
+                    "index": 2
+                },
+                {
+                    "name": "preg_match_replace",
+                    "count": 1,
+                    "index": 4
+                },
+                {
+                    "name": "string_replace",
+                    "count": 1,
+                    "index": 3
+                },
+                {
+                    "name": "string_replace_case_insensitive",
+                    "count": 1,
+                    "index": 3
+                }
+            ]
+        },
+        "use": [
+            "stdClass",
+            "Raxon\\Org\\App",
+            "Raxon\\Org\\Config",
+            "Raxon\\Org\\Module\\Autoload",
+            "Raxon\\Org\\Module\\Cli",
+            "Raxon\\Org\\Module\\Controller",
+            "Raxon\\Org\\Module\\Core",
+            "Raxon\\Org\\Module\\Data",
+            "Raxon\\Org\\Module\\Dir",
+            "Raxon\\Org\\Module\\Event",
+            "Raxon\\Org\\Module\\File",
+            "Raxon\\Org\\Module\\Filter",
+            "Raxon\\Org\\Module\\Handler",
+            "Raxon\\Org\\Module\\Host",
+            "Raxon\\Org\\Module\\Limit",
+            "Raxon\\Org\\Module\\Parse",
+            "Raxon\\Org\\Module\\Response",
+            "Raxon\\Org\\Module\\Route",
+            "Raxon\\Org\\Module\\Sort",
+            "Raxon\\Org\\Module\\Validate",
+            "Raxon\\Org\\Module\\Template\\Main",
+            "Raxon\\Org\\Node\\Model\\Node",
+            "Exception",
+            "Raxon\\Org\\Exception\\AuthenticationException",
+            "Raxon\\Org\\Exception\\AuthorizationException",
+            "Raxon\\Org\\Exception\\ErrorException",
+            "Raxon\\Org\\Exception\\FileAppendException",
+            "Raxon\\Org\\Exception\\FileMoveException",
+            "Raxon\\Org\\Exception\\FileNotExistException",
+            "Raxon\\Org\\Exception\\FileWriteException",
+            "Raxon\\Org\\Exception\\LocateException",
+            "Raxon\\Org\\Exception\\ObjectException",
+            "Raxon\\Org\\Exception\\PluginNotAllowedException",
+            "Raxon\\Org\\Exception\\PluginNotFoundException",
+            "Raxon\\Org\\Exception\\RouteExistException",
+            "Raxon\\Org\\Exception\\UrlEmptyException",
+            "Raxon\\Org\\Exception\\UrlNotExistException"
+        ]
+    },
+    "package": {
+        "raxon_org/node": {
+            "dir" : {
+                "validator": "{{config('project.dir.vendor')}}/raxon/node/src/Validator/"
+            }
+        }
+    },
+    "server": {
+        "default": {
+            "port" : [
+                80,
+                443
+            ]
+        }
+    }
+}
