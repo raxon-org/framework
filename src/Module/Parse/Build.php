@@ -929,7 +929,6 @@ class Build {
             }
         }
         $run[] = $this->indent() . 'return implode(\'\', $content);';
-        d($run);
         $storage->data('run', $run);
         return $document;
     }
