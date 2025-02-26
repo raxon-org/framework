@@ -660,115 +660,9 @@ class Parse {
                 try {
                     $template = new $class(new Parse($this->object()), $storage);
                     $string = $template->run();
-                    d($url);
-                    d($string);
-
                     $is_disabled = $this->object()->config('parse.compile.disable.function.Value::contains_replace');
 //                    $is_disabled = true;
 //                    $string = Parse::comment($string, 'is_disabled: ' . $is_disabled);
-                    $is_disabled = true;
-                    if(!$is_disabled){
-                        $string = Value::contains_replace(
-                            [
-                                [
-                                    'class',
-                                    '{'
-                                ],
-                                [
-                                    'trait',
-                                    '{'
-                                ],
-                                [
-                                    Token::TYPE_WHITESPACE,
-                                    '{'
-                                ],
-                                /*
-                                [
-                                    Token::TYPE_WHITESPACE,
-                                    '}'
-                                ],
-                                */
-                            ],
-                            [
-                                [
-                                    '{',
-                                    '{' . PHP_EOL
-                                ],
-                                [
-                                    '{',
-                                    '{' . PHP_EOL
-                                ],
-                                [
-                                    '{',
-                                    '{' . PHP_EOL
-                                ],
-                                /*
-                                [
-                                    '}',
-                                    '}' . PHP_EOL
-                                ]
-                                */
-                            ],
-                            $string
-                        );
-                        /*
-                        $string = Value::contains_replace(
-                            [
-                                [
-                                    'class',
-                                    '{'
-                                ],
-                                [
-                                    'try',
-                                    '{'
-                                ],
-                                [
-                                    '(',
-                                    '{'
-                                ],
-                                [
-                                    'else',
-                                    '{'
-                                ],
-                                [
-                                    Token::TYPE_WHITESPACE,
-                                    '{'
-                                ],
-                                [
-                                    Token::TYPE_WHITESPACE,
-                                    '}'
-                                ],
-                            ],
-                            [
-                                [
-                                    '{',
-                                    '{' . PHP_EOL
-                                ],
-                                [
-                                    '{',
-                                    '{' . PHP_EOL
-                                ],
-                                [
-                                    '{',
-                                    '{' . PHP_EOL
-                                ],
-                                [
-                                    '{',
-                                    '{' . PHP_EOL
-                                ],
-                                [
-                                    '{',
-                                    '{' . PHP_EOL
-                                ],
-                                [
-                                    '}',
-                                    '}' . PHP_EOL
-                                ]
-                            ],
-                            $string
-                        );
-                        */
-                    }
                     if(empty($this->halt_literal())){
                         $string = Literal::restore($storage, $string);
                     }
@@ -880,6 +774,7 @@ class Parse {
                     $template = new $class(new Parse($this->object()), $storage);
                     $string = $template->run();
                     if(empty($string)){
+                        d($url);
                         d($class);
                     }
                     $is_disabled = $this->object()->config('parse.compile.disable.function.Value::contains_replace');
