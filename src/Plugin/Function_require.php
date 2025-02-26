@@ -117,6 +117,7 @@ function function_require(Parse $parse, Data $data, $url='', $storage=[]){
         ob_start();
         $parser = new Parse($parse->object());
         $compile =  $parser->compile($read, [], $data_data);
+        d($compile);
         $data_script = $data_data->data('script');
         $script = $data->data('script');
         if(!empty($data_script) && empty($script)){
@@ -156,6 +157,7 @@ function function_require(Parse $parse, Data $data, $url='', $storage=[]){
         ob_start();
         $parser = new Parse($parse->object());
         $result = $parser->compile($read, [], $data);
+        d($result);
         $ob = ob_get_contents();
         ob_clean();
         if($ob){
