@@ -526,7 +526,11 @@ class App extends Data {
                         return Response::output($object, $response);
                     }
                     $functions[] = 'result';
+                    ob_start();
                     $result = App::result($object, $result);
+                    $ob = ob_get_contents();
+                    d($result);
+                    ddd($ob);
                     if($logger){
                         $object->logger($logger)->info('Functions: [' . implode(', ', $functions) . '] called in controller: ' . $controller);
                     }
