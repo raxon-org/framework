@@ -679,6 +679,7 @@ class Build {
         $run = $storage->data('run');
         if(empty($run)){
             $run = [];
+            $run[] = '$content = [];';
         }
         $type = null;
         $select = null;
@@ -718,7 +719,7 @@ class Build {
                 $value = $record['value'];
                 $value = Literal::restore($data, $value);
                 $run[] = $this->indent() .
-                    'echo \'' .
+                    '$content[] = \'' .
                     str_replace(
                         [
                             '\\',
@@ -738,7 +739,7 @@ class Build {
             ){
                 $run[] =  $this->indent() . '$string = \'' . str_replace('\'', '\\\'', substr($record['value'], 1, -1)). '\';';
                 $run[] =  $this->indent() . '$string = $this->parse()->compile($string, [], $this->storage());';
-                $run[] =  $this->indent() .  'echo \'"\' . $string . \'"\';';
+                $run[] =  $this->indent() .  '$content[] = \'"\' . $string . \'"\';';
             }
             elseif($record['type'] == Token::TYPE_CURLY_OPEN){
                 $is_tag = true;
@@ -768,7 +769,7 @@ class Build {
                     $is_comment = false;
                 }
                 */
-                $run[] = $this->indent() . 'echo \'' . str_replace('\'', '\\\'', $record['value']) . '\';';
+                $run[] = $this->indent() . '$content[] =  \'' . str_replace('\'', '\\\'', $record['value']) . '\';';
                 $run[] = '';
             }
             elseif($record['type'] == Token::TYPE_CURLY_CLOSE){
@@ -803,14 +804,14 @@ class Build {
                         $run[] = $this->indent() . '$variable = ' . $define . ';';
                         $run[] = $this->indent() . 'if (is_object($variable)){ return $variable; }';
                         $run[] = $this->indent() . 'elseif (is_array($variable)){ return $variable; }';
-                        $run[] = $this->indent() . 'else { echo $variable; } ';
+                        $run[] = $this->indent() . 'else { $content[] = $variable; } ';
                         $remove_newline = true;
                         break;
                     case Build::METHOD :
                         $run[] = $this->indent() . '$method = ' . Method::create($this, $storage, $selection) . ';';
                         $run[] = $this->indent() . 'if (is_object($method)){ return $method; }';
                         $run[] = $this->indent() . 'elseif (is_array($method)){ return $method; }';
-                        $run[] = $this->indent() . 'else { echo $method; }';
+                        $run[] = $this->indent() . 'else { $content[] =  $method; }';
                         $remove_newline = true;
                         break;
                     case Build::METHOD_CONTROL :
@@ -931,6 +932,7 @@ class Build {
                 $selection[$nr] = $record;
             }
         }
+        ddd($run);
         $storage->data('run', $run);
         return $document;
     }
