@@ -180,9 +180,10 @@ class App extends Data {
         try {
             $file = FileRequest::get($object);
             if ($file === false) {
-                d('yesw2');
                 App::configure($object);
+                d('yesw2');
                 Route::configure($object);
+                d('yesw2');
                 $destination = Route::request($object);
                 ddd($destination);
                 if ($destination === false) {
