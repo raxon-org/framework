@@ -181,7 +181,6 @@ class App extends Data {
             $file = FileRequest::get($object);
             if ($file === false) {
                 App::configure($object);
-                d('yesw2');
                 Route::configure($object);
                 d('yesw2');
                 $destination = Route::request($object);
