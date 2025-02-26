@@ -105,10 +105,10 @@ class App extends Data {
         require_once __DIR__ . '/Error.php';
         Config::configure($this);
         Logger::configure($this);
-        ddd('test');
         Host::configure($this);
         Domain::configure($this);
         Event::configure($this);
+        ddd('test');
         Middleware::configure($this);
         OutputFilter::configure($this);
         Autoload::configure($this);
