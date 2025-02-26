@@ -104,7 +104,9 @@ class App extends Data {
         require_once __DIR__ . '/Debug.php';
         require_once __DIR__ . '/Error.php';
         Config::configure($this);
+        ddd('test');
         Logger::configure($this);
+
         Host::configure($this);
         Domain::configure($this);
         Event::configure($this);
