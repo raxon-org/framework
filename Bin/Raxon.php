@@ -23,7 +23,7 @@ $dir_vendor =
 
 $autoload = $dir_vendor . 'autoload.php';
 $autoload = require $autoload;
-
+echo 'tes';
 try {
     $config = new Config(
         [
