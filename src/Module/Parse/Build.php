@@ -172,11 +172,7 @@ class Build {
         $document[] = '';
         $document[] = $this->indent(1) . 'public function run(){';
         $document[] = $this->indent(2) . 'try {';
-        $document[] = $this->indent(3) . 'ob_start();';
         $document[] = $this->indent(0) . $storage->data('placeholder.run');
-        $document[] = $this->indent(3) . '$content = ob_get_contents();';
-        $document[] = $this->indent(3) . 'ob_clean();';
-        $document[] = $this->indent(3) . 'return $content;';
         $document[] = $this->indent(2) . '}';
         $document[] = $this->indent(2) . 'catch(Exception $exception){';
         $document[] = $this->indent(3) . 'if(ob_get_length() > 0){';
@@ -679,7 +675,7 @@ class Build {
         $run = $storage->data('run');
         if(empty($run)){
             $run = [];
-            $run[] = '$content = [];';
+            $run[] = $this->indent() . '$content = [];';
         }
         $type = null;
         $select = null;
@@ -932,6 +928,7 @@ class Build {
                 $selection[$nr] = $record;
             }
         }
+        $run[] = $this->indent() . 'return $content;';
         ddd($run);
         $storage->data('run', $run);
         return $document;
