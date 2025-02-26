@@ -886,14 +886,8 @@ class Parse {
             try {
                 $exists = class_exists($class);
                 if ($exists) {
-                    ob_start();
                     $template = new $class(new Parse($this->object()), $storage);
                     $string = $template->run();
-                    $ob = ob_get_contents();
-                    ob_clean();
-                    if($ob){
-                        $string = $ob . $string;
-                    }
                     $is_disabled = $this->object()->config('parse.compile.disable.function.Value::contains_replace');
 //                    $string = Parse::comment($string, 'is_disabled: ' . $is_disabled);
                     $is_disabled = true;
@@ -1040,12 +1034,6 @@ class Parse {
                 return $string;
             }
         }
-        $ob = ob_get_contents();
-        ob_clean();
-        if($ob){
-            $string = $ob . $string;
-        }
-
         return $string;
     }
 
