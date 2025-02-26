@@ -474,13 +474,7 @@ class Parse {
                             $disable_function = $this->object()->config('parse.compile.disable.function.Value::contains_replace');
                             $disable_function_prepare = $this->object()->config('parse.compile.disable.function.Parse::prepare_code');
 //                            $this->object()->config('parse.compile.disable.function.Parse::prepare_code', true);
-                            ob_start();
                             $value = $this->compile($value, $storage->data(), $storage, $depth, $is_debug);
-                            $ob = ob_get_contents();
-                            ob_end_clean();
-                            if($ob){
-                                $value = $ob . $value;
-                            }
                             if($disable_function){
                                 $this->object()->config('parse.compile.disable.function.Value::contains_replace', $disable_function);
                             } else {
@@ -495,10 +489,7 @@ class Parse {
                         elseif(!is_scalar($value)){
                             $disable_function_prepare = $this->object()->config('parse.compile.disable.function.Parse::prepare_code');
 //                            $this->object()->config('parse.compile.disable.function.Parse::prepare_code', false);
-                            ob_start();
                             $value = $this->compile($value, $storage->data(), $storage, $depth, $is_debug);
-                            $ob = ob_get_contents();
-                            ob_clean();
                             if($disable_function_prepare){
                                 $this->object()->config('parse.compile.disable.function.Parse::prepare_code', $disable_function_prepare);
                             } else {
@@ -669,8 +660,8 @@ class Parse {
                 try {
                     $template = new $class(new Parse($this->object()), $storage);
                     $string = $template->run();
-//                    d($url);
-//                    d($string);
+                    d($url);
+                    d($string);
 
                     $is_disabled = $this->object()->config('parse.compile.disable.function.Value::contains_replace');
 //                    $is_disabled = true;
