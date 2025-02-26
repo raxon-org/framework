@@ -112,7 +112,6 @@ class App extends Data {
         OutputFilter::configure($this);
         Autoload::configure($this);
         Autoload::ramdisk_configure($this);
-        ddd('test');
     }
 
     /**
@@ -181,6 +180,7 @@ class App extends Data {
         try {
             $file = FileRequest::get($object);
             if ($file === false) {
+                d('yesw2');
                 App::configure($object);
                 Route::configure($object);
                 $destination = Route::request($object);
