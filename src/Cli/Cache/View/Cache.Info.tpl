@@ -1,4 +1,4 @@
-{{R3M}}
+{{RAX}}
 Cache CLI:
 
 {{binary()}} cache info                        cache information
