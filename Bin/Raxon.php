@@ -32,6 +32,7 @@ try {
         ]
     );
     $app = new App($autoload, $config);
+    d('fuck a duck');
     $result = App::run($app);
     if(is_scalar($result)){
         echo $result;
