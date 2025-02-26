@@ -928,8 +928,7 @@ class Build {
                 $selection[$nr] = $record;
             }
         }
-        $run[] = $this->indent() . 'return $content;';
-        ddd($run);
+        $run[] = $this->indent() . 'return implode(\'\', $content);';
         $storage->data('run', $run);
         return $document;
     }
