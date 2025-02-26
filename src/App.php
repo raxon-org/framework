@@ -486,10 +486,7 @@ class App extends Data {
                                 ') triggered.'
                             );
                         }
-                        ob_start();
                         $result = $controller::{$function}($object);
-                        ob_clean();
-//                        ob_get_clean();
                         Event::trigger($object, 'app.run.route.controller', [
                             'destination' => $destination,
                             'response' => $result
@@ -527,6 +524,7 @@ class App extends Data {
                         return Response::output($object, $response);
                     }
                     $functions[] = 'result';
+                    ddd($result);
                     $result = App::result($object, $result);
                     if($logger){
                         $object->logger($logger)->info('Functions: [' . implode(', ', $functions) . '] called in controller: ' . $controller);
