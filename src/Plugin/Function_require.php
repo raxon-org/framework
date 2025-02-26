@@ -144,7 +144,7 @@ function function_require(Parse $parse, Data $data, $url='', $storage=[]){
             $data->data('link', array_merge($link, $data_link));
         }
         $ob = ob_get_contents();
-        ob_end_clean();
+        ob_clean();
         if($ob){
             $compile = $ob . $compile;
         }
@@ -157,7 +157,7 @@ function function_require(Parse $parse, Data $data, $url='', $storage=[]){
         $parser = new Parse($parse->object());
         $result = $parser->compile($read, [], $data);
         $ob = ob_get_contents();
-        ob_end_clean();
+        ob_clean();
         if($ob){
             $result = $ob . $result;
         }
