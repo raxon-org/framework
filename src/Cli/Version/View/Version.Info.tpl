@@ -1,4 +1,4 @@
-{{R3M}}
+{{RAX}}
 Raxon-framework version: {{raxon.version()}}, Built: {{raxon.built()}}
 
 Copyright (c) 2018-{{date('Y')}} Remco van der Velde

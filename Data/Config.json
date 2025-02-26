@@ -225,7 +225,7 @@
     "parse": {
         "prefix": "Raxon\\Module\\Compile",
         "read": {
-            "parser": "{{R3M}}",
+            "parser": "{{RAX}}",
             "row_mismatch": 1,
             "object": {
                 "use_this": true,

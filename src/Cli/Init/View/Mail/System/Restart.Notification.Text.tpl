@@ -1,4 +1,4 @@
-{{R3M}}
+{{RAX}}
 System has received restart signal from the server.
 
 With Kind regards,

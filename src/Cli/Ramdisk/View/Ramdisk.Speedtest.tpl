@@ -1,3 +1,3 @@
-{{R3M}}
+{{RAX}}
 {{ramdisk.speedtest()}}
 

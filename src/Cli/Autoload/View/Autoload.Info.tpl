@@ -1,4 +1,4 @@
-{{R3M}}
+{{RAX}}
 Autoload CLI:
 
 {{binary()}} autoload info                        autoload information

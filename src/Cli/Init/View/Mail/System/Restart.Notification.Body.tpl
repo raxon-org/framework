@@ -1,4 +1,4 @@
-{{R3M}}
+{{RAX}}
 {{$subject = 'System Restart Notification'}}
 <html>
 <head>

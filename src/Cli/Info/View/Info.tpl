@@ -1,4 +1,4 @@
-{{R3M}}
+{{RAX}}
 {{if(config('silence') === true)}}
 diffrence.org silence mode... {{terminal.color('green')}}{{config('framework.version')}}{{terminal.color('reset')}}
 

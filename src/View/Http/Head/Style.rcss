@@ -1,4 +1,4 @@
-/*{{R3M}}*/
+/*{{RAX}}*/
 {{$background.header = 'rgba(200, 0, 0, 1)'}}
 {{$background.message = 'rgba(225, 225, 225, 1)'}}
 {{$background.tr.selected = 'rgba(225, 225, 225, 1)'}}

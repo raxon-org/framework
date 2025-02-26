@@ -1,3 +1,3 @@
-{{R3M}}
+{{RAX}}
 {{cache.clear()}}
 Cache clear successful.
