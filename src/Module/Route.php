@@ -1129,7 +1129,7 @@ class Route extends Data {
                         'ramdisk' => true,
                         'output' => [
                             'filter' => [
-                                "Raxon:Org:Output:Filter:System:Route:list"
+                                "Raxon:Output:Filter:System:Route:list"
                             ]
                         ]
 
@@ -1180,7 +1180,7 @@ class Route extends Data {
                     'ramdisk' => true,
                     'output' => [
                         'filter' => [
-                            "Raxon:Org:Output:Filter:System:Route:list"
+                            "Raxon:Output:Filter:System:Route:list"
                         ]
                     ]
                 ]
@@ -1314,7 +1314,7 @@ class Route extends Data {
                 $attribute = 'raxon-org-cli-' . $attribute;
                 $item = new stdClass();
                 $item->path = $path . '/';
-                $item->controller = 'Raxon:Org:Cli:' . $control . ':Controller:' . $control . ':run';
+                $item->controller = 'Raxon:Cli:' . $control . ':Controller:' . $control . ':run';
                 $item->request = (object) [
                     'language' => 'en'
                 ];

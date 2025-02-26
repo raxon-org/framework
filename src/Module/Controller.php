@@ -772,7 +772,7 @@ class Controller {
                         "priority" => 10,
                         "command" => [],
                         "controller" => [
-                            "Package:Raxon:Org:Output:Filter:Output:Filter:Comment:remove"
+                            "Package:Raxon:Output:Filter:Output:Filter:Comment:remove"
                         ]
                     ],
                     "route" => "*",
