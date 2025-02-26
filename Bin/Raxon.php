@@ -23,7 +23,6 @@ $dir_vendor =
 
 $autoload = $dir_vendor . 'autoload.php';
 $autoload = require $autoload;
-echo 'tes';
 try {
     $config = new Config(
         [
@@ -32,7 +31,6 @@ try {
         ]
     );
     $app = new App($autoload, $config);
-    d('fuck a duck');
     $result = App::run($app);
     if(is_scalar($result)){
         echo $result;
