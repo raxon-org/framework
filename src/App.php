@@ -182,7 +182,6 @@ class App extends Data {
             if ($file === false) {
                 App::configure($object);
                 Route::configure($object);
-                ddd('yesw2');
                 $destination = Route::request($object);
                 ddd($destination);
                 if ($destination === false) {
