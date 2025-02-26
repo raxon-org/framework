@@ -721,7 +721,8 @@ class Controller {
 //        Controller::decorate($object);
         ob_start();
         $read = $parse->compile($read, $data, $parse->storage());
-        $ob = ob_get_clean();
+        $ob = ob_get_contents();
+        ob_clean();
         if($ob){
             $read = $ob . $read;
         }

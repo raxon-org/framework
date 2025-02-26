@@ -497,7 +497,8 @@ class Parse {
 //                            $this->object()->config('parse.compile.disable.function.Parse::prepare_code', false);
                             ob_start();
                             $value = $this->compile($value, $storage->data(), $storage, $depth, $is_debug);
-                            $ob = ob_get_clean();
+                            $ob = ob_get_contents();
+                            ob_clean();
                             if($disable_function_prepare){
                                 $this->object()->config('parse.compile.disable.function.Parse::prepare_code', $disable_function_prepare);
                             } else {
@@ -888,7 +889,8 @@ class Parse {
                     ob_start();
                     $template = new $class(new Parse($this->object()), $storage);
                     $string = $template->run();
-                    $ob = ob_get_clean();
+                    $ob = ob_get_contents();
+                    ob_clean();
                     if($ob){
                         $string = $ob . $string;
                     }
@@ -1038,10 +1040,12 @@ class Parse {
                 return $string;
             }
         }
-        $ob = ob_get_clean();
+        $ob = ob_get_contents();
+        ob_clean();
         if($ob){
             $string = $ob . $string;
         }
+
         return $string;
     }
 
