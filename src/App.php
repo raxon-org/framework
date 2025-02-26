@@ -486,6 +486,7 @@ class App extends Data {
                                 ') triggered.'
                             );
                         }
+                        d($controller);
                         $result = $controller::{$function}($object);
                         Event::trigger($object, 'app.run.route.controller', [
                             'destination' => $destination,
