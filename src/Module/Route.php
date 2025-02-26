@@ -1136,6 +1136,7 @@ class Route extends Data {
 
                     ]
                 );
+                d($response);
             }
             if(
                 is_array($response) &&
