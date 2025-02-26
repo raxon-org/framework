@@ -1112,7 +1112,6 @@ class Route extends Data {
             Route::framework($object);
             $node = new Node($object);
             $role_system = $node->role_system();
-            d($role_system);
             $response = false;
             if($role_system){
                 $response = $node->list(
@@ -1136,7 +1135,7 @@ class Route extends Data {
 
                     ]
                 );
-                d($response);
+                ddd($response);
             }
             if(
                 is_array($response) &&
