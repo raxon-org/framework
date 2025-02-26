@@ -108,11 +108,11 @@ class App extends Data {
         Host::configure($this);
         Domain::configure($this);
         Event::configure($this);
-        ddd('test');
         Middleware::configure($this);
         OutputFilter::configure($this);
         Autoload::configure($this);
         Autoload::ramdisk_configure($this);
+        ddd('test');
     }
 
     /**
