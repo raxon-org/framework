@@ -285,13 +285,13 @@ class Method {
                             $attribute === 0 ||
                             $attribute === '0'
                         ){
-                            $result = '$this->' . $record['method']['php_name'] . '($this->parse(), $this->storage(), 0)';
+                            $result = '$content[] = $this->' . $record['method']['php_name'] . '($this->parse(), $this->storage(), 0)';
                         } else {
-                            $result = '$this->' . $record['method']['php_name'] . '($this->parse(), $this->storage())';
+                            $result = '$content[] = $this->' . $record['method']['php_name'] . '($this->parse(), $this->storage())';
                         }
 
                     } else {
-                        $result = '$this->' . $record['method']['php_name'] . '($this->parse(), $this->storage(), ' . $attribute . ')';
+                        $result = '$content[] = $this->' . $record['method']['php_name'] . '($this->parse(), $this->storage(), ' . $attribute . ')';
                     }
                 } else {
                     $trait_name = explode('function_', $record['method']['php_name'], 2);
@@ -305,12 +305,12 @@ class Method {
                             $attribute === 0 ||
                             $attribute === '0'
                         ){
-                            $result = '$this->' . $trait_name . '(0)';
+                            $result = '$content[] = $this->' . $trait_name . '(0)';
                         } else {
-                            $result = '$this->' . $trait_name . '()';
+                            $result = '$content[] = $this->' . $trait_name . '()';
                         }
                     } else {
-                        $result = '$this->' . $trait_name . '(' . $attribute . ')';
+                        $result = '$content[] = $this->' . $trait_name . '(' . $attribute . ')';
                     }
                     $parse = $build->parse();
                     $list = $parse->storage()->get('import.trait');
