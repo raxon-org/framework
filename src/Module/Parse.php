@@ -877,6 +877,7 @@ class Parse {
             try {
                 $exists = class_exists($class);
                 if ($exists) {
+                    d($class);
                     $template = new $class(new Parse($this->object()), $storage);
                     $string = $template->run();
                     d($string);
