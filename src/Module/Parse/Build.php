@@ -174,7 +174,7 @@ class Build {
         $document[] = $this->indent(2) . 'try {';
         $document[] = $this->indent(3) . 'ob_start();';
         $document[] = $this->indent(0) . $storage->data('placeholder.run');
-        $document[] = $this->indent(3) . '$content = ob_get_contents();';
+        //$document[] = $this->indent(3) . '$content = ob_get_contents();';
         $document[] = $this->indent(3) . 'ob_clean();';
         $document[] = $this->indent(3) . 'return $content;';
         $document[] = $this->indent(2) . '}';
