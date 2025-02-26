@@ -114,7 +114,7 @@ function function_require(Parse $parse, Data $data, $url='', $storage=[]){
         $data_data->data('ldelim', '{');
         $data_data->data('rdelim', '}');
         $parse->storage()->data('raxon.org.parse.view.source.mtime', $mtime);
-        ob_start();
+//        ob_start();
         $parser = new Parse($parse->object());
         $compile =  $parser->compile($read, [], $data_data);
 //        d($compile);
@@ -144,25 +144,25 @@ function function_require(Parse $parse, Data $data, $url='', $storage=[]){
             }
             $data->data('link', array_merge($link, $data_link));
         }
-        $ob = ob_get_contents();
-        ob_clean();
-        if($ob){
-            $compile = $ob . $compile;
-        }
+//        $ob = ob_get_contents();
+//        ob_clean();
+//        if($ob){
+//            $compile = $ob . $compile;
+//        }
         return ltrim($compile);
     } else {
         $source = $data->data('raxon.org.parse.view.source.url');
         $data->data('raxon.org.parse.view.source.url', $url);
         $parse->storage()->data('raxon.org.parse.view.source.mtime', $mtime);
-        ob_start();
+//        ob_start();
         $parser = new Parse($parse->object());
         $result = $parser->compile($read, [], $data);
 //        d($result);
-        $ob = ob_get_contents();
-        ob_clean();
-        if($ob){
-            $result = $ob . $result;
-        }
+//        $ob = ob_get_contents();
+//        ob_clean();
+//        if($ob){
+//            $result = $ob . $result;
+//        }
         $data->data('raxon.org.parse.view.source.url', $source);
         return ltrim($result);
     }
