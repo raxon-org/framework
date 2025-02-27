@@ -29,8 +29,10 @@ function function_block_code(Parse $parse, Data $data, $name='', $value=null){
             $value,
             [],
             $data            
-        );          
-        echo $compile;
+        );
+        $content = $data->data('#content');
+        $content[] = $compile;
+        $data->data('#content', $content);
     } else {
         $data->data($name, $parse->compile(
             $value,

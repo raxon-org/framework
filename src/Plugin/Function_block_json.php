@@ -22,7 +22,9 @@ function function_block_json(Parse $parse, Data $data, $name='', $value=null){
     }
     $value = trim($value, "\r\n\s\t");
     if(empty($name)){
-        echo $value;
+        $content = $data->data('#content');
+        $content[] = $value;
+        $data->data('#content', $content);
     } else {
         $data->data($name, $value);     
     }    
