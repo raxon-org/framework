@@ -719,9 +719,7 @@ class Controller {
             }
         }
 //        Controller::decorate($object);
-        d($read);
         $read = $parse->compile($read, $data, $parse->storage());
-        ddd($read);
         Parse::readback($object, $parse, App::SCRIPT);
         Parse::readback($object, $parse, App::LINK);
         return $read;
