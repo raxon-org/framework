@@ -16,11 +16,12 @@ function function_block_html(Parse $parse, Data $data, $name='', $value=null){
         $value = $name;
         $name = null;
     }
+    global $content;
     $search = [" ", "\t", "\n", "\r", "\r\n"];
     $replace = ['','','','',''];
-    $content = trim($value);
-    $content = explode('<', $content);
-    foreach ($content as $nr => $row){
+    $content_html = trim($value);
+    $content_html = explode('<', $content_html);
+    foreach ($content_html as $nr => $row){
         $dataRow = explode('>', $row);
         if(count($dataRow)>=2){
             foreach ($dataRow as $dataRowNr => $dataR){
@@ -36,8 +37,9 @@ function function_block_html(Parse $parse, Data $data, $name='', $value=null){
             $content[$nr] = implode('>', $dataRow);
         }
     }
-    $value = implode('<', $content);    
+    $value = implode('<', $content_html);
     if(empty($name)){
+        $content[] = $value;
         return $value;
     } else {
         $data->data($name, $value);
