@@ -1165,8 +1165,12 @@ class App extends Data {
                                     $command_options[] = '-' . $option . '[]=\'' . $val . '\'';
                                 }
                             }
-                        } else {
+                        } elseif(!is_object($value)) {
                             $command_options[] = '-' . $option . '=\'' . $value . '\'';
+                        } else {
+                            d($command_options);
+                            d($option);
+                            ddd($value);
                         }
                     }
                 }
