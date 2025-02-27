@@ -16,7 +16,6 @@ function function_block_html(Parse $parse, Data $data, $name='', $value=null){
         $value = $name;
         $name = null;
     }
-    global $content;
     $search = [" ", "\t", "\n", "\r", "\r\n"];
     $replace = ['','','','',''];
     $content_html = trim($value);
@@ -39,9 +38,9 @@ function function_block_html(Parse $parse, Data $data, $name='', $value=null){
     }
     $value = implode('<', $content_html);
     if(empty($name)){
-        $content = $data->data('content');
+        $content = $data->data('#content');
         $content[] = $value;
-        $data->data('content', $content);
+        $data->data('#content', $content);
         return $value;
     } else {
         $data->data($name, $value);

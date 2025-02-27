@@ -842,9 +842,9 @@ class Build {
                                     $storage->set('trait', $list);
                                 }
                             } else {
-                                $run[] = '$this->storage()->data(\'content\', $content);';
+                                $run[] = '$this->storage()->data(\'#content\', $content);';
                                 $run[] = $this->indent() . Method::create_capture($this, $storage, $selection) . ';';
-                                $run[] = '$content = $this->storage()->get(\'content\');';
+                                $run[] = '$content = $this->storage()->get(\'#content\');';
                             }
                             foreach($selection as $skip_nr => $item){
                                 //need skip_nr
@@ -863,9 +863,9 @@ class Build {
                                     true
                                 )
                             ){
-                                $run[] = '$this->storage()->data(\'content\', $content);';
+                                $run[] = '$this->storage()->data(\'#content\', $content);';
                                 $run[] = $this->indent() . $control . ';';
-                                $run[] = '$content = $this->storage()->get(\'content\');';
+                                $run[] = '$content = $this->storage()->get(\'#content\');';
                             }
                             elseif(
                                 array_key_exists('method', $select) &&
