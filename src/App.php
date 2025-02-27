@@ -1168,9 +1168,62 @@ class App extends Data {
                         } elseif(!is_object($value)) {
                             $command_options[] = '-' . $option . '=\'' . $value . '\'';
                         } else {
-                            d($command_options);
-                            d($option);
-                            ddd($value);
+                            foreach($value as $key => $val){
+                                if($value === false){
+                                    $val = 'false';
+                                }
+                                elseif($value === true){
+                                    $val = 'true';
+                                }
+                                elseif($value === null){
+                                    $val = 'null';
+                                }
+                                if(
+                                    in_array(
+                                        $val,
+                                        [
+                                            'false',
+                                            'true',
+                                            'null'
+                                        ],
+                                        true
+                                    ) ||
+                                    is_numeric($val)
+                                ){
+                                    $command_options[] = '-' . $option . '.' . $key . '=' . $val;
+                                }
+                                elseif(is_object($val)){
+                                   foreach($val as $k => $v){
+                                        if($value === false){
+                                             $v = 'false';
+                                        }
+                                        elseif($value === true){
+                                             $v = 'true';
+                                        }
+                                        elseif($value === null){
+                                             $v = 'null';
+                                        }
+                                        if(
+                                             in_array(
+                                                  $v,
+                                                  [
+                                                    'false',
+                                                    'true',
+                                                    'null'
+                                                  ],
+                                                  true
+                                             ) ||
+                                             is_numeric($v)
+                                        ){
+                                             $command_options[] = '-' . $option . '.' . $key . '.' . $k . '=' . $v;
+                                        } else {
+                                             $command_options[] = '-' . $option . '.' . $key . '.' . $k . '=\'' . $v . '\'';
+                                        }
+                                   }
+                                } else {
+                                    $command_options[] = '-' . $option . '.' . $key . '=\'' . $val . '\'';
+                                }
+                            }
                         }
                     }
                 }
