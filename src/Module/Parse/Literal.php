@@ -34,6 +34,10 @@ class Literal {
             $temp = explode('{/literal}', $explode[1], 2);
             $uuid = sha1($temp[0]);
             $data->data('raxon.org.parse.literal.' . $uuid, $temp[0]);
+            if(!array_key_exists(1, $temp)){
+                d($string);
+                ddd($temp);
+            }
             $temp[1] = 'literal-' . $data->data('raxon.org.parse.literal.key') . '-' . $uuid . $temp[1];
             $explode[1] = $temp[1];
             $string = implode('', $explode);
