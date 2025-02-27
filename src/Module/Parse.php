@@ -771,6 +771,7 @@ class Parse {
             try {
                 $exists = class_exists($class);
                 if ($exists) {
+                    d($url);
                     $template = new $class(new Parse($this->object()), $storage);
                     $string = $template->run();
                     $is_disabled = $this->object()->config('parse.compile.disable.function.Value::contains_replace');
