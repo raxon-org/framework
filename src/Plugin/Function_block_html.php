@@ -39,7 +39,10 @@ function function_block_html(Parse $parse, Data $data, $name='', $value=null){
     }
     $value = implode('<', $content_html);
     if(empty($name)){
+        $storage = $parse->storage();
+        $content = $storage->data('content');
         $content[] = $value;
+        $storage->data('content', $content);
         return $value;
     } else {
         $data->data($name, $value);
