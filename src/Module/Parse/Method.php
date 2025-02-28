@@ -318,6 +318,14 @@ class Method {
                             $in_list = true;
                             break;
                         }
+                        elseif(
+                            array_key_exists('php_trait', $record['method']) &&
+                            $item['name'] === $record['method']['php_trait'] &&
+                            $item['namespace'] === $record['method']['namespace']
+                        ){
+                            $in_list = true;
+                            break;
+                        }
                     }
                     if(!$in_list){
                         $item = [];
@@ -326,7 +334,7 @@ class Method {
                         $list[] = $item;
                         if(array_key_exists('php_trait', $record['method'])){
                             $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
-                            $locate = $autoload->locate($record['method']['namespace'] . $record['method']['php_trait'], false,  Autoload::MODE_LOCATION);
+                            $locate = $autoload->locate($item['namespace'] . $item['name'], false,  Autoload::MODE_LOCATION);
                             $location = [];
                             $is_found = false;
                             foreach($locate as $location_nr => $sublist){
@@ -383,11 +391,10 @@ class Method {
                         $item['namespace'] = $record['method']['namespace'];
                         $list[] = $item;
                         if(
-                            array_key_exists('php_trait', $record['method']) &&
-                            array_key_exists('namespace', $record['method'])
+                            array_key_exists('php_trait', $record['method'])
                         ){
                             $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
-                            $locate = $autoload->locate($record['method']['namespace'] . $record['method']['php_trait'], false,  Autoload::MODE_LOCATION);
+                            $locate = $autoload->locate($item['namespace'] . $item['name'], false,  Autoload::MODE_LOCATION);
                             $location = [];
                             $is_found = false;
                             foreach($locate as $location_nr => $sublist){
