@@ -958,7 +958,7 @@ class Build {
                 $multi_line = Build::getPluginMultiline($object);
                 // 'capture_append'
                 foreach($multi_line as $nr => $plugin){
-                    $multi_line[$nr] = 'function_' . str_replace('.', '_', $plugin);
+                    $multi_line[$nr] = str_replace('.', '_', $plugin);
                 }
                 $method = Build::METHOD_DEFAULT;
                 $method = array_merge($method, $multi_line);
@@ -1352,7 +1352,7 @@ class Build {
                         true
                     )
                 ){
-                    $name = 'function_' . str_replace('.', '_', $record['method']['name']);
+                    $name = str_replace('.', '_', $record['method']['name']);
                     $storage->data('function.' . $name, $record);
                 } else {
                     $multi_line = Build::getPluginMultiline($this->object());
@@ -1364,7 +1364,7 @@ class Build {
                             true
                         )
                     ){
-                        $name = 'function_' . str_replace('.', '_', $record['method']['name']);
+                        $name = str_replace('.', '_', $record['method']['name']);
                         $storage->data('function.' . $name, $record);
                     } else {
                         $name = str_replace('.', '', $record['method']['name']);

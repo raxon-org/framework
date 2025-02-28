@@ -170,19 +170,14 @@ class Value {
                     $record['type'] === Token::TYPE_METHOD &&
                     !array_key_exists('php_name', $record['method'])
                 ){
-                    $record['method']['php_name'] = 'function_' . str_replace('.', '_', $record['value']);
+                    $record['method']['php_name'] = str_replace('.', '_', $record['value']);
                     $storage->data('function.' . $record['method']['php_name'], $record);
                 }
                 $method = Method::get($build, $storage, $record);
                 if($method['type'] == Token::TYPE_CODE){
                     return $method['value'];
                 } else {
-                    if(empty($record['method']['trait'])){
-                        return '$this->' . $record['method']['php_name'] . '($this->parse(), $this->storage())';
-                    } else {
-                        $trait_name = explode('function_', $record['method']['php_name'], 2);
-                        return '$this->' . $trait_name[1] . '()';
-                    }
+                    return '$this->' . $record['method']['php_name'] . '()';
                 }
             case Token::TYPE_COMMENT_SINGLE_LINE :
                 return '\'\'';

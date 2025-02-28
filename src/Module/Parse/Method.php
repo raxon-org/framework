@@ -280,20 +280,9 @@ class Method {
                 }
             } else {
                 if(empty($record['method']['trait'])){
-                    if(empty($attribute)){
-                        if(
-                            $attribute === 0 ||
-                            $attribute === '0'
-                        ){
-                            $result = '$this->' . $record['method']['php_name'] . '($this->parse(), $this->storage(), 0)';
-                        } else {
-                            $result = '$this->' . $record['method']['php_name'] . '($this->parse(), $this->storage())';
-                        }
-
-                    } else {
-                        $result = '$this->' . $record['method']['php_name'] . '($this->parse(), $this->storage(), ' . $attribute . ')';
-                    }
+                    $result = '$this->' . $record['method']['php_name'] . '(' . $attribute . ')';
                 } else {
+                    dd($record);
                     $trait_name = explode('function_', $record['method']['php_name'], 2);
                     if(array_key_exists(1, $trait_name)){
                         $trait_name = $trait_name[1];
