@@ -1355,12 +1355,10 @@ class Build {
                     $name = str_replace('.', '_', $record['method']['name']);
                     $storage->data('function.' . $name, $record);
                     $list = $this->parse()->storage()->get('import.trait') ?? [];
-                    $record['method']['namespace'] = $record['method']['namespace'] ?? 'PLugin';
+                    $record['method']['namespace'] = $record['method']['namespace'] ?? 'Plugin';
                     $trait_name = $record['method']['namespace'] . '\\' . Core::ucfirst_sentence($record['method']['name'], '_');
-
-                    d($trait_name);
-                    d($list);
-                    ddd($name);
+                    $list[] = $trait_name;
+                    $this->parse()->storage()->set('import.trait', $list);
                 } else {
                     $multi_line = Build::getPluginMultiline($this->object());
                     // 'capture.append'
