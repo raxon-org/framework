@@ -336,7 +336,10 @@ class Method {
                     $parse = $build->parse();
                     $record['method']['trait'] = 'Plugin\\' . Core::ucfirst_sentence($record['method']['php_name'], '_');
                     $record['method']['namespace'] = '';
-                    $list = $storage->get('import.trait') ?? [];
+                    $list = $storage->get('import.trait');
+                    if($list === null){
+                        $list = [];
+                    }
                     $in_list = false;
                     foreach($list as $nr => $item){
                         if(
