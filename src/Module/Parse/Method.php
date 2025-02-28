@@ -321,26 +321,20 @@ class Method {
                         $result = '$this->' . $record['method']['php_name'] . '(' . $attribute . ')';
                     }
                 } else {
-                    $trait_name = explode('function_', $record['method']['php_name'], 2);
-                    if(array_key_exists(1, $trait_name)){
-                        $trait_name = $trait_name[1];
-                    } else {
-                        $trait_name = $trait_name[0];
-                    }
                     if(empty($attribute)){
                         if(
                             $attribute === 0 ||
                             $attribute === '0'
                         ){
-                            $result = '$this->' . $trait_name . '(0)';
+                            $result = '$this->' . $record['method']['php_name'] . '(0)';
                         } else {
-                            $result = '$this->' . $trait_name . '()';
+                            $result = '$this->' . $record['method']['php_name'] . '()';
                         }
                     } else {
-                        $result = '$this->' . $trait_name . '(' . $attribute . ')';
+                        $result = '$this->' . $record['method']['php_name'] . '(' . $attribute . ')';
                     }
                     $parse = $build->parse();
-                    $record['method']['trait'] = $trait_name;
+                    $record['method']['trait'] = 'Plugin\\' . Core::ucfirst_sentence($record['method']['php_name'], '_');
                     $record['method']['namespace'] = '';
                     $list = $storage->get('import.trait') ?? [];
                     $in_list = false;
