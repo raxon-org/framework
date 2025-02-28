@@ -1370,6 +1370,9 @@ class Build {
                         $name = str_replace('.', '_', $record['method']['name']);
                     }
                 }
+                if($name === 'register'){
+                    ddd($record);
+                }
                 $name_trait = 'Plugin\\' . Core::ucfirst_sentence($name, '_');
                 $autoload = $this->object()->data(App::AUTOLOAD_RAXON);
 //                    $autoload->addPrefix('Plugin', $object->config('controller.dir.plugin'));
