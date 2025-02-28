@@ -340,9 +340,8 @@ class Method {
                         $item['name'] = $record['method']['trait'];
                         $item['namespace'] = $record['method']['namespace'];
                         $list[] = $item;
-                        $name_trait = 'Plugin\\' . Core::ucfirst_sentence($name, '_');
                         $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
-                        $location = $autoload->locate($name_trait, false,  Autoload::MODE_LOCATION);
+                        $location = $autoload->locate($record['method']['trait'], false,  Autoload::MODE_LOCATION);
                         $is_found = false;
                         foreach($location as $location_nr => $sublist){
                             foreach($sublist as $sub_nr => $file){
