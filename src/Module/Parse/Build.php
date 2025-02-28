@@ -1374,10 +1374,12 @@ class Build {
                 $autoload = $this->object()->data(App::AUTOLOAD_RAXON);
 //                    $autoload->addPrefix('Plugin', $object->config('controller.dir.plugin'));
 //                    $autoload->addPrefix('Plugin', $object->config('project.dir.plugin'));
-                $location = $autoload->locate($name_trait, false,  Autoload::MODE_LOCATION);
+                $locate = $autoload->locate($name_trait, false,  Autoload::MODE_LOCATION);
+                $location = [];
                 $is_found = false;
-                foreach($location as $location_nr => $sublist){
+                foreach($locate as $location_nr => $sublist){
                     foreach($sublist as $sub_nr => $file){
+                        $location[] = $file;
                         if(File::exist($file)){
                             $is_found = true;
                             break;
