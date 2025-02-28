@@ -284,7 +284,8 @@ class Method {
                 }
             } else {
                 if(empty($record['method']['trait'])){
-                    $name_trait = 'Plugin\\' . Core::ucfirst_sentence($record['method']['php_name'], '_');
+                    $record['method']['trait'] = Core::ucfirst_sentence($record['method']['php_name'], '_');
+                    $record['method']['namespace'] = 'Plugin\\';
 
                     $list = $storage->data('use.trait');
                     if($list === null){
@@ -293,7 +294,7 @@ class Method {
                     $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
 //                    $autoload->addPrefix('Plugin', $object->config('controller.dir.plugin'));
 //                    $autoload->addPrefix('Plugin', $object->config('project.dir.plugin'));
-                    $location = $autoload->locate($name_trait, false,  Autoload::MODE_LOCATION);
+                    $location = $autoload->locate($record['method']['namespace'] . $record['method']['trait'], false,  Autoload::MODE_LOCATION);
                     $is_found = false;
                     foreach($location as $location_nr => $sublist){
                         foreach($sublist as $sub_nr => $file){
@@ -319,8 +320,8 @@ class Method {
                     } else {
                         $result = '$this->' . $record['method']['php_name'] . '(' . $attribute . ')';
                     }
-                    $record['method']['trait'] = 'Plugin\\' . Core::ucfirst_sentence($record['method']['php_name'], '_');
-                    $record['method']['namespace'] = '';
+                    $record['method']['trait'] = Core::ucfirst_sentence($record['method']['php_name'], '_');
+                    $record['method']['namespace'] = 'Plugin\\';
                     $list = $storage->get('import.trait');
                     if($list === null){
                         $list = [];
@@ -341,7 +342,7 @@ class Method {
                         $item['namespace'] = $record['method']['namespace'];
                         $list[] = $item;
                         $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
-                        $location = $autoload->locate($record['method']['trait'], false,  Autoload::MODE_LOCATION);
+                        $location = $autoload->locate($record['method']['namespace'] . $record['method']['trait'], false,  Autoload::MODE_LOCATION);
                         $is_found = false;
                         foreach($location as $location_nr => $sublist){
                             foreach($sublist as $sub_nr => $file){
@@ -370,8 +371,8 @@ class Method {
                     } else {
                         $result = '$this->' . $record['method']['php_name'] . '(' . $attribute . ')';
                     }
-                    $record['method']['trait'] = 'Plugin\\' . Core::ucfirst_sentence($record['method']['php_name'], '_');
-                    $record['method']['namespace'] = '';
+                    $record['method']['trait'] = Core::ucfirst_sentence($record['method']['php_name'], '_');
+                    $record['method']['namespace'] = 'Plugin\\';
                     $list = $storage->get('import.trait');
                     if($list === null){
                         $list = [];
@@ -391,6 +392,20 @@ class Method {
                         $item['name'] = $record['method']['trait'];
                         $item['namespace'] = $record['method']['namespace'];
                         $list[] = $item;
+                        $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
+                        $location = $autoload->locate($record['method']['namespace'] . $record['method']['trait'], false,  Autoload::MODE_LOCATION);
+                        $is_found = false;
+                        foreach($location as $location_nr => $sublist){
+                            foreach($sublist as $sub_nr => $file){
+                                if(File::exist($file)){
+                                    $is_found = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if($is_found === false){
+                            throw new LocateException('Plugin (' . $record['method']['name'] . ') not found...', $location);
+                        }
                     }
                     d($list);
                     $storage->set('import.trait', $list);
