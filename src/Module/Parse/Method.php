@@ -396,6 +396,7 @@ class Method {
                         $item['name'] = $record['method']['trait'];
                         $item['namespace'] = $record['method']['namespace'];
                         $list[] = $item;
+                        d($record);
                         $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
                         $locate = $autoload->locate($record['method']['namespace'] . $record['method']['trait'], false,  Autoload::MODE_LOCATION);
                         $location = [];
