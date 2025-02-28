@@ -1355,6 +1355,7 @@ class Build {
                     $name = str_replace('.', '_', $record['method']['name']);
                     $storage->data('function.' . $name, $record);
                     $list = $this->parse()->storage()->get('import.trait') ?? [];
+                    d($record);
                     d($list);
                     ddd($name);
                 } else {
