@@ -11,9 +11,11 @@
 namespace Raxon\Module\Parse;
 
 use Raxon\App;
+use Raxon\Exception\LocateException;
 use Raxon\Module\Autoload;
 use Raxon\Module\Data;
 use Raxon\Module\Core;
+use Raxon\Module\File;
 
 use Exception;
 
@@ -288,21 +290,30 @@ class Method {
 //                    $autoload->addPrefix('Plugin', $object->config('controller.dir.plugin'));
 //                    $autoload->addPrefix('Plugin', $object->config('project.dir.plugin'));
                     $location = $autoload->locate($name_trait, false,  Autoload::MODE_LOCATION);
-                    d($location);
-
-                    ddd($record);
+                    $is_found = false;
+                    foreach($location as $nr => $sublist){
+                        foreach($sublist as $subnr => $file){
+                            if(File::exist($file)){
+                                $is_found = true;
+                                break;
+                            }
+                        }
+                    }
+                    if($is_found === false){
+                        throw new LocateException('Plugin (' . $record['method']['name'] . ') not found...', $location);
+                    }
                     if(empty($attribute)){
                         if(
                             $attribute === 0 ||
                             $attribute === '0'
                         ){
-                            $result = '$this->' . $record['method']['php_name'] . '($this->parse(), $this->storage(), 0)';
+                            $result = '$this->' . $record['method']['php_name'] . '(0)';
                         } else {
-                            $result = '$this->' . $record['method']['php_name'] . '($this->parse(), $this->storage())';
+                            $result = '$this->' . $record['method']['php_name'] . '()';
                         }
 
                     } else {
-                        $result = '$this->' . $record['method']['php_name'] . '($this->parse(), $this->storage(), ' . $attribute . ')';
+                        $result = '$this->' . $record['method']['php_name'] . '(' . $attribute . ')';
                     }
                 } else {
                     $trait_name = explode('function_', $record['method']['php_name'], 2);
