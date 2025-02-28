@@ -172,6 +172,10 @@ class Value {
                 ){
                     $record['method']['php_name'] = str_replace('.', '_', $record['value']);
                     $storage->data('function.' . $record['method']['php_name'], $record);
+
+                    $list = $storage->data('use.trait') ?? [];
+                    d($record['method']['php_name']);
+                    ddd($list);
                 }
                 $method = Method::get($build, $storage, $record);
                 if($method['type'] == Token::TYPE_CODE){
