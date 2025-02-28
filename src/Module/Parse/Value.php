@@ -178,7 +178,9 @@ class Value {
                     $record['method']['php_name'] = str_replace('.', '_', $record['value']);
                     $storage->data('function.' . $record['method']['php_name'], $record);
                     $record['method']['trait'] = Core::ucfirst_sentence($record['method']['php_name'], '_');
-                    $record['method']['namespace'] = 'Plugin\\';
+                    if(empty($record['method']['namespace'])){
+                        $record['method']['namespace'] = 'Plugin\\';
+                    }
                     $list = $storage->get('import.trait');
                     if($list === null){
                         $list = [];

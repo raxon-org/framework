@@ -285,8 +285,9 @@ class Method {
             } else {
                 if(empty($record['method']['trait'])){
                     $record['method']['trait'] = Core::ucfirst_sentence($record['method']['php_name'], '_');
-                    $record['method']['namespace'] = 'Plugin\\';
-
+                    if(empty($record['method']['namespace'])){
+                        $record['method']['namespace'] = 'Plugin\\';
+                    }
                     $list = $storage->data('use.trait');
                     if($list === null){
                         $list = [];
@@ -323,7 +324,9 @@ class Method {
                         $result = '$this->' . $record['method']['php_name'] . '(' . $attribute . ')';
                     }
                     $record['method']['trait'] = Core::ucfirst_sentence($record['method']['php_name'], '_');
-                    $record['method']['namespace'] = 'Plugin\\';
+                    if(empty($record['method']['namespace'])){
+                        $record['method']['namespace'] = 'Plugin\\';
+                    }
                     $list = $storage->get('import.trait');
                     if($list === null){
                         $list = [];
@@ -376,7 +379,9 @@ class Method {
                         $result = '$this->' . $record['method']['php_name'] . '(' . $attribute . ')';
                     }
                     $record['method']['trait'] = Core::ucfirst_sentence($record['method']['php_name'], '_');
-                    $record['method']['namespace'] = 'Plugin\\';
+                    if(empty($record['method']['namespace'])){
+                        $record['method']['namespace'] = 'Plugin\\';
+                    }
                     $list = $storage->get('import.trait');
                     if($list === null){
                         $list = [];
