@@ -280,6 +280,7 @@ class Method {
                 }
             } else {
                 if(empty($record['method']['trait'])){
+                    ddd($record);
                     if(empty($attribute)){
                         if(
                             $attribute === 0 ||
