@@ -260,7 +260,7 @@ class Build {
                 $use[] = $this->indent(1) . 'use \\' . $namespace . $name . ';';
             }
         }
-        ddd($use);
+        d($use);
         $traits = implode("\n", $trait);
         $usage = implode("\n", $use);
         $count = 0;
