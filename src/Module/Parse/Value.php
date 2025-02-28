@@ -192,6 +192,7 @@ class Value {
                         $item['namespace'] = $record['method']['namespace'];
                         $list[] = $item;
                     }
+                    d($list);
                     $storage->set('import.trait', $list);
                 }
                 $method = Method::get($build, $storage, $record);
