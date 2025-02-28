@@ -323,6 +323,8 @@ class Build {
      */
     private function createRequireContent($type='', $document=[]): array
     {
+        //needs to check if the plugin exists
+        return $document;
         $object = $this->object();
         $url = false;
         //reconfigure build parse
