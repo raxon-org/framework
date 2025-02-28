@@ -248,7 +248,7 @@ class Build {
             }
         }
         $list = $this->parse()->storage()->get('import.trait');
-        d($this->parse()->storage());
+        d($this->parse()->storage()->get('import'));
         if(
             !empty($list) &&
             is_array($list)
