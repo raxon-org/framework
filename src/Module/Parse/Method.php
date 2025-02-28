@@ -302,36 +302,12 @@ class Method {
                         $result = '$this->' . $trait_name . '(' . $attribute . ')';
                     }
                     $parse = $build->parse();
-                    $list = $parse->storage()->get('import.trait');
-                    if(empty($list)){
-                        $list = [];
-                    }
+                    $list = $parse->storage()->get('import.trait') ?? [];
                     $in_list = false;
-                    foreach($list as $nr => $item){
-                        if(
-                            $item['name'] === $record['method']['trait'] &&
-                            $item['namespace'] === $record['method']['namespace']
-                        ){
-                            $in_list = true;
-                            break;
-                        }
-                        if(
-                            array_key_exists('method', $record) &&
-                            array_key_exists('name', $record['method']) &&
-                            array_key_exists('namespace', $record['method'])
-                        ){
-                            $name = str_replace('.', '_', $record['method']['name']);
-                            $namespace = str_replace('.', '\\', $record['method']['namespace']);
-                            if(substr($namespace, -1 ,1) !== '\\'){
-                                $namespace .= '\\';
-                            }
-                        }
-                    }
-                    if(!$in_list){
-                        $item = [];
-                        $item['name'] = $record['method']['trait'];
-                        $item['namespace'] = $record['method']['namespace'];
-                        $list[] = $item;
+                    $record['method']['namespace'] = $record['method']['namespace'] ?? 'Plugin';
+                    $trait_name = $record['method']['namespace'] . '\\' . $record['method']['trait'];
+                    if(!in_array($trait_name, $list)){
+                        $list[] = $trait_name;
                     }
                     $parse->storage()->set('import.trait', $list);
                 }
