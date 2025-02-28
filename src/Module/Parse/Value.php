@@ -10,10 +10,14 @@
  */
 namespace Raxon\Module\Parse;
 
+use Raxon\App;
+use Raxon\Exception\LocateException;
+use Raxon\Module\Autoload;
 use Raxon\Module\Core;
 use Raxon\Module\Data;
 
 use Exception;
+use Raxon\Module\File;
 
 class Value {
     const TYPE_CAST_BOOLEAN = 'bool';
@@ -173,8 +177,8 @@ class Value {
                 ){
                     $record['method']['php_name'] = str_replace('.', '_', $record['value']);
                     $storage->data('function.' . $record['method']['php_name'], $record);
-                    $record['method']['trait'] = 'Plugin\\' . Core::ucfirst_sentence($record['method']['php_name'], '_');
-                    $record['method']['namespace'] = '';
+                    $record['method']['trait'] = Core::ucfirst_sentence($record['method']['php_name'], '_');
+                    $record['method']['namespace'] = 'Plugin\\';
                     $list = $storage->get('import.trait');
                     if($list === null){
                         $list = [];
@@ -194,6 +198,20 @@ class Value {
                         $item['name'] = $record['method']['trait'];
                         $item['namespace'] = $record['method']['namespace'];
                         $list[] = $item;
+                        $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
+                        $location = $autoload->locate($record['method']['namespace'] . $record['method']['trait'], false,  Autoload::MODE_LOCATION);
+                        $is_found = false;
+                        foreach($location as $location_nr => $sublist){
+                            foreach($sublist as $sub_nr => $file){
+                                if(File::exist($file)){
+                                    $is_found = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if($is_found === false){
+                            throw new LocateException('Plugin (' . $record['method']['name'] . ') not found...', $location);
+                        }
                     }
                     d($list);
                     $storage->set('import.trait', $list);
