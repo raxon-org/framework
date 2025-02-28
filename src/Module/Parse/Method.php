@@ -284,11 +284,11 @@ class Method {
                 if(empty($record['method']['trait'])){
                     $name_trait = 'Plugin\\' . $record['method']['php_name'];
 
-                    $autoload = $object->data(App::AUTOLOAD_RAXON);
-                    $autoload->addPrefix('Plugin', $object->config('controller.dir.plugin'));
-                    $autoload->addPrefix('Plugin', $object->config('project.dir.plugin'));
-                    $location = $autoload->locate($use_plugin, false,  Autoload::MODE_LOCATION);
-
+                    $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
+//                    $autoload->addPrefix('Plugin', $object->config('controller.dir.plugin'));
+//                    $autoload->addPrefix('Plugin', $object->config('project.dir.plugin'));
+                    $location = $autoload->locate($name_trait, false,  Autoload::MODE_LOCATION);
+                    d($location);
 
                     ddd($record);
                     if(empty($attribute)){
