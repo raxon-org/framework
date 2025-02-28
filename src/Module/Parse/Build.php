@@ -1355,7 +1355,10 @@ class Build {
                     $name = str_replace('.', '_', $record['method']['name']);
                     $storage->data('function.' . $name, $record);
                     $list = $this->parse()->storage()->get('import.trait') ?? [];
-                    d($record);
+                    $record['method']['namespace'] = $record['method']['namespace'] ?? 'PLugin';
+                    $trait_name = $record['method']['namespace'] . '\\' . Core::ucfirst_sentence($record['method']['name'], '_');
+
+                    d($trait_name);
                     d($list);
                     ddd($name);
                 } else {
