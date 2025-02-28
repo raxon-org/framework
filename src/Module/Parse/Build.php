@@ -1386,7 +1386,6 @@ class Build {
                 if($is_found === false){
                     throw new LocateException('Plugin (' . $record['method']['name'] . ') not found...', $location);
                 }
-
                 $tree[$nr]['method']['php_name'] = $name;
             }
         }
