@@ -294,10 +294,12 @@ class Method {
                     $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
 //                    $autoload->addPrefix('Plugin', $object->config('controller.dir.plugin'));
 //                    $autoload->addPrefix('Plugin', $object->config('project.dir.plugin'));
-                    $location = $autoload->locate($record['method']['namespace'] . $record['method']['trait'], false,  Autoload::MODE_LOCATION);
+                    $locate = $autoload->locate($record['method']['namespace'] . $record['method']['trait'], false,  Autoload::MODE_LOCATION);
+                    $location = [];
                     $is_found = false;
-                    foreach($location as $location_nr => $sublist){
+                    foreach($locate as $location_nr => $sublist){
                         foreach($sublist as $sub_nr => $file){
+                            $location[] = $file;
                             if(File::exist($file)){
                                 $is_found = true;
                                 break;
@@ -342,10 +344,12 @@ class Method {
                         $item['namespace'] = $record['method']['namespace'];
                         $list[] = $item;
                         $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
-                        $location = $autoload->locate($record['method']['namespace'] . $record['method']['trait'], false,  Autoload::MODE_LOCATION);
+                        $locate = $autoload->locate($record['method']['namespace'] . $record['method']['trait'], false,  Autoload::MODE_LOCATION);
+                        $location = [];
                         $is_found = false;
-                        foreach($location as $location_nr => $sublist){
+                        foreach($locate as $location_nr => $sublist){
                             foreach($sublist as $sub_nr => $file){
+                                $location[] = $file;
                                 if(File::exist($file)){
                                     $is_found = true;
                                     break;
@@ -393,10 +397,12 @@ class Method {
                         $item['namespace'] = $record['method']['namespace'];
                         $list[] = $item;
                         $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
-                        $location = $autoload->locate($record['method']['namespace'] . $record['method']['trait'], false,  Autoload::MODE_LOCATION);
+                        $locate = $autoload->locate($record['method']['namespace'] . $record['method']['trait'], false,  Autoload::MODE_LOCATION);
+                        $location = [];
                         $is_found = false;
-                        foreach($location as $location_nr => $sublist){
+                        foreach($locate as $location_nr => $sublist){
                             foreach($sublist as $sub_nr => $file){
+                                $location[] = $file;
                                 if(File::exist($file)){
                                     $is_found = true;
                                     break;
