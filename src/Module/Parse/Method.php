@@ -353,6 +353,7 @@ class Method {
                         $item['namespace'] = $record['method']['namespace'];
                         $list[] = $item;
                     }
+                    d($list);
                     $storage->set('import.trait', $list);
                 }
             }
