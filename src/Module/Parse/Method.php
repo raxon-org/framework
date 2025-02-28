@@ -280,9 +280,20 @@ class Method {
                 }
             } else {
                 if(empty($record['method']['trait'])){
-                    $result = '$this->' . $record['method']['php_name'] . '(' . $attribute . ')';
+                    if(empty($attribute)){
+                        if(
+                            $attribute === 0 ||
+                            $attribute === '0'
+                        ){
+                            $result = '$this->' . $record['method']['php_name'] . '($this->parse(), $this->storage(), 0)';
+                        } else {
+                            $result = '$this->' . $record['method']['php_name'] . '($this->parse(), $this->storage())';
+                        }
+
+                    } else {
+                        $result = '$this->' . $record['method']['php_name'] . '($this->parse(), $this->storage(), ' . $attribute . ')';
+                    }
                 } else {
-                    dd($record);
                     $trait_name = explode('function_', $record['method']['php_name'], 2);
                     if(array_key_exists(1, $trait_name)){
                         $trait_name = $trait_name[1];
@@ -302,12 +313,36 @@ class Method {
                         $result = '$this->' . $trait_name . '(' . $attribute . ')';
                     }
                     $parse = $build->parse();
-                    $list = $parse->storage()->get('import.trait') ?? [];
+                    $list = $parse->storage()->get('import.trait');
+                    if(empty($list)){
+                        $list = [];
+                    }
                     $in_list = false;
-                    $record['method']['namespace'] = $record['method']['namespace'] ?? 'Plugin';
-                    $trait_name = $record['method']['namespace'] . '\\' . $record['method']['trait'];
-                    if(!in_array($trait_name, $list)){
-                        $list[] = $trait_name;
+                    foreach($list as $nr => $item){
+                        if(
+                            $item['name'] === $record['method']['trait'] &&
+                            $item['namespace'] === $record['method']['namespace']
+                        ){
+                            $in_list = true;
+                            break;
+                        }
+                        if(
+                            array_key_exists('method', $record) &&
+                            array_key_exists('name', $record['method']) &&
+                            array_key_exists('namespace', $record['method'])
+                        ){
+                            $name = str_replace('.', '_', $record['method']['name']);
+                            $namespace = str_replace('.', '\\', $record['method']['namespace']);
+                            if(substr($namespace, -1 ,1) !== '\\'){
+                                $namespace .= '\\';
+                            }
+                        }
+                    }
+                    if(!$in_list){
+                        $item = [];
+                        $item['name'] = $record['method']['trait'];
+                        $item['namespace'] = $record['method']['namespace'];
+                        $list[] = $item;
                     }
                     $parse->storage()->set('import.trait', $list);
                 }
