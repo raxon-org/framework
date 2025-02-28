@@ -196,79 +196,17 @@ class Build {
     private function createTrait($document=[]): array
     {
         $storage = $this->storage();
-        $trait = [];
         $use= [];
-        $list = $storage->get('trait');
-        if(
-            is_array($list)
-        ){
-            foreach($list as $nr => $record){
-                if(
-                    array_key_exists('namespace', $record) &&
-                    array_key_exists('name', $record) &&
-                    array_key_exists('value', $record) &&
-                    empty($record['namespace']) &&
-                    !empty($record['name'])
-                ){
-                    $name = str_replace('.', '_', $record['name']);
-                    $name .= Core::uuid_variable();//rand(1000,9999) . rand(1000,9999);
-                    $trait[] = 'trait ' . $name . ' {';
-                    $use[] = $this->indent(1) . 'use ' . $name . ';';
-                    $explode = explode(PHP_EOL, $record['value']);
-                    foreach($explode as $line){
-                        $trait[] = $this->indent(1) . $line;
-                    }
-                    $trait[] = '}';
-                    $trait[] = '';
-                }
-                else if(
-                    array_key_exists('namespace', $record) &&
-                    array_key_exists('name', $record) &&
-                    array_key_exists('value', $record) &&
-                    !empty($record['namespace']) &&
-                    !empty($record['name'])
-                ){
-                    $name = str_replace('.', '_', $record['name']);
-                    $name.= Core::uuid_variable();//rand(1000,9999) . rand(1000,9999);
-                    $namespace = str_replace('.', '\\', $record['namespace']);
-                    $trait[] = 'namespace ' . $namespace . ';';
-                    $trait[] = 'trait ' . $name . ' {';
-                    if(substr($namespace, -1 ,1) !== '\\'){
-                        $namespace .= '\\';
-                    }
-                    $use[] = $this->indent(1) . 'use \\' . $namespace . $name . ';';
-                    $explode = explode(PHP_EOL, $record['value']);
-                    foreach($explode as $line){
-                        $trait[] = $this->indent(1) . $line;
-                    }
-                    $trait[] = '}';
-                    $trait[] = '';
-                }
-            }
-        }
         $list = $this->parse()->storage()->get('import.trait');
         if(
             !empty($list) &&
             is_array($list)
         ){
-            foreach ($list as $nr => $record){
-                $name = str_replace('.', '_', $record['name']);
-                $namespace = str_replace('.', '\\', $record['namespace']);
-                if(substr($namespace, -1 ,1) !== '\\'){
-                    $namespace .= '\\';
-                }
-                $use[] = $this->indent(1) . 'use \\' . $namespace . $name . ';';
+            foreach ($list as $nr => $trait){
+                $use[] = $this->indent(1) . 'use \\' . $trait . ';';
             }
         }
-        $traits = implode("\n", $trait);
         $usage = implode("\n", $use);
-        $count = 0;
-        foreach($document as $nr => $row){
-            $document[$nr] = str_replace($storage->get('placeholder.trait'), $traits, $row, $count);
-            if($count > 0){
-                break;
-            }
-        }
         $count = 0;
         foreach($document as $nr => $row){
             $document[$nr] = str_replace($storage->get('placeholder.traituse'), $usage, $row, $count);
