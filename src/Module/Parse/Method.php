@@ -10,6 +10,8 @@
  */
 namespace Raxon\Module\Parse;
 
+use Raxon\App;
+use Raxon\Module\Autoload;
 use Raxon\Module\Data;
 use Raxon\Module\Core;
 
@@ -280,6 +282,14 @@ class Method {
                 }
             } else {
                 if(empty($record['method']['trait'])){
+                    $name_trait = 'Plugin\\' . $record['method']['php_name'];
+
+                    $autoload = $object->data(App::AUTOLOAD_RAXON);
+                    $autoload->addPrefix('Plugin', $object->config('controller.dir.plugin'));
+                    $autoload->addPrefix('Plugin', $object->config('project.dir.plugin'));
+                    $location = $autoload->locate($use_plugin, false,  Autoload::MODE_LOCATION);
+
+
                     ddd($record);
                     if(empty($attribute)){
                         if(
