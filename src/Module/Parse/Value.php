@@ -10,6 +10,7 @@
  */
 namespace Raxon\Module\Parse;
 
+use Raxon\Module\Core;
 use Raxon\Module\Data;
 
 use Exception;
@@ -172,10 +173,26 @@ class Value {
                 ){
                     $record['method']['php_name'] = str_replace('.', '_', $record['value']);
                     $storage->data('function.' . $record['method']['php_name'], $record);
-
-                    $list = $storage->data('use.trait') ?? [];
-                    d($record['method']['php_name']);
-                    ddd($list);
+                    $record['method']['trait'] = 'Plugin\\' . Core::ucfirst_sentence($record['method']['php_name'], '_');
+                    $record['method']['namespace'] = '';
+                    $list = $storage->get('import.trait') ?? [];
+                    $in_list = false;
+                    foreach($list as $nr => $item){
+                        if(
+                            $item['name'] === $record['method']['trait'] &&
+                            $item['namespace'] === $record['method']['namespace']
+                        ){
+                            $in_list = true;
+                            break;
+                        }
+                    }
+                    if(!$in_list){
+                        $item = [];
+                        $item['name'] = $record['method']['trait'];
+                        $item['namespace'] = $record['method']['namespace'];
+                        $list[] = $item;
+                    }
+                    $storage->set('import.trait', $list);
                 }
                 $method = Method::get($build, $storage, $record);
                 if($method['type'] == Token::TYPE_CODE){

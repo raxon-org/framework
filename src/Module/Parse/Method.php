@@ -286,6 +286,8 @@ class Method {
                 if(empty($record['method']['trait'])){
                     $name_trait = 'Plugin\\' . Core::ucfirst_sentence($record['method']['php_name'], '_');
 
+                    $list = $storage->data('use.trait') ?? [];
+
                     $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
 //                    $autoload->addPrefix('Plugin', $object->config('controller.dir.plugin'));
 //                    $autoload->addPrefix('Plugin', $object->config('project.dir.plugin'));
@@ -302,6 +304,9 @@ class Method {
                     if($is_found === false){
                         throw new LocateException('Plugin (' . $record['method']['name'] . ') not found...', $location);
                     }
+
+
+
                     if(empty($attribute)){
                         if(
                             $attribute === 0 ||
@@ -335,10 +340,9 @@ class Method {
                         $result = '$this->' . $trait_name . '(' . $attribute . ')';
                     }
                     $parse = $build->parse();
-                    $list = $parse->storage()->get('import.trait');
-                    if(empty($list)){
-                        $list = [];
-                    }
+                    $record['method']['trait'] = $trait_name;
+                    $record['method']['namespace'] = '';
+                    $list = $storage->get('import.trait') ?? [];
                     $in_list = false;
                     foreach($list as $nr => $item){
                         if(
@@ -348,17 +352,6 @@ class Method {
                             $in_list = true;
                             break;
                         }
-                        if(
-                            array_key_exists('method', $record) &&
-                            array_key_exists('name', $record['method']) &&
-                            array_key_exists('namespace', $record['method'])
-                        ){
-                            $name = str_replace('.', '_', $record['method']['name']);
-                            $namespace = str_replace('.', '\\', $record['method']['namespace']);
-                            if(substr($namespace, -1 ,1) !== '\\'){
-                                $namespace .= '\\';
-                            }
-                        }
                     }
                     if(!$in_list){
                         $item = [];
@@ -366,7 +359,7 @@ class Method {
                         $item['namespace'] = $record['method']['namespace'];
                         $list[] = $item;
                     }
-                    $parse->storage()->set('import.trait', $list);
+                    $storage->set('import.trait', $list);
                 }
             }
             $record['value'] = $result;
