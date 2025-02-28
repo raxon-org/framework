@@ -196,17 +196,79 @@ class Build {
     private function createTrait($document=[]): array
     {
         $storage = $this->storage();
+        $trait = [];
         $use= [];
+        $list = $storage->get('trait');
+        if(
+            is_array($list)
+        ){
+            foreach($list as $nr => $record){
+                if(
+                    array_key_exists('namespace', $record) &&
+                    array_key_exists('name', $record) &&
+                    array_key_exists('value', $record) &&
+                    empty($record['namespace']) &&
+                    !empty($record['name'])
+                ){
+                    $name = str_replace('.', '_', $record['name']);
+                    $name .= Core::uuid_variable();//rand(1000,9999) . rand(1000,9999);
+                    $trait[] = 'trait ' . $name . ' {';
+                    $use[] = $this->indent(1) . 'use ' . $name . ';';
+                    $explode = explode(PHP_EOL, $record['value']);
+                    foreach($explode as $line){
+                        $trait[] = $this->indent(1) . $line;
+                    }
+                    $trait[] = '}';
+                    $trait[] = '';
+                }
+                else if(
+                    array_key_exists('namespace', $record) &&
+                    array_key_exists('name', $record) &&
+                    array_key_exists('value', $record) &&
+                    !empty($record['namespace']) &&
+                    !empty($record['name'])
+                ){
+                    $name = str_replace('.', '_', $record['name']);
+                    $name.= Core::uuid_variable();//rand(1000,9999) . rand(1000,9999);
+                    $namespace = str_replace('.', '\\', $record['namespace']);
+                    $trait[] = 'namespace ' . $namespace . ';';
+                    $trait[] = 'trait ' . $name . ' {';
+                    if(substr($namespace, -1 ,1) !== '\\'){
+                        $namespace .= '\\';
+                    }
+                    $use[] = $this->indent(1) . 'use \\' . $namespace . $name . ';';
+                    $explode = explode(PHP_EOL, $record['value']);
+                    foreach($explode as $line){
+                        $trait[] = $this->indent(1) . $line;
+                    }
+                    $trait[] = '}';
+                    $trait[] = '';
+                }
+            }
+        }
         $list = $this->parse()->storage()->get('import.trait');
         if(
             !empty($list) &&
             is_array($list)
         ){
-            foreach ($list as $nr => $trait){
-                $use[] = $this->indent(1) . 'use \\' . $trait . ';';
+            foreach ($list as $nr => $record){
+                $name = str_replace('.', '_', $record['name']);
+                $namespace = str_replace('.', '\\', $record['namespace']);
+                if(substr($namespace, -1 ,1) !== '\\'){
+                    $namespace .= '\\';
+                }
+                $use[] = $this->indent(1) . 'use \\' . $namespace . $name . ';';
             }
         }
+        $traits = implode("\n", $trait);
         $usage = implode("\n", $use);
+        $count = 0;
+        foreach($document as $nr => $row){
+            $document[$nr] = str_replace($storage->get('placeholder.trait'), $traits, $row, $count);
+            if($count > 0){
+                break;
+            }
+        }
         $count = 0;
         foreach($document as $nr => $row){
             $document[$nr] = str_replace($storage->get('placeholder.traituse'), $usage, $row, $count);
@@ -261,8 +323,6 @@ class Build {
      */
     private function createRequireContent($type='', $document=[]): array
     {
-        //needs to check if the plugin exists
-        return $document;
         $object = $this->object();
         $url = false;
         //reconfigure build parse
@@ -782,9 +842,7 @@ class Build {
                                     $storage->set('trait', $list);
                                 }
                             } else {
-                                $run[] = '$this->storage()->data(\'#content\', $content);';
                                 $run[] = $this->indent() . Method::create_capture($this, $storage, $selection) . ';';
-                                $run[] = '$content = $this->storage()->get(\'#content\');';
                             }
                             foreach($selection as $skip_nr => $item){
                                 //need skip_nr
@@ -803,9 +861,8 @@ class Build {
                                     true
                                 )
                             ){
-                                $run[] = '$this->storage()->data(\'#content\', $content);';
+                                $run[] = '$this->storage(\'content\', $content);';
                                 $run[] = $this->indent() . $control . ';';
-                                $run[] = '$content = $this->storage()->get(\'#content\');';
                             }
                             elseif(
                                 array_key_exists('method', $select) &&
@@ -896,7 +953,7 @@ class Build {
                 $multi_line = Build::getPluginMultiline($object);
                 // 'capture_append'
                 foreach($multi_line as $nr => $plugin){
-                    $multi_line[$nr] = str_replace('.', '_', $plugin);
+                    $multi_line[$nr] = 'function_' . str_replace('.', '_', $plugin);
                 }
                 $method = Build::METHOD_DEFAULT;
                 $method = array_merge($method, $multi_line);
@@ -1290,13 +1347,8 @@ class Build {
                         true
                     )
                 ){
-                    $name = str_replace('.', '_', $record['method']['name']);
+                    $name = 'function_' . str_replace('.', '_', $record['method']['name']);
                     $storage->data('function.' . $name, $record);
-                    $list = $this->parse()->storage()->get('import.trait') ?? [];
-                    $record['method']['namespace'] = $record['method']['namespace'] ?? 'Plugin';
-                    $trait_name = $record['method']['namespace'] . '\\' . Core::ucfirst_sentence($record['method']['name'], '_');
-                    $list[] = $trait_name;
-                    $this->parse()->storage()->set('import.trait', $list);
                 } else {
                     $multi_line = Build::getPluginMultiline($this->object());
                     // 'capture.append'
@@ -1307,7 +1359,7 @@ class Build {
                             true
                         )
                     ){
-                        $name = str_replace('.', '_', $record['method']['name']);
+                        $name = 'function_' . str_replace('.', '_', $record['method']['name']);
                         $storage->data('function.' . $name, $record);
                     } else {
                         $name = str_replace('.', '', $record['method']['name']);
