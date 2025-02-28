@@ -286,15 +286,17 @@ class Method {
                 if(empty($record['method']['trait'])){
                     $name_trait = 'Plugin\\' . Core::ucfirst_sentence($record['method']['php_name'], '_');
 
-                    $list = $storage->data('use.trait') ?? [];
-
+                    $list = $storage->data('use.trait');
+                    if($list === null){
+                        $list = [];
+                    }
                     $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
 //                    $autoload->addPrefix('Plugin', $object->config('controller.dir.plugin'));
 //                    $autoload->addPrefix('Plugin', $object->config('project.dir.plugin'));
                     $location = $autoload->locate($name_trait, false,  Autoload::MODE_LOCATION);
                     $is_found = false;
-                    foreach($location as $nr => $sublist){
-                        foreach($sublist as $subnr => $file){
+                    foreach($location as $location_nr => $sublist){
+                        foreach($sublist as $sub_nr => $file){
                             if(File::exist($file)){
                                 $is_found = true;
                                 break;
@@ -316,31 +318,31 @@ class Method {
 
                     } else {
                         $result = '$this->' . $record['method']['php_name'] . '(' . $attribute . ')';
-
-                        $record['method']['trait'] = 'Plugin\\' . Core::ucfirst_sentence($record['method']['php_name'], '_');
-                        $record['method']['namespace'] = '';
-                        $list = $storage->get('import.trait');
-                        if($list === null){
-                            $list = [];
+                    }
+                    $record['method']['trait'] = 'Plugin\\' . Core::ucfirst_sentence($record['method']['php_name'], '_');
+                    $record['method']['namespace'] = '';
+                    $list = $storage->get('import.trait');
+                    if($list === null){
+                        $list = [];
+                    }
+                    $in_list = false;
+                    foreach($list as $nr => $item){
+                        if(
+                            $item['name'] === $record['method']['trait'] &&
+                            $item['namespace'] === $record['method']['namespace']
+                        ){
+                            $in_list = true;
+                            break;
                         }
-                        $in_list = false;
-                        foreach($list as $nr => $item){
-                            if(
-                                $item['name'] === $record['method']['trait'] &&
-                                $item['namespace'] === $record['method']['namespace']
-                            ){
-                                $in_list = true;
-                                break;
-                            }
-                        }
-                        if(!$in_list){
-                            $item = [];
-                            $item['name'] = $record['method']['trait'];
-                            $item['namespace'] = $record['method']['namespace'];
-                            $list[] = $item;
-                        }
-                        d($list);
-                        $storage->set('import.trait', $list);}
+                    }
+                    if(!$in_list){
+                        $item = [];
+                        $item['name'] = $record['method']['trait'];
+                        $item['namespace'] = $record['method']['namespace'];
+                        $list[] = $item;
+                    }
+                    d($list);
+                    $storage->set('import.trait', $list);
                 } else {
                     if(empty($attribute)){
                         if(

@@ -11,6 +11,7 @@
 
 namespace Raxon\Module\Parse;
 
+use Raxon\Exception\LocateException;
 use stdClass;
 
 use Raxon\App;
@@ -1365,9 +1366,27 @@ class Build {
                         $name = str_replace('.', '_', $record['method']['name']);
                         $storage->data('function.' . $name, $record);
                     } else {
-                        $name = str_replace('.', '', $record['method']['name']);
+                        $name = str_replace('.', '_', $record['method']['name']);
                     }
                 }
+                $name_trait = 'Plugin\\' . Core::ucfirst_sentence($name, '_');
+                $autoload = $this->object()->data(App::AUTOLOAD_RAXON);
+//                    $autoload->addPrefix('Plugin', $object->config('controller.dir.plugin'));
+//                    $autoload->addPrefix('Plugin', $object->config('project.dir.plugin'));
+                $location = $autoload->locate($name_trait, false,  Autoload::MODE_LOCATION);
+                $is_found = false;
+                foreach($location as $location_nr => $sublist){
+                    foreach($sublist as $sub_nr => $file){
+                        if(File::exist($file)){
+                            $is_found = true;
+                            break;
+                        }
+                    }
+                }
+                if($is_found === false){
+                    throw new LocateException('Plugin (' . $record['method']['name'] . ') not found...', $location);
+                }
+
                 $tree[$nr]['method']['php_name'] = $name;
             }
         }
