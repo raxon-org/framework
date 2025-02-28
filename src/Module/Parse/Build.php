@@ -1370,28 +1370,6 @@ class Build {
                         $name = str_replace('.', '_', $record['method']['name']);
                     }
                 }
-                if($name === 'register'){
-                    ddd($record);
-                }
-                $name_trait = 'Plugin\\' . Core::ucfirst_sentence($name, '_');
-                $autoload = $this->object()->data(App::AUTOLOAD_RAXON);
-//                    $autoload->addPrefix('Plugin', $object->config('controller.dir.plugin'));
-//                    $autoload->addPrefix('Plugin', $object->config('project.dir.plugin'));
-                $locate = $autoload->locate($name_trait, false,  Autoload::MODE_LOCATION);
-                $location = [];
-                $is_found = false;
-                foreach($locate as $location_nr => $sublist){
-                    foreach($sublist as $sub_nr => $file){
-                        $location[] = $file;
-                        if(File::exist($file)){
-                            $is_found = true;
-                            break;
-                        }
-                    }
-                }
-                if($is_found === false){
-                    throw new LocateException('Plugin (' . $record['method']['name'] . ') not found...', $location);
-                }
                 $tree[$nr]['method']['php_name'] = $name;
             }
         }
