@@ -1354,6 +1354,9 @@ class Build {
                 ){
                     $name = str_replace('.', '_', $record['method']['name']);
                     $storage->data('function.' . $name, $record);
+                    $list = $this->parse()->storage()->get('import.trait');
+                    d($list);
+                    ddd($name);
                 } else {
                     $multi_line = Build::getPluginMultiline($this->object());
                     // 'capture.append'
