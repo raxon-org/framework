@@ -304,9 +304,6 @@ class Method {
                     if($is_found === false){
                         throw new LocateException('Plugin (' . $record['method']['name'] . ') not found...', $location);
                     }
-
-
-
                     if(empty($attribute)){
                         if(
                             $attribute === 0 ||
@@ -319,7 +316,31 @@ class Method {
 
                     } else {
                         $result = '$this->' . $record['method']['php_name'] . '(' . $attribute . ')';
-                    }
+
+                        $record['method']['trait'] = 'Plugin\\' . Core::ucfirst_sentence($record['method']['php_name'], '_');
+                        $record['method']['namespace'] = '';
+                        $list = $storage->get('import.trait');
+                        if($list === null){
+                            $list = [];
+                        }
+                        $in_list = false;
+                        foreach($list as $nr => $item){
+                            if(
+                                $item['name'] === $record['method']['trait'] &&
+                                $item['namespace'] === $record['method']['namespace']
+                            ){
+                                $in_list = true;
+                                break;
+                            }
+                        }
+                        if(!$in_list){
+                            $item = [];
+                            $item['name'] = $record['method']['trait'];
+                            $item['namespace'] = $record['method']['namespace'];
+                            $list[] = $item;
+                        }
+                        d($list);
+                        $storage->set('import.trait', $list);}
                 } else {
                     if(empty($attribute)){
                         if(
@@ -333,7 +354,6 @@ class Method {
                     } else {
                         $result = '$this->' . $record['method']['php_name'] . '(' . $attribute . ')';
                     }
-                    $parse = $build->parse();
                     $record['method']['trait'] = 'Plugin\\' . Core::ucfirst_sentence($record['method']['php_name'], '_');
                     $record['method']['namespace'] = '';
                     $list = $storage->get('import.trait');
