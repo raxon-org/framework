@@ -282,7 +282,7 @@ class Method {
                 }
             } else {
                 if(empty($record['method']['trait'])){
-                    $name_trait = 'Plugin\\' . $record['method']['php_name'];
+                    $name_trait = 'Plugin\\' . Core::ucfirst_sentence($record['method']['php_name'], '_');
 
                     $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
 //                    $autoload->addPrefix('Plugin', $object->config('controller.dir.plugin'));
