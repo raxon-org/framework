@@ -563,35 +563,70 @@ class Autoload {
             $object->config('cache.autoload.url.directory_separator') &&
             $object->config('cache.autoload.url.directory_pop_or_shift')
         ){
-            $load = $item['directory'] . $item['file'];
-            $load_directory = dirname($load);
-            $load = basename($load) . '.' . Autoload::EXT_PHP;
-            $load_compile = Autoload::name_reducer(
-                $object,
-                $load,
-                $object->config('cache.parse.url.name_length'),
-                $object->config('cache.parse.url.name_separator'),
-                $object->config('cache.parse.url.name_pop_or_shift')
-            );
-            if(str_contains($load_compile, '_')){
-                $data[] = $object->config('autoload.cache.compile') . $load_compile;
+            if(is_array($item['directory'])){
+                foreach ($item['directory'] as $nr => $directory){
+                    $load = $directory . $item['file'];
+                    $load_directory = dirname($load);
+                    $load = basename($load) . '.' . Autoload::EXT_PHP;
+                    $load_compile = Autoload::name_reducer(
+                        $object,
+                        $load,
+                        $object->config('cache.parse.url.name_length'),
+                        $object->config('cache.parse.url.name_separator'),
+                        $object->config('cache.parse.url.name_pop_or_shift')
+                    );
+                    if(str_contains($load_compile, '_')){
+                        $data[] = $object->config('autoload.cache.compile') . $load_compile;
+                    }
+                    $load = Autoload::name_reducer(
+                        $object,
+                        $load,
+                        $object->config('cache.autoload.url.name_length'),
+                        $object->config('cache.autoload.url.name_separator'),
+                        $object->config('cache.autoload.url.name_pop_or_shift')
+                    );
+                    $load_directory = Autoload::name_reducer(
+                        $object,
+                        $load_directory,
+                        $object->config('cache.autoload.url.directory_length'),
+                        $object->config('cache.autoload.url.directory_separator'),
+                        $object->config('cache.autoload.url.directory_pop_or_shift')
+                    );
+                    $load_url = $object->config('autoload.cache.class') . $load_directory . '_' . $load;
+                    $data[] = $load_url;
+                }
+            } else {
+                $load = $item['directory'] . $item['file'];
+                $load_directory = dirname($load);
+                $load = basename($load) . '.' . Autoload::EXT_PHP;
+                $load_compile = Autoload::name_reducer(
+                    $object,
+                    $load,
+                    $object->config('cache.parse.url.name_length'),
+                    $object->config('cache.parse.url.name_separator'),
+                    $object->config('cache.parse.url.name_pop_or_shift')
+                );
+                if(str_contains($load_compile, '_')){
+                    $data[] = $object->config('autoload.cache.compile') . $load_compile;
+                }
+                $load = Autoload::name_reducer(
+                    $object,
+                    $load,
+                    $object->config('cache.autoload.url.name_length'),
+                    $object->config('cache.autoload.url.name_separator'),
+                    $object->config('cache.autoload.url.name_pop_or_shift')
+                );
+                $load_directory = Autoload::name_reducer(
+                    $object,
+                    $load_directory,
+                    $object->config('cache.autoload.url.directory_length'),
+                    $object->config('cache.autoload.url.directory_separator'),
+                    $object->config('cache.autoload.url.directory_pop_or_shift')
+                );
+                $load_url = $object->config('autoload.cache.class') . $load_directory . '_' . $load;
+                $data[] = $load_url;
             }
-            $load = Autoload::name_reducer(
-                $object,
-                $load,
-                $object->config('cache.autoload.url.name_length'),
-                $object->config('cache.autoload.url.name_separator'),
-                $object->config('cache.autoload.url.name_pop_or_shift')
-            );
-            $load_directory = Autoload::name_reducer(
-                $object,
-                $load_directory,
-                $object->config('cache.autoload.url.directory_length'),
-                $object->config('cache.autoload.url.directory_separator'),
-                $object->config('cache.autoload.url.directory_pop_or_shift')
-            );
-            $load_url = $object->config('autoload.cache.class') . $load_directory . '_' . $load;
-            $data[] = $load_url;
+
             $object->config('autoload.cache.file.name', $load_url);
         }
         if(
