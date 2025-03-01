@@ -654,6 +654,7 @@ class Controller {
             }
         }
         $autoload = $object->data(App::AUTOLOAD_RAXON);
+        $autoload->prependPrefix($config->data('dictionary.plugin'), $config->data('controller.dir.plugin'));
         d($object->config('controller'));
         ddd($autoload->getPrefixList());
     }
