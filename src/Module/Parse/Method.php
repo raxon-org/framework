@@ -643,10 +643,10 @@ class Method {
             ){
                 $attribute = current($record['method']['attribute'][0]);
                 if(array_key_exists('execute', $attribute)){
-                    $record['value'] = '$this->storage()->data(\''. $record['method']['name'] .'\', \'' . $attribute['execute'] . '\');' .
+                    $record['value'] = '$this->data()->data(\''. $record['method']['name'] .'\', \'' . $attribute['execute'] . '\');' .
                         "\n" .
                         $build->indent() . $record['value'] .
-                        ';' . "\n" . $build->indent() . '$this->storage()->data(\'delete\',\'' . $record['method']['name'] . '\')';
+                        ';' . "\n" . $build->indent() . '$this->data()->data(\'delete\',\'' . $record['method']['name'] . '\')';
                 }
             }
             return $record['value'];
