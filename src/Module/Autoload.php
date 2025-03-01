@@ -82,20 +82,32 @@ class Autoload {
         ){
             foreach($prefix as $record){
                 $parameters = Core::object($record, 'array');
-                d($parameters);
                 $parameters = Config::parameters($object, $parameters);
                 if(
                     array_key_exists('prefix', $parameters) &&
                     array_key_exists('directory', $parameters) &&
                     array_key_exists('extension', $parameters)
                 ){
-                    $autoload->addPrefix($parameters['prefix'],  $parameters['directory'], $parameters['extension']);
+                    if(is_array($parameters['directory'])){
+                        foreach($parameters['directory'] as $nr => $directory){
+                            $autoload->addPrefix($parameters['prefix'],  $directory, $parameters['extension']);
+                        }
+                    } else {
+                        $autoload->addPrefix($parameters['prefix'],  $parameters['directory'], $parameters['extension']);
+                    }
                 }
                 elseif(
                     array_key_exists('prefix', $parameters) &&
                     array_key_exists('directory', $parameters)
                 ){
-                    $autoload->addPrefix($parameters['prefix'],  $parameters['directory']);
+                    if(is_array($parameters['directory'])){
+                        foreach($parameters['directory'] as $nr => $directory){
+                            $autoload->addPrefix($parameters['prefix'],  $directory);
+                        }
+                    } else {
+                        $autoload->addPrefix($parameters['prefix'],  $parameters['directory']);
+                    }
+
                 }
             }
         } else {
