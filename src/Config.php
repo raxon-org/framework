@@ -489,76 +489,116 @@ class Config extends Data {
         foreach($parameters as $nr => $parameter){
             if(is_array($parameter)){
                 $parameters[$nr] = Config::parameters($object, $parameter);
-                continue;
+            } else {
+                $parameter = str_replace(
+                    [
+                        '{',
+                        '}',
+                    ],
+                    [
+                        '[$ldelim-' . $uuid . ']',
+                        '[$rdelim-' . $uuid . ']',
+                    ],
+                    $parameter
+                );
+                $parameter = str_replace(
+                    [
+                        '[$ldelim-' . $uuid . ']',
+                        '[$rdelim-' . $uuid . ']',
+                    ],
+                    [
+                        '{$ldelim}',
+                        '{$rdelim}',
+                    ],
+                    $parameter
+                );
+                $parameter = str_replace(
+                    [
+                        '{$ldelim}{$ldelim}',
+                        '{$rdelim}{$rdelim}',
+                    ],
+                    [
+                        '{',
+                        '}',
+                    ],
+                    $parameter
+                );
+                $parameters[$nr] = $parameter;
             }
-            $parameter = str_replace(
-                [
-                    '{',
-                    '}',
-                ],
-                [
-                    '[$ldelim-' . $uuid . ']',
-                    '[$rdelim-' . $uuid . ']',
-                ],
-                $parameter
-            );
-            $parameter = str_replace(
-                [
-                    '[$ldelim-' . $uuid . ']',
-                    '[$rdelim-' . $uuid . ']',
-                ],
-                [
-                    '{$ldelim}',
-                    '{$rdelim}',
-                ],
-                $parameter
-            );
-            $parameter = str_replace(
-                [
-                    '{$ldelim}{$ldelim}',
-                    '{$rdelim}{$rdelim}',
-                ],
-                [
-                    '{',
-                    '}',
-                ],
-                $parameter
-            );
-            $parameters[$nr] = $parameter;
         }
         foreach($parameters as $key => $parameter){
-            $tree = Parse\Token::tree($parameter);
-            if(
-                !empty($tree) &&
-                is_array($tree)
-            ){
-                $parameters[$key]  = '';
-                foreach($tree as $tree_nr => $record){
+            if(is_array($parameter)){
+                foreach($parameter as $nr => $value){
+                    $tree = Parse\Token::tree($value);
                     if(
-                        $record['type'] === Token::TYPE_METHOD &&
-                        array_key_exists('method', $record) &&
-                        array_key_exists('attribute', $record['method'])
+                        !empty($tree) &&
+                        is_array($tree)
                     ){
-                        foreach($record['method']['attribute'] as $attribute_nr => $attribute_list){
-                            foreach($attribute_list as $attribute){
-                                $value = $object->config($attribute['execute']);
-                                if(
-                                    is_object($value) ||
-                                    is_array($value)
-                                ){
-                                    if(empty($parameters[$key])){
-                                        $parameters[$key] = [];
-                                    }
-                                    $parameters[$key][] = $object->config($attribute['execute']);
-                                } else {
-                                    $parameters[$key] .= $object->config($attribute['execute']);
-                                }
+                        $parameters[$key][$nr]  = '';
+                        foreach($tree as $tree_nr => $record){
+                            if(
+                                $record['type'] === Token::TYPE_METHOD &&
+                                array_key_exists('method', $record) &&
+                                array_key_exists('attribute', $record['method'])
+                            ){
+                                foreach($record['method']['attribute'] as $attribute_nr => $attribute_list){
+                                    foreach($attribute_list as $attribute){
+                                        $value = $object->config($attribute['execute']);
+                                        if(
+                                            is_object($value) ||
+                                            is_array($value)
+                                        ){
+                                            if(empty($parameters[$key])){
+                                                $parameters[$key][$nr] = [];
+                                            }
+                                            $parameters[$key][$nr][] = $object->config($attribute['execute']);
+                                        } else {
+                                            $parameters[$key][$nr] .= $object->config($attribute['execute']);
+                                        }
 
+                                    }
+                                }
+                            }
+                            elseif($record['type'] === Token::TYPE_STRING){
+                                $parameters[$key][$nr] .= $record['value'];
                             }
                         }
                     }
-                    elseif($record['type'] === Token::TYPE_STRING){
-                        $parameters[$key] .= $record['value'];
+                }
+            } else {
+                $tree = Parse\Token::tree($parameter);
+                if(
+                    !empty($tree) &&
+                    is_array($tree)
+                ){
+                    $parameters[$key]  = '';
+                    foreach($tree as $tree_nr => $record){
+                        if(
+                            $record['type'] === Token::TYPE_METHOD &&
+                            array_key_exists('method', $record) &&
+                            array_key_exists('attribute', $record['method'])
+                        ){
+                            foreach($record['method']['attribute'] as $attribute_nr => $attribute_list){
+                                foreach($attribute_list as $attribute){
+                                    $value = $object->config($attribute['execute']);
+                                    if(
+                                        is_object($value) ||
+                                        is_array($value)
+                                    ){
+                                        if(empty($parameters[$key])){
+                                            $parameters[$key] = [];
+                                        }
+                                        $parameters[$key][] = $object->config($attribute['execute']);
+                                    } else {
+                                        $parameters[$key] .= $object->config($attribute['execute']);
+                                    }
+
+                                }
+                            }
+                        }
+                        elseif($record['type'] === Token::TYPE_STRING){
+                            $parameters[$key] .= $record['value'];
+                        }
                     }
                 }
             }
