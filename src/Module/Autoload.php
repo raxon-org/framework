@@ -258,10 +258,36 @@ class Autoload {
                 }
             }
             if(!$found){
-                $list[]  = [
-                    'prefix' => $prefix,
-                    'directory' => $directory
-                ];
+                foreach($list as $nr => $record){
+                    if(
+                        $record['prefix'] === $prefix &&
+                        is_array($record['directory']) &&
+                        !in_array(
+                            $directory,
+                            $record['directory'],
+                            true
+                        )
+                    ){
+                        $list[$nr]['directory'][] = $directory;
+                        $found = true;
+                        break;
+                    }
+                    elseif(
+                        $record['prefix'] === $prefix &&
+                        is_string($record['directory'])
+                    ){
+                        $list[$nr]['directory'] = [$directory, $record['directory']];
+                        $found = true;
+                        break;
+                    }
+                }
+                if(!$found){
+                    $list[]  = [
+                        'prefix' => $prefix,
+                        'directory' => $directory
+                    ];
+                }
+
             }
         } else {
             $found = false;
@@ -277,11 +303,41 @@ class Autoload {
                 }
             }
             if(!$found){
-                $list[]  = [
-                    'prefix' => $prefix,
-                    'directory' => $directory,
-                    'extension' => $extension
-                ];
+                foreach($list as $nr => $record){
+                    if(
+                        $record['prefix'] === $prefix &&
+                        !empty($record['extension']) &&
+                        $record['extension'] === $extension &&
+                        is_array($record['directory']) &&
+                        !in_array(
+                            $directory,
+                            $record['directory'],
+                            true
+                        )
+                    ){
+                        $list[$nr]['directory'][] = $directory;
+                        $found = true;
+                        break;
+                    }
+                    elseif(
+                        $record['prefix'] === $prefix &&
+                        !empty($record['extension']) &&
+                        $record['extension'] === $extension &&
+                        is_string($record['directory'])
+                    ){
+                        $list[$nr]['directory'] = [$directory, $record['directory']];
+                        $found = true;
+                        break;
+                    }
+                }
+                if(!$found){
+                    $list[]  = [
+                        'prefix' => $prefix,
+                        'directory' => $directory,
+                        'extension' => $extension
+                    ];
+                }
+
             }
         }
         $this->setPrefixList($list);
