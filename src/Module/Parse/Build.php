@@ -1196,13 +1196,25 @@ class Build {
                         array_key_exists('directory', $record) &&
                         array_key_exists('extension', $record)
                     ){
-                        $autoload->addPrefix($record['prefix'],  $record['directory'], $record['extension']);
+                        if(is_array($record['directory'])){
+                            foreach($record['directory'] as $nr => $directory){
+                                $autoload->addPrefix($record['prefix'],  $directory, $record['extension']);
+                            }
+                        } else {
+                            $autoload->addPrefix($record['prefix'],  $record['directory'], $record['extension']);
+                        }
                     }
                     else if(
                         array_key_exists('prefix', $record) &&
                         array_key_exists('directory', $record)
                     ){
-                        $autoload->addPrefix($record['prefix'],  $record['directory']);
+                        if(is_array($record['directory'])){
+                            foreach($record['directory'] as $nr => $directory){
+                                $autoload->addPrefix($record['prefix'],  $directory);
+                            }
+                        } else {
+                            $autoload->addPrefix($record['prefix'],  $record['directory']);
+                        }
                     }
                 }
                 $autoload->register();
