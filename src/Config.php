@@ -608,8 +608,6 @@ class Config extends Data {
                 $count = count($sublist);
                 if($count === 1){
                     $parameters[$key] = reset($sublist);
-                } else {
-                    ddd($parameters);
                 }
             }
         }
