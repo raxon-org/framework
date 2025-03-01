@@ -82,6 +82,7 @@ class Autoload {
         ){
             foreach($prefix as $record){
                 $parameters = Core::object($record, 'array');
+
                 $parameters = Config::parameters($object, $parameters);
                 if(
                     array_key_exists('prefix', $parameters) &&
@@ -601,23 +602,46 @@ class Autoload {
             $data[] = $this->read->autoload->{$caller}->{$item['load']};
         }
         $item['file_dot'] = str_replace('_', '.', $item['file']);
-        $data[] = $item['directory'] . $item['file_dot'] . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
-        $data[] = $item['directory'] . $item['file'] . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
-        $data[] = $item['directory'] . $item['file_dot'] . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
-        $data[] = $item['directory'] . $item['file'] . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
-        $explode = explode('.', $item['file_dot'], 2);
-        if(
-            $explode[0] !== $item['file_dot'] &&
-            $explode[0] !== $item['file']
-        ){
-            $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
-            $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
-            $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
-            $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
+        if(is_array($item['directory'])){
+            foreach($item['directory'] as $nr => $directory){
+                $data[] = $directory . $item['file_dot'] . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
+                $data[] = $directory . $item['file'] . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
+                $data[] = $directory . $item['file_dot'] . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
+                $data[] = $directory . $item['file'] . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
+                $explode = explode('.', $item['file_dot'], 2);
+                if(
+                    $explode[0] !== $item['file_dot'] &&
+                    $explode[0] !== $item['file']
+                ){
+                    $data[] = $directory . $explode[0] . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
+                    $data[] = $directory . $explode[0] . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
+                    $data[] = $directory . $explode[0] . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
+                    $data[] = $directory . $explode[0] . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
+                }
+                $data[] = $directory . $item['file_dot'] . '.' . Autoload::EXT_PHP;
+                $data[] = $directory . $item['file'] . '.' . Autoload::EXT_PHP;
+                $data[] = $directory . $item['baseName'] . '.' . Autoload::EXT_PHP;
+            }
+        } else {
+            $data[] = $item['directory'] . $item['file_dot'] . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
+            $data[] = $item['directory'] . $item['file'] . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
+            $data[] = $item['directory'] . $item['file_dot'] . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
+            $data[] = $item['directory'] . $item['file'] . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
+            $explode = explode('.', $item['file_dot'], 2);
+            if(
+                $explode[0] !== $item['file_dot'] &&
+                $explode[0] !== $item['file']
+            ){
+                $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
+                $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
+                $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
+                $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
+            }
+            $data[] = $item['directory'] . $item['file_dot'] . '.' . Autoload::EXT_PHP;
+            $data[] = $item['directory'] . $item['file'] . '.' . Autoload::EXT_PHP;
+            $data[] = $item['directory'] . $item['baseName'] . '.' . Autoload::EXT_PHP;
         }
-        $data[] = $item['directory'] . $item['file_dot'] . '.' . Autoload::EXT_PHP;
-        $data[] = $item['directory'] . $item['file'] . '.' . Autoload::EXT_PHP;
-        $data[] = $item['directory'] . $item['baseName'] . '.' . Autoload::EXT_PHP;
+
         $this->fileList[$item['baseName']][] = $data;
         $result = [];
         foreach($data as $nr => $file){
