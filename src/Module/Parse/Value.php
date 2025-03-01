@@ -151,12 +151,12 @@ class Value {
                 $record['value'] = str_replace('\\\'', '\'', $record['value']);
                 $record['value'] = str_replace('\'', '\\\'', $record['value']);
                 if($record['depth'] > 0){
-                    return '$this->parse()->compile(\'' . substr($record['value'], 1, -1) . '\', [], $this->storage())';
+                    return '$this->parse()->compile(\'' . substr($record['value'], 1, -1) . '\', [], $this->data())';
                 }
                 elseif(!empty($record['is_assign'])){
-                    return '$this->parse()->compile(\'' . substr($record['value'], 1, -1) . '\', [], $this->storage())';
+                    return '$this->parse()->compile(\'' . substr($record['value'], 1, -1) . '\', [], $this->data())';
                 } else {
-                    return '$this->parse()->compile(\'' . $record['value'] . '\', [], $this->storage())';
+                    return '$this->parse()->compile(\'' . $record['value'] . '\', [], $this->data())';
                 }
             case Token::TYPE_CAST :
                 return Value::getCast($record);
