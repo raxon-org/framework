@@ -718,6 +718,8 @@ class Controller {
                 $data->rdelim = Controller::RDELIM;
             }
         }
+        $autoload = $object->data(App::AUTOLOAD_RAXON);
+        ddd($autoload);
 //        Controller::decorate($object);
         $read = $parse->compile($read, $data, $parse->storage());
         Parse::readback($object, $parse, App::SCRIPT);
