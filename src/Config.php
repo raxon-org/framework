@@ -487,6 +487,10 @@ class Config extends Data {
         }
         $uuid = Core::uuid();
         foreach($parameters as $nr => $parameter){
+            if(is_array($parameter)){
+                $parameters[$nr] = Config::parameters($object, $parameter);
+                continue;
+            }
             $parameter = str_replace(
                 [
                     '{',
