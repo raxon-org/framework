@@ -26,13 +26,13 @@ use ErrorException;
 class Main {
     private $object;
 	private $parse;
-	private $storage;
+	private $data;
 
-	public function __construct(Parse $parse, Data $storage){
+	public function __construct(Parse $parse, Data $data){
 	    set_time_limit(600);
 		$this->parse($parse);
         $this->object($parse->object());
-		$this->storage($storage);
+		$this->data($data);
 	}
 
     public function object(App $object=null): ?App
@@ -71,21 +71,22 @@ class Main {
 	    return $this->parse;
 	}
 
-	public function storage(Data $storage=null): ?Data
+	public function data(Data $data=null): ?Data
     {
-	    if($storage !== null){
-	        $this->setStorage($storage);
+	    if($data !== null){
+	        $this->setData($data);
 	    }
-	    return $this->getStorage();
+	    return $this->getData();
 	}
 
-	private function setStorage(Data $storage=null): void
+	private function setData(Data $data=null): void
     {
-	    $this->storage = $storage;
+	    $this->data = $data;
 	}
 
-	private function getStorage(){
-	    return $this->storage;
+	private function getData(): ?Data
+    {
+	    return $this->data;
 	}
 
 	protected function assign_min_equal($variable1=null, $variable2=null): int | float
