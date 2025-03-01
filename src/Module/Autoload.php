@@ -311,6 +311,7 @@ class Autoload {
                 foreach($list as $nr => $record){
                     if(
                         $record['prefix'] === $prefix &&
+                        is_array($record['directory']) &&
                         !in_array(
                             $directory,
                             $record['directory'],
@@ -319,6 +320,14 @@ class Autoload {
                     ){
                         array_unshift($record['directory'], $directory);
                         $list[$nr] = $record;
+                        $found = true;
+                        break;
+                    }
+                    elseif(
+                        $record['prefix'] === $prefix &&
+                        is_string($record['directory'])
+                    ){
+                        $list[$nr]['directory'] = [$directory, $record['directory']];
                         $found = true;
                         break;
                     }
@@ -349,6 +358,7 @@ class Autoload {
                         $record['prefix'] === $prefix &&
                         !empty($record['extension']) &&
                         $record['extension'] === $extension &&
+                        is_array($record['directory']) &&
                         !in_array(
                             $directory,
                             $record['directory'],
@@ -357,6 +367,16 @@ class Autoload {
                     ){
                         array_unshift($record['directory'], $directory);
                         $list[$nr] = $record;
+                        $found = true;
+                        break;
+                    }
+                    elseif(
+                        $record['prefix'] === $prefix &&
+                        !empty($record['extension']) &&
+                        $record['extension'] === $extension &&
+                        is_string($record['directory'])
+                    ){
+                        $list[$nr]['directory'] = [$directory, $record['directory']];
                         $found = true;
                         break;
                     }
