@@ -307,12 +307,28 @@ class Autoload {
                     break;
                 }
             }
-            ddd($found);
             if(!$found){
-                $prepend[] = [
-                    'prefix' => $prefix,
-                    'directory' => $directory
-                ];
+                foreach($list as $nr => $record){
+                    if(
+                        $record['prefix'] === $prefix &&
+                        !in_array(
+                            $directory,
+                            $record['directory'],
+                            true
+                        )
+                    ){
+                        array_unshift($record['directory'], $directory);
+                        $list[$nr] = $record;
+                        $found = true;
+                        break;
+                    }
+                }
+                if($found === false){
+                    $prepend[] = [
+                        'prefix' => $prefix,
+                        'directory' => $directory
+                    ];
+                }
             }
         } else {
             $found = false;
@@ -328,11 +344,30 @@ class Autoload {
                 }
             }
             if(!$found){
-                $prepend[]  = [
-                    'prefix' => $prefix,
-                    'directory' => $directory,
-                    'extension' => $extension
-                ];
+                foreach($list as $nr => $record){
+                    if(
+                        $record['prefix'] === $prefix &&
+                        !empty($record['extension']) &&
+                        $record['extension'] === $extension &&
+                        !in_array(
+                            $directory,
+                            $record['directory'],
+                            true
+                        )
+                    ){
+                        array_unshift($record['directory'], $directory);
+                        $list[$nr] = $record;
+                        $found = true;
+                        break;
+                    }
+                }
+                if($found === false) {
+                    $prepend[] = [
+                        'prefix' => $prefix,
+                        'directory' => $directory,
+                        'extension' => $extension
+                    ];
+                }
             }
         }
         foreach($list as $record){
