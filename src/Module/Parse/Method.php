@@ -157,7 +157,7 @@ class Method {
                         $value = substr($value, 2, -2);
                     }
                     if(is_string($value)){
-                        $value = '$this->parse()->compile(\'' . $value .'\', [], $this->storage())';
+                        $value = '$this->parse()->compile(\'' . $value .'\', [], $this->data())';
                     }
 
                     $attribute .= $value . ', ';
@@ -220,7 +220,7 @@ class Method {
                         array_key_exists('type_old', $item) &&
                         $item['type_old'] == Token::TYPE_VARIABLE
                     ){
-                       $assign .= $build->indent() . '$this->storage()->data(\'' . $item['variable']['attribute'] . '\', ' . $item['value'] . ');' . "\n";
+                       $assign .= $build->indent() . '$this->data()->data(\'' . $item['variable']['attribute'] . '\', ' . $item['value'] . ');' . "\n";
                     }
                 }
                 $build->indent -= 1;
