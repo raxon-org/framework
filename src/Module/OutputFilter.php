@@ -17,7 +17,7 @@ use Raxon\App;
 use Raxon\Module\Data as Storage;
 use Raxon\Module\Template\Main;
 
-use Raxon\Node\Model\Node;
+use Raxon\Node\Module\Node;
 
 use Exception;
 

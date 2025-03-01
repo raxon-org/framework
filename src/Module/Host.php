@@ -13,7 +13,7 @@ namespace Raxon\Module;
 use Raxon\App;
 use Raxon\Config;
 
-use Raxon\Node\Model\Node;
+use Raxon\Node\Module\Node;
 
 use Exception;
 

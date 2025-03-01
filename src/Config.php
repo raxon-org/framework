@@ -17,7 +17,7 @@ use Raxon\Module\File;
 use Raxon\Module\Parse;
 use Raxon\Module\Parse\Token;
 
-use Raxon\Node\Model\Node;
+use Raxon\Node\Module\Node;
 
 use Exception;
 

@@ -415,7 +415,7 @@
             "Raxon\\Module\\Sort",
             "Raxon\\Module\\Validate",
             "Raxon\\Module\\Template\\Main",
-            "Raxon\\Node\\Model\\Node",
+            "Raxon\\Node\\Module\\Node",
             "Exception",
             "Raxon\\Exception\\AuthenticationException",
             "Raxon\\Exception\\AuthorizationException",
