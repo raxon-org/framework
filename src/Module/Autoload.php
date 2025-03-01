@@ -676,11 +676,12 @@ class Autoload {
             $data[] = $item['directory'] . $item['file'] . '.' . Autoload::EXT_PHP;
             $data[] = $item['directory'] . $item['baseName'] . '.' . Autoload::EXT_PHP;
         }
-
-        $this->fileList[$item['baseName']][] = $data;
+//        $this->fileList[$item['baseName']][] = $data;
         $result = [];
         foreach($data as $nr => $file){
-            $result[$file] = $file;
+            if(!in_array($file, $result)){
+                $result[] = $file;
+            }
         }
         return $result;
     }
