@@ -82,6 +82,7 @@ class Autoload {
         ){
             foreach($prefix as $record){
                 $parameters = Core::object($record, 'array');
+                d($parameters);
                 $parameters = Config::parameters($object, $parameters);
                 if(
                     array_key_exists('prefix', $parameters) &&
