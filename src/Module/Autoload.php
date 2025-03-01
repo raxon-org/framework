@@ -286,6 +286,7 @@ class Autoload {
                         $found = true;
                         break;
                     } elseif($record['prefix'] === $prefix && is_array($directory)){
+                        trace();
                         d($directory);
                         ddd($record);
                     }
