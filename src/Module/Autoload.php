@@ -242,7 +242,9 @@ class Autoload {
     public function addPrefix($prefix='', $directory='', $extension=''): void
     {
         $prefix = trim($prefix, '\\\/'); //.'\\';
-        $directory = str_replace('\\\/', DIRECTORY_SEPARATOR, rtrim($directory,'\\\/')) . DIRECTORY_SEPARATOR; //see File::dir()
+        if(is_string($directory)){
+            $directory = str_replace('\\\/', DIRECTORY_SEPARATOR, rtrim($directory,'\\\/')) . DIRECTORY_SEPARATOR; //see File::dir()
+        }
         $list = $this->getPrefixList();
         if(empty($list)){
             $list = [];
@@ -252,6 +254,7 @@ class Autoload {
             foreach($list as $record){
                 if(
                     $record['prefix'] === $prefix &&
+                    is_string($directory) &&
                     $record['directory'] === $directory
                 ){
                     $found = true;
@@ -263,6 +266,7 @@ class Autoload {
                     if(
                         $record['prefix'] === $prefix &&
                         is_array($record['directory']) &&
+                        is_string($directory) &&
                         !in_array(
                             $directory,
                             $record['directory'],
@@ -275,11 +279,15 @@ class Autoload {
                     }
                     elseif(
                         $record['prefix'] === $prefix &&
-                        is_string($record['directory'])
+                        is_string($record['directory']) &&
+                        is_string($directory)
                     ){
                         $list[$nr]['directory'] = [$directory, $record['directory']];
                         $found = true;
                         break;
+                    } elseif($record['prefix'] === $prefix && is_array($directory)){
+                        d($directory);
+                        ddd($record);
                     }
                 }
                 if(!$found){
