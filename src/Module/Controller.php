@@ -719,6 +719,7 @@ class Controller {
             }
         }
         $autoload = $object->data(App::AUTOLOAD_RAXON);
+        d($object->config('controller'));
         ddd($autoload);
 //        Controller::decorate($object);
         $read = $parse->compile($read, $data, $parse->storage());
