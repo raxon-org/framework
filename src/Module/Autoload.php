@@ -316,7 +316,6 @@ class Autoload {
                 ];
             }
         }
-        d($list);
         $this->setPrefixList($list);
     }
 
