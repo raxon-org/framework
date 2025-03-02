@@ -79,6 +79,10 @@ class Autoload {
 
         }
         */
+        $autoload->addPrefix('Plugin',  $object->config(Config::DATA_PROJECT_DIR_PLUGIN));
+        $autoload->addPrefix('Package',  $object->config(Config::DATA_PROJECT_DIR_PACKAGE));
+        $autoload->addPrefix('Source',  $object->config(Config::DATA_PROJECT_DIR_SOURCE));
+        $autoload->is_init = true;
         if(
             !empty($prefix) &&
             is_array($prefix)
@@ -100,11 +104,8 @@ class Autoload {
                     $autoload->addPrefix($parameters['prefix'],  $parameters['directory']);
                 }
             }
-        } else {
-            $autoload->addPrefix('Package',  $object->config(Config::DATA_PROJECT_DIR_PACKAGE));
-            $autoload->addPrefix('Source',  $object->config(Config::DATA_PROJECT_DIR_SOURCE));
-            $autoload->is_init = true;
         }
+        /*
         if(
             empty($object->config('ramdisk.is.disabled')) &&
             !empty($object->config('ramdisk.url'))
@@ -165,6 +166,7 @@ class Autoload {
             ;
         }
         $autoload->cache_dir($cache_dir);
+        */
         $autoload->register();
         $autoload->environment($object->config('framework.environment'));
         $object->data(App::AUTOLOAD_RAXON, $autoload);
