@@ -352,7 +352,6 @@ class Method {
                         }
 
                     }
-                    d($list);
                     $storage->set('import.trait', $list);
                 } else {
                     if(empty($attribute)){
