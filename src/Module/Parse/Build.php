@@ -248,7 +248,6 @@ class Build {
             }
         }
         $list = $storage->get('import.trait');
-        d($list);
         if(
             !empty($list) &&
             is_array($list)
@@ -262,7 +261,6 @@ class Build {
                 $use[] = $this->indent(1) . 'use \\' . $namespace . $name . ';';
             }
         }
-        d($use);
         $traits = implode("\n", $trait);
         $usage = implode("\n", $use);
         $count = 0;
@@ -1189,7 +1187,6 @@ class Build {
             if($autoload) {
 //                $prefixList = $autoload->getPrefixList();
 //                $autoload->unregister();
-                d($dir);
                 $autoload->addPrefix($config->data('parse.prefix'),  $dir);
                 /*
                 foreach ($prefixList as $nr => $record){

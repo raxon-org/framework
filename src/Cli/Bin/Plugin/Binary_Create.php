@@ -55,7 +55,7 @@ trait Binary_Create
         $content = implode(PHP_EOL, $content);
         File::write($url, $content);
         shell_exec('chmod +x ' . $url);
-        echo 'Binary created...' . PHP_EOL;
         */
+        echo 'Binary created...' . PHP_EOL;
     }
 }
