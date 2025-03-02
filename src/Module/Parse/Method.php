@@ -353,7 +353,7 @@ class Method {
                         $item['name'] = $record['method']['trait'] ?? $record['method']['php_trait'];
                         if(
                             in_array(
-                                $item['name'],
+                                strtolower($item['name']),
                                 [
                                     'require'
                                 ],
