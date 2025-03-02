@@ -10,7 +10,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -43,7 +43,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -75,7 +75,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -103,7 +103,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -135,7 +135,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -193,7 +193,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -225,7 +225,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -277,7 +277,7 @@
         },
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" :  "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" :  "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -314,7 +314,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -346,7 +346,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -383,7 +383,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -410,7 +410,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -438,7 +438,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -470,7 +470,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -501,7 +501,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -533,7 +533,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -569,7 +569,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -601,7 +601,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -634,7 +634,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -666,7 +666,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -719,7 +719,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -747,7 +747,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -775,7 +775,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         },
         {
@@ -808,7 +808,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Package/",
-          "to" : "{{package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#key)}}",
           "recursive": true
         }
       ],
