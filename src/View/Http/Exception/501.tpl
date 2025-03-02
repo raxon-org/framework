@@ -54,7 +54,7 @@ config('framework.environment') === 'development') &&
 <section name="trace">
     <label>Trace: </label><br>
     <table>
-        {{for.each($exception.trace as $nr => $trace)}}
+        {{foreach($exception.trace as $nr => $trace)}}
         <tr class="trace">
             <td class="tab">&nbsp;</td>
             <td class="title">{{$trace.file}} ({{$trace.line}})</td>
@@ -84,7 +84,7 @@ config('framework.environment') === 'development') &&
                 {{/if}}
             </td>
         </tr>
-        {{/for.each}}
+        {{/foreach}}
     </table>
 </section>
 {{/if}}

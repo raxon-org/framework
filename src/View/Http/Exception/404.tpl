@@ -33,13 +33,13 @@ config('framework.environment') === 'development'
 <section name="location">
     <label>Locations: </label><br>
     <table class="location">
-        {{for.each($exception.location as $location_nr => $location_value)}}
+        {{foreach($exception.location as $location_nr => $location_value)}}
         <tr class="list">
             <td colspan="4">
                 <span>{{$location_value}}</span>
             </td>
         </tr>
-        {{/for.each}}
+        {{/foreach}}
     </table>
 </section>
 {{/if}}
@@ -76,7 +76,7 @@ config('framework.environment') === 'development' &&
 <section name="trace">
     <label>Trace: </label><br>
     <table class="trace">
-        {{for.each($exception.trace as $nr => $trace)}}
+        {{foreach($exception.trace as $nr => $trace)}}
         <tr class="trace">
             <td class="title"><b>File:</b> {{$trace.file}} (<b>{{$trace.line}}</b>)</td>
         </tr>
@@ -109,7 +109,7 @@ config('framework.environment') === 'development' &&
                 {{/if}}
             </td>
         </tr>
-        {{/for.each}}
+        {{/foreach}}
     </table>
 </section>
 {{/if}}
