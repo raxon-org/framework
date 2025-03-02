@@ -810,10 +810,6 @@ class Autoload {
         $data->set('Autoload.environment', $this->environment());
         $data->set('Autoload.expose', $this->expose());
         $data->set('Autoload.time', microtime(true));
-        ob_start();
-        trace();
-        $data->set('Autoload.trace', ob_get_contents()());
-        ob_clean();
         File::append(
             $dir_temp .
             'Autoload.log',
