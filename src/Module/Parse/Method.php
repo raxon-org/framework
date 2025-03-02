@@ -236,8 +236,11 @@ class Method {
                         'if',
                         'elseif',
                         'else.if',
+                        'else_if',
                         'for',
                         'foreach',
+                        'for.each',
+                        'for_each',
                         'while',
                         'switch',
                         'break',
@@ -248,7 +251,16 @@ class Method {
             ){
                 $name = $record['method']['name'];
                 $indent = $build->indent;
-                if($name == 'for.each'){
+                if(
+                    in_array(
+                        $name,
+                        [
+                            'for.each',
+                            'for_each'
+                        ],
+                        true
+                    )
+                ){
                     $name = 'foreach';
                 }
                 elseif($name === 'elseif'){
@@ -256,7 +268,16 @@ class Method {
                     $build->indent($indent);
                     $name = '}' . "\n" . $build->indent() . $name;
                 }
-                elseif($name === 'else.if'){
+                elseif(
+                    in_array(
+                        $name,
+                        [
+                            'else.if',
+                            'else_if'
+                        ],
+                        true
+                    )
+                ){
                     $indent -= 1; //$build->indent($build->indent-1);
                     $build->indent($indent);
                     $name = '}' . "\n" . $build->indent() . 'elseif';
