@@ -379,7 +379,7 @@ class Method {
                                 }
                             }
                             if($is_found === false){
-                                throw new LocateException('Plugin (' . $record['method']['name'] . ') not found...', $location);
+                                throw new LocateException('Plugin (' . $item['namespace'] . $item['name'] . ') not found...', $location);
                             }
                         }
 
