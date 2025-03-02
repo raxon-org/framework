@@ -313,6 +313,17 @@ class Method {
                     if($list === null){
                         $list = [];
                     }
+                    if(
+                        in_array(
+                            strtolower($record['method']['php_name']),
+                            [
+                                'require'
+                            ],
+                            true
+                        )
+                    ){
+                        $record['method']['php_name'] = 'plugin_' . $record['method']['php_name'];
+                    }
                     if(empty($attribute)){
                         if(
                             $attribute === 0 ||
