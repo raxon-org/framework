@@ -351,6 +351,16 @@ class Method {
                     if(!$in_list){
                         $item = [];
                         $item['name'] = $record['method']['trait'] ?? $record['method']['php_trait'];
+                        if(
+                            in_array(
+                                $item['name'],
+                                [
+                                    'require'
+                                ],
+                            true)){
+                        }{
+                            $item['name'] = 'Plugin_' .  $item['name'];
+                        }
                         $item['namespace'] = $record['method']['namespace'];
                         $list[] = $item;
                         if(array_key_exists('php_trait', $record['method'])){
