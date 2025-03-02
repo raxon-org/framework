@@ -62,6 +62,7 @@ class Clear extends Controller {
      * @throws Exception
      */
     public static function run(App $object){
+        d($object->request());
         $command = $object->parameter($object, 'app', 1);
         ddd($command);
         if($command === null){
