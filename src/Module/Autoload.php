@@ -355,7 +355,8 @@ class Autoload {
                     $record['prefix'] === $prefix &&
                     !in_array($directory, $record['directory'], true)
                 ){
-                    $list[$nr]['directory']= array_unshift($record['directory'], $directory);
+                    array_unshift($record['directory'], $directory);
+                    $list[$nr]['directory'] = $record['directory'];
                     $found = true;
                     break;
                 }
@@ -386,7 +387,8 @@ class Autoload {
                     !empty($record['extension']) &&
                     $record['extension'] === $extension
                 ){
-                    $list[$nr]['directory']= array_unshift($record['directory'], $directory);
+                    array_unshift($record['directory'], $directory);
+                    $list[$nr]['directory'] = $record['directory'];
                     $found = true;
                     break;
                 }
