@@ -369,6 +369,10 @@ class Install extends Controller {
                 !in_array('cache-clear', $options->skip, true)
             )
         ){
+            $autoload = $object->config(App::AUTOLOAD_RAXON);
+            ddd($autoload->getPrefixList());
+
+
             $command = '{{binary()}} cache:clear';
             $parse = new Parse($object, $object->data());
             $command = $parse->compile($command, $object->data());
