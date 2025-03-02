@@ -35,6 +35,7 @@ class Install extends Controller {
     public static function run(App $object): void
     {
         $autoload = $object->data(App::AUTOLOAD_RAXON);
+        trace();
         ddd($autoload->getPrefixList());
 
         $id = $object->config(Config::POSIX_ID);
