@@ -1182,7 +1182,6 @@ class Build {
             $key = sha1($string);
             $config = $this->object()->data(App::CONFIG);
             $dir = $this->cache_dir();
-            d($dir);
             if(empty($dir)){
                 throw new Exception('Cache dir empty in Build');
             }
@@ -1190,6 +1189,7 @@ class Build {
             if($autoload) {
 //                $prefixList = $autoload->getPrefixList();
 //                $autoload->unregister();
+                d($dir);
                 $autoload->addPrefix($config->data('parse.prefix'),  $dir);
                 /*
                 foreach ($prefixList as $nr => $record){
