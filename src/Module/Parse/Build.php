@@ -1182,6 +1182,7 @@ class Build {
             $key = sha1($string);
             $config = $this->object()->data(App::CONFIG);
             $dir = $this->cache_dir();
+            ddd($dir);
             if(empty($dir)){
                 throw new Exception('Cache dir empty in Build');
             }
