@@ -1182,15 +1182,16 @@ class Build {
             $key = sha1($string);
             $config = $this->object()->data(App::CONFIG);
             $dir = $this->cache_dir();
-            ddd($dir);
+            d($dir);
             if(empty($dir)){
                 throw new Exception('Cache dir empty in Build');
             }
             $autoload = $this->object()->data(App::NAMESPACE . '.' . Autoload::NAME . '.' . App::RAXON);
             if($autoload) {
-                $prefixList = $autoload->getPrefixList();
-                $autoload->unregister();
+//                $prefixList = $autoload->getPrefixList();
+//                $autoload->unregister();
                 $autoload->addPrefix($config->data('parse.prefix'),  $dir);
+                /*
                 foreach ($prefixList as $nr => $record){
                     if(
                         array_key_exists('prefix', $record) &&
@@ -1219,6 +1220,7 @@ class Build {
                     }
                 }
                 $autoload->register();
+                */
             }
             $name = '';
             if(isset($options['parent'])){
