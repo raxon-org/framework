@@ -59,7 +59,6 @@ class Autoload {
         $autoload->object($object);
         $autoload->setPrefixList([]);
         $prefix = $object->config('autoload.prefix');
-        ddd($prefix);
         /*
         if(
             empty($object->config('ramdisk.is.disabled')) &&
