@@ -498,7 +498,7 @@ class Autoload {
             $object->config('cache.autoload.url.directory_pop_or_shift')
         ){
             foreach($item['directory'] as $directory){
-                $load = $item['directory'] . $item['file'];
+                $load = $directory . $item['file'];
                 $load_directory = dirname($load);
                 $load = basename($load) . '.' . Autoload::EXT_PHP;
                 $load_compile = Autoload::name_reducer(
