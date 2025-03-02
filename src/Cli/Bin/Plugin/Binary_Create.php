@@ -1,9 +1,14 @@
 <?php
 namespace Plugin;
 
-
 use Exception;
+
+use Raxon\Config;
 use Raxon\Module\Core;
+use Raxon\Module\Dir;
+use Raxon\Module\File;
+
+use Raxon\Cli\Bin\Controller\Bin;
 
 trait Binary_Create
 {
@@ -26,21 +31,19 @@ trait Binary_Create
         ){
             throw new Exception('Only root can execute bin...');
         }
-        if(empty($name)){
-            $name = \Raxon\Cli\Bin\Controller\Bin::DEFAULT_NAME;
+        if(empty($name)) {
+            $name = Bin::DEFAULT_NAME;
         }
-        /*
-        $object = $parse->object();
-        $execute = $object->config(Config::DATA_PROJECT_DIR_BINARY) . \Raxon\Cli\Bin\Controller\Bin::EXE;
+        $execute = $object->config(Config::DATA_PROJECT_DIR_BINARY) . Bin::EXE;
         Dir::create($object->config(Config::DATA_PROJECT_DIR_BINARY), Dir::CHMOD);
-        $dir = Dir::name(\Raxon\Cli\Bin\Controller\Bin::DIR) .
+        $dir = Dir::name(Bin::DIR) .
             $object->config(
                 Config::DICTIONARY .
                 '.' .
                 Config::DATA
             ) .
             $object->config('ds');
-        $source = $dir . \Raxon\Cli\Bin\Controller\Bin::EXE;
+        $source = $dir . Bin::EXE;
         if(File::exist($execute)){
             File::delete($execute);
         }
@@ -55,7 +58,6 @@ trait Binary_Create
         $content = implode(PHP_EOL, $content);
         File::write($url, $content);
         shell_exec('chmod +x ' . $url);
-        */
         echo 'Binary created...' . PHP_EOL;
     }
 }
