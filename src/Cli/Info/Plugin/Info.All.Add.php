@@ -3,13 +3,7 @@ namespace Plugin;
 
 use Exception;
 
-use Raxon\Config;
-use Raxon\Module\Core;
-use Raxon\Module\Dir;
-use Raxon\Module\File;
-use Raxon\Module\Parse;
-
-use Raxon\Cli\Cache\Controller\Cache;
+use Raxon\Module\Cli;
 
 trait Info_All_Add
 {
