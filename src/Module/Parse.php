@@ -783,6 +783,7 @@ class Parse {
                         $storage->data('delete', 'this');
                     }
                 } else {
+                    ddd($document);
                     $exception = new Exception('Class (' . $class . ') doesn\'t exist');
                     Event::trigger($object, 'parse.compile.exception', [
                         'string' => $string,
