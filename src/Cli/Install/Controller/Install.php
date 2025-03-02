@@ -369,7 +369,7 @@ class Install extends Controller {
                 !in_array('cache-clear', $options->skip, true)
             )
         ){
-            $autoload = $object->config(App::AUTOLOAD_RAXON);
+            $autoload = $object->data(App::AUTOLOAD_RAXON);
             ddd($autoload->getPrefixList());
 
 
