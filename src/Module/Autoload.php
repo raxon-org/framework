@@ -501,6 +501,7 @@ class Autoload {
                 $load = $directory . $item['file'];
                 $load_directory = dirname($load);
                 $load = basename($load) . '.' . Autoload::EXT_PHP;
+                /*
                 $load_compile = Autoload::name_reducer(
                     $object,
                     $load,
@@ -511,6 +512,7 @@ class Autoload {
                 if(str_contains($load_compile, '_')){
                     $data[] = $object->config('autoload.cache.compile') . $load_compile;
                 }
+                */
                 $load = Autoload::name_reducer(
                     $object,
                     $load,
