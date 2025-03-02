@@ -1,4 +1,5 @@
 <?php
+namespace Plugin;
 
 use Exception;
 
