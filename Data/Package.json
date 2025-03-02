@@ -67,7 +67,8 @@
       }
     },
     "raxon/application" : {
-      "composer" : "composer require {{$this.#key}}:~2024",
+      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#key}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
       ],
@@ -217,7 +218,8 @@
       }
     },
     "raxon/doctrine" : {
-      "composer" : "composer require {{$this.#key}}:~2024",
+      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#key}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
       ],
@@ -249,7 +251,8 @@
       }
     },
     "raxon/email" : {
-      "composer" : "composer require {{$this.#key}}:~2024",
+      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#key}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
       ],
@@ -306,7 +309,8 @@
       }
     },
     "raxon/log" : {
-      "composer" : "composer require {{$this.#key}}:~2024",
+      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#key}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
       ],
@@ -339,7 +343,8 @@
       }
     },
     "raxon/event" : {
-      "composer" : "composer require {{$this.#key}}:~2024",
+      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#key}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
       ],
@@ -375,7 +380,8 @@
       }
     },
     "raxon/host" : {
-      "composer" : "composer require {{$this.#key}}:~2024",
+      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#key}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
       ],
@@ -402,7 +408,8 @@
       }
     },
     "raxon/keyboard" : {
-      "composer" : "composer require {{$this.#key}}:~2024",
+      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#key}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
       ],
@@ -462,7 +469,8 @@
       }
     },
     "raxon/raxon" : {
-      "composer" : "composer require {{$this.#key}}:~2024",
+      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#key}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
       ],
@@ -494,7 +502,8 @@
       }
     },
     "raxon/route" : {
-      "composer" : "composer require {{$this.#key}}:~2024",
+      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#key}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
       ],
@@ -525,7 +534,8 @@
       }
     },
     "raxon/autoload" : {
-      "composer" : "composer require {{$this.#key}}:~2024",
+      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#key}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
       ],
@@ -561,7 +571,8 @@
       }
     },
     "raxon/server" : {
-      "composer" : "composer require {{$this.#key}}:~2024",
+      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#key}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
       ],
@@ -593,7 +604,8 @@
       }
     },
     "raxon/middleware" : {
-      "composer" : "composer require {{$this.#key}}:~2024",
+      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#key}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
       ],
@@ -658,7 +670,8 @@
       }
     },
     "raxon/example" : {
-      "composer" : "composer require {{$this.#key}}:~2024",
+      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#key}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
       ],
