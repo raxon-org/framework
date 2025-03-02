@@ -34,6 +34,9 @@ class Install extends Controller {
      */
     public static function run(App $object): void
     {
+        $autoload = $object->data(App::AUTOLOAD_RAXON);
+        ddd($autoload->getPrefixList());
+
         $id = $object->config(Config::POSIX_ID);
         $options = App::options($object);
         if(property_exists($options, 'skip')){
