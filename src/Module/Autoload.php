@@ -254,11 +254,19 @@ class Autoload {
         }
         if(empty($extension)){
             $found = false;
-            foreach($list as $record){
+            foreach($list as $nr => $record){
                 if(
                     $record['prefix'] === $prefix &&
-                    $record['directory'] === $directory
+                    in_array($directory, $record['directory'], true)
                 ){
+                    $found = true;
+                    break;
+                }
+                elseif(
+                    $record['prefix'] === $prefix &&
+                    !in_array($directory, $record['directory'], true)
+                ){
+                    $list[$nr]['directory'][] = $directory;
                     $found = true;
                     break;
                 }
@@ -266,26 +274,40 @@ class Autoload {
             if(!$found){
                 $list[]  = [
                     'prefix' => $prefix,
-                    'directory' => $directory
+                    'directory' => [
+                        $directory
+                    ]
                 ];
             }
         } else {
             $found = false;
-            foreach($list as $record){
+            foreach($list as $nr => $record){
                 if(
                     $record['prefix'] === $prefix &&
-                    $record['directory'] === $directory &&
+                    in_array($directory,$record['directory'], true) &&
                     !empty($record['extension']) &&
                     $record['extension'] === $extension
                 ){
                     $found = true;
                     break;
                 }
+                elseif(
+                    $record['prefix'] === $prefix &&
+                    !in_array($directory, $record['directory'], true) &&
+                    !empty($record['extension']) &&
+                    $record['extension'] === $extension
+                ){
+                    $list[$nr]['directory'][] = $directory;
+                    $found = true;
+                    break;
+                }
             }
             if(!$found){
                 $list[]  = [
                     'prefix' => $prefix,
-                    'directory' => $directory,
+                    'directory' => [
+                        $directory,
+                    ],
                     'extension' => $extension
                 ];
             }
@@ -311,11 +333,19 @@ class Autoload {
         }
         if(empty($extension)){
             $found = false;
-            foreach($list as $record){
+            foreach($list as $nr => $record){
                 if(
                     $record['prefix'] === $prefix &&
-                    $record['directory'] === $directory
+                    in_array($directory, $record['directory'], true)
                 ){
+                    $found = true;
+                    break;
+                }
+                elseif(
+                    $record['prefix'] === $prefix &&
+                    !in_array($directory, $record['directory'], true)
+                ){
+                    $list[$nr]['directory']= array_unshift($record['directory'], $directory);
                     $found = true;
                     break;
                 }
@@ -323,18 +353,30 @@ class Autoload {
             if(!$found){
                 $prepend[] = [
                     'prefix' => $prefix,
-                    'directory' => $directory
+                    'directory' => [
+                        $directory
+                    ]
                 ];
             }
         } else {
             $found = false;
-            foreach($list as $record){
+            foreach($list as $nr => $record){
                 if(
                     $record['prefix'] === $prefix &&
-                    $record['directory'] === $directory &&
+                    in_array($directory, $record['directory'], true) &&
                     !empty($record['extension']) &&
                     $record['extension'] === $extension
                 ){
+                    $found = true;
+                    break;
+                }
+                elseif(
+                    $record['prefix'] === $prefix &&
+                    !in_array($directory, $record['directory'], true) &&
+                    !empty($record['extension']) &&
+                    $record['extension'] === $extension
+                ){
+                    $list[$nr]['directory']= array_unshift($record['directory'], $directory);
                     $found = true;
                     break;
                 }
@@ -342,7 +384,9 @@ class Autoload {
             if(!$found){
                 $prepend[]  = [
                     'prefix' => $prefix,
-                    'directory' => $directory,
+                    'directory' => [
+                        $directory,
+                    ],
                     'extension' => $extension
                 ];
             }
