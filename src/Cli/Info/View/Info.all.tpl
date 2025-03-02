@@ -9,7 +9,7 @@ Welcome to raxon.org                  {{terminal.color('blue')}}(c) Remco van de
 {{$route = data.sort($route, [
 'info' => 'ASC'
 ])}}
-{{foreach($route as $nr => $record)}}
+{{for.each($route as $nr => $record)}}
 {{if(is.array($record.info))}}
 {{$info = implode("\n", $record.info)}}
 {{parse.string($info)}}
@@ -18,4 +18,4 @@ Welcome to raxon.org                  {{terminal.color('blue')}}(c) Remco van de
 {{parse.string($record.info)}}
 
 {{/if}}
-{{/foreach}}
+{{/for.each}}
