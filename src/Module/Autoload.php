@@ -255,6 +255,10 @@ class Autoload {
         if(empty($extension)){
             $found = false;
             foreach($list as $nr => $record){
+                if(!is_array($record['directory'])){
+                    trace();
+                    ddd($record);
+                }
                 if(
                     $record['prefix'] === $prefix &&
                     in_array($directory, $record['directory'], true)
