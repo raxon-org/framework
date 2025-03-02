@@ -1,1 +1,1 @@
-its {{binary()}} cache clear
+{{execute(binary() + ' cache clear')}}
