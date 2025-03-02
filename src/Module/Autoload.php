@@ -241,6 +241,11 @@ class Autoload {
 
     public function addPrefix($prefix='', $directory='', $extension=''): void
     {
+        if(is_array($directory)){
+            foreach($directory as $record){
+                $this->addPrefix($prefix, $record, $extension);
+            }
+        }
         $prefix = trim($prefix, '\\\/'); //.'\\';
         $directory = str_replace('\\\/', DIRECTORY_SEPARATOR, rtrim($directory,'\\\/')) . DIRECTORY_SEPARATOR; //see File::dir()
         $list = $this->getPrefixList();
@@ -285,11 +290,17 @@ class Autoload {
                 ];
             }
         }
+        d($list);
         $this->setPrefixList($list);
     }
 
     public function prependPrefix($prefix='', $directory='', $extension=''): void
     {
+        if(is_array($directory)){
+            foreach($directory as $record){
+                $this->prependPrefix($prefix, $record, $extension);
+            }
+        }
         $prefix = trim($prefix, '\\\/'); //.'\\';
         $directory = str_replace('\\\/', DIRECTORY_SEPARATOR, rtrim($directory,'\\\/')) . DIRECTORY_SEPARATOR; //see File::dir()
         $list = $this->getPrefixList();
