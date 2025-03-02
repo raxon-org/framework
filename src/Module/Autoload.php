@@ -82,33 +82,19 @@ class Autoload {
         ){
             foreach($prefix as $record){
                 $parameters = Core::object($record, 'array');
-
                 $parameters = Config::parameters($object, $parameters);
                 if(
                     array_key_exists('prefix', $parameters) &&
                     array_key_exists('directory', $parameters) &&
                     array_key_exists('extension', $parameters)
                 ){
-                    if(is_array($parameters['directory'])){
-                        foreach($parameters['directory'] as $nr => $directory){
-                            $autoload->addPrefix($parameters['prefix'],  $directory, $parameters['extension']);
-                        }
-                    } else {
-                        $autoload->addPrefix($parameters['prefix'],  $parameters['directory'], $parameters['extension']);
-                    }
+                    $autoload->addPrefix($parameters['prefix'],  $parameters['directory'], $parameters['extension']);
                 }
                 elseif(
                     array_key_exists('prefix', $parameters) &&
                     array_key_exists('directory', $parameters)
                 ){
-                    if(is_array($parameters['directory'])){
-                        foreach($parameters['directory'] as $nr => $directory){
-                            $autoload->addPrefix($parameters['prefix'],  $directory);
-                        }
-                    } else {
-                        $autoload->addPrefix($parameters['prefix'],  $parameters['directory']);
-                    }
-
+                    $autoload->addPrefix($parameters['prefix'],  $parameters['directory']);
                 }
             }
         } else {
@@ -178,7 +164,7 @@ class Autoload {
         $autoload->cache_dir($cache_dir);
         $autoload->register();
         $autoload->environment($object->config('framework.environment'));
-        $object->data(App::AUTOLOAD_RAXON, $autoload);
+        $object->data(App::AUTOLOAD_DIFFERENCE, $autoload);
     }
 
     public function register($method='load', $prepend=false): bool
@@ -255,9 +241,7 @@ class Autoload {
     public function addPrefix($prefix='', $directory='', $extension=''): void
     {
         $prefix = trim($prefix, '\\\/'); //.'\\';
-        if(is_string($directory)){
-            $directory = str_replace('\\\/', DIRECTORY_SEPARATOR, rtrim($directory,'\\\/')) . DIRECTORY_SEPARATOR; //see File::dir()
-        }
+        $directory = str_replace('\\\/', DIRECTORY_SEPARATOR, rtrim($directory,'\\\/')) . DIRECTORY_SEPARATOR; //see File::dir()
         $list = $this->getPrefixList();
         if(empty($list)){
             $list = [];
@@ -267,7 +251,6 @@ class Autoload {
             foreach($list as $record){
                 if(
                     $record['prefix'] === $prefix &&
-                    is_string($directory) &&
                     $record['directory'] === $directory
                 ){
                     $found = true;
@@ -275,42 +258,10 @@ class Autoload {
                 }
             }
             if(!$found){
-                foreach($list as $nr => $record){
-                    if(
-                        $record['prefix'] === $prefix &&
-                        is_array($record['directory']) &&
-                        is_string($directory) &&
-                        !in_array(
-                            $directory,
-                            $record['directory'],
-                            true
-                        )
-                    ){
-                        $list[$nr]['directory'][] = $directory;
-                        $found = true;
-                        break;
-                    }
-                    elseif(
-                        $record['prefix'] === $prefix &&
-                        is_string($record['directory']) &&
-                        is_string($directory)
-                    ){
-                        $list[$nr]['directory'] = [$directory, $record['directory']];
-                        $found = true;
-                        break;
-                    } elseif($record['prefix'] === $prefix && is_array($directory)){
-                        trace();
-                        d($directory);
-                        ddd($record);
-                    }
-                }
-                if(!$found){
-                    $list[]  = [
-                        'prefix' => $prefix,
-                        'directory' => $directory
-                    ];
-                }
-
+                $list[]  = [
+                    'prefix' => $prefix,
+                    'directory' => $directory
+                ];
             }
         } else {
             $found = false;
@@ -326,41 +277,11 @@ class Autoload {
                 }
             }
             if(!$found){
-                foreach($list as $nr => $record){
-                    if(
-                        $record['prefix'] === $prefix &&
-                        !empty($record['extension']) &&
-                        $record['extension'] === $extension &&
-                        is_array($record['directory']) &&
-                        !in_array(
-                            $directory,
-                            $record['directory'],
-                            true
-                        )
-                    ){
-                        $list[$nr]['directory'][] = $directory;
-                        $found = true;
-                        break;
-                    }
-                    elseif(
-                        $record['prefix'] === $prefix &&
-                        !empty($record['extension']) &&
-                        $record['extension'] === $extension &&
-                        is_string($record['directory'])
-                    ){
-                        $list[$nr]['directory'] = [$directory, $record['directory']];
-                        $found = true;
-                        break;
-                    }
-                }
-                if(!$found){
-                    $list[]  = [
-                        'prefix' => $prefix,
-                        'directory' => $directory,
-                        'extension' => $extension
-                    ];
-                }
-
+                $list[]  = [
+                    'prefix' => $prefix,
+                    'directory' => $directory,
+                    'extension' => $extension
+                ];
             }
         }
         $this->setPrefixList($list);
@@ -387,36 +308,10 @@ class Autoload {
                 }
             }
             if(!$found){
-                foreach($list as $nr => $record){
-                    if(
-                        $record['prefix'] === $prefix &&
-                        is_array($record['directory']) &&
-                        !in_array(
-                            $directory,
-                            $record['directory'],
-                            true
-                        )
-                    ){
-                        array_unshift($record['directory'], $directory);
-                        $list[$nr] = $record;
-                        $found = true;
-                        break;
-                    }
-                    elseif(
-                        $record['prefix'] === $prefix &&
-                        is_string($record['directory'])
-                    ){
-                        $list[$nr]['directory'] = [$directory, $record['directory']];
-                        $found = true;
-                        break;
-                    }
-                }
-                if($found === false){
-                    $prepend[] = [
-                        'prefix' => $prefix,
-                        'directory' => $directory
-                    ];
-                }
+                $prepend[] = [
+                    'prefix' => $prefix,
+                    'directory' => $directory
+                ];
             }
         } else {
             $found = false;
@@ -432,41 +327,11 @@ class Autoload {
                 }
             }
             if(!$found){
-                foreach($list as $nr => $record){
-                    if(
-                        $record['prefix'] === $prefix &&
-                        !empty($record['extension']) &&
-                        $record['extension'] === $extension &&
-                        is_array($record['directory']) &&
-                        !in_array(
-                            $directory,
-                            $record['directory'],
-                            true
-                        )
-                    ){
-                        array_unshift($record['directory'], $directory);
-                        $list[$nr] = $record;
-                        $found = true;
-                        break;
-                    }
-                    elseif(
-                        $record['prefix'] === $prefix &&
-                        !empty($record['extension']) &&
-                        $record['extension'] === $extension &&
-                        is_string($record['directory'])
-                    ){
-                        $list[$nr]['directory'] = [$directory, $record['directory']];
-                        $found = true;
-                        break;
-                    }
-                }
-                if($found === false) {
-                    $prepend[] = [
-                        'prefix' => $prefix,
-                        'directory' => $directory,
-                        'extension' => $extension
-                    ];
-                }
+                $prepend[]  = [
+                    'prefix' => $prefix,
+                    'directory' => $directory,
+                    'extension' => $extension
+                ];
             }
         }
         foreach($list as $record){
@@ -520,10 +385,10 @@ class Autoload {
                     switch($pop_or_shift){
                         case 'pop':
                             array_pop($explode);
-                        break;
+                            break;
                         case 'shift':
                             array_shift($explode);
-                        break;
+                            break;
                         default:
                             if($logger_error){
                                 $object->logger($logger_error)->info('cannot reduce name with: ' . $pop_or_shift);
@@ -563,70 +428,35 @@ class Autoload {
             $object->config('cache.autoload.url.directory_separator') &&
             $object->config('cache.autoload.url.directory_pop_or_shift')
         ){
-            if(is_array($item['directory'])){
-                foreach ($item['directory'] as $nr => $directory){
-                    $load = $directory . $item['file'];
-                    $load_directory = dirname($load);
-                    $load = basename($load) . '.' . Autoload::EXT_PHP;
-                    $load_compile = Autoload::name_reducer(
-                        $object,
-                        $load,
-                        $object->config('cache.parse.url.name_length'),
-                        $object->config('cache.parse.url.name_separator'),
-                        $object->config('cache.parse.url.name_pop_or_shift')
-                    );
-                    if(str_contains($load_compile, '_')){
-                        $data[] = $object->config('autoload.cache.compile') . $load_compile;
-                    }
-                    $load = Autoload::name_reducer(
-                        $object,
-                        $load,
-                        $object->config('cache.autoload.url.name_length'),
-                        $object->config('cache.autoload.url.name_separator'),
-                        $object->config('cache.autoload.url.name_pop_or_shift')
-                    );
-                    $load_directory = Autoload::name_reducer(
-                        $object,
-                        $load_directory,
-                        $object->config('cache.autoload.url.directory_length'),
-                        $object->config('cache.autoload.url.directory_separator'),
-                        $object->config('cache.autoload.url.directory_pop_or_shift')
-                    );
-                    $load_url = $object->config('autoload.cache.class') . $load_directory . '_' . $load;
-                    $data[] = $load_url;
-                }
-            } else {
-                $load = $item['directory'] . $item['file'];
-                $load_directory = dirname($load);
-                $load = basename($load) . '.' . Autoload::EXT_PHP;
-                $load_compile = Autoload::name_reducer(
-                    $object,
-                    $load,
-                    $object->config('cache.parse.url.name_length'),
-                    $object->config('cache.parse.url.name_separator'),
-                    $object->config('cache.parse.url.name_pop_or_shift')
-                );
-                if(str_contains($load_compile, '_')){
-                    $data[] = $object->config('autoload.cache.compile') . $load_compile;
-                }
-                $load = Autoload::name_reducer(
-                    $object,
-                    $load,
-                    $object->config('cache.autoload.url.name_length'),
-                    $object->config('cache.autoload.url.name_separator'),
-                    $object->config('cache.autoload.url.name_pop_or_shift')
-                );
-                $load_directory = Autoload::name_reducer(
-                    $object,
-                    $load_directory,
-                    $object->config('cache.autoload.url.directory_length'),
-                    $object->config('cache.autoload.url.directory_separator'),
-                    $object->config('cache.autoload.url.directory_pop_or_shift')
-                );
-                $load_url = $object->config('autoload.cache.class') . $load_directory . '_' . $load;
-                $data[] = $load_url;
+            $load = $item['directory'] . $item['file'];
+            $load_directory = dirname($load);
+            $load = basename($load) . '.' . Autoload::EXT_PHP;
+            $load_compile = Autoload::name_reducer(
+                $object,
+                $load,
+                $object->config('cache.parse.url.name_length'),
+                $object->config('cache.parse.url.name_separator'),
+                $object->config('cache.parse.url.name_pop_or_shift')
+            );
+            if(str_contains($load_compile, '_')){
+                $data[] = $object->config('autoload.cache.compile') . $load_compile;
             }
-
+            $load = Autoload::name_reducer(
+                $object,
+                $load,
+                $object->config('cache.autoload.url.name_length'),
+                $object->config('cache.autoload.url.name_separator'),
+                $object->config('cache.autoload.url.name_pop_or_shift')
+            );
+            $load_directory = Autoload::name_reducer(
+                $object,
+                $load_directory,
+                $object->config('cache.autoload.url.directory_length'),
+                $object->config('cache.autoload.url.directory_separator'),
+                $object->config('cache.autoload.url.directory_pop_or_shift')
+            );
+            $load_url = $object->config('autoload.cache.class') . $load_directory . '_' . $load;
+            $data[] = $load_url;
             $object->config('autoload.cache.file.name', $load_url);
         }
         if(
@@ -637,51 +467,27 @@ class Autoload {
             $data[] = $this->read->autoload->{$caller}->{$item['load']};
         }
         $item['file_dot'] = str_replace('_', '.', $item['file']);
-        if(is_array($item['directory'])){
-            foreach($item['directory'] as $nr => $directory){
-                $data[] = $directory . $item['file_dot'] . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
-                $data[] = $directory . $item['file'] . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
-                $data[] = $directory . $item['file_dot'] . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
-                $data[] = $directory . $item['file'] . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
-                $explode = explode('.', $item['file_dot'], 2);
-                if(
-                    $explode[0] !== $item['file_dot'] &&
-                    $explode[0] !== $item['file']
-                ){
-                    $data[] = $directory . $explode[0] . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
-                    $data[] = $directory . $explode[0] . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
-                    $data[] = $directory . $explode[0] . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
-                    $data[] = $directory . $explode[0] . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
-                }
-                $data[] = $directory . $item['file_dot'] . '.' . Autoload::EXT_PHP;
-                $data[] = $directory . $item['file'] . '.' . Autoload::EXT_PHP;
-                $data[] = $directory . $item['baseName'] . '.' . Autoload::EXT_PHP;
-            }
-        } else {
-            $data[] = $item['directory'] . $item['file_dot'] . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
-            $data[] = $item['directory'] . $item['file'] . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
-            $data[] = $item['directory'] . $item['file_dot'] . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
-            $data[] = $item['directory'] . $item['file'] . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
-            $explode = explode('.', $item['file_dot'], 2);
-            if(
-                $explode[0] !== $item['file_dot'] &&
-                $explode[0] !== $item['file']
-            ){
-                $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
-                $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
-                $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
-                $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
-            }
-            $data[] = $item['directory'] . $item['file_dot'] . '.' . Autoload::EXT_PHP;
-            $data[] = $item['directory'] . $item['file'] . '.' . Autoload::EXT_PHP;
-            $data[] = $item['directory'] . $item['baseName'] . '.' . Autoload::EXT_PHP;
+        $data[] = $item['directory'] . $item['file_dot'] . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
+        $data[] = $item['directory'] . $item['file'] . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
+        $data[] = $item['directory'] . $item['file_dot'] . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
+        $data[] = $item['directory'] . $item['file'] . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
+        $explode = explode('.', $item['file_dot'], 2);
+        if(
+            $explode[0] !== $item['file_dot'] &&
+            $explode[0] !== $item['file']
+        ){
+            $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
+            $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
+            $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
+            $data[] = $item['directory'] . $explode[0] . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
         }
-//        $this->fileList[$item['baseName']][] = $data;
+        $data[] = $item['directory'] . $item['file_dot'] . '.' . Autoload::EXT_PHP;
+        $data[] = $item['directory'] . $item['file'] . '.' . Autoload::EXT_PHP;
+        $data[] = $item['directory'] . $item['baseName'] . '.' . Autoload::EXT_PHP;
+        $this->fileList[$item['baseName']][] = $data;
         $result = [];
         foreach($data as $nr => $file){
-            if(!in_array($file, $result)){
-                $result[] = $file;
-            }
+            $result[$file] = $file;
         }
         return $result;
     }
@@ -937,6 +743,10 @@ class Autoload {
         $data->set('Autoload.environment', $this->environment());
         $data->set('Autoload.expose', $this->expose());
         $data->set('Autoload.time', microtime(true));
+        ob_start();
+        trace();
+        $data->set('Autoload.trace', ob_get_contents()());
+        ob_clean();
         File::append(
             $dir_temp .
             'Autoload.log',
