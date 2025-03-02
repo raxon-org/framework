@@ -743,7 +743,6 @@ class Parse {
                 $document = $build->create('trait', $tree, $document);
 //                d($mtime);
                 $write = $build->write($url, $document, $string);
-                d($url . ' => ' . $write);
                 if($mtime !== null){
                     $touch = File::touch($url, $mtime);
 //                    d(File::mtime($url));
@@ -784,10 +783,6 @@ class Parse {
                         $storage->data('delete', 'this');
                     }
                 } else {
-                    d($exception ?? null);
-                    d($url);
-                    d($class);
-                    ddd($document);
                     $exception = new Exception('Class (' . $class . ') doesn\'t exist');
                     Event::trigger($object, 'parse.compile.exception', [
                         'string' => $string,

@@ -49,8 +49,10 @@ class Build {
         'if',
         'else.if',
         'elseif',
+        'else_if',
         'for',
         'for.each',
+        'for_each',
         'foreach',
         'while',
         'switch',
@@ -869,7 +871,7 @@ class Build {
                             }
                             elseif(
                                 array_key_exists('method', $select) &&
-                                $select['method']['php_name'] == Token::TYPE_FOREACH
+                                $select['method']['php_name'] === Token::TYPE_FOREACH
                             ){
                                 $run[] = $this->indent() . $control;
                                 $this->indent($this->indent+1);

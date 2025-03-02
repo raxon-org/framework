@@ -176,6 +176,20 @@ class Value {
                     !array_key_exists('php_name', $record['method'])
                 ){
                     $record['method']['php_name'] = str_replace('.', '_', $record['value']);
+                    $record['method']['php_name'] = str_replace(
+                        [
+                            'for.each',
+                            'for_each',
+                            'else.if',
+                            'else_if',
+                        ], [
+                            'foreach',
+                            'foreach',
+                            'elseif',
+                            'elseif',
+                        ],
+                        $record['method']['php_name']
+                    );
                     $storage->data('function.' . $record['method']['php_name'], $record);
                     if(empty($record['method']['namespace'])){
                         $record['method']['php_trait'] = Core::ucfirst_sentence($record['method']['php_name'], '_');

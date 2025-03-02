@@ -47,7 +47,7 @@ class Method {
                 $record['method']['assign_after'] = Method::getAssign($record['method']['attribute'], Method::WHERE_AFTER);
                 $record['method']['attribute'] = Method::getAttribute($record['method']['attribute']);
             }
-            elseif($record['method']['php_name'] == Token::TYPE_FOREACH){
+            elseif($record['method']['php_name'] === Token::TYPE_FOREACH){
                 $as_is = false;
                 $is_key_value = false;
                 $has_key = false;
