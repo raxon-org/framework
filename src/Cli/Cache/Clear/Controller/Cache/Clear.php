@@ -37,6 +37,7 @@ class Clear extends Controller {
     const COMMAND = [
         Clear::COMMAND_INFO,
         Clear::COMMAND_CLEAR,
+        'cache:clear',
         Clear::COMMAND_STATUS,
         Clear::COMMAND_GARBAGE
     ];
@@ -62,8 +63,8 @@ class Clear extends Controller {
      * @throws Exception
      */
     public static function run(App $object){
-        d($object->request());
-        $command = $object->parameter($object, 'app', 1);
+        $request = $object->request();
+        $command = $request->{0};
         ddd($command);
         if($command === null){
             $command = Clear::DEFAULT_COMMAND;
