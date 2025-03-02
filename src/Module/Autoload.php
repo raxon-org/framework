@@ -867,6 +867,10 @@ class Autoload {
     }
 
     public function __destruct(){
+        return;
+        /**
+         * below is not used, controller.dir.plugin is in this list as well.
+         */
         $object = $this->object();
         $dir = $this->cache_dir();
         if(!empty($this->read)){
