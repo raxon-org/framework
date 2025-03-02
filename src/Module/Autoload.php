@@ -58,6 +58,8 @@ class Autoload {
         $autoload = new Autoload();
         $autoload->object($object);
         $autoload->setPrefixList([]);
+        $prefix = $object->config('autoload.prefix');
+        /*
         if(
             empty($object->config('ramdisk.is.disabled')) &&
             !empty($object->config('ramdisk.url'))
@@ -74,8 +76,9 @@ class Autoload {
                 $prefix = $object->config('autoload.prefix');
             }
         } else {
-            $prefix = $object->config('autoload.prefix');
+
         }
+        */
         if(
             !empty($prefix) &&
             is_array($prefix)
