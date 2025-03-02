@@ -267,7 +267,6 @@ class Autoload {
                     !in_array($directory, $record['directory'], true)
                 ){
                     $list[$nr]['directory'][] = $directory;
-                    ddd($list);
                     $found = true;
                     break;
                 }
