@@ -244,6 +244,7 @@ class Autoload {
             foreach($directory as $record){
                 $this->addPrefix($prefix, $record, $extension);
             }
+            return;
         }
         $prefix = trim($prefix, '\\\/'); //.'\\';
         $directory = str_replace('\\\/', DIRECTORY_SEPARATOR, rtrim($directory,'\\\/')) . DIRECTORY_SEPARATOR; //see File::dir()
@@ -299,6 +300,7 @@ class Autoload {
             foreach($directory as $record){
                 $this->prependPrefix($prefix, $record, $extension);
             }
+            return;
         }
         $prefix = trim($prefix, '\\\/'); //.'\\';
         $directory = str_replace('\\\/', DIRECTORY_SEPARATOR, rtrim($directory,'\\\/')) . DIRECTORY_SEPARATOR; //see File::dir()
