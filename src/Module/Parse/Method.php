@@ -357,8 +357,9 @@ class Method {
                                 [
                                     'require'
                                 ],
-                            true)){
-                        }{
+                            true
+                            )
+                        ){
                             $item['name'] = 'Plugin_' .  $item['name'];
                         }
                         $item['namespace'] = $record['method']['namespace'];
