@@ -1,4 +1,5 @@
 <?php
+namespace Raxon\Cli\Cache\CLear\Controller\Cache;
 /**
  * @author          Remco van der Velde
  * @since           04-01-2019
