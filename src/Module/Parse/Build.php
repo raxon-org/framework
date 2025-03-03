@@ -693,7 +693,7 @@ class Build {
             if(!array_key_exists($record['row'], $mirror)){
                 $mirror[$record['row']] = [];
             }
-            $mirror[$record['row']][$record['column']] = $record['value'] ?? $record['execute'] ?? $record['value'];
+            $mirror[$record['row']][$record['column']] = $record['parse'] ?? $record['execute'] ?? $record['value'];
             $object->config('package.raxon/parse.state.mirror', $mirror);
             $start = microtime(true);
             if(
