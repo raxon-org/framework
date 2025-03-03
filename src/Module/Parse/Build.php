@@ -689,6 +689,7 @@ class Build {
         $is_control = false;
         $remove_newline = false;
         foreach($tree as $nr => $record){
+            d($record['parse']);
             $start = microtime(true);
             if(
                 $skip_nr !== null &&
