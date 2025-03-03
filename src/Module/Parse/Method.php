@@ -390,10 +390,19 @@ class Method {
                                 }
                             }
                             if($is_found === false){
-                                d($build->object()->config('package.raxon/parse'));
-                                d($item);
-                                d($record);
-                                throw new LocateException('Plugin (' . $item['namespace'] . $item['name'] . ') not found...', $location);
+                                $document =$build->object()->config('package.raxon/parse.state.document');
+                                $line = $document[$record['row']] ?? '';
+                                throw new LocateException(
+                                    'Plugin (' .
+                                    $item['namespace'] .
+                                    $item['name'] .
+                                    'not found...' .
+                                    ') on line: ' .
+                                    $record['row'] .
+                                    PHP_EOL .
+                                    $line,
+                                    $location
+                                );
                             }
                         }
 
