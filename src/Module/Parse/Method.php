@@ -396,11 +396,14 @@ class Method {
                                     'Plugin (' .
                                     $item['namespace'] .
                                     $item['name'] .
-                                    'not found...' .
+                                    ' not found...' .
                                     ') on line: ' .
                                     $record['row'] .
                                     PHP_EOL .
-                                    $line,
+                                    $line .
+                                    PHP_EOL .
+                                    'file: ' .
+                                    $build->storage()->data('source'),
                                     $location
                                 );
                             }
