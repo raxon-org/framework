@@ -689,12 +689,12 @@ class Build {
         $is_control = false;
         $remove_newline = false;
         foreach($tree as $nr => $record){
-            $mirror= $object->config('package.raxon/parse.state.mirror') ?? [];
+            $mirror= $object->config('package.raxon/parse.state.document') ?? [];
             if(!array_key_exists($record['row'], $mirror)){
-                $mirror[$record['row']] = [];
+                $mirror[$record['row']] = '';
             }
-            $mirror[$record['row']][$record['column']] = $record['parse'] ?? $record['execute'] ?? $record['value'];
-            $object->config('package.raxon/parse.state.mirror', $mirror);
+            $mirror[$record['row']] .= $record['parse'] ?? $record['execute'] ?? $record['value'];
+            $object->config('package.raxon/parse.state.document', $mirror);
             $start = microtime(true);
             if(
                 $skip_nr !== null &&
