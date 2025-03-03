@@ -57,7 +57,6 @@ class Controller {
         }
         if($read){
             $list = $read->get('autoload');
-            d($list);
             if($list && is_array($list)){
                 foreach($list as $record){
                     if(
@@ -74,7 +73,9 @@ class Controller {
                 }
             }
         }
+        d($autoload->getPrefixList());
     }
+
 
     public static function name($name='', $before=null, $delimiter='.'): string
     {
