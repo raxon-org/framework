@@ -391,7 +391,7 @@ class Method {
                             }
                             if($is_found === false){
                                 d($build->object()->config('package.raxon/parse'));
-                                d($build->storage());
+                                d($record);
                                 throw new LocateException('Plugin (' . $item['namespace'] . $item['name'] . ') not found...', $location);
                             }
                         }
