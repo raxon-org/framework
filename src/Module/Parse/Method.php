@@ -396,8 +396,8 @@ class Method {
                                     'Plugin (' .
                                     $item['namespace'] .
                                     $item['name'] .
-                                    ' not found...' .
-                                    ') on line: ' .
+                                    ') not found...' .
+                                    'on line: ' .
                                     $record['row'] .
                                     PHP_EOL .
                                     $line .
