@@ -1367,7 +1367,7 @@ class Build {
                     )
                 ){
                     $name = str_replace('.', '_', $record['method']['name']);
-                    $storage->data('function.' . $name, $record);
+//                    $storage->data('function.' . $name, $record);
                 } else {
                     $multi_line = Build::getPluginMultiline($this->object());
                     // 'capture.append'
