@@ -390,6 +390,7 @@ class Method {
                                 }
                             }
                             if($is_found === false){
+                                d($build->object()->config());
                                 throw new LocateException('Plugin (' . $item['namespace'] . $item['name'] . ') not found...', $location);
                             }
                         }
