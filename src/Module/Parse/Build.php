@@ -1339,9 +1339,9 @@ class Build {
                             array_key_exists('type', $modifier) &&
                             $modifier['type'] == Token::TYPE_MODIFIER
                         ){
-                            $name = 'modifier_' . str_replace('.', '_', $modifier['value']);
+                            $name = str_replace('.', '_', $modifier['value']);
                             $tree[$nr]['variable']['modifier'][$modifier_list_nr][$modifier_nr]['php_name'] = $name;
-                            $storage->data('modifier.' . $name, $record);
+//                            $storage->data('modifier.' . $name, $record);
                         }
                     }
                 }

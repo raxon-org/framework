@@ -10,9 +10,13 @@
  */
 namespace Raxon\Module\Parse;
 
+use Raxon\App;
+use Raxon\Exception\LocateException;
+use Raxon\Module\Autoload;
 use Raxon\Module\Data;
 
 use Exception;
+use Raxon\Module\File;
 
 class Variable {
 
@@ -338,12 +342,91 @@ class Variable {
             array_key_exists('has_modifier', $variable['variable']) &&
             $variable['variable']['has_modifier'] === true
         ){
+            $list = $storage->get('import.trait');
+            if($list === null){
+                $list = [];
+            }
             foreach($variable['variable']['modifier'] as $nr => $modifier_list){
                 foreach($modifier_list as $modifier_nr => $modifier){
                     if(!array_key_exists('php_name', $modifier)){
                         continue;
                     }
-                    $define_modifier .= '$this->' . $modifier['php_name'] . '($this->parse(), $this->data(), ' . $define . ', ';
+                    //add to trait list
+                    ddd($modifier);
+                    $in_list = false;
+                    foreach($list as $nr => $item){
+                        if(
+                            $item['name'] === $record['method']['trait'] &&
+                            $item['namespace'] === $record['method']['namespace']
+                        ){
+                            $in_list = true;
+                            break;
+                        }
+                        elseif(
+                            array_key_exists('php_trait', $record['method']) &&
+                            $item['name'] === $record['method']['php_trait'] &&
+                            $item['namespace'] === $record['method']['namespace']
+                        ){
+                            $in_list = true;
+                            break;
+                        }
+                    }
+                    if(!$in_list){
+                        $item = [];
+                        $item['name'] = $record['method']['trait'] ?? $record['method']['php_trait'];
+                        if(
+                            in_array(
+                                strtolower($item['name']),
+                                [
+                                    'require'
+                                ],
+                                true
+                            )
+                        ){
+                            $item['name'] = 'Plugin_' .  $item['name'];
+                        }
+                        $item['namespace'] = $record['method']['namespace'];
+                        $list[] = $item;
+                        if(array_key_exists('php_trait', $record['method'])){
+                            $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
+                            $locate = $autoload->locate($item['namespace'] . $item['name'], false,  Autoload::MODE_LOCATION);
+                            $location = [];
+                            $is_found = false;
+                            foreach($locate as $location_nr => $sublist){
+                                foreach($sublist as $sub_nr => $file){
+                                    $location[] = $file;
+                                    if(File::exist($file)){
+                                        $is_found = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            if($is_found === false){
+                                $document =$build->object()->config('package.raxon/parse.state.document');
+                                $line = $document[$record['row']] ?? '';
+                                throw new LocateException(
+                                    'Plugin (' .
+                                    $item['namespace'] .
+                                    $item['name'] .
+                                    ') not found...' .
+                                    'on line: ' .
+                                    $record['row'] .
+                                    PHP_EOL .
+                                    $line .
+                                    PHP_EOL .
+                                    'file: ' .
+                                    $build->storage()->data('source'),
+                                    $location
+                                );
+                            }
+                        }
+
+                    }
+                    $storage->set('import.trait', $list);
+
+
+
+                    $define_modifier .= '$this->' . $modifier['php_name'] . '(' . $define . ', ';
                     if(!empty($modifier['has_attribute'])){
                         foreach($modifier['attribute'] as $attribute_nr => $attribute_list){
                             $use_comma = true;
