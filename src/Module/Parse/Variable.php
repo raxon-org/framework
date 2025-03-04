@@ -394,14 +394,14 @@ class Variable {
                         }
                         if($is_found === false){
                             $document =$build->object()->config('package.raxon/parse.state.document');
-                            $line = $document[$record['row']] ?? '';
+                            $line = $document[$modifier['row']] ?? '';
                             throw new LocateException(
                                 'Plugin (' .
                                 $item['namespace'] .
                                 $item['name'] .
                                 ') not found...' .
                                 'on line: ' .
-                                $record['row'] .
+                                $modifier['row'] .
                                 PHP_EOL .
                                 $line .
                                 PHP_EOL .
