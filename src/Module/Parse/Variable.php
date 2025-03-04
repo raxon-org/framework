@@ -357,9 +357,10 @@ class Variable {
                     }
                     //add to trait list
                     $in_list = false;
+                    $item_name = Core::ucfirst_sentence($modifier['php_name'], '_');
                     foreach($list as $nr => $item){
                         if(
-                            $item['name'] === $modifier['php_name'] &&
+                            $item['name'] === $item_name &&
                             $item['namespace'] === $namespace
                         ){
                             $in_list = true;
@@ -368,7 +369,7 @@ class Variable {
                     }
                     if(!$in_list){
                         $item = [];
-                        $item['name'] = Core::ucfirst_sentence($modifier['php_name'], '_');
+                        $item['name'] = $item_name;
                         if(
                             in_array(
                                 strtolower($item['name']),
