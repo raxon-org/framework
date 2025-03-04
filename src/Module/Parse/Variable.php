@@ -353,7 +353,6 @@ class Variable {
                         continue;
                     }
                     //add to trait list
-                    ddd($modifier);
                     $in_list = false;
                     foreach($list as $nr => $item){
                         if(
