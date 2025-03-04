@@ -11,8 +11,11 @@
 namespace Raxon\Module\Parse;
 
 use Raxon\App;
+
 use Raxon\Exception\LocateException;
+
 use Raxon\Module\Autoload;
+use Raxon\Module\Core;
 use Raxon\Module\Data;
 
 use Exception;
@@ -365,7 +368,7 @@ class Variable {
                     }
                     if(!$in_list){
                         $item = [];
-                        $item['name'] = $modifier['php_name'];
+                        $item['name'] = Core::ucfirst_sentence($modifier['php_name'], '_');
                         if(
                             in_array(
                                 strtolower($item['name']),
