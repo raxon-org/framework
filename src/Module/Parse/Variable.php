@@ -346,6 +346,7 @@ class Variable {
             if($list === null){
                 $list = [];
             }
+            $namespace = 'Plugin\\';
             foreach($variable['variable']['modifier'] as $nr => $modifier_list){
                 foreach($modifier_list as $modifier_nr => $modifier){
                     if(!array_key_exists('php_name', $modifier)){
@@ -356,16 +357,8 @@ class Variable {
                     $in_list = false;
                     foreach($list as $nr => $item){
                         if(
-                            $item['name'] === $record['method']['trait'] &&
-                            $item['namespace'] === $record['method']['namespace']
-                        ){
-                            $in_list = true;
-                            break;
-                        }
-                        elseif(
-                            array_key_exists('php_trait', $record['method']) &&
-                            $item['name'] === $record['method']['php_trait'] &&
-                            $item['namespace'] === $record['method']['namespace']
+                            $item['name'] === $modifier['php_name'] &&
+                            $item['namespace'] === $namespace
                         ){
                             $in_list = true;
                             break;
@@ -373,7 +366,7 @@ class Variable {
                     }
                     if(!$in_list){
                         $item = [];
-                        $item['name'] = $record['method']['trait'] ?? $record['method']['php_trait'];
+                        $item['name'] = $modifier['php_name'];
                         if(
                             in_array(
                                 strtolower($item['name']),
@@ -385,47 +378,41 @@ class Variable {
                         ){
                             $item['name'] = 'Plugin_' .  $item['name'];
                         }
-                        $item['namespace'] = $record['method']['namespace'];
+                        $item['namespace'] = $namespace;
                         $list[] = $item;
-                        if(array_key_exists('php_trait', $record['method'])){
-                            $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
-                            $locate = $autoload->locate($item['namespace'] . $item['name'], false,  Autoload::MODE_LOCATION);
-                            $location = [];
-                            $is_found = false;
-                            foreach($locate as $location_nr => $sublist){
-                                foreach($sublist as $sub_nr => $file){
-                                    $location[] = $file;
-                                    if(File::exist($file)){
-                                        $is_found = true;
-                                        break;
-                                    }
+                        $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
+                        $locate = $autoload->locate($item['namespace'] . $item['name'], false,  Autoload::MODE_LOCATION);
+                        $location = [];
+                        $is_found = false;
+                        foreach($locate as $location_nr => $sublist){
+                            foreach($sublist as $sub_nr => $file){
+                                $location[] = $file;
+                                if(File::exist($file)){
+                                    $is_found = true;
+                                    break;
                                 }
                             }
-                            if($is_found === false){
-                                $document =$build->object()->config('package.raxon/parse.state.document');
-                                $line = $document[$record['row']] ?? '';
-                                throw new LocateException(
-                                    'Plugin (' .
-                                    $item['namespace'] .
-                                    $item['name'] .
-                                    ') not found...' .
-                                    'on line: ' .
-                                    $record['row'] .
-                                    PHP_EOL .
-                                    $line .
-                                    PHP_EOL .
-                                    'file: ' .
-                                    $build->storage()->data('source'),
-                                    $location
-                                );
-                            }
                         }
-
+                        if($is_found === false){
+                            $document =$build->object()->config('package.raxon/parse.state.document');
+                            $line = $document[$record['row']] ?? '';
+                            throw new LocateException(
+                                'Plugin (' .
+                                $item['namespace'] .
+                                $item['name'] .
+                                ') not found...' .
+                                'on line: ' .
+                                $record['row'] .
+                                PHP_EOL .
+                                $line .
+                                PHP_EOL .
+                                'file: ' .
+                                $build->storage()->data('source'),
+                                $location
+                            );
+                        }
                     }
                     $storage->set('import.trait', $list);
-
-
-
                     $define_modifier .= '$this->' . $modifier['php_name'] . '(' . $define . ', ';
                     if(!empty($modifier['has_attribute'])){
                         foreach($modifier['attribute'] as $attribute_nr => $attribute_list){
