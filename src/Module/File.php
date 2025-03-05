@@ -106,11 +106,11 @@ class File {
         $captureNamespace = false;
         foreach ($tokens as $token) {
             if (is_array($token)) {
+                d($captureNamespace);
                 if ($token[0] === T_NAMESPACE) {
                     $captureNamespace = true;
                     continue;
                 }
-                d($captureNamespace);
                 if ($captureNamespace && ($token[0] === T_STRING || $token[0] === T_NS_SEPARATOR)) {
                     $namespace .= $token[1];
                 } elseif ($captureNamespace && $token[0] === T_WHITESPACE) {
