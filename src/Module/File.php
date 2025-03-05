@@ -115,7 +115,7 @@ class File {
                     $namespace .= $token[1];
                 } elseif ($captureNamespace && $token[0] === T_WHITESPACE) {
                     continue;
-                } else {
+                } elseif($captureNamespace) {
                     break;
                 }
             }
