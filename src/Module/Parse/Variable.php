@@ -409,7 +409,7 @@ class Variable {
                             $line = $document[$modifier['row']] ?? '';
 
                             if($is_namespace === false){
-                                $line .= PHP_EOL . 'Namespace: ' . File::namespace($file) . ' expected: ' . $namespace;
+                                $line .= PHP_EOL . 'Expected namespace: ' . $namespace;
                             }
 
                             throw new LocateException(
