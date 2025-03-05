@@ -101,6 +101,7 @@ class File {
     public static function namespace(string $url): ?string
     {
         $code = File::read($url);
+        d($code);
         $tokens = token_get_all($code);
         $namespace = '';
         $captureNamespace = false;
