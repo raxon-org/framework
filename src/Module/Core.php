@@ -85,31 +85,6 @@ class Core
 //        return null;
     }
 
-    public static function namespace(string $url): ?string
-    {
-        $code = File::read($url);
-        $tokens = token_get_all($code);
-        $namespace = '';
-        $captureNamespace = false;
-        foreach ($tokens as $token) {
-            if (is_array($token)) {
-                if ($token[0] === T_NAMESPACE) {
-                    $captureNamespace = true;
-                    continue;
-                }
-
-                if ($captureNamespace && ($token[0] === T_STRING || $token[0] === T_NS_SEPARATOR)) {
-                    $namespace .= $token[1];
-                } elseif ($captureNamespace && $token[0] === T_WHITESPACE) {
-                    continue;
-                } else {
-                    break;
-                }
-            }
-        }
-        return $namespace ?: null;
-    }
-
     /**
      * @throws ObjectException
      */
