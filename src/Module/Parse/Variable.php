@@ -391,6 +391,7 @@ class Variable {
                             foreach($sublist as $sub_nr => $file){
                                 $location[] = $file;
                                 if(File::exist($file)){
+                                    d($file);
                                     $is_found = true;
                                     break;
                                 }
