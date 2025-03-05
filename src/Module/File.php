@@ -102,7 +102,6 @@ class File {
     {
         $code = File::read($url);
         $tokens = token_get_all($code);
-        d($tokens);
         $namespace = '';
         $captureNamespace = false;
         foreach ($tokens as $token) {
@@ -121,6 +120,7 @@ class File {
                 }
             }
         }
+        d($namespace);
         return $namespace ?: null;
     }
 
