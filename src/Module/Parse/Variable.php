@@ -404,6 +404,8 @@ class Variable {
                         if($is_found === false || $is_namespace === false){
                             $document =$build->object()->config('package.raxon/parse.state.document');
                             $line = $document[$modifier['row']] ?? '';
+                            d(File::namespace($file));
+                            d($namespace);
                             throw new LocateException(
                                 'Plugin (' .
                                 $item['namespace'] .
