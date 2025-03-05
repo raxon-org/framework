@@ -110,7 +110,7 @@ class File {
                     $captureNamespace = true;
                     continue;
                 }
-
+                d($captureNamespace);
                 if ($captureNamespace && ($token[0] === T_STRING || $token[0] === T_NS_SEPARATOR)) {
                     $namespace .= $token[1];
                 } elseif ($captureNamespace && $token[0] === T_WHITESPACE) {
