@@ -408,6 +408,10 @@ class Variable {
                             $document =$build->object()->config('package.raxon/parse.state.document');
                             $line = $document[$modifier['row']] ?? '';
 
+                            if($is_namespace === false){
+                                $line .= PHP_EOL . 'Namespace: ' . File::namespace($file) . ' expected: ' . $namespace;
+                            }
+
                             throw new LocateException(
                                 'Plugin (' .
                                 $item['namespace'] .
