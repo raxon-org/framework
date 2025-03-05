@@ -393,9 +393,10 @@ class Variable {
                                 $location[] = $file;
                                 if(File::exist($file)){
                                     $is_found = true;
-                                    d(File::namespace($file));
-                                    d($namespace);
-                                    if(File::namespace($file) === $namespace){
+                                    if(
+                                        File::namespace($file) ===
+                                        rtrim($namespace, '\\')
+                                    ){
                                         $is_namespace = true;
                                     }
                                     break;

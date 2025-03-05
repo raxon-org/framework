@@ -106,7 +106,6 @@ class File {
         $captureNamespace = false;
         foreach ($tokens as $token) {
             if (is_array($token)) {
-                d($captureNamespace);
                 if ($token[0] === T_NAMESPACE) {
                     $captureNamespace = true;
                     continue;
@@ -120,7 +119,6 @@ class File {
                 }
             }
         }
-        d($namespace);
         return $namespace ?: null;
     }
 
