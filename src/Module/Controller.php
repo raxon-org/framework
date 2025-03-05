@@ -73,7 +73,6 @@ class Controller {
                 }
             }
         }
-        d($autoload->getPrefixList());
     }
 
 
