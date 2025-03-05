@@ -387,16 +387,21 @@ class Variable {
                         $locate = $autoload->locate($item['namespace'] . $item['name'], false,  Autoload::MODE_LOCATION);
                         $location = [];
                         $is_found = false;
+                        $is_namespace = false;
                         foreach($locate as $location_nr => $sublist){
                             foreach($sublist as $sub_nr => $file){
                                 $location[] = $file;
                                 if(File::exist($file)){
                                     $is_found = true;
+                                    if(File::namespace($file) === $namespace){
+                                        $is_namespace = true;
+                                    }
                                     break;
                                 }
                             }
                         }
-                        if($is_found === false){
+
+                        if($is_found === false || $is_namespace === false){
                             $document =$build->object()->config('package.raxon/parse.state.document');
                             $line = $document[$modifier['row']] ?? '';
                             throw new LocateException(
