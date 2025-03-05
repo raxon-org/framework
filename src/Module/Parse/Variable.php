@@ -393,6 +393,8 @@ class Variable {
                                 $location[] = $file;
                                 if(File::exist($file)){
                                     $is_found = true;
+                                    d(File::namespace($file));
+                                    d($namespace);
                                     if(File::namespace($file) === $namespace){
                                         $is_namespace = true;
                                     }
@@ -404,8 +406,7 @@ class Variable {
                         if($is_found === false || $is_namespace === false){
                             $document =$build->object()->config('package.raxon/parse.state.document');
                             $line = $document[$modifier['row']] ?? '';
-                            d(File::namespace($file));
-                            d($namespace);
+
                             throw new LocateException(
                                 'Plugin (' .
                                 $item['namespace'] .
