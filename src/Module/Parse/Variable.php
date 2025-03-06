@@ -409,7 +409,7 @@ class Variable {
                             $line = $document[$modifier['row']] ?? '';
 
                             if($is_namespace === false){
-                                $line .= PHP_EOL . 'Expected namespace: ' . rtrim($namespace, '\\');
+                                $line .= PHP_EOL . 'Wrong namespace, expected namespace: ' . rtrim($namespace, '\\');
                             }
 
                             throw new LocateException(
