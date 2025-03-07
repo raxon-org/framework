@@ -429,6 +429,18 @@ class Variable {
                             );
                         }
                     }
+                    if(
+                        in_array(
+                            strtolower($modifier['php_name']),
+                            [
+                                'require',
+                                'default'
+                            ],
+                            true
+                        )
+                    ){
+                        $modifier['php_name'] = 'plugin_' .  $item_name;
+                    }
                     $storage->set('import.trait', $list);
                     $define_modifier .= '$this->' . $modifier['php_name'] . '(' . $define . ', ';
                     if(!empty($modifier['has_attribute'])){
