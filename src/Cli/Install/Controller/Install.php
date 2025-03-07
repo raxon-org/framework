@@ -13,6 +13,7 @@ namespace Raxon\Cli\Install\Controller;
 use Raxon\App;
 use Raxon\Config;
 
+use Raxon\Module\Cli;
 use Raxon\Module\Core;
 use Raxon\Module\Controller;
 use Raxon\Module\Dir;
@@ -80,6 +81,16 @@ class Install extends Controller {
                 echo $output;
             }
             if($notification){
+                $explode = explode(PHP_EOL, $notification);
+                foreach($explode as $nr => $line){
+                    if(str_contains($line, '  - Downloading')){
+                        $explode[$nr] = Cli::error($line);
+                    }
+                    if(str_contains($line, '  - Upgrading')){
+                        $explode[$nr] = Cli::critical($line);
+                    }
+                }
+                $notification = implode(PHP_EOL, $explode);
                 echo $notification;
             }
         }
