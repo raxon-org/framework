@@ -83,6 +83,9 @@ class Install extends Controller {
             if($notification){
                 $explode = explode(PHP_EOL, $notification);
                 foreach($explode as $nr => $line){
+                    if(str_contains($line, 'Nothing')){
+                        $explode[$nr] = Cli::debug($line);
+                    }
                     if(str_contains($line, '  - Downloading')){
                         $explode[$nr] = Cli::error($line);
                     }
