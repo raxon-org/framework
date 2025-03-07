@@ -439,7 +439,7 @@ class Variable {
                             true
                         )
                     ){
-                        $modifier['php_name'] = 'plugin_' .  $item_name;
+                        $modifier['php_name'] = 'plugin_' .  $modifier['php_name'];
                     }
                     $storage->set('import.trait', $list);
                     $define_modifier .= '$this->' . $modifier['php_name'] . '(' . $define . ', ';
