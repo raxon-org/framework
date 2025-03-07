@@ -70,6 +70,11 @@ class Core
     const STREAM = 'stream';
     const FILE = 'file';
     const PROMPT = 'prompt';
+    const JSON = 'json';
+    const JSON_DATA = 'json-data';
+    const JSON_LINE = 'json-line';
+    const OBJECT = 'object';
+    const ARRAY = 'array';
 
     /**
      * @throws Exception

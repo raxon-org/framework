@@ -13,5 +13,5 @@ use Raxon\Module\Data;
 
 function function_route_get(Parse $parse, Data $data, $name=null, $options=[]){
     $object = $parse->object();
-    return $object->route()::find($object, $name, $options);
+
 }
