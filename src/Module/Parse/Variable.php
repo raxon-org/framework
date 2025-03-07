@@ -358,6 +358,18 @@ class Variable {
                     //add to trait list
                     $in_list = false;
                     $item_name = Core::ucfirst_sentence($modifier['php_name'], '_');
+                    if(
+                        in_array(
+                            strtolower($item_name),
+                            [
+                                'require',
+                                'default'
+                            ],
+                            true
+                        )
+                    ){
+                        $item_name = 'Plugin_' .  $item_name;
+                    }
                     foreach($list as $nr => $item){
                         if(
                             $item['name'] === $item_name &&
@@ -370,18 +382,6 @@ class Variable {
                     if(!$in_list){
                         $item = [];
                         $item['name'] = $item_name;
-                        if(
-                            in_array(
-                                strtolower($item['name']),
-                                [
-                                    'require',
-                                    'default'
-                                ],
-                                true
-                            )
-                        ){
-                            $item['name'] = 'Plugin_' .  $item['name'];
-                        }
                         $item['namespace'] = $namespace;
                         $list[] = $item;
                         $autoload = $build->object()->data(App::AUTOLOAD_RAXON);
