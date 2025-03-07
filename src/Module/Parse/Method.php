@@ -317,7 +317,8 @@ class Method {
                         in_array(
                             strtolower($record['method']['php_name']),
                             [
-                                'require'
+                                'require',
+                                'default'
                             ],
                             true
                         )
@@ -366,7 +367,8 @@ class Method {
                             in_array(
                                 strtolower($item['name']),
                                 [
-                                    'require'
+                                    'require',
+                                    'default'
                                 ],
                             true
                             )

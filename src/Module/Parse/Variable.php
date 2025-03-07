@@ -374,7 +374,8 @@ class Variable {
                             in_array(
                                 strtolower($item['name']),
                                 [
-                                    'require'
+                                    'require',
+                                    'default'
                                 ],
                                 true
                             )
