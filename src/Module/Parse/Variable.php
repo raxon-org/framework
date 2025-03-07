@@ -408,7 +408,7 @@ class Variable {
                             $document =$build->object()->config('package.raxon/parse.state.document');
                             $line = $document[$modifier['row']] ?? '';
 
-                            if($is_namespace === false){
+                            if($is_namespace === false && $is_found === true){
                                 $line .= PHP_EOL . 'Wrong namespace, expected namespace: ' . rtrim($namespace, '\\');
                             }
 
