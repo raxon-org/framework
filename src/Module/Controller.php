@@ -724,7 +724,7 @@ class Controller {
                 $data->rdelim = Controller::RDELIM;
             }
         }
-        d($parse->storage());
+        ddd($parse->storage());
 //        Controller::decorate($object);
         $read = $parse->compile($read, $data, $parse->storage());
         Parse::readback($object, $parse, App::SCRIPT);
