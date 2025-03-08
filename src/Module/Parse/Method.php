@@ -152,6 +152,7 @@ class Method {
                         $list[$nr]
                     );
                 }
+                d($list);
                 foreach($list as $nr => $value){
                     if(substr($value, 0, 2) === '\\\'' && substr($value, -2, 2) === '\\\''){
                         $value = substr($value, 2, -2);
