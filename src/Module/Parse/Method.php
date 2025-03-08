@@ -392,7 +392,7 @@ class Method {
                                 }
                             }
                             if($is_found === false){
-                                $document =$build->object()->config('package.raxon/parse.state.document');
+                                $document = $build->object()->config('package.raxon/parse.state.document');
                                 $line = $document[$record['row']] ?? '';
                                 throw new LocateException(
                                     'Plugin (' .
@@ -473,6 +473,7 @@ class Method {
                     }
                 }
             }
+            $result = 'd($this->storage());' . $result;
             $record['value'] = $result;
             $record['type'] = Token::TYPE_CODE;
         }
