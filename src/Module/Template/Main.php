@@ -32,7 +32,7 @@ class Main {
 	    set_time_limit(600);
 		$this->parse($parse);
         $this->object($parse->object());
-		$this->data($data);
+		$this->storage($data);
 	}
 
     public function object(App $object=null): ?App
