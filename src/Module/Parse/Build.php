@@ -809,7 +809,7 @@ class Build {
                         }
                         */
                         $run[] = $this->indent() . '$variable = ' . $define . ';';
-                        $run[] = $this->indent() . 'if(is_scalar($variable) || is_null($variable){ $content[] = $variable; }';
+                        $run[] = $this->indent() . 'if(is_scalar($variable) || is_null($variable)){ $content[] = $variable; }';
                         $run[] = $this->indent() . 'else { return $variable; }';
 //                        $run[] = $this->indent() . 'if (is_object($variable)){ return $variable; }';
 //                        $run[] = $this->indent() . 'elseif (is_array($variable)){ return $variable; }';
@@ -818,7 +818,7 @@ class Build {
                         break;
                     case Build::METHOD :
                         $run[] = $this->indent() . '$method = ' . Method::create($this, $storage, $selection) . ';';
-                        $run[] = $this->indent() . 'if(is_scalar($method) || is_null($method){ $content[] = $method; }';
+                        $run[] = $this->indent() . 'if(is_scalar($method) || is_null($method)){ $content[] = $method; }';
                         $run[] = $this->indent() . 'else { return $method; }';
 //                        $run[] = $this->indent() . 'if (is_object($method)){ return $method; }';
 //                        $run[] = $this->indent() . 'elseif (is_array($method)){ return $method; }';
