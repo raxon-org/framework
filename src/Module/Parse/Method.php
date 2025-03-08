@@ -305,14 +305,6 @@ class Method {
                 }
             } else {
                 if(empty($record['method']['trait'])){
-                    if(empty($record['method']['namespace'])){
-                        $record['method']['php_trait'] = Core::ucfirst_sentence($record['method']['php_name'], '_');
-                        $record['method']['namespace'] = 'Plugin\\';
-                    }
-                    $list = $storage->data('use.trait');
-                    if($list === null){
-                        $list = [];
-                    }
                     if(
                         in_array(
                             strtolower($record['method']['php_name']),
@@ -324,6 +316,14 @@ class Method {
                         )
                     ){
                         $record['method']['php_name'] = 'plugin_' . $record['method']['php_name'];
+                    }
+                    if(empty($record['method']['namespace'])){
+                        $record['method']['php_trait'] = Core::ucfirst_sentence($record['method']['php_name'], '_');
+                        $record['method']['namespace'] = 'Plugin\\';
+                    }
+                    $list = $storage->data('use.trait');
+                    if($list === null){
+                        $list = [];
                     }
                     if(empty($attribute)){
                         if(
