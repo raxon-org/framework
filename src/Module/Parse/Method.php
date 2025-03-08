@@ -152,8 +152,10 @@ class Method {
                         $list[$nr]
                     );
                 }
-                d($storage->data());
-                d($list);
+                if(str_contains(strtolower($storage->data('source')), 'navigation')){
+                    d($list);
+                }
+
                 foreach($list as $nr => $value){
                     if(substr($value, 0, 2) === '\\\'' && substr($value, -2, 2) === '\\\''){
                         $value = substr($value, 2, -2);
