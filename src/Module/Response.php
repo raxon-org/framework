@@ -141,7 +141,8 @@ class Response {
                 $json = new stdClass();
                 $json->html = ltrim($response->data());
                 if(empty($json->html)){
-                    ddd($response);
+                    d($response);
+                    trace();
                    // can be script / link only...
                 }
                 if($object->data('method')){
