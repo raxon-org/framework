@@ -329,7 +329,7 @@ class Parse {
         ){
             return $string;
         }
-        ob_start();
+        $document = false;
         $original = $string;
         $object = $this->object();
         if($storage === null){            
@@ -783,7 +783,19 @@ class Parse {
                         $storage->data('delete', 'this');
                     }
                 } else {
-                    $exception = new Exception('Class (' . $class . ') doesn\'t exist');
+                    if($document){
+                        $exception = new Exception('Class (' .
+                            $class .
+                            ') doesn\'t exist...' .
+                            PHP_EOL .
+                            'Document:' .
+                            PHP_EOL .
+                            implode(PHP_EOL, $document)
+                        );
+                    } else {
+                        $exception = new Exception('Class (' . $class . ') doesn\'t exist ...');
+                    }
+
                     Event::trigger($object, 'parse.compile.exception', [
                         'string' => $string,
                         'data' => $data,
