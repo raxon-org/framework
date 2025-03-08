@@ -726,8 +726,6 @@ class Controller {
         }
 //        Controller::decorate($object);
         $read = $parse->compile($read, $data, $parse->storage());
-        d($read);
-        d($parse->storage());
         Parse::readback($object, $parse, App::SCRIPT);
         Parse::readback($object, $parse, App::LINK);
         return $read;
