@@ -948,7 +948,7 @@ class Token {
                 unset($token[$nr]);
             }
             elseif($target !== null){                
-                if($token[$target]['method']['name'] == 'for.each'){
+                if($token[$target]['method']['name'] == 'foreach'){
                     $has_as = false;
                     $has_explain = false;
                     if(
