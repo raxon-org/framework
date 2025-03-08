@@ -473,7 +473,6 @@ class Method {
                     }
                 }
             }
-            $result = 'd($this->storage());' . $result;
             $record['value'] = $result;
             $record['type'] = Token::TYPE_CODE;
         }
