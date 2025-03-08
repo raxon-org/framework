@@ -853,7 +853,7 @@ class Build {
                                     $storage->set('trait', $list);
                                 }
                             } else {
-                                $run[] = $this->indent() . Method::create_capture($this, $storage, $selection) . ';';
+                                $run[] = $this->indent() . '$content = ' . Method::create_capture($this, $storage, $selection) . ';';
                             }
                             foreach($selection as $skip_nr => $item){
                                 //need skip_nr
