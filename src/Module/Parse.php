@@ -660,7 +660,9 @@ class Parse {
                 try {
                     $template = new $class(new Parse($this->object()), $storage);
                     $string = $template->run();
-                    d($string);
+                    if($storage->data('abc') === '123'){
+                        ddd($string);
+                    }
                     $is_disabled = $this->object()->config('parse.compile.disable.function.Value::contains_replace');
 //                    $is_disabled = true;
 //                    $string = Parse::comment($string, 'is_disabled: ' . $is_disabled);
@@ -774,6 +776,9 @@ class Parse {
                 if ($exists) {
                     $template = new $class(new Parse($this->object()), $storage);
                     $string = $template->run();
+                    if($storage->data('abc') === '123'){
+                        ddd($string);
+                    }
                     $is_disabled = $this->object()->config('parse.compile.disable.function.Value::contains_replace');
 //                    $string = Parse::comment($string, 'is_disabled: ' . $is_disabled);
                     $is_disabled = true;
