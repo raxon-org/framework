@@ -29,13 +29,17 @@ if(!function_exists('d')){
 
 if(!function_exists('dd')){
     #[NoReturn]
-    function dd($data=null): void
+    function dd($data=null, $options=[]): void
     {
         $trace = debug_backtrace(1);
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">' . PHP_EOL;
         }
-        echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+        if(array_key_exists('trace', $options)){
+            echo $options['trace'];
+        } else {
+            echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+        }
         var_dump($data);
         if(!defined('IS_CLI')){
             echo '</pre>' . PHP_EOL;
