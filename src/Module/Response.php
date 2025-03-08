@@ -140,9 +140,10 @@ class Response {
             case Response::TYPE_OBJECT_LINE :
                 $json = new stdClass();
                 $json->html = ltrim($response->data());
-//                if(empty($json->html)){
-//                   // can be script / link only...
-//                }
+                if(empty($json->html)){
+                    ddd($response);
+                   // can be script / link only...
+                }
                 if($object->data('method')){
                     $json->method = $object->data('method');
                 } else {
