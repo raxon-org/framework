@@ -32,18 +32,18 @@ class Variable {
         $variable = array_shift($token);
         switch($count['type']){
             case Token::TYPE_IS_MINUS_MINUS :
-                $assign = '$this->data()->set(\'';
+                $assign = '$this->storage()->set(\'';
                 $assign .= $variable['variable']['attribute'] . '\', ';
                 $assign .= '$this->min_min_assign(' ;
-                $assign .= '$this->data()->data(\'';
+                $assign .= '$this->storage()->data(\'';
                 $assign .= $variable['variable']['attribute'] . '\')';
                 $assign .= '))';
                 return $assign;
             case Token::TYPE_IS_PLUS_PLUS :
-                $assign = '$this->data()->set(\'';
+                $assign = '$this->storage()->set(\'';
                 $assign .= $variable['variable']['attribute'] . '\', ';
                 $assign .= '$this->plus_plus_assign(' ;
-                $assign .= '$this->data()->data(\'';
+                $assign .= '$this->storage()->data(\'';
                 $assign .= $variable['variable']['attribute'] . '\')';
                 $assign .= '))';
                 return $assign;
@@ -105,9 +105,9 @@ class Variable {
                             } else {
                                 $attribute .= '\'';
                             }
-                            $exec = '$this->data()->index(' . $attribute  . ')';
+                            $exec = '$this->storage()->index(' . $attribute  . ')';
                         } else {
-                            $exec = '$this->data()->index(\'' . $variable['variable']['attribute']  . '\')';
+                            $exec = '$this->storage()->index(\'' . $variable['variable']['attribute']  . '\')';
                         }
                         $execute[] = $exec;
                     } else {
@@ -180,7 +180,7 @@ class Variable {
             array_key_exists('array', $variable['variable'])
         ){
             $attribute = Variable::getArrayAttribute($build, $storage, $variable);
-            $assign = '$this->data()->set(';
+            $assign = '$this->storage()->set(';
             $assign .= $attribute . ', ';
             $value = Variable::getValue($build, $storage, $token, $is_result);
             $assign .= $value . ')';
@@ -188,51 +188,51 @@ class Variable {
         } else {
             switch($variable['variable']['operator']){
                 case '=' :
-                    $assign = '$this->data()->set(\'';
+                    $assign = '$this->storage()->set(\'';
                     $assign .= $variable['variable']['attribute'] . '\', ';
                     $value = Variable::getValue($build, $storage, $token, $is_result);
                     $assign .= $value . ')';
                     return $assign;
                 case '+=' :
-                    $assign = '$this->data()->set(\'';
+                    $assign = '$this->storage()->set(\'';
                     $assign .= $variable['variable']['attribute'] . '\', ';
                     $assign .= '$this->assign_plus_equal(' ;
-                    $assign .= '$this->data()->data(\'';
+                    $assign .= '$this->storage()->data(\'';
                     $assign .= $variable['variable']['attribute'] . '\'), ';
                     $value = Variable::getValue($build, $storage, $token, $is_result);
                     $assign .= $value . '))';
                     return $assign;
                 case '-=' :
-                    $assign = '$this->data()->set(\'';
+                    $assign = '$this->storage()->set(\'';
                     $assign .= $variable['variable']['attribute'] . '\', ';
                     $assign .= '$this->assign_min_equal(' ;
-                    $assign .= '$this->data()->data(\'';
+                    $assign .= '$this->storage()->data(\'';
                     $assign .= $variable['variable']['attribute'] . '\'), ';
                     $value = Variable::getValue($build, $storage, $token, $is_result);
                     $assign .= $value . '))';
                     return $assign;
                 case '.=' :
-                    $assign = '$this->data()->set(\'';
+                    $assign = '$this->storage()->set(\'';
                     $assign .= $variable['variable']['attribute'] . '\', ';
                     $assign .= '$this->assign_dot_equal(' ;
-                    $assign .= '$this->data()->data(\'';
+                    $assign .= '$this->storage()->data(\'';
                     $assign .= $variable['variable']['attribute'] . '\'), ';
                     $value = Variable::getValue($build, $storage, $token, $is_result);
                     $assign .= $value . '))';
                     return $assign;
                 case '++' :
-                    $assign = '$this->data()->set(\'';
+                    $assign = '$this->storage()->set(\'';
                     $assign .= $variable['variable']['attribute'] . '\', ';
                     $assign .= '$this->assign_plus_plus(' ;
-                    $assign .= '$this->data()->data(\'';
+                    $assign .= '$this->storage()->data(\'';
                     $assign .= $variable['variable']['attribute'] . '\')';
                     $assign .= '))';
                     return $assign;
                 case '--' :
-                    $assign = '$this->data()->set(\'';
+                    $assign = '$this->storage()->set(\'';
                     $assign .= $variable['variable']['attribute'] . '\', ';
                     $assign .= '$this->assign_min_min(' ;
-                    $assign .= '$this->data()->data(\'';
+                    $assign .= '$this->storage()->data(\'';
                     $assign .= $variable['variable']['attribute'] . '\')';
                     $assign .= '))';
                     return $assign;
@@ -327,7 +327,7 @@ class Variable {
             ){
                 $define = '\'' . $variable['variable']['name'] . '\'';
             } else {
-                $define = '$this->data()->data(\'' . $variable['variable']['attribute'] . ')';
+                $define = '$this->storage()->data(\'' . $variable['variable']['attribute'] . ')';
             }
 
         } else {
@@ -337,7 +337,7 @@ class Variable {
             ){
                 $define = '\'' . $variable['variable']['name'] . '\'';
             } else {
-                $define = '$this->data()->data(\'' . $variable['variable']['attribute'] . '\')';
+                $define = '$this->storage()->data(\'' . $variable['variable']['attribute'] . '\')';
             }
         }
         $define_modifier = '';

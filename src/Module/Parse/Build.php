@@ -745,7 +745,7 @@ class Build {
                 $record['type'] == Token::TYPE_QUOTE_DOUBLE_STRING
             ){
                 $run[] =  $this->indent() . '$string = \'' . str_replace('\'', '\\\'', substr($record['value'], 1, -1)). '\';';
-                $run[] =  $this->indent() . '$string = $this->parse()->compile($string, [], $this->data());';
+                $run[] =  $this->indent() . '$string = $this->parse()->compile($string, [], $this->storage());';
                 $run[] =  $this->indent() .  '$content[] = \'"\' . $string . \'"\';';
             }
             elseif($record['type'] == Token::TYPE_CURLY_OPEN){
@@ -872,7 +872,7 @@ class Build {
                                     true
                                 )
                             ){
-                                $run[] = '$this->data(\'content\', $content);';
+                                $run[] = '$this->storage(\'content\', $content);';
                                 $run[] = $this->indent() . $control . ';';
                             }
                             elseif(
