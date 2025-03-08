@@ -782,14 +782,6 @@ class Parse {
                     if ($this->useThis() === true) {
                         $storage->data('delete', 'this');
                     }
-                    if(
-                        $this->object()->config('framework.environment') === Config::MODE_DEVELOPMENT &&
-                        $this->object()->config('project.log.debug')
-                    ){
-                        $this->object->logger($this->object()->config('project.log.debug'))
-                            ->info('cache file: ' . $url . ' mtime: ' . $mtime)
-                        ;
-                    }
                 } else {
                     $exception = new Exception('Class (' . $class . ') doesn\'t exist');
                     Event::trigger($object, 'parse.compile.exception', [
