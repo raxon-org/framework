@@ -660,9 +660,6 @@ class Parse {
                 try {
                     $template = new $class(new Parse($this->object()), $storage);
                     $string = $template->run();
-                    if($storage->data('abc') === '123'){
-                        ddd($string);
-                    }
                     $is_disabled = $this->object()->config('parse.compile.disable.function.Value::contains_replace');
 //                    $is_disabled = true;
 //                    $string = Parse::comment($string, 'is_disabled: ' . $is_disabled);
@@ -776,9 +773,6 @@ class Parse {
                 if ($exists) {
                     $template = new $class(new Parse($this->object()), $storage);
                     $string = $template->run();
-                    if($storage->data('abc') === '123'){
-                        ddd($string);
-                    }
                     $is_disabled = $this->object()->config('parse.compile.disable.function.Value::contains_replace');
 //                    $string = Parse::comment($string, 'is_disabled: ' . $is_disabled);
                     $is_disabled = true;
@@ -787,6 +781,14 @@ class Parse {
                     }
                     if ($this->useThis() === true) {
                         $storage->data('delete', 'this');
+                    }
+                    if(
+                        $this->object()->config('framework.environment') === Config::MODE_DEVELOPMENT &&
+                        $this->object()->config('project.log.debug')
+                    ){
+                        $this->object->logger($this->object()->config('project.log.debug'))
+                            ->info('cache file: ' . $url . ' mtime: ' . $mtime)
+                        ;
                     }
                 } else {
                     $exception = new Exception('Class (' . $class . ') doesn\'t exist');
