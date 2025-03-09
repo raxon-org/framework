@@ -314,10 +314,7 @@ class Method {
                     if(
                         in_array(
                             strtolower($record['method']['php_name']),
-                            [
-                                'require',
-                                'default'
-                            ],
+                            Token::PLUGIN_RENAME,
                             true
                         )
                     ){
@@ -372,10 +369,7 @@ class Method {
                         if(
                             in_array(
                                 strtolower($item['name']),
-                                [
-                                    'require',
-                                    'default'
-                                ],
+                                Token::PLUGIN_RENAME,
                             true
                             )
                         ){

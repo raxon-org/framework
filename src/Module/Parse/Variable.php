@@ -361,10 +361,7 @@ class Variable {
                     if(
                         in_array(
                             strtolower($item_name),
-                            [
-                                'require',
-                                'default'
-                            ],
+                            Token::PLUGIN_RENAME,
                             true
                         )
                     ){
@@ -432,10 +429,7 @@ class Variable {
                     if(
                         in_array(
                             strtolower($modifier['php_name']),
-                            [
-                                'require',
-                                'default'
-                            ],
+                            Token::PLUGIN_RENAME,
                             true
                         )
                     ){

@@ -217,6 +217,16 @@ class Token {
         '%',
     ];
 
+    const PLUGIN_RENAME = [
+        'require',
+        'default',
+        'object',
+        'constant',
+        'echo',
+        'exit',
+        'unset'
+    ];
+
     /**
      * @throws Exception
      */
