@@ -783,7 +783,7 @@ class Parse {
                         $storage->data('delete', 'this');
                     }
                 } else {
-                    if($document){
+                    if($document !== false){
                         $exception = new Exception('Class (' .
                             $class .
                             ') doesn\'t exist...' .

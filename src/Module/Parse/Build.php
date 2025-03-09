@@ -651,6 +651,8 @@ class Build {
             'string' => $string,
             'storage' => $this->storage(),
         ]);
+        $url_build = $object->config('ramdisk.url') . $object->config(Config::POSIX_ID) . $object->config('ds') . 'Build.info';
+        File::append($url_build, $url . PHP_EOL);
         return $write;
     }
 
