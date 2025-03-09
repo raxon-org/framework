@@ -499,6 +499,8 @@ class Parse {
                         $string->{$key} = $value;
                     }
                 } catch (Exception | ParseError $exception){
+                    throw $exception;
+                    /*
                     Event::trigger($object, 'parse.compile.exception', [
                         'string' => $string,
                         'data' => $data,
@@ -506,6 +508,7 @@ class Parse {
                         'depth' => $depth,
                         'exception' => $exception
                     ]);
+                    */
                 }
             }
             $this->key = $parentKey;
