@@ -215,7 +215,6 @@ class Install extends Controller {
             $package->has('route') &&
             is_array($package->get('route'))
         ){
-            ddd('has route');
             foreach($package->get('route') as $url_route){
                 if(File::exist($url_route)){
                     $class = Controller::name(File::basename($url_route, $object->config('extension.json')));
@@ -297,6 +296,9 @@ class Install extends Controller {
                             }
                         }
                     }
+                } else {
+                    throw new Exception('Route ('. $url_route .') not found...');
+
                 }
             }
         }
@@ -386,6 +388,8 @@ class Install extends Controller {
                         }
                     }
                 }
+            } else {
+                throw new Exception('Route ('. $package->get('route') .') not found...');
             }
         }
         if(
