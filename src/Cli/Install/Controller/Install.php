@@ -220,6 +220,7 @@ class Install extends Controller {
                     $class = Controller::name(File::basename($url_route, $object->config('extension.json')));
                     $read = $object->data_read($url_route);
                     if($read){
+                        $count = 0;
                         foreach($read->data($class) as $import){
                             if(!property_exists($import, 'name')){
                                 continue;
@@ -263,7 +264,7 @@ class Install extends Controller {
                                     $import,
                                     []
                                 );
-                                ddd($response);
+                                $count++;
                             }
                             elseif(
                                 property_exists($options, 'force') &&
@@ -278,7 +279,7 @@ class Install extends Controller {
                                     $import,
                                     []
                                 );
-                                ddd($response);
+                                $count++;
                             }
                             elseif(
                                 property_exists($options, 'patch') &&
@@ -293,8 +294,11 @@ class Install extends Controller {
                                     $import,
                                     []
                                 );
-                                ddd($response);
+                                $count++;
                             }
+                        }
+                        if($count > 0){
+                            echo 'Routes: ' . $count . ' for route ('. $url_route .')...' . PHP_EOL;
                         }
                     }
                 } else {
