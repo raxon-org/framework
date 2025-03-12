@@ -219,8 +219,6 @@ class Install extends Controller {
                 if(File::exist($url_route)){
                     $class = Controller::name(File::basename($url_route, $object->config('extension.json')));
                     $read = $object->data_read($url_route);
-                    d($class);
-                    ddd($read->data($class));
                     if($read){
                         foreach($read->data($class) as $import){
                             if(!property_exists($import, 'name')){
@@ -257,6 +255,7 @@ class Install extends Controller {
                                     ]
                                 );
                             }
+                            ddd($record);
                             if(!$record){
                                 $response = $node->create(
                                     $class,
