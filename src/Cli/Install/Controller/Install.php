@@ -342,12 +342,13 @@ class Install extends Controller {
                         }
                         if(!$record){
                             unset($import->uuid);
-                            $node->create(
+                            $response = $node->create(
                                 $class,
                                 $node->role_system(),
                                 $import,
                                 []
                             );
+                            ddd($response);
                         }
                         elseif(
                             property_exists($options, 'force') &&
@@ -356,12 +357,13 @@ class Install extends Controller {
                             property_exists($record['node'], 'uuid')
                         ){
                             $import->uuid = $record['node']->uuid;
-                            $node->put(
+                            $response = $node->put(
                                 $class,
                                 $node->role_system(),
                                 $import,
                                 []
                             );
+                            ddd($response);
                         }
                         elseif(
                             property_exists($options, 'patch') &&
@@ -370,12 +372,13 @@ class Install extends Controller {
                             property_exists($record['node'], 'uuid')
                         ){
                             $import->uuid = $record['node']->uuid;
-                            $node->patch(
+                            $response = $node->patch(
                                 $class,
                                 $node->role_system(),
                                 $import,
                                 []
                             );
+                            ddd($response);
                         }
                     }
                 }
