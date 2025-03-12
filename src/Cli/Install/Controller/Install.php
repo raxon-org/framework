@@ -256,7 +256,6 @@ class Install extends Controller {
                                     ]
                                 );
                             }
-                            d($record);
                             if(!$record){
                                 $response = $node->create(
                                     $class,
