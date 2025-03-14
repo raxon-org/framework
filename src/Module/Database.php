@@ -48,6 +48,10 @@ class Database {
     const NAMESPACE = __NAMESPACE__;
     const NAME = 'Database';
 
+    const API = 'api';
+    const SYSTEM = 'system';
+    const RAMDISK = 'ramdisk';
+
     const LOGGER_DOCTRINE = 'Doctrine';
 
     /**
