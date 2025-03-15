@@ -36,7 +36,7 @@ function validate_is_unique_mysql(App $object, $string='', $field='', $argument=
         $table &&
         $field
     ){
-        $entityManager = Database::entityManager($object);
+        $entityManager = Database::entityManager($object, ['name' => Database::SYSTEM]);
         $uuid = $object->request('uuid');
         $id = $object->request('id');
         if($uuid){
