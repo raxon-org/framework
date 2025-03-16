@@ -36,11 +36,14 @@ function validate_is_unique_mysql(App $object, $string='', $field='', $argument=
         $table &&
         $field
     ){
-        $entityManager = Database::entityManager($object, ['name' => Database::SYSTEM]);
+        $em = $object->config('doctrine.entity.manager');
+        if(!$em){
+            throw new Exception('Entity manager not set in config (doctrine.entity.manager)');
+        }
         $uuid = $object->request('uuid');
         $id = $object->request('id');
         if($uuid){
-            $qb = $entityManager->createQueryBuilder();
+            $qb = $em->createQueryBuilder();
             $record = $qb->select(['entity'])
                 ->from($table, 'entity')
                 ->where('entity.uuid != :uuid')
@@ -54,7 +57,7 @@ function validate_is_unique_mysql(App $object, $string='', $field='', $argument=
                 ->getOneOrNullResult();
         }
         elseif($id){
-            $qb = $entityManager->createQueryBuilder();
+            $qb = $em->createQueryBuilder();
             $record = $qb->select(['entity'])
                 ->from($table, 'entity')
                 ->where('entity.id != :id')
@@ -67,7 +70,7 @@ function validate_is_unique_mysql(App $object, $string='', $field='', $argument=
                 ->getQuery()
                 ->getOneOrNullResult();
         } else {
-            $repository = $entityManager->getRepository($table);
+            $repository = $em->getRepository($table);
             $criteria = [];
             $criteria[$field] = $string;
             $record = $repository->findOneBy($criteria);
