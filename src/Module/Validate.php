@@ -43,7 +43,7 @@ class Validate {
     /**
      * @throws Exception
      */
-    public static function validate(App $object, object $validate, array $request, $extra=false, $function=false): object
+    public static function validate(App $object, object $validate, mixed $request, mixed $extra=false, mixed $function=false): object
     {
         $method = $function;
         $extension = $object->config('extension.php');
