@@ -26,10 +26,6 @@ function validate_is_unique_mysql(App $object, object $record=null, mixed $strin
 {
     $table = false;
     $field = false;
-    d($record);
-    d($field);
-    d($function);
-    dd($argument);
     if(property_exists($argument, 'table')){
         $table = $argument->table;
     }
