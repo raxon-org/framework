@@ -16,7 +16,7 @@ use Raxon\Module\Parse\Token;
 /**
  * @throws Exception
  */
-function validate_array_length(App $object, $array=null, $field='', $argument='', $function=false): bool
+function validate_array_length(App $object, array $record=[], mixed $array=null, mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     $result = false;
     $length = null;
@@ -41,15 +41,15 @@ function validate_array_length(App $object, $array=null, $field='', $argument=''
             $left = null;
             $equation = null;
             $right = null;
-            foreach($argument[1]['method']['attribute'][0] as $nr => $record){
+            foreach($argument[1]['method']['attribute'][0] as $nr => $record_attribute){
                 if(empty($left)){
-                    $left = $record;
+                    $left = $record_attribute;
                 }
                 elseif(empty($equation)){
-                    $equation = $record['value'];
+                    $equation = $record_attribute['value'];
                 }
                 elseif(empty($right)){
-                    $right = $record['execute'];
+                    $right = $record_attribute['execute'];
                     break;
                 }
             }
@@ -95,15 +95,15 @@ function validate_array_length(App $object, $array=null, $field='', $argument=''
         $left = null;
         $equation = null;
         $right = null;
-        foreach($argument[1]['method']['attribute'][0] as $nr => $record){
+        foreach($argument[1]['method']['attribute'][0] as $nr => $record_attribute){
             if(empty($left)){
-                $left = $record;
+                $left = $record_attribute;
             }
             elseif(empty($equation)){
-                $equation = $record['value'];
+                $equation = $record_attribute['value'];
             }
             elseif(empty($right)){
-                $right = $record['execute'];
+                $right = $record_attribute['execute'];
                 break;
             }
         }

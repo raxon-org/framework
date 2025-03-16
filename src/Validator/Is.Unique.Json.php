@@ -12,21 +12,15 @@
 use Raxon\App;
 use Raxon\Config;
 
+use Raxon\Module\Data;
 /**
  * @throws \Raxon\Exception\ObjectException
  * @throws Exception
  */
-function validate_is_unique_json(App $object, $string='', $field='', $argument='', $function=false): bool
+function validate_is_unique_json(App $object, array $record=[], mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
 {
-    if($object->request('has', 'node.' . 'uuid')){
-        $original_uuid = $object->request('node.' . 'uuid');
-    }
-    elseif($object->request('has', 'node_' . 'uuid')) {
-        $original_uuid = $object->request('node_' . 'uuid');
-    }
-    else {
-        $original_uuid = $object->request('uuid');
-    }
+    $data = new Data($record);
+    $original_uuid = $data->data('uuid');
     $url = false;
     $list = null;
     if(property_exists($argument, 'url')){
@@ -45,19 +39,19 @@ function validate_is_unique_json(App $object, $string='', $field='', $argument='
         if($data){
             $result = $data->data($list);
             if(is_array($result) || is_object($result)){
-                foreach($result as $nr => $record){
+                foreach($result as $nr => $record_result){
                     $uuid = false;
                     if(
-                        is_array($record) &&
-                        array_key_exists('uuid', $record)
+                        is_array($record_result) &&
+                        array_key_exists('uuid', $record_result)
                     ){
-                        $uuid = $record['uuid'];
+                        $uuid = $record_result['uuid'];
                     }
                     elseif(
-                        is_object($record) &&
-                        property_exists($record, 'uuid')
+                        is_object($record_result) &&
+                        property_exists($record_result, 'uuid')
                     ){
-                        $uuid = $record->uuid;
+                        $uuid = $record_result->uuid;
                     }
                     if(
                         !empty($original_uuid) &&

@@ -15,7 +15,7 @@ use Raxon\Module\Parse\Token;
 /**
  * @throws Exception
  */
-function validate_integer(App $object, $string='', $field='', $argument='', $function=false): bool
+function validate_integer(App $object, array $record=[], mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     $int = intval($string);
     if(is_array($argument)){

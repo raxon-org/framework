@@ -19,7 +19,7 @@ use Raxon\Exception\FileWriteException;
  * @throws ObjectException
  * @throws FileWriteException
  */
-function validate_not_in_json(App $object, $request=null, $field='', $argument='', $function=false): bool
+function validate_not_in_json(App $object, array $record=[], mixed $request=null, mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     $url = $argument->url ?? false;
     $list = $argument->list ?? false;
@@ -35,9 +35,9 @@ function validate_not_in_json(App $object, $request=null, $field='', $argument='
             if($list === false) {
                 $result[] = $data->get($attribute);
             }
-            foreach($data->data($list) as $nr => $record) {
-                if (is_object($record)){
-                    $node = new Data($record);
+            foreach($data->data($list) as $nr => $record_data) {
+                if (is_object($record_data)){
+                    $node = new Data($record_data);
                     if(is_array($attribute)){
                         foreach($attribute as $attr){
                             if ($ignore_case) {
@@ -53,9 +53,9 @@ function validate_not_in_json(App $object, $request=null, $field='', $argument='
                             $result[] = $node->get($attribute);
                         }
                     }
-                } elseif(is_scalar($record)) {
+                } elseif(is_scalar($record_data)) {
                     if($ignore_case){
-                        $result[] = strtolower($record);
+                        $result[] = strtolower($record_data);
                     } else {
                         $result[] = $record;
                     }
@@ -88,9 +88,9 @@ function validate_not_in_json(App $object, $request=null, $field='', $argument='
                 }
 
             } else {
-                foreach($data->data($list) as $nr => $record) {
-                    if (is_object($record)){
-                        $node = new Data($record);
+                foreach($data->data($list) as $nr => $record_data) {
+                    if (is_object($record_data)){
+                        $node = new Data($record_data);
                         if(is_array($attribute)){
                             $value = [];
                              foreach($attribute as $attr){
@@ -109,9 +109,9 @@ function validate_not_in_json(App $object, $request=null, $field='', $argument='
                             }
                         }
                     }
-                    elseif(is_scalar($record)) {
+                    elseif(is_scalar($record_data)) {
                         if ($ignore_case) {
-                            $result[] = strtolower($record);
+                            $result[] = strtolower($record_data);
                         } else {
                             $result[] = $record;
                         }

@@ -15,7 +15,7 @@ use Raxon\Module\Parse\Token;
 /**
  * @throws Exception
  */
-function validate_string_has_lowercase(App $object, $string='', $field='', $argument='', $function=false): bool
+function validate_string_has_lowercase(App $object, array $record=[], mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     $split = str_split($string);
     $test = [];
@@ -49,15 +49,15 @@ function validate_string_has_lowercase(App $object, $string='', $field='', $argu
     $left = null;
     $equation = null;
     $right = null;
-    foreach($argument[1]['method']['attribute'][0] as $nr => $record){
+    foreach($argument[1]['method']['attribute'][0] as $nr => $record_argument){
         if(empty($left)){
-            $left = $record;
+            $left = $record_argument;
         }
         elseif(empty($equation)){
-            $equation = $record['value'];            
+            $equation = $record_argument['value'];
         }
         elseif(empty($right)){
-            $right = $record['execute'];
+            $right = $record_argument['execute'];
             break;
         }
     }

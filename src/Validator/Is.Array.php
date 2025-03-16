@@ -10,18 +10,18 @@
  */
 use Raxon\App;
 
-function validate_is_array(App $object, $array=null, $field='', $argument='', $function=false): bool
+function validate_is_array(App $object, array $record=[], mixed $array=null, mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     if(is_array($argument)){
-        foreach($argument as $nr => $record){
+        foreach($argument as $nr => $record_argument){
             if(
-                $record === null &&
+                $record_argument === null &&
                 $array === null
             ){
                 return true;
             }
-            elseif(is_bool($record)){
-                if($record === true){
+            elseif(is_bool($record_argument)){
+                if($record_argument === true){
                     if($array === ''){
                         return false;
                     }

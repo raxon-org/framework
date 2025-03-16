@@ -14,7 +14,7 @@ use Raxon\App;
 /**
  * @throws Exception
  */
-function validate_string_has_dot(App $object, $string='', $field='', $options='', $function=false): bool
+function validate_string_has_dot(App $object, array $record=[], mixed $string='', mixed $field='', mixed $options='', mixed $function=false): bool
 {
     $explode = explode('.', $string, 2);
     if(count($explode) == 2){
