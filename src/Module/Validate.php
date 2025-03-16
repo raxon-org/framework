@@ -43,7 +43,7 @@ class Validate {
     /**
      * @throws Exception
      */
-    public static function validate(App $object, object $validate, $extra=false, $function=false): object
+    public static function validate(App $object, object $validate, array $request, $extra=false, $function=false): object
     {
         $method = $function;
         $extension = $object->config('extension.php');
@@ -59,7 +59,7 @@ class Validate {
             }
             $test[$field] = [];
             if(is_object($list)){
-                $validate->{$field} = Validate::validate($object, $list, $field);
+                $validate->{$field} = Validate::validate($object, $list, $request, $field);
                 if(property_exists($validate->{$field}, 'test')){
                     $validate->test[$field] = $validate->{$field}->test;                    
                 }
@@ -104,7 +104,7 @@ class Validate {
                             $key = 'validate' . '.' . $key;
                             $function = str_replace('.', '_', $key);
                             if(function_exists($function)){
-                                $test[$field][$function][] = $function($object, $value, $field, $argument, $method);
+                                $test[$field][$function][] = $function($object, $request, $value, $field, $argument, $method);
                             } else {
                                 $url_list = (array) $object->config('validate.dir.validator');
                                 if(empty($url_list)){
@@ -144,7 +144,7 @@ class Validate {
                                 foreach($url_list as $url){
                                     if(File::exist($url)){
                                         require_once $url;
-                                        $test[$field][$function][] = $function($object, $value, $field, $argument, $method);
+                                        $test[$field][$function][] = $function($object, $request, $value, $field, $argument, $method);
                                         $is_found = true;
                                         break;
                                     }
