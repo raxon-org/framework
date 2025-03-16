@@ -21,7 +21,7 @@ use Raxon\Exception\FileWriteException;
  * @throws FileWriteException
  * @throws Exception
  */
-function validate_in_json_filter(App $object, array $record=[], mixed $request=null, mixed $field='', mixed $argument='', mixed $function=false): bool
+function validate_in_json_filter(App $object, object $record=null, mixed $request=null, mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     $url = $argument->url ?? false;
     $list = $argument->list ?? false;

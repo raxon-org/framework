@@ -10,7 +10,7 @@
  */
 use Raxon\App;
 
-function validate_string_contains(App $object, array $record=[], mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
+function validate_string_contains(App $object, object $record=null, mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     if(empty($string)){
         return true;

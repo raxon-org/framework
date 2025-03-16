@@ -22,7 +22,7 @@ use Raxon\Exception\FileWriteException;
  * @throws \Doctrine\ORM\ORMException
  * @throws Exception
  */
-function validate_is_unique_mysql(App $object, array $record = [], mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
+function validate_is_unique_mysql(App $object, object $record=null, mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     $table = false;
     $field = false;

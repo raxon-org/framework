@@ -10,7 +10,7 @@
  */
 use Raxon\App;
 
-function validate_is_date(App $object, array $record=[], mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
+function validate_is_date(App $object, object $record=null, mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     if(is_object($argument) && property_exists($argument, 'format')){
         $format = $argument->format;

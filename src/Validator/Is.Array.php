@@ -10,7 +10,7 @@
  */
 use Raxon\App;
 
-function validate_is_array(App $object, array $record=[], mixed $array=null, mixed $field='', mixed $argument='', mixed $function=false): bool
+function validate_is_array(App $object, object $record=null, mixed $array=null, mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     if(is_array($argument)){
         foreach($argument as $nr => $record_argument){

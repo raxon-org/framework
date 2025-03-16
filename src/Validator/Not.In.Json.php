@@ -19,7 +19,7 @@ use Raxon\Exception\FileWriteException;
  * @throws ObjectException
  * @throws FileWriteException
  */
-function validate_not_in_json(App $object, array $record=[], mixed $request=null, mixed $field='', mixed $argument='', mixed $function=false): bool
+function validate_not_in_json(App $object, object $record=null, mixed $request=null, mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     $url = $argument->url ?? false;
     $list = $argument->list ?? false;

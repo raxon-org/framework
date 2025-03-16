@@ -12,7 +12,7 @@ use Raxon\App;
 
 use Raxon\Module\Core;
 
-function validate_is_uuid(App $object, array $record=[], mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
+function validate_is_uuid(App $object, object $record=null, mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     $is_uuid = Core::is_uuid($string);
     if($argument === false){

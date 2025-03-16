@@ -10,7 +10,7 @@
  */
 use Raxon\App;
 
-function validate_is_email(App $object, array $record=[], mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
+function validate_is_email(App $object, object $record=null, mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     if(filter_var($string, FILTER_VALIDATE_EMAIL)) {
         // valid address

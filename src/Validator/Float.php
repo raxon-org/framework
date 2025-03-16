@@ -15,7 +15,7 @@ use Raxon\Module\Parse\Token;
 /**
  * @throws Exception
  */
-function validate_float(App $object, array $record=[], mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
+function validate_float(App $object, object $record=null, mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     $float = floatval($string);
     if(is_array($argument)){

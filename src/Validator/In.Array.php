@@ -10,7 +10,7 @@
  */
 use Raxon\App;
 
-function validate_in_array(App $object, array $record=[],  mixed $in='', mixed $field='', mixed $array=[], mixed $function=false): bool
+function validate_in_array(App $object, object $record=null,  mixed $in='', mixed $field='', mixed $array=[], mixed $function=false): bool
 {
     if(is_array($in)){
         foreach($in as $text){
