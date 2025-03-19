@@ -80,7 +80,8 @@
         "xml": "application\/xml",
         "vob": "video\/vob",
         "wasm": "application\/wasm",
-        "db": "application\/octet-stream"
+        "db": "application\/octet-stream",
+        "sql": "text\/plain"
     },
     "extension": {
         "txt": ".txt",
@@ -134,7 +135,8 @@
         "connect": ".connect",
         "response": ".response",
         "sh": ".sh",
-        "db": ".db"
+        "db": ".db",
+        "sql": ".sql"
     },
     "error": {
         "extension": {
