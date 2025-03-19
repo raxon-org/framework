@@ -79,7 +79,8 @@
         "pptx": "application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         "xml": "application\/xml",
         "vob": "video\/vob",
-        "wasm": "application\/wasm"
+        "wasm": "application\/wasm",
+        "db": "application\/octet-stream"
     },
     "extension": {
         "txt": ".txt",
@@ -132,7 +133,8 @@
         "btree": ".btree",
         "connect": ".connect",
         "response": ".response",
-        "sh": ".sh"
+        "sh": ".sh",
+        "db": ".db"
     },
     "error": {
         "extension": {
