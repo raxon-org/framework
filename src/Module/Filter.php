@@ -217,6 +217,7 @@ class Filter extends Data {
             foreach($list as $nr => $node) {
                 if (is_object($node)) {
                     $data = new Data($node);
+                    d($where);
                     foreach ($where as $attribute => $record) {
                         if (
                             is_array($record) &&
@@ -1283,7 +1284,6 @@ class Filter extends Data {
     public function where($where=[]): mixed
     {
         $type = $this->type();
-        d($type);
         switch($type){
             case 'list' :
                 return $this->where_list($where);
