@@ -343,6 +343,7 @@ class Core
         if (empty($url)) {
             throw new UrlEmptyException('url is empty...');
         }
+        d($url);
         header('Location: ' . $url);
         exit;
     }
