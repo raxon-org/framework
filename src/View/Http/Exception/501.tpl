@@ -27,7 +27,9 @@ config('framework.environment') === 'development') &&
 }}
 <section name="source">
     <label>Source: </label><br>
+    {{if(file.exist($exception.file))}}
     {{$source = file.read($exception.file)}}
+    {{/if}}
     {{if($source)}}
     {{$read = explode("\n", $source)}}
     <table>
