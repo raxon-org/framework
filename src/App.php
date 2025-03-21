@@ -183,7 +183,14 @@ class App extends Data {
                 App::configure($object);
                 Route::configure($object);
                 $destination = Route::request($object);
-                d($destination);
+                if(
+                    is_object($destination) &&
+                    property_exists($destination, 'name') &&
+                    $destination->name !== 'index'
+                ){
+                    ddd($destination);
+                }
+
                 if ($destination === false) {
                     $object->config('framework.environment', Config::MODE_PRODUCTION);
                     if ($object->config('framework.environment') === Config::MODE_DEVELOPMENT) {
