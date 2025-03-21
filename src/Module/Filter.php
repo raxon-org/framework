@@ -217,8 +217,6 @@ class Filter extends Data {
             foreach($list as $nr => $node) {
                 if (is_object($node)) {
                     $data = new Data($node);
-                    trace();
-                    d($where);
                     foreach ($where as $attribute => $record) {
                         if (
                             is_array($record) &&
