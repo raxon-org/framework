@@ -53,6 +53,8 @@ class Config extends Data {
     const VALUE_TEMP = '/tmp/raxon/org/';
     const CACHE = 'cache';
     const VALUE_CACHE = 'Cache';
+    const SHARED = 'Shared';
+    const VALUE_SHARED = 'src';
     const SOURCE = 'Source';
     const VALUE_SOURCE = 'src';
     const MOUNT = 'Mount';
@@ -154,6 +156,7 @@ class Config extends Data {
     const DATA_PROJECT_DIR_ROOT =  Config::DATA_PROJECT_DIR . '.' . 'root';
     const DATA_PROJECT_DIR_BINARY =  Config::DATA_PROJECT_DIR . '.' . 'binary';
     const DATA_PROJECT_DIR_VENDOR =  Config::DATA_PROJECT_DIR . '.' . 'vendor';
+    const DATA_PROJECT_DIR_SHARED =  Config::DATA_PROJECT_DIR . '.' . 'shared';
     const DATA_PROJECT_DIR_SOURCE =  Config::DATA_PROJECT_DIR . '.' . 'source';
     const DATA_PROJECT_DIR_MOUNT =  Config::DATA_PROJECT_DIR . '.' . 'mount';
     const DATA_PROJECT_DIR_ASSET =  Config::DATA_PROJECT_DIR . '.' . 'asset';
@@ -342,6 +345,11 @@ class Config extends Data {
             }
             $key = Config::DATA_PROJECT_DIR_PACKAGE;
             $value = $volume->data('volume.dir.package');
+            if($value){
+                $config->data($key, $value);
+            }
+            $key = Config::DATA_PROJECT_DIR_SHARED;
+            $value = $volume->data('volume.dir.shared');
             if($value){
                 $config->data($key, $value);
             }
@@ -623,6 +631,10 @@ class Config extends Data {
         $value = Config::VALUE_DATA;
         $this->data($key, $value);
 
+        $key = Config::DICTIONARY . '.' . Config::SHARED;
+        $value = Config::VALUE_SHARED;
+        $this->data($key, $value);
+
         $key = Config::DICTIONARY . '.' . Config::SOURCE;
         $value = Config::VALUE_SOURCE;
         $this->data($key, $value);
@@ -776,6 +788,14 @@ class Config extends Data {
         $this->data($key, $value);
         $this->data(Config::LOCALHOST_EXTENSION, Config::VALUE_LOCALHOST_EXTENSION);
 
+        $key = Config::DATA_PROJECT_DIR_SHARED;
+        $value =
+            $this->data(Config::DATA_PROJECT_DIR_ROOT) .
+            $this->data(Config::DICTIONARY . '.' . Config::SHARED) .
+            $this->data(Config::DS)
+        ;
+        $this->data($key, $value);
+
         $key = Config::DATA_PROJECT_DIR_SOURCE;
         $value =
             $this->data(Config::DATA_PROJECT_DIR_ROOT) .
@@ -794,7 +814,7 @@ class Config extends Data {
 
         $key = Config::DATA_PROJECT_DIR_ASSET;
         $value =
-            $this->data(Config::DATA_PROJECT_DIR_SOURCE) .
+            $this->data(Config::DATA_PROJECT_DIR_SHARED) .
             $this->data(Config::DICTIONARY . '.' . Config::ASSET) .
             $this->data(Config::DS)
         ;
@@ -802,7 +822,7 @@ class Config extends Data {
 
         $key = Config::DATA_PROJECT_DIR_EXCEPTION;
         $value =
-            $this->data(Config::DATA_PROJECT_DIR_SOURCE) .
+            $this->data(Config::DATA_PROJECT_DIR_SHARED) .
             $this->data(Config::DICTIONARY . '.' . Config::EXCEPTION) .
             $this->data(Config::DS)
         ;
@@ -841,21 +861,21 @@ class Config extends Data {
         $this->data($key, $value);
         $key = Config::DATA_PROJECT_DIR_EVENT;
         $value =
-            $this->data(Config::DATA_PROJECT_DIR_SOURCE) .
+            $this->data(Config::DATA_PROJECT_DIR_SHARED) .
             $this->data(Config::DICTIONARY . '.' . Config::EVENT) .
             $this->data(Config::DS)
         ;
         $this->data($key, $value);
         $key = Config::DATA_PROJECT_DIR_MIDDLEWARE;
         $value =
-            $this->data(Config::DATA_PROJECT_DIR_SOURCE) .
+            $this->data(Config::DATA_PROJECT_DIR_SHARED) .
             $this->data(Config::DICTIONARY . '.' . Config::MIDDLEWARE) .
             $this->data(Config::DS)
         ;
         $this->data($key, $value);
         $key = Config::DATA_PROJECT_DIR_OUTPUT_FILTER;
         $value =
-            $this->data(Config::DATA_PROJECT_DIR_SOURCE) .
+            $this->data(Config::DATA_PROJECT_DIR_SHARED) .
             $this->data(Config::DICTIONARY . '.' . Config::OUTPUT_FILTER) .
             $this->data(Config::DS)
         ;
@@ -870,7 +890,7 @@ class Config extends Data {
 
         $key = Config::DATA_PROJECT_DIR_CLI;
         $value =
-            $this->data(Config::DATA_PROJECT_DIR_SOURCE) .
+            $this->data(Config::DATA_PROJECT_DIR_SHARED) .
             $this->data(Config::DICTIONARY . '.' . Config::CLI) .
             $this->data(Config::DS)
         ;
@@ -902,7 +922,7 @@ class Config extends Data {
 
         $key = Config::DATA_PROJECT_DIR_PLUGIN;
         $value =
-            $this->data(Config::DATA_PROJECT_DIR_SOURCE) .
+            $this->data(Config::DATA_PROJECT_DIR_SHARED) .
             $this->data(Config::DICTIONARY . '.' . Config::PLUGIN) .
             $this->data(Config::DS)
         ;
@@ -917,21 +937,21 @@ class Config extends Data {
         $this->data($key, $value);
         $key = Config::DATA_PROJECT_DIR_COMPONENT;
         $value =
-            $this->data(Config::DATA_PROJECT_DIR_SOURCE) .
+            $this->data(Config::DATA_PROJECT_DIR_SHARED) .
             $this->data(Config::DICTIONARY . '.' . Config::COMPONENT) .
             $this->data(Config::DS)
         ;
         $this->data($key, $value);
         $key = Config::DATA_PROJECT_DIR_VALIDATE;
         $value =
-            $this->data(Config::DATA_PROJECT_DIR_SOURCE) .
+            $this->data(Config::DATA_PROJECT_DIR_SHARED) .
             $this->data(Config::DICTIONARY . '.' . Config::VALIDATE) .
             $this->data(Config::DS)
         ;
         $this->data($key, $value);
         $key = Config::DATA_PROJECT_DIR_VALIDATOR;
         $value =
-            $this->data(Config::DATA_PROJECT_DIR_SOURCE) .
+            $this->data(Config::DATA_PROJECT_DIR_SHARED) .
             $this->data(Config::DICTIONARY . '.' . Config::VALIDATOR) .
             $this->data(Config::DS)
         ;

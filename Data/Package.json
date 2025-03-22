@@ -52,6 +52,11 @@
           "recursive": true
         },
         {
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Shared/",
+          "to" : "{{config('project.dir.shared')}}",
+          "recursive": true
+        },
+        {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Event/",
           "to" : "{{config('project.dir.event')}}",
           "recursive": true
@@ -260,7 +265,7 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Entity/",
-          "to" :  "{{config('project.dir.source')}}Entity/",
+          "to" :  "{{config('project.dir.shared')}}Entity/",
           "recursive": true
         },
         {
@@ -270,7 +275,7 @@
         },
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Migration/",
-          "to" : "{{config('project.dir.source')}}Migration/",
+          "to" : "{{config('project.dir.shared')}}Migration/",
           "recursive": true
         },
         {
@@ -285,17 +290,17 @@
         },
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Repository/",
-          "to" :  "{{config('project.dir.source')}}Repository/",
+          "to" :  "{{config('project.dir.shared')}}Repository/",
           "recursive": true
         },
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Expose/",
-          "to" :  "{{config('project.dir.source')}}Expose/",
+          "to" :  "{{config('project.dir.shared')}}Expose/",
           "recursive": true
         },
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#key}}/src/Validate/",
-          "to" :  "{{config('project.dir.source')}}Validate/",
+          "to" :  "{{config('project.dir.shared')}}Validate/",
           "recursive": true
         }
       ],
