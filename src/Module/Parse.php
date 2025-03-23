@@ -327,6 +327,24 @@ class Parse {
                 empty((array) $string)
             )
         ){
+            $is_cast = $this->object()->config('parse.cast');
+            if($is_cast){
+                switch($is_cast){
+                    case 'int':
+                        $string = (int) $string;
+                        break;
+                    case 'float':
+                        $string = (float) $string;
+                        break;
+                    case 'bool':
+                        $string = (bool) $string;
+                        break;
+                    case 'string':
+                        $string = (string) $string;
+                        break;
+                }
+            }
+            $this->object()->config('delete', 'parse.cast');
             return $string;
         }
         $document = false;
@@ -612,9 +630,45 @@ class Parse {
                     $string = Parse::unset($string, $unset);
                 }
             }
+            $is_cast = $this->object()->config('parse.cast');
+            if($is_cast){
+                switch($is_cast){
+                    case 'int':
+                        $string = (int) $string;
+                        break;
+                    case 'float':
+                        $string = (float) $string;
+                        break;
+                    case 'bool':
+                        $string = (bool) $string;
+                        break;
+                    case 'string':
+                        $string = (string) $string;
+                        break;
+                }
+            }
+            $this->object()->config('delete', 'parse.cast');
             return $string;
         }
         elseif($type === 'string' && stristr($string, '{') === false){
+            $is_cast = $this->object()->config('parse.cast');
+            if($is_cast){
+                switch($is_cast){
+                    case 'int':
+                        $string = (int) $string;
+                        break;
+                    case 'float':
+                        $string = (float) $string;
+                        break;
+                    case 'bool':
+                        $string = (bool) $string;
+                        break;
+                    case 'string':
+                        $string = (string) $string;
+                        break;
+                }
+            }
+            $this->object()->config('delete', 'parse.cast');
             return $string;
         } else {
             //this section takes at least 5 msec per document: file:put 2msec, opcache::put 2msec, rest 1msec
@@ -695,6 +749,24 @@ class Parse {
                         }
 
                     }
+                    $is_cast = $this->object()->config('parse.cast');
+                    if($is_cast){
+                        switch($is_cast){
+                            case 'int':
+                                $string = (int) $string;
+                                break;
+                            case 'float':
+                                $string = (float) $string;
+                                break;
+                            case 'bool':
+                                $string = (bool) $string;
+                                break;
+                            case 'string':
+                                $string = (string) $string;
+                                break;
+                        }
+                    }
+                    $this->object()->config('delete', 'parse.cast');
                     return $string;
                 }
                 catch (Exception $exception){
@@ -832,6 +904,24 @@ class Parse {
                 return $string;
             }
         }
+        $is_cast = $this->object()->config('parse.cast');
+        if($is_cast){
+            switch($is_cast){
+                case 'int':
+                    $string = (int) $string;
+                    break;
+                case 'float':
+                    $string = (float) $string;
+                    break;
+                case 'bool':
+                    $string = (bool) $string;
+                    break;
+                case 'string':
+                    $string = (string) $string;
+                    break;
+            }
+        }
+        $this->object()->config('delete', 'parse.cast');
         return $string;
     }
 
