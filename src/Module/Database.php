@@ -465,8 +465,10 @@ class Database {
 
     /**
      * @throws Exception
+     * @throws \Doctrine\DBAL\Exception
      */
-    public static function all(App $object, $name, $environment=null){
+    public static function all(App $object, $name, $environment=null): array
+    {
         if(empty($environment)){
             $environment = $object->config('framework.environment');
         }
