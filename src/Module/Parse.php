@@ -327,23 +327,6 @@ class Parse {
                 empty((array) $string)
             )
         ){
-            $is_cast = $this->object()->config('parse.cast');
-            if($is_cast){
-                switch($is_cast){
-                    case 'int':
-                        $string = (int) $string;
-                        break;
-                    case 'float':
-                        $string = (float) $string;
-                        break;
-                    case 'bool':
-                        $string = (bool) $string;
-                        break;
-                    case 'string':
-                        $string = (string) $string;
-                        break;
-                }
-            }
             return $string;
         }
         $document = false;
@@ -632,23 +615,6 @@ class Parse {
             return $string;
         }
         elseif($type === 'string' && stristr($string, '{') === false){
-            $is_cast = $this->object()->config('parse.cast');
-            if($is_cast){
-                switch($is_cast){
-                    case 'int':
-                        $string = (int) $string;
-                        break;
-                    case 'float':
-                        $string = (float) $string;
-                        break;
-                    case 'bool':
-                        $string = (bool) $string;
-                        break;
-                    case 'string':
-                        $string = (string) $string;
-                        break;
-                }
-            }
             return $string;
         } else {
             //this section takes at least 5 msec per document: file:put 2msec, opcache::put 2msec, rest 1msec
@@ -728,23 +694,6 @@ class Parse {
                             return $string;
                         }
 
-                    }
-                    $is_cast = $this->object()->config('parse.cast');
-                    if($is_cast){
-                        switch($is_cast){
-                            case 'int':
-                                $string = (int) $string;
-                                break;
-                            case 'float':
-                                $string = (float) $string;
-                                break;
-                            case 'bool':
-                                $string = (bool) $string;
-                                break;
-                            case 'string':
-                                $string = (string) $string;
-                                break;
-                        }
                     }
                     return $string;
                 }
@@ -881,26 +830,6 @@ class Parse {
                 return $string + 0;
             } else {
                 return $string;
-            }
-        }
-        $is_cast = $this->object()->config('parse.cast');
-        if($is_cast){
-            d($is_cast);
-        }
-        if($is_cast){
-            switch($is_cast){
-                case 'int':
-                    $string = (int) $string;
-                    break;
-                case 'float':
-                    $string = (float) $string;
-                    break;
-                case 'bool':
-                    $string = (bool) $string;
-                    break;
-                case 'string':
-                    $string = (string) $string;
-                    break;
             }
         }
         return $string;
