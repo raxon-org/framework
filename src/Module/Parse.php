@@ -344,7 +344,6 @@ class Parse {
                         break;
                 }
             }
-            $this->object()->config('delete', 'parse.cast');
             return $string;
         }
         $document = false;
@@ -630,7 +629,6 @@ class Parse {
                     $string = Parse::unset($string, $unset);
                 }
             }
-            $this->object()->config('delete', 'parse.cast');
             return $string;
         }
         elseif($type === 'string' && stristr($string, '{') === false){
@@ -651,7 +649,6 @@ class Parse {
                         break;
                 }
             }
-            $this->object()->config('delete', 'parse.cast');
             return $string;
         } else {
             //this section takes at least 5 msec per document: file:put 2msec, opcache::put 2msec, rest 1msec
@@ -749,7 +746,6 @@ class Parse {
                                 break;
                         }
                     }
-                    $this->object()->config('delete', 'parse.cast');
                     return $string;
                 }
                 catch (Exception $exception){
@@ -907,7 +903,6 @@ class Parse {
                     break;
             }
         }
-        $this->object()->config('delete', 'parse.cast');
         return $string;
     }
 
