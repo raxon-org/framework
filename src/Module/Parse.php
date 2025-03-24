@@ -630,23 +630,6 @@ class Parse {
                     $string = Parse::unset($string, $unset);
                 }
             }
-            $is_cast = $this->object()->config('parse.cast');
-            if($is_cast){
-                switch($is_cast){
-                    case 'int':
-                        $string = (int) $string;
-                        break;
-                    case 'float':
-                        $string = (float) $string;
-                        break;
-                    case 'bool':
-                        $string = (bool) $string;
-                        break;
-                    case 'string':
-                        $string = (string) $string;
-                        break;
-                }
-            }
             $this->object()->config('delete', 'parse.cast');
             return $string;
         }
