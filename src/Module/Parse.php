@@ -906,6 +906,9 @@ class Parse {
         }
         $is_cast = $this->object()->config('parse.cast');
         if($is_cast){
+            d($is_cast);
+        }
+        if($is_cast){
             switch($is_cast){
                 case 'int':
                     $string = (int) $string;
