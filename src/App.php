@@ -1109,7 +1109,7 @@ class App extends Data {
     /**
      * @throws Exception
      */
-    public static function options($object, $type='default'): array | object
+    public static function options($object, $type='default'): mixed
     {
         $options = $object->data(App::OPTIONS);
         if(empty($options)){
