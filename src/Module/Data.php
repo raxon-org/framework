@@ -181,7 +181,7 @@ class Data {
      * @throws ObjectException
      * @throws Exception
      */
-    public static function options($data): array | object
+    public static function options($data): mixed
     {
         $options = (object) [];
         foreach($data as $nr => $parameter){
