@@ -381,6 +381,7 @@ class File {
     public static function write($url='', $data='', $return='size'): bool | int
     {
         $url = (string) $url;
+        d($url);
         d($data);
         $data = (string) $data;
         return File::put($url, $data, LOCK_EX, $return);
