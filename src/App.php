@@ -1237,10 +1237,9 @@ class App extends Data {
                 }
                 return $command_options;
             default:
-                trace();
-                if(
-                    property_exists($options, $type)){
-                    return $options->{$type};
+                $data = new Data($options);
+                if($data->has($type)){
+                    return $data->get($type);
                 }
         }
         return $options;
