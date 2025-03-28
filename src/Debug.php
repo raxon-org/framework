@@ -44,6 +44,7 @@ if(!function_exists('dd')){
         if(!defined('IS_CLI')){
             echo '</pre>' . PHP_EOL;
         }
+        trace();
         exit;
     }
 }
