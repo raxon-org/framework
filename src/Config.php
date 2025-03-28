@@ -34,6 +34,9 @@ class Config extends Data {
     const MODE_STAGING = 'staging';
     const MODE_TEST = 'test';
     const MODE_REPLICA = 'replica';
+
+    const APPLICATION = 'application';
+    const VALUE_APPLICATION = 'Application';
     const DATA = 'data';
     const VALUE_DATA = 'Data';
 
@@ -627,6 +630,10 @@ class Config extends Data {
      */
     public function default(): void
     {
+        $key = Config::DICTIONARY . '.' . Config::APPLICATION;
+        $value = Config::VALUE_APPLICATION;
+        $this->data($key, $value);
+
         $key = Config::DICTIONARY . '.' . Config::DATA;
         $value = Config::VALUE_DATA;
         $this->data($key, $value);
