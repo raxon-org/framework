@@ -787,6 +787,8 @@ class Build {
                         if($select['value'] == 'if'){
                             throw new Exception('if must be a method, use {if()} on line: ' . $select['row'] . ', column: ' .  $select['column']  . ' in: ' .  $data->data('raxon.org.parse.view.url') );
                         } else {
+                            d($select);
+                            d($selection);
                             throw new Exception('Possible variable sign or method missing (), "' . $select['value'] . '" on line: ' . $select['row'] . ', column: ' .  $select['column']  . ' in: ' .  $data->data('raxon.org.parse.view.url'));
                         }
                     case Token::TYPE_IS_MINUS_MINUS :
