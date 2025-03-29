@@ -632,7 +632,7 @@ class Core
             return $temp;
         }
         elseif($output === Core::FINALIZE){
-            $test  = json_decode(str_replace(['\\\\', '\\\'', ],['\\', '\''] , $input));
+            $test  = json_decode($input);
             d($input);
             ddd($test);
         } else {
