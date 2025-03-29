@@ -76,6 +76,9 @@ class Core
     const OBJECT = 'object';
     const ARRAY = 'array';
 
+    const TRANSFER = 'transfer';
+    const FINALIZE = 'finalize';
+
     /**
      * @throws Exception
      */
@@ -619,8 +622,15 @@ class Core
         }
         if (stristr($output, Core::OBJECT_JSON) !== false && stristr($output, 'data') !== false) {
             $data = str_replace('"', '&quot;', json_encode($input));
-        } elseif (stristr($output, Core::OBJECT_JSON) !== false && stristr($output, 'line') !== false) {
+        }
+        elseif (stristr($output, Core::OBJECT_JSON) !== false && stristr($output, 'line') !== false) {
             $data = json_encode($input);
+        }
+        elseif($output === Core::TRANSFER){
+            $data = json_encode($input);
+        }
+        elseif($output === Core::FINALIZE){
+            return json_decode($input);
         } else {
             $data = json_encode($input, JSON_PRETTY_PRINT);
         }
