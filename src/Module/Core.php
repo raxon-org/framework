@@ -630,7 +630,8 @@ class Core
             return str_replace('\'', '\\\'', json_encode($input));
         }
         elseif($output === Core::FINALIZE){
-            return json_decode(str_replace('\\\'', '\'', $input));
+            $test  = json_decode(str_replace('\\\'', '\'', $input));
+            ddd($test);
         } else {
             $data = json_encode($input, JSON_PRETTY_PRINT);
         }
