@@ -12,6 +12,22 @@
 use JetBrains\PhpStorm\NoReturn;
 use Raxon\Module\Cli;
 
+if(!function_exists('breakpoint')){
+    function breakpoint($data=null): void
+    {
+        $trace = debug_backtrace(1);
+        if(!defined('IS_CLI')){
+            echo '<pre class="priya-debug">' . PHP_EOL;
+        }
+        echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
+        var_dump($data);
+        if(!defined('IS_CLI')){
+            echo '</pre>' . PHP_EOL;
+        }
+        Cli::read('hidden', 'Press enter to continue...');
+    }
+}
+
 if(!function_exists('d')){
     function d($data=null): void
     {
