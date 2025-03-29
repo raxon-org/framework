@@ -9,10 +9,13 @@
  *  -    all
  */
 
-use JetBrains\PhpStorm\NoReturn;
 use Raxon\Module\Cli;
+use Raxon\Exception\ObjectException;
 
 if(!function_exists('breakpoint')){
+    /**
+     * @throws ObjectException
+     */
     function breakpoint($data=null): void
     {
         $trace = debug_backtrace(1);
@@ -44,7 +47,6 @@ if(!function_exists('d')){
 }
 
 if(!function_exists('dd')){
-    #[NoReturn]
     function dd($data=null, $options=[]): void
     {
         $trace = debug_backtrace(1);
