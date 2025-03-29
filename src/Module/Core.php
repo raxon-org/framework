@@ -627,12 +627,12 @@ class Core
             $data = json_encode($input);
         }
         elseif($output === Core::TRANSFER){
-            $temp = str_replace(['\'', '\\'],['\\\'', '\\\\'] , json_encode($input));
+            $temp = str_replace(['\\', '\''],['\\\\', '\\\''] , json_encode($input));
             d($temp);
             return $temp;
         }
         elseif($output === Core::FINALIZE){
-            $test  = json_decode(str_replace(['\\\'', '\\\\'],['\'', '\\'] , $input));
+            $test  = json_decode(str_replace(['\\\\', '\\\'', ],['\\', '\''] , $input));
             d($input);
             ddd($test);
         } else {
