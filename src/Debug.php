@@ -27,7 +27,7 @@ if(!function_exists('breakpoint')){
         if(!defined('IS_CLI')){
             echo '</pre>' . PHP_EOL;
         }
-        Cli::read('hidden', 'Press enter to continue...');
+        Cli::read('hidden', Cli::notice('Press enter to continue...'));
     }
 }
 
