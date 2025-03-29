@@ -627,10 +627,10 @@ class Core
             $data = json_encode($input);
         }
         elseif($output === Core::TRANSFER){
-            return str_replace('\'', '\\\'', json_encode($input);
+            return str_replace('\'', '\\\'', json_encode($input));
         }
         elseif($output === Core::FINALIZE){
-            return json_decode(str_replace('\\\'', '\'', $input);
+            return json_decode(str_replace('\\\'', '\'', $input));
         } else {
             $data = json_encode($input, JSON_PRETTY_PRINT);
         }
