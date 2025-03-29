@@ -627,7 +627,7 @@ class Core
             $data = json_encode($input);
         }
         elseif($output === Core::TRANSFER){
-            return str_replace('\'', '\\\'', json_encode($input));
+            return str_replace(['\'', '\\'],['\\\'', '\\\\'] , json_encode($input));
         }
         elseif($output === Core::FINALIZE){
             $test  = json_decode($input);
