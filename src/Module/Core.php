@@ -663,6 +663,9 @@ class Core
                 return json_decode($data, true);
             }
         } else {
+            if(is_string($output)){
+                throw new ObjectException('Unknown output in object: ' . $output);
+            }
             throw new ObjectException(Core::EXCEPTION_OBJECT_OUTPUT);
         }
     }
