@@ -627,14 +627,10 @@ class Core
             $data = json_encode($input);
         }
         elseif($output === Core::TRANSFER){
-            $temp = str_replace(['\\', '\''],['\\\\', '\\\''] , json_encode($input));
-            d($temp);
-            return $temp;
+            return str_replace(['\\', '\''],['\\\\', '\\\''] , json_encode($input));
         }
         elseif($output === Core::FINALIZE){
-            $test  = json_decode($input);
-            d($input);
-            ddd($test);
+            return json_decode($input);
         } else {
             $data = json_encode($input, JSON_PRETTY_PRINT);
         }
