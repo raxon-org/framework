@@ -627,7 +627,7 @@ class Core
             $data = json_encode($input);
         }
         elseif($output === Core::TRANSFER){
-            $data = json_encode($input);
+            return json_encode($input);
         }
         elseif($output === Core::FINALIZE){
             return json_decode($input);
