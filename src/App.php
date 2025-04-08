@@ -38,6 +38,8 @@ use Raxon\Module\Response;
 use Raxon\Module\Route;
 use Raxon\Module\Server;
 
+use Raxon\Parse\Module\Parse as ParseModule;
+
 use Psr\Log\LoggerInterface;
 
 use Exception;
@@ -1651,6 +1653,82 @@ class App extends Data {
                         echo 'Finalizing: ' . $count . '/', ($total) . ', percentage: ' . round(($count / ($total)) * 100, 2) . ' %, item per second: ' . round($item_per_second, 2) . ', ' . File::size_format($size_format) . '/sec' . PHP_EOL;
                     }
                 }
+                $cache->set($attribute, $data);
+            }
+            return $data;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @throws ObjectException
+     * @throws FileWriteException
+     * @throws Exception
+     */
+    public function compile_read($url, $attribute=null, $flags=null, $options=null): mixed
+    {
+        $cache = $this->data(App::CACHE);
+        if($attribute !== null){
+            if($cache){
+                $data = $cache->get($attribute);
+                if(!empty($data)){
+                    return $data;
+                }
+            }
+        }
+        if(File::exist($url)){
+            $options->source = $url;
+            $read = File::read($url);
+            if($read){
+                $mtime = File::mtime($url);
+                $require_disabled = $this->config('require.disabled');
+                if($require_disabled){
+                    //nothing
+                } else {
+                    $require_url = $this->config('require.url');
+                    $require_mtime = $this->config('require.mtime');
+                    if(empty($require_url)){
+                        $require_url = [];
+                        $require_mtime = [];
+                    }
+                    if(
+                        !in_array(
+                            $url,
+                            $require_url,
+                            true
+                        )
+                    ){
+                        $require_url[] = $url;
+                        $require_mtime[] = $mtime;
+                        $this->config('require.url', $require_url);
+                        $this->config('require.mtime', $require_mtime);
+                    }
+                }
+                $data = clone $this->data();
+                unset($data->{App::NAMESPACE});
+                $parse = new ParseModule($this, $data, $flags, $options);
+                $read = $parse->compile(Core::object($read), $data);
+                $data = new Data($read);
+                $readback = [
+                    'script',
+                    'link'
+                ];
+                foreach($readback as $name){
+                    $temp = ParseModule::readback($this, $parse, $name);
+                    if(!empty($temp)){
+                        $temp_old = $data->data($name);
+                        if(empty($temp_old)){
+                            $temp_old = [];
+                        }
+                        $temp = array_merge($temp_old, $temp);
+                        $data->data($name, $temp);
+                    }
+                }
+            } else {
+                $data = new Data();
+            }
+            if($attribute !== null && $cache){
                 $cache->set($attribute, $data);
             }
             return $data;
