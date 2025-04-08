@@ -1709,6 +1709,8 @@ class App extends Data {
                 unset($data->{App::NAMESPACE});
                 $data = new Data($data);
                 $parse = new ParseModule($this, $data, $flags, $options);
+                $is_json = $this->config('package.raxon/parse.build.state.source.is.json');
+                $object->config('package.raxon/parse.build.state.source.is.json', true);
                 $read = $parse->compile(Core::object($read), $data);
                 $data = new Data($read);
                 $readback = [
@@ -1725,6 +1727,11 @@ class App extends Data {
                         $temp = array_merge($temp_old, $temp);
                         $this->data($name, $temp);
                     }
+                }
+                if($is_json !== null){
+                    $this->config('package.raxon/parse.build.state.source.is.json', $is_json);
+                } else {
+                    $this->config('delete', 'package.raxon/parse.build.state.source.is.json');
                 }
             } else {
                 $data = new Data();
