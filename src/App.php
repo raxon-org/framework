@@ -1707,6 +1707,7 @@ class App extends Data {
                 }
                 $data = clone $this->data();
                 unset($data->{App::NAMESPACE});
+                $data = new Data($data);
                 $parse = new ParseModule($this, $data, $flags, $options);
                 $read = $parse->compile(Core::object($read), $data);
                 $data = new Data($read);
