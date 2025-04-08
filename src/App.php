@@ -1718,12 +1718,12 @@ class App extends Data {
                 foreach($readback as $name){
                     $temp = ParseModule::readback($this, $parse, $name);
                     if(!empty($temp)){
-                        $temp_old = $data->data($name);
+                        $temp_old = $this->data($name);
                         if(empty($temp_old)){
                             $temp_old = [];
                         }
                         $temp = array_merge($temp_old, $temp);
-                        $data->data($name, $temp);
+                        $this->data($name, $temp);
                     }
                 }
             } else {
