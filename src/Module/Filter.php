@@ -1231,7 +1231,7 @@ class Filter extends Data {
                             $where = [];
                             foreach ($record as $key => $value) {
                                 $where[$attribute] = [
-                                    'operator' => Filter::OPERATOR_PARTIAL,
+                                    'operator' => Filter::OPERATOR_STRICTLY_EXACT,
                                     'value' => $value
                                 ];
                             }
@@ -1239,7 +1239,7 @@ class Filter extends Data {
                         } else {
                             $where = [];
                             $where[$attribute] = [
-                                'operator' => Filter::OPERATOR_PARTIAL,
+                                'operator' => Filter::OPERATOR_STRICTLY_EXACT,
                                 'value' => $record
                             ];
                             $list = Filter::list($list)->where($where);
