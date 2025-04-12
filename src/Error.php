@@ -33,15 +33,6 @@ function exceptions_error_handler($severity, $message, $filename, $lineNumber): 
     throw new ErrorException($message, 0, $severity, $filename, $lineNumber);
 }
 
-/**
- * @throws ErrorException
- */
-function exceptions_error_handler_new($severity, $message, $filename, $lineNumber): void
-{
-    echo CLi::alert($message . ' in ' . $filename . ' on line ' . $lineNumber . PHP_EOL);
-    throw new ErrorException($message, 0, $severity, $filename, $lineNumber);
-}
-
 function exception_handler($exception): void
 {
     $is_cli = false;
