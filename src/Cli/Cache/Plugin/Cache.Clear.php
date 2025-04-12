@@ -33,7 +33,7 @@ trait Cache_Clear
             echo 'Executing: ' . $execute . "...\n";
             Core::execute($object, $execute, $output);
             echo $output . PHP_EOL;
-            ob_flush();
+//            ob_flush();
         }
         if($read){
             $id = $object->config(Config::POSIX_ID);
