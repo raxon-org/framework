@@ -9,6 +9,8 @@
  * @author          Remco van der Velde
  */
 
+use Raxon\Module\Cli;
+
 
 /**
  * @throws ErrorException
@@ -27,6 +29,7 @@ function exceptions_error_handler($severity, $message, $filename, $lineNumber): 
     ){
         return;
     }
+    echo CLi::alert('yes');
     throw new ErrorException($message, 0, $severity, $filename, $lineNumber);
 }
 
