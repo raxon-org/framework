@@ -780,13 +780,15 @@ class Token {
             $object->config('ramdisk.parse.tree') &&
             $url &&
             array_key_exists('url', $options)
-        ){
+        ) {
             $data = new Data();
             $data->set('string', $string);
             $data->set('token', $token);
             $data->set('url', $options['url']);
             $data->write($url);
-            File::touch($url, File::mtime($options['url']));
+            if (File::exist($options['url'])) {
+                File::touch($url, File::mtime($options['url']));
+            }
             if(
                 Config::posix_id() === 0 &&
                 Config::posix_id() !== $object->config(Config::POSIX_ID)
