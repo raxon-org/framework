@@ -760,6 +760,8 @@ class Token {
             $read = $object->data_read($url);
             $object->config('delete', 'require.disabled');
             if(
+                File::exist($options['url']) &&
+                File::exist($url) &&
                 File::mtime($options['url']) === File::mtime($url) &&
                 $read && $read->get('string') === $string
             ){
