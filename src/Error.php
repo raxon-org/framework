@@ -29,8 +29,6 @@ function exceptions_error_handler($severity, $message, $filename, $lineNumber): 
     ){
         return;
     }
-    echo CLi::alert($message . ' in ' . $filename . ' on line ' . $lineNumber . PHP_EOL);
-    trace();
     throw new ErrorException($message, 0, $severity, $filename, $lineNumber);
 }
 
