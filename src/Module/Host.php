@@ -170,7 +170,7 @@ class Host {
         return true;
     }
 
-    public static function url($include_scheme = true): string
+    public static function url(bool $include_scheme = true): string
     {
         if(isset($_SERVER['HTTP_HOST'])){
             $domain = $_SERVER['HTTP_HOST'];
@@ -189,7 +189,7 @@ class Host {
         return $host;
     }
 
-    public static function domain($host=''): bool | string | null
+    public static function domain(string $host=''): bool | string
     {
         if(empty($host)){
             if(isset($_SERVER['HTTP_HOST'])){
@@ -207,7 +207,7 @@ class Host {
         return false;
     }
 
-    public static function subdomain($host=''): bool | string
+    public static function subdomain(string $host=''): bool | string
     {
         if(empty($host)){
             if(isset($_SERVER['HTTP_HOST'])){
@@ -226,7 +226,7 @@ class Host {
         return false;
     }
 
-    public static function port($host=''): bool | int
+    public static function port(string $host=''): bool | int
     {
         if(empty($host)){
             if(isset($_SERVER['SERVER_PORT'])) {
@@ -248,7 +248,7 @@ class Host {
         return false;
     }
 
-    public static function extension($host=''): bool | string
+    public static function extension(string $host=''): bool | string
     {
         if(empty($host)){
             if(isset($_SERVER['HTTP_HOST'])){
@@ -270,7 +270,7 @@ class Host {
         return false;
     }
 
-    public static function remove_port($url=''): string
+    public static function remove_port(string $url=''): string
     {
         $explode = explode(':', $url, 3);
         if(isset($explode[2])){
@@ -280,7 +280,7 @@ class Host {
         return '';
     }
 
-    public static function remove_scheme($url=''): string
+    public static function remove_scheme(string $url=''): string
     {
         $explode = explode('://', $url, 2);
         if(isset($explode[1])){
@@ -329,7 +329,7 @@ class Host {
      * @throws FileWriteException
      * @throws Exception
      */
-    public static function map(App $object, Node $node, $name): bool | object
+    public static function map(App $object, Node $node, string $name): bool | object
     {
         $ttl = $object->config('host.default.ttl.' . $object->config('framework.environment'));
         if(!$ttl){
@@ -407,7 +407,7 @@ class Host {
      * @throws FileWriteException
      * @throws Exception
      */
-    public static function get(App $object, Node $node, $name, $map=false): bool | object
+    public static function get(App $object, Node $node, string $name, bool|object $map=false): bool | object
     {
         $host = false;
         $ttl = $object->config('host.default.ttl.' . $object->config('framework.environment'));

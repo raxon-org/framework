@@ -113,7 +113,7 @@ class Handler {
         }
     }
 
-    public static function header($string='', $http_response_code=null, $replace=true): mixed
+    public static function header(string $string='', int|string $http_response_code=null, bool $replace=true): mixed
     {
         if(empty($string)){
             return headers_list();
@@ -170,7 +170,7 @@ class Handler {
         return null;
     }
 
-    private static function addErrorMessage($object, $record): array
+    private static function addErrorMessage(App $object, array $record): array
     {
         if(!array_key_exists('error', $record)){
             return $record;
@@ -239,8 +239,9 @@ class Handler {
     /**
      * @throws ObjectException
      */
-    private static function request_key_group($data){
-        $result = new stdClass();
+    private static function request_key_group(array|object $data): object
+    {
+        $result = (object) [];
         foreach($data as $key => $value){
             $explode = explode('.', $key, 4);
             if(!isset($explode[1])){
@@ -399,7 +400,7 @@ class Handler {
     /**
      * @throws ObjectException
      */
-    public static function session_set_cookie_params($options=[]): bool
+    public static function session_set_cookie_params(array|object $options=[]): bool
     {
         if(
             !empty($options) &&
@@ -417,7 +418,7 @@ class Handler {
     /**
      * @throws Exception
      */
-    public static function session($attribute=null, $value=null): mixed
+    public static function session(mixed $attribute=null, mixed $value=null): mixed
     {
         if($attribute == Handler::SESSION_HAS && $value === null){
             return isset($_SESSION);
@@ -865,7 +866,7 @@ class Handler {
         return null;
     }
 
-    public static function cookie($attribute=null, $value=null, $duration=null): mixed
+    public static function cookie(mixed $attribute=null, mixed $value=null, int $duration=null): mixed
     {
         $result = '';
         $cookie = [];
