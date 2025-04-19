@@ -586,11 +586,7 @@ class Data {
         $dir = Dir::name($url);
         Dir::create($dir);
         if(is_array($options)){
-            if(array_key_exists('return', $options)){
-                $return = $options['return'];
-            } else {
-                $return = File::SIZE;
-            }
+            $options['return'] = $options['return'] ?? File::SIZE;
             if(array_key_exists('compact', $options) &&
                 $options['compact'] === true
             ){
@@ -609,6 +605,7 @@ class Data {
                     array_key_exists('algorithm', $options['compress']) &&
                     array_key_exists('level', $options['compress'])
                 ){
+                    //nothing
                 } else {
                     $options['compress'] =  [
                         'algorithm' => 'none'
@@ -644,7 +641,7 @@ class Data {
                         'byte' => $byte,
                     ];
                 } else {
-                    return File::write($url, $data, $return);
+                    return File::write($url, $data, $options);
                 }
             } else {
                 return File::write($url, Core::object($this->data(), Core::OBJECT_JSON), $options);

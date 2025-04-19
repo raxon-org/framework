@@ -39,47 +39,47 @@ class File {
     const IN = 'In ';
     const ELAPSED = 'Elapsed: ';
 
-    public static function is($url=''): bool
+    public static function is(string $url=''): bool
     {
         $url = rtrim($url, '/');
         return is_file($url);
     }
 
-    public static function is_link($url=''): bool
+    public static function is_link(string $url=''): bool
     {
         $url = rtrim($url, '/');
         return is_link($url);
     }
 
-    public static function is_readable($url=''): bool
+    public static function is_readable(string $url=''): bool
     {
         $url = rtrim($url, '/');
         return is_readable($url);
     }
 
-    public static function is_writeable($url=''): bool
+    public static function is_writeable(string $url=''): bool
     {
         $url = rtrim($url, '/');
         return is_writeable($url);
     }
 
-    public static function is_resource($url=''): bool
+    public static function is_resource(string $url=''): bool
     {
         return is_resource($url);
     }
 
-    public static function is_upload($url=''): bool
+    public static function is_upload(string $url=''): bool
     {
         $url = rtrim($url, '/');
         return is_uploaded_file($url);
     }
 
-    public static function dir($directory=''): string
+    public static function dir(string $directory=''): string
     {
         return str_replace('\\\/', '/', rtrim($directory,'\\\/')) . '/';
     }
 
-    public static function mtime($url=''): bool | int | null
+    public static function mtime(string $url=''): bool | int | null
     {
         try {
             return @filemtime($url); //added @ async deletes & reads can cause triggers otherways
@@ -89,7 +89,7 @@ class File {
 
     }
 
-    public static function atime($url=''): bool | int | null
+    public static function atime(string $url=''): bool | int | null
     {
         try {
             return @fileatime($url); //added @ async deletes & reads can cause triggers otherways
@@ -122,7 +122,7 @@ class File {
         return $namespace ?: null;
     }
 
-    public static function link($source, $destination): bool
+    public static function link(string $source, string $destination): bool
     {
         if(substr($source, -1, 1) === '/'){
             $source = substr($source, 0, -1);
@@ -136,7 +136,7 @@ class File {
         return true;
     }
 
-    public static function readlink($url, $final=false): string
+    public static function readlink(string $url, bool $final=false): string
     {
         $url = escapeshellarg($url);
         if($final){
@@ -147,7 +147,7 @@ class File {
         return $output;
     }
 
-    public static function count($directory='', $include_directory=false): int
+    public static function count(string $directory='', bool $include_directory=false): int
     {
         $dir = new Dir();
         $read = $dir->read($directory);
@@ -167,7 +167,7 @@ class File {
         }
     }
 
-    public static function exist($url): bool
+    public static function exist(string $url): bool
     {
         if(!is_string($url)){
             return false;
@@ -180,7 +180,7 @@ class File {
         }
     }
 
-    public static function touch($url='', $time=null, $atime=null): bool
+    public static function touch(string $url, int $time=null, int $atime=null): bool
     {
         if($time === null){
             $time = time();
@@ -203,7 +203,7 @@ class File {
     /**
      * @throws Exception
      */
-    public static function info(App $object, stdClass $node): object
+    public static function info(App $object, object $node): object
     {
         $rev = strrev($node->name);
         $explode = explode('.', $rev, 2);
@@ -226,7 +226,7 @@ class File {
         return $node;
     }
 
-    public static function chown($url='', $owner=null, $group=null, $recursive=false): bool
+    public static function chown(string $url='', string $owner=null, string $group=null, bool $recursive=false): bool
     {
         if($owner === null){
             $owner = 'root:root';
@@ -255,7 +255,7 @@ class File {
     /**
      * @throws FileMoveException
      */
-    public static function move($source='', $destination='', $overwrite=false): bool
+    public static function move(string $source='', string $destination='', bool $overwrite=false): bool
     {
         if(substr($source, -1, 1) === DIRECTORY_SEPARATOR){
             $source = substr($source, 0, -1);
@@ -295,7 +295,7 @@ class File {
     /**
      * @throws FileMoveException
      */
-    public static function rename($source='', $destination='', $overwrite=false): bool
+    public static function rename(string $source='', string $destination='', bool $overwrite=false): bool
     {
         if(substr($source, -1, 1) === DIRECTORY_SEPARATOR){
             $source = substr($source, 0, -1);
@@ -350,24 +350,25 @@ class File {
         return false;
     }
 
-    public static function chmod($url, $mode=0640): bool
+    public static function chmod(string $url, int $mode=0640): bool
     {
         return chmod($url, $mode);
     }
 
 
-    public static function put($url, $data, $flags=LOCK_EX, $return='size'): bool | int
+    public static function put(string $url, string $data='', array $options=[]): bool | int
     {
+        $return = $options['return'] ?? 'size';
+        $flags = $options['flags'] ?? LOCK_EX;
         $size = file_put_contents($url, $data, $flags);
         switch($return){
-            case File::SIZE:
-            case File::BYTE:
-            case File::BYTES:
-                return $size;
             case File::LINE:
             case File::LINES:
                 $explode = explode(PHP_EOL, $data);
                 return $size !== false ? count($explode) : false;
+            case File::SIZE:
+            case File::BYTE:
+            case File::BYTES:
             default:
                 return $size;
         }
@@ -375,19 +376,17 @@ class File {
 
     /**
      * @throws FileWriteException
-     * @bug may write wrong files in Parse:Build:write in a multithreading situation . solution use file::put
+     * @bug The original "write" had a bug, while "put" did not have that bug and they did the same function.
      */
-    public static function write($url='', $data='', $return='size'): bool | int
+    public static function write(string $url, string $data='', $options=[]): bool | int
     {
-        $url = (string) $url;
-        $data = (string) $data;
-        return File::put($url, $data, LOCK_EX, $return);
+        return File::put($url, $data, $options);
     }
 
     /**
      * @throws FileAppendException
      */
-    public static function append($url='', $data=''): bool|int
+    public static function append(string $url='', string $data=''): bool|int
     {
         $url = (string) $url;
         $data = (string) $data;
@@ -411,8 +410,9 @@ class File {
         }
     }
 
-    public static function read($url='', $return=File::STRING) : string | array
+    public static function read(string $url='', array $options=[]) : string | array
     {
+        $return = $options['return'] ?? File::STRING;
         if(strpos($url, File::SCHEME_HTTP) === 0){
             //check network connection first (@) added for that              //error
             try {
@@ -465,7 +465,7 @@ class File {
         }
     }
 
-    public static function tail($url, $n=1, $is_array=false) : string | array
+    public static function tail(string $url, int $n=1, bool $is_array=false) : string | array
     {
         if(File::exist($url)){
             if($n < 1){
@@ -495,7 +495,7 @@ class File {
     /**
      * @throws Exception
      */
-    public static function copy($source='', $destination=''): bool
+    public static function copy(string $source, string $destination): bool
     {
         try {
             return copy($source, $destination);
@@ -506,14 +506,14 @@ class File {
     }
 
 
-    public static function remove($url=''): bool
+    public static function remove(string $url): bool
     {
         $url = escapeshellarg($url);
         exec('rm  ' . $url);
         return true;
     }
 
-    public static function delete($url=''): bool
+    public static function delete(string $url): bool
     {
         try {
             $url = rtrim($url, '/');
@@ -524,7 +524,7 @@ class File {
 
     }
 
-    public static function extension($url=''): string
+    public static function extension(string $url): string
     {
         if(substr($url, -1) === '/'){
             return '';
@@ -539,7 +539,7 @@ class File {
         return $extension;
     }
 
-    public static function basename($url='', $extension=''): string
+    public static function basename(string $url, string $extension=''): string
     {
         if(strstr($url, '\\') !== false){
             $url = str_replace('\\', '/', $url);
@@ -564,7 +564,7 @@ class File {
         return basename($filename, $extension);
     }
 
-    public static function extension_remove($filename='', $extension=[]): string
+    public static function extension_remove(string $filename, array $extension=[]): string
     {
         if(!is_array($extension)){
             $extension = [($extension)];
@@ -580,7 +580,7 @@ class File {
         return $filename;
     }
 
-    public static function ucfirst($url=''): string
+    public static function ucfirst(string $url): string
     {
         $explode = explode('.', $url);
         $extension = null;
@@ -602,7 +602,7 @@ class File {
         return $result;
     }
 
-    public static function size($url=''): int
+    public static function size(string $url): int
     {
         try {
             return @filesize($url); //pagefile error
@@ -611,7 +611,7 @@ class File {
         }
     }
 
-    public static function size_calculation($calculation=''): float|int
+    public static function size_calculation(int|float|string $calculation=''): float|int
     {
         $b = str_contains(strtolower($calculation), 'b');
         $k = str_contains(strtolower($calculation), 'k');
@@ -652,12 +652,12 @@ class File {
     /**
      * @throws Exception
      */
-    public static function upload(Data $upload, $target): bool
+    public static function upload(Data $upload, string $target): bool
     {
         return move_uploaded_file($upload->data('tmp_name'), $target . $upload->data('name'));
     }
 
-    public static function size_format($size=0): string
+    public static function size_format(float|int $size=0): string
     {
         if($size < 1024){
             return '0 B';
@@ -682,7 +682,7 @@ class File {
 
     }
 
-    public static function time_format($seconds=0, $string=File::IN): string
+    public static function time_format(int $seconds=0, string $string=File::IN): string
     {
         $days = floor($seconds / (3600 * 24));
         $hours = floor($seconds / 3600);
@@ -727,7 +727,7 @@ class File {
     /**
      * @throws Exception
      */
-    public static function permission(App $object, $options): void
+    public static function permission(App $object, array $options=[]): void
     {
         if ($object->config(Config::POSIX_ID) === 0) {
             foreach ($options as $key => $value) {
