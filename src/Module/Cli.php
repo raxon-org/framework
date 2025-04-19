@@ -33,7 +33,7 @@ class Cli {
      * @throws ObjectException
      * @throws Exception
      */
-    public static function read($type='', $text='')
+    public static function read(string $type='', string $text='')
     {
         $is_flush = false;
         if(ob_get_level() > 0){
@@ -96,7 +96,7 @@ class Cli {
         return exec('tput lines');
     }
 
-    public static function tput($tput='', $arguments=[]): int | string
+    public static function tput(string $tput='', array $arguments=[]): int | string
     {
         if(!is_array($arguments)){
             $arguments = (array) $arguments;
@@ -206,7 +206,7 @@ class Cli {
         return $result;
     }
 
-    public static function color($color=null, $background=null): string
+    public static function color(array|object $color=null, array|object $background=null): string
     {
         $result = [];
         if (
@@ -247,7 +247,7 @@ class Cli {
         return implode('', $result);
     }
 
-    public static function alert($text='', $options=[]): string
+    public static function alert(string $text='', array $options=[]): string
     {
         if(
             array_key_exists('uppercase', $options) &&
@@ -259,7 +259,7 @@ class Cli {
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>175, 'g'=>175, 'b'=>175]) . $text . Cli::tput('reset');
     }
 
-    public static function critical($text='', $options=[]): string
+    public static function critical(string $text='', array $options=[]): string
     {
         if(
             array_key_exists('uppercase', $options) &&
@@ -271,7 +271,7 @@ class Cli {
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>200, 'g'=>0, 'b'=>200]) . $text . Cli::tput('reset');
     }
 
-    public static function debug($text='', $options=[]): string
+    public static function debug(string $text='', array $options=[]): string
     {
         if(
             array_key_exists('uppercase', $options) &&
@@ -283,7 +283,7 @@ class Cli {
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>0, 'g'=>200, 'b'=>0]) . $text . Cli::tput('reset');
     }
 
-    public static function emergency($text='', $options=[]): string
+    public static function emergency(string $text='', array $options=[]): string
     {
         if(
             array_key_exists('uppercase', $options) &&
@@ -295,7 +295,7 @@ class Cli {
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>255, 'g'=>0, 'b'=>0]) . $text . Cli::tput('reset');
     }
 
-    public static function error($text='', $options=[]): string
+    public static function error(string $text='', array $options=[]): string
     {
         if(
             array_key_exists('uppercase', $options) &&
@@ -307,7 +307,7 @@ class Cli {
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>200, 'g'=>0, 'b'=>0]) . $text . Cli::tput('reset');
     }
 
-    public static function info($text='', $options=[]): string
+    public static function info(string $text='', array $options=[]): string
     {
         if(
             array_key_exists('uppercase', $options) &&
@@ -319,7 +319,7 @@ class Cli {
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>0, 'g'=>150, 'b'=>200]) . $text . Cli::tput('reset');
     }
 
-    public static function notice($text='', $options=[]): string
+    public static function notice(string $text='', array $options=[]): string
     {
         if(
             array_key_exists('uppercase', $options) &&
@@ -331,7 +331,7 @@ class Cli {
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>0, 'g'=>0, 'b'=>0]) . $text . Cli::tput('reset');
     }
 
-    public static function warning($text='', $options=[]): string
+    public static function warning(string $text='', array $options=[]): string
     {
         if(
             array_key_exists('uppercase', $options) &&
@@ -343,7 +343,8 @@ class Cli {
         return Cli::color(['r'=>255, 'g'=>255, 'b'=>255], ['r'=>255, 'g'=>124, 'b'=>13]) . $text . Cli::tput('reset');
     }
 
-    public static function labels(){
+    public static function labels(): string
+    {
         $label=[];
         $label[] = CLi::notice('Labels: ');
         $label[] = CLi::alert('Alert', ['uppercase' => true]);
