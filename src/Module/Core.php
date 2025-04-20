@@ -96,7 +96,7 @@ class Core
     /**
      * @throws ObjectException
      */
-    public static function detach(App $object, $command):  bool | array | int | null
+    public static function detach(App $object, string $command):  bool | array | int | null
     {
         $output = [];
         $error = [];
@@ -106,7 +106,7 @@ class Core
     /**
      * @throws ObjectException
      */
-    public static function async(App $object, $command): bool | array | int | null
+    public static function async(App $object, string $command): bool | array | int | null
     {
         if (stristr($command, '&') === false) {
             $command .= ' &';
@@ -120,7 +120,7 @@ class Core
      * @throws ObjectException
      * @throws Exception
      */
-    public static function execute(App $object, $command, &$output = '', &$notification = '', $type = null): mixed
+    public static function execute(App $object, string $command, string &$output = '', string &$notification = '', string $type = null): mixed
     {
         if ($output === null) {
             $output = '';
@@ -292,7 +292,7 @@ class Core
         }
     }
 
-    public static function output_mode($mode = null): void
+    public static function output_mode(string $mode = null): void
     {
         if (
             !in_array(
@@ -341,7 +341,7 @@ class Core
     /**
      * @throws UrlEmptyException
      */
-    public static function redirect($url = ''): void
+    public static function redirect(string $url = ''): void
     {
         if (empty($url)) {
             throw new UrlEmptyException('url is empty...');
@@ -350,7 +350,7 @@ class Core
         exit;
     }
 
-    public static function is_array_nested($array = []): bool
+    public static function is_array_nested(array $array = []): bool
     {
         $array = (array)$array;
         foreach ($array as $value) {
@@ -364,7 +364,7 @@ class Core
     /**
      * @throws Exception
      */
-    public static function array_partition($array=[], $size=1, $preserve_keys=false, $count=false): array
+    public static function array_partition(array $array=[], int $size=1, bool $preserve_keys=false, bool $count=false): array
     {
         $array = (array) $array;
         $size = (int) $size;
@@ -380,7 +380,7 @@ class Core
         return array_chunk($array, ceil(count($array) / $size), $preserve_keys);
     }
 
-    public static function array_bestmatch_list($array=[], $search='', $with_score=false): bool | array
+    public static function array_bestmatch_list(array $array=[], string $search='', bool $with_score=false): bool | array
     {
         if(empty($array)){
             return false;
@@ -411,7 +411,7 @@ class Core
         return $array;
     }
 
-    public static function array_bestmatch_key($array=[], $search=''): bool | int | string | null
+    public static function array_bestmatch_key(array $array=[], string $search=''): bool | int | string | null
     {
         if(empty($array)){
             return false;
@@ -421,7 +421,7 @@ class Core
         return key($array);
     }
 
-    public static function array_bestmatch($array=[], $search='', $with_score=false){
+    public static function array_bestmatch(array $array=[], string $search='', bool $with_score=false){
         if(empty($array)){
             return false;
         }
@@ -429,7 +429,7 @@ class Core
         return reset($array);
     }
 
-    public static function array_object($array = []): object
+    public static function array_object(array $array = []): object
     {
         $object = (object) [];
         foreach ($array as $key => $value) {
@@ -445,7 +445,7 @@ class Core
     /**
      * @throws ReflectionException
      */
-    public static function object_array($object = null): array
+    public static function object_array(object $object = null): array
     {
         $list = [];
         if ($object === null) {
@@ -463,7 +463,7 @@ class Core
         return $list;
     }
 
-    public static function explode_multi($delimiter = [], $string = '', $limit = []): array
+    public static function explode_multi(array $delimiter = [], string $string = '', array|string $limit = []): array
     {
         $result = array();
         if (!is_array($limit)) {
@@ -497,7 +497,7 @@ class Core
     /**
      * @throws ObjectException
      */
-    public static function object($input = '', $output = null, $type = null): mixed
+    public static function object(mixed $input = '', string $output = null, string $type = null): mixed
     {
         if ($output === null) {
             $output = Core::OBJECT_OBJECT;
@@ -670,7 +670,7 @@ class Core
         }
     }
 
-    public static function object_delete($attributeList = [], $object = '', $parent = '', $key = null): bool
+    public static function object_delete(mixed $attributeList = [], array|object $object = null, array|object $parent = null, int|string $key = null): bool
     {
         if (is_scalar($attributeList)) {
             $explode = explode('.', $attributeList, 3);
@@ -751,7 +751,7 @@ class Core
         return false;
     }
 
-    public static function object_has_property($attributeList = [], $object = ''): bool
+    public static function object_has_property(mixed $attributeList = [], array|object $object = null): bool
     {
         if(is_string($attributeList) || is_numeric($attributeList)) {
             $attributeList = Core::explode_multi(Core::ATTRIBUTE_EXPLODE, (string) $attributeList);
@@ -1156,7 +1156,7 @@ class Core
         return false;
     }
 
-    public static function object_has($attributeList = [], $object = ''): bool
+    public static function object_has(mixed $attributeList = [], array|object $object = null): bool
     {
         if (
             is_object($object) &&
@@ -1183,7 +1183,7 @@ class Core
         return false;
     }
 
-    public static function object_get($attributeList = [], $object = '', $is_debug=false): mixed
+    public static function object_get(mixed $attributeList = [], array|object $object = null, bool $is_debug=false): mixed
     {
         if(is_string($attributeList) || is_numeric($attributeList)) {
             $attributeList = Core::explode_multi(Core::ATTRIBUTE_EXPLODE, (string) $attributeList);
@@ -1631,7 +1631,7 @@ class Core
         return null;
     }
 
-    private static function object_get_nested($attributeList, $object, $key='', $is_debug=false): mixed
+    private static function object_get_nested(mixed $attributeList='', array|object $object, string $key='', bool $is_debug=false): mixed
     {
         $is_collect = [];
         $is_collect[] = $key;
@@ -1750,7 +1750,7 @@ class Core
     /**
      * @throws Exception
      */
-    public static function object_set($attributeList=[], $value=null, $object='', $return='child'): mixed
+    public static function object_set(mixed $attributeList=[], mixed $value=null, array|object $object=null, string $return='child'): mixed
     {
 //        Core::interactive(); //maybe dangerous in template generation, it flushes directly and doesn't return parse.
         if(empty($object)){
@@ -1876,7 +1876,7 @@ class Core
         return $return;
     }
 
-    public static function object_is_empty($object = null): bool
+    public static function object_is_empty(array|object $object = null): bool
     {
         if (!is_object($object)) {
             return true;
@@ -1909,7 +1909,7 @@ class Core
         return false;
     }
 
-    public static function object_horizontal($verticalArray = [], $value = null, $return = 'object'): bool | array | object
+    public static function object_horizontal(array|object $verticalArray = [], mixed $value = null, string $return = 'object'): bool | array | object
     {
         if (empty($verticalArray)) {
             return false;
@@ -1962,7 +1962,7 @@ class Core
      * @throws BadFormatException
      * @throws EnvironmentIsBrokenException
      */
-    public static function key($url): Key
+    public static function key(string $url): Key
     {
         if (File::exist($url)) {
             $string = File::read($url);
@@ -1991,7 +1991,7 @@ class Core
         return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
     }
 
-    public static function is_uuid($string=''): bool
+    public static function is_uuid(mixed $string=''): bool
     {
         //format: %s%s-%s-%s-%s-%s%s%s
         if(!is_string($string)){
@@ -2053,7 +2053,7 @@ class Core
         return $variable;
     }
 
-    public static function is_hex($string=''): bool
+    public static function is_hex(mixed $string=''): bool
     {
         if(strtoupper(substr($string, 0, 2)) === '0X'){
             return ctype_xdigit(substr($string, 2));
@@ -2061,7 +2061,7 @@ class Core
         return false;
     }
 
-    public static function ucfirst_sentence($string='', $delimiter='.'): string
+    public static function ucfirst_sentence(string $string='', string $delimiter='.'): string
     {
         $explode = explode($delimiter, $string);
         foreach ($explode as $nr => $part) {
@@ -2070,7 +2070,7 @@ class Core
         return implode($delimiter, $explode);
     }
 
-    public static function deep_clone($object): array | object
+    public static function deep_clone(array|object $object): array | object
     {
         if (is_array($object)) {
             foreach ($object as $key => $value) {
@@ -2094,7 +2094,7 @@ class Core
      * @throws FileWriteException
      * @throws Exception
      */
-    public static function object_select(Parse $parse, Data $data, $url='', $select=null, $compile=false, $scope='scope:object'): mixed
+    public static function object_select(Parse $parse, Data $data, string $url='', string $select=null, bool $compile=false, string $scope='scope:object'): mixed
     {
         $object = $parse->object();
         $logger_error = $object->config('project.log.error');
