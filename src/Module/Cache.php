@@ -389,6 +389,9 @@ class Cache {
             $url_cache = $dir_cache . $options['key'] . $object->config('extension.response');
             $dir_duration = Dir::name($url_cache);
             Dir::create($dir_duration, Dir::CHMOD);
+            File::permission($object, [
+                'target' => $dir_duration,
+            ]);
             return File::write($url_cache, $options['data']);
         }
         return null;

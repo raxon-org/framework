@@ -165,6 +165,7 @@ class Data extends Controller {
                                     $object->config('ds')
                                 ;
                                 Dir::create($dir_data, Dir::CHMOD);
+                                File::permission($object, ['dir' => $dir_data]);
                                 $command = Core::binary($object) . ' zip extract ' . $file->url . ' /';
 
                                 echo $command . PHP_EOL;
@@ -386,6 +387,7 @@ class Data extends Controller {
                             $object->config('extension.zip')
                         ;
                         Dir::create($destination_dir, Dir::CHMOD);
+                        File::permission($object, ['dir' => $destination_dir]);
                         $command = Core::binary($object) . ' zip archive ' . $file->url . ' ' . $destination_url;
                         exec($command);
                         if($object->config(Config::POSIX_ID) === 0) {
@@ -412,6 +414,7 @@ class Data extends Controller {
                             $object->config('extension.zip')
                         ;
                         Dir::create($destination_dir, Dir::CHMOD);
+                        File::permission($object, ['dir' => $destination_dir]);
                         $command = Core::binary($object) . ' zip archive ' . $file->url . ' ' . $destination_url;
                         exec($command);
                         if($object->config(Config::POSIX_ID) === 0) {
@@ -443,6 +446,7 @@ class Data extends Controller {
                                 $object->config('extension.zip')
                             ;
                             Dir::create($destination_dir, Dir::CHMOD);
+                            File::permission($object, ['dir' => $destination_dir]);
                             $command = Core::binary($object) . ' zip archive ' . $file->url . ' ' . $destination_url;
                             exec($command);
                             if($object->config(Config::POSIX_ID) === 0) {
@@ -463,6 +467,7 @@ class Data extends Controller {
                             $object->config('extension.zip')
                         ;
                         Dir::create($destination_dir, Dir::CHMOD);
+                        File::permission($object, ['dir' => $destination_dir]);
                         $command = Core::binary($object) . ' zip archive ' . $file->url . ' ' . $destination_url;
                         exec($command);
                         if($object->config(Config::POSIX_ID) === 0) {

@@ -53,6 +53,9 @@ function function_zip_archive(Parse $parse, Data $data){
             )
         ){
             Dir::create($dir);
+            File::permission($object, [
+                'target' => $dir,
+            ]);
         }
         $zip = new \ZipArchive();
         $zip->open($target, \ZipArchive::CREATE);
@@ -83,6 +86,9 @@ function function_zip_archive(Parse $parse, Data $data){
             )
         ){
             Dir::create($dir);
+            File::permission($object, [
+                'target' => $dir,
+            ]);
         }
         $zip = new \ZipArchive();
         $zip->open($target, \ZipArchive::CREATE);

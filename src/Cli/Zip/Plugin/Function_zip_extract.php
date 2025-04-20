@@ -51,7 +51,10 @@ function function_zip_extract(Parse $parse, Data $data){
     }
     foreach($dirList as $dir){
         if(Dir::is($dir->url) === false){
-            Dir::create($dir->url);
+            Dir::create($dir->url, Dir::CHMOD);
+            File::permission($object, [
+                'target' => $dir->url,
+            ]);
         }
     }
     foreach($fileList as $node){
@@ -61,10 +64,16 @@ function function_zip_extract(Parse $parse, Data $data){
         if(File::exist($dir) && !Dir::is($dir)){
             File::delete($dir);
             Dir::create($dir);
+            File::permission($object, [
+                'target' => $dir,
+            ]);
         }
         if(File::exist($dir) === false){
             $object->logger($object->config('project.log.node'))->info('dir create', [ $dir ]);
-            Dir::create($dir);
+            Dir::create($dir, Dir::CHMOD);
+            File::permission($object, [
+                'target' => $dir,
+            ]);
         }
         if(File::exist($node->url)){
             File::delete($node->url);

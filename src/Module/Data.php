@@ -584,7 +584,9 @@ class Data {
     public function write($url='', $options=[]): array | bool | int
     {
         $dir = Dir::name($url);
-        Dir::create($dir);
+        Dir::create($dir, Dir::CHMOD);
+        File::chown($dir, 'www-data', 'www-data');
+        $write = false;
         if(is_array($options)){
             $options['return'] = $options['return'] ?? File::SIZE;
             if(array_key_exists('compact', $options) &&
@@ -636,21 +638,25 @@ class Data {
                 }
                 if($original_byte){
                     $byte = File::write($url, $data, ['return' => File::SIZE]);
+                    File::chown($url, 'www-data', 'www-data');
                     return [
                         'original' => $original_byte,
                         'byte' => $byte,
                     ];
                 } else {
-                    return File::write($url, $data, $options);
+                    $write = File::write($url, $data, $options);
+                    File::chown($url, 'www-data', 'www-data');
                 }
             } else {
-                return File::write($url, Core::object($this->data(), Core::OBJECT_JSON), $options);
+                $write = File::write($url, Core::object($this->data(), Core::OBJECT_JSON), $options);
+                File::chown($url, 'www-data', 'www-data');
             }
         }
         elseif(is_string($options)) {
-            return File::write($url, Core::object($this->data(), Core::OBJECT_JSON), $options);
+            $write = File::write($url, Core::object($this->data(), Core::OBJECT_JSON), $options);
+            File::chown($url, 'www-data', 'www-data');
         }
-        return false;
+        return $write;
     }
 
     /**

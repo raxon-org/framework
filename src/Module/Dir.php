@@ -27,11 +27,15 @@ class Dir {
 
     private $count = 0;
 
-    public static function change($dir=''): string
+    /**
+     * @throws DirectoryCreateException
+     */
+    public static function change(string $dir): string
     {
         $tmp = getcwd() . DIRECTORY_SEPARATOR;
         if(is_dir($dir) === false){
             Dir::create($dir, Dir::CHMOD);
+            File::chown($dir, 'www-data', 'www-data');
         }
         chdir($dir);
         return $tmp;
@@ -39,13 +43,17 @@ class Dir {
 
     public static function current(): string
     {
-        return getcwd();
+        $cwd =  getcwd();
+        if(substr($cwd, -1) !== Dir::SEPARATOR){
+            $cwd .= Dir::SEPARATOR;
+        }
+        return $cwd;
     }
 
     /**
      * @throws DirectoryCreateException
      */
-    public static function create($url='', $chmod=''): bool
+    public static function create(string $url, int $chmod=null): bool
     {
         if($url !== Dir::SEPARATOR){
             $url = rtrim($url, Dir::SEPARATOR);
@@ -59,7 +67,7 @@ class Dir {
             try {
                 $mkdir = false;
                 if(!File::exist($url)){
-                    if(empty($chmod)){
+                    if($chmod === null){
                         $mkdir = @mkdir($url, Dir::CHMOD, true);
                     } else {
                         $mkdir = @mkdir($url, $chmod, true);
@@ -73,7 +81,7 @@ class Dir {
         }
     }
 
-    public static function exist($url=''): bool
+    public static function exist(string $url): bool
     {
         if($url !== Dir::SEPARATOR){
             $url = rtrim($url, Dir::SEPARATOR);
@@ -86,7 +94,7 @@ class Dir {
         }
         return false;
     }
-    public static function is($url=''): bool
+    public static function is(string $url): bool
     {
         if($url !== Dir::SEPARATOR){
             $url = rtrim($url, Dir::SEPARATOR);
@@ -94,7 +102,7 @@ class Dir {
         return is_dir($url);
     }
 
-    public static function size($url, $recursive=false): bool | int
+    public static function size(string $url, bool $recursive=false): bool | int
     {
         if(!Dir::is($url)){
             return false;
@@ -110,7 +118,7 @@ class Dir {
         return $total;
     }
 
-    public static function name($url='', $levels=null): string
+    public static function name(string $url, int $levels=null): string
     {
         $is_backslash = false;
         if(stristr($url, '\\') !== false){
@@ -135,7 +143,7 @@ class Dir {
         return $name;
     }
 
-    public function ignore($ignore=null, $attribute=null)
+    public function ignore(string|array $ignore=null, string $attribute=null): mixed
     {
         $node = $this->node();
         if(!isset($node)){
@@ -175,7 +183,8 @@ class Dir {
         return $node->ignore;
     }
 
-    public function read($url='', $recursive=false, $format='flat'){
+    public function read(string $url='', bool $recursive=false, string $format='flat'): bool | array
+    {
         if(substr($url,-1) !== Dir::SEPARATOR){
             $url .= Dir::SEPARATOR;
         }
@@ -249,7 +258,7 @@ class Dir {
         return $list;
     }
 
-    public function count($count=null): int
+    public function count(int $count=null): int
     {
         if($count === null){
             return $this->getCount();
@@ -259,7 +268,7 @@ class Dir {
         }
     }
 
-    public function setCount($count=0): void
+    public function setCount(int $count=0): void
     {
         $this->count = $count;
     }
@@ -269,7 +278,10 @@ class Dir {
         return $this->count ?? 0;
     }
 
-    public static function amount ($url='') : int
+    /**
+     * @throws DirectoryCreateException
+     */
+    public static function amount (string $url) : int
     {
         $dir = Dir::current();
         Dir::change($url);
@@ -283,7 +295,7 @@ class Dir {
         return $output;
     }
 
-    public static function copy($source='', $target=''): bool
+    public static function copy(string $source, string $target): bool
     {
         if(substr($source, -1) !== Dir::SEPARATOR){
             $source .= Dir::SEPARATOR;
@@ -298,7 +310,7 @@ class Dir {
         }
     }
 
-    public static function rename($source='', $destination='', $overwrite=false): bool
+    public static function rename(string $source, string $destination, bool $overwrite=false): bool
     {
         try {
             return File::rename($source, $destination, $overwrite);
@@ -307,7 +319,7 @@ class Dir {
         }
     }
 
-    public static function move($source='', $destination='', $overwrite=false): bool
+    public static function move(string $source, string $destination, bool $overwrite=false): bool
     {
         try {
             return File::move($source, $destination, $overwrite);
@@ -316,7 +328,7 @@ class Dir {
         }
     }
 
-    public static function remove($dir=''): bool
+    public static function remove(string $dir): bool
     {
         if(Dir::is($dir) === false){
             return true;
@@ -329,7 +341,7 @@ class Dir {
         return true;
     }
 
-    public function delete($dir=''): bool
+    public function delete(string $dir): bool
     {
         if(Dir::is($dir) === false){
             return true;
@@ -351,14 +363,14 @@ class Dir {
         }
         return rmdir($dir);
     }
-    public function node($node=null): mixed
+    public function node(mixed $node=null): mixed
     {
         if($node !== null){
             $this->setNode($node);
         }
         return $this->getNode();
     }
-    private function setNode($node=null): void
+    private function setNode(mixed $node=null): void
     {
         $this->node = $node;
     }
@@ -367,7 +379,7 @@ class Dir {
         return $this->node;
     }
 
-    public static function ucfirst($dir=''): string
+    public static function ucfirst(string $dir): string
     {
         $explode = explode('/', $dir);
         $result = '';

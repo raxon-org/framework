@@ -405,7 +405,10 @@ class Config extends Data {
                 $object->config('ds')
             ;
             if(!Dir::is($dir)) {
-                Dir::Create($dir);
+                Dir::create($dir, Dir::CHMOD);
+                File::permission($object, [
+                    'dir' => $dir,
+                ]);
             }
             $dir_www = $dir_temp .
                 Config::WWW_DATA_DIR .
@@ -424,6 +427,9 @@ class Config extends Data {
             }
             if(!Dir::is($dir_cache)){
                 Dir::create($dir_cache, Dir::CHMOD);
+                File::permission($object, [
+                    'cache' => $dir_cache
+                ]);
             }
         }
         elseif($object->config('posix.id') === Config::WWW_DATA_DIR){
@@ -460,6 +466,9 @@ class Config extends Data {
             ;
             if(!Dir::is($dir_cache)){
                 Dir::create($dir_cache, Dir::CHMOD);
+                File::permission($object, [
+                    'cache' => $dir_cache
+                ]);
             }
         } else {
             throw new Exception('Posix id not allowed: ' . $object->config('posix.id') . ' for ' . $object->config('framework.dir.temp'));
