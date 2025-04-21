@@ -1799,6 +1799,10 @@ class App extends Data {
                 $flags = App::flags($this);
                 $options = App::options($this);
                 $options->source = $url;
+                $temp_source = $options->source ?? 'source';
+                $options->source = 'internal_' . Core::uuid();
+                $options->source_root = $temp_source;
+                $options->class = ParseModule::class_name($this, $options->source); ;
                 $parse = new ParseModule($this, $data, $flags, $options);
                 $read = $parse->compile(Core::object($read), $data);
                 $data = new Data($read);
