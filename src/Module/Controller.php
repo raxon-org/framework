@@ -728,6 +728,7 @@ class Controller {
             }
         }
 //        Controller::decorate($object);
+        ddd('implement new parser');
         $read = $parse->compile($read, $data, $parse->storage());
         Parse::readback($object, $parse, App::SCRIPT);
         Parse::readback($object, $parse, App::LINK);
