@@ -1765,7 +1765,7 @@ class App extends Data {
             $read = File::read($url);
             if($read){
                 $mtime = File::mtime($url);
-                $parse = new Parse($this);
+//                $parse = new Parse($this);
                 $require_disabled = $this->config('require.disabled');
                 if($require_disabled){
                     //nothing
@@ -1789,13 +1789,18 @@ class App extends Data {
                         $this->config('require.mtime', $require_mtime);
                     }
                 }
-                $parse->storage()->data('raxon.org.parse.view.url', $url);
-                $parse->storage()->data('raxon.org.parse.view.mtime', $mtime);
+//                $parse->storage()->data('raxon.org.parse.view.url', $url);
+//                $parse->storage()->data('raxon.org.parse.view.mtime', $mtime);
                 $this->data('ldelim', '{');
                 $this->data('rdelim', '}');
                 $data = clone $this->data();
                 unset($data->{App::NAMESPACE});
-                $read = $parse->compile(Core::object($read), $data, $parse->storage(), null, true);
+                $data = new Data($data);
+                $flags = App::flags($this);
+                $options = App::options($this);
+                $options->source = $url;
+                $parse = new ParseModule($this, $data, $flags, $options);
+                $read = $parse->compile(Core::object($read), $data);
                 $data = new Data($read);
                 $readback = [
                     'script',
