@@ -1800,7 +1800,7 @@ class App extends Data {
                 $options = App::options($this);
                 $options->source = $url;
                 $temp_source = $options->source ?? 'source';
-//                $options->source = 'internal_' . Core::uuid();
+                $options->source = 'internal_' . Core::uuid();
                 $options->source_root = $temp_source;
                 $options->class = ParseModule::class_name($this, $options->source);
                 $parse = new ParseModule($this, $data, $flags, $options);
