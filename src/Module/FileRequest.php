@@ -172,9 +172,19 @@ class FileRequest {
         $logger_error = $object->config('project.log.error');
         $request = $object->data(App::REQUEST);
         $input = $request->data('request');
-        $dir = str_replace(['../', '..'], '', Dir::name($input));
-        $file = str_replace($dir, '', $input);
-        if (
+        $dir = false;
+        $file = false;
+        if($input !== ''){
+            $dir = str_replace(['../', '..'], '', Dir::name($input));
+            $file = str_replace($dir, '', $input);
+        }
+        if($dir === false){
+            return false;
+        }
+        elseif($file === false){
+            return false;
+        }
+        elseif (
             (
                 substr($file, 0, 3) === '%7B' &&
                 substr($file, -3, 3) === '%7D'
