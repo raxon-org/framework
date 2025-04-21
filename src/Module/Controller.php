@@ -10,16 +10,15 @@
  */
 namespace Raxon\Module;
 
+use Exception;
 use Raxon\App;
 use Raxon\Config;
-
-use Exception;
-
 use Raxon\Exception\LocateException;
 use Raxon\Exception\UrlEmptyException;
 use Raxon\Exception\UrlNotExistException;
 use Raxon\Exception\FileWriteException;
 use Raxon\Exception\ObjectException;
+use Raxon\Parse\Module\Parse;
 
 class Controller {
     const PARSE = 'Parse';
@@ -681,9 +680,9 @@ class Controller {
         }
         $read = File::read($url);
         $mtime = File::mtime($url);
-        $parse = new Parse($object);
-        $parse->storage()->data(Controller::PROPERTY_VIEW_URL, $url);
-        $parse->storage()->data(Controller::PROPERTY_VIEW_MTIME, $mtime);
+//        $parse = new Parse($object);
+//        $parse->storage()->data(Controller::PROPERTY_VIEW_URL, $url);
+//        $parse->storage()->data(Controller::PROPERTY_VIEW_MTIME, $mtime);
         $require_url = $object->config('require.url');
         $require_mtime = $object->config('require.mtime');
         if(empty($require_url)){
@@ -727,9 +726,12 @@ class Controller {
                 $data->rdelim = Controller::RDELIM;
             }
         }
+        $data = new Data($data);
+        $flags = App::flags($object);
+        $options = App::options($object);
+        $parse = new Parse($object, $data, $flags, $options);
 //        Controller::decorate($object);
-        ddd('implement new parser');
-        $read = $parse->compile($read, $data, $parse->storage());
+        $read = $parse->compile($read, $data);
         Parse::readback($object, $parse, App::SCRIPT);
         Parse::readback($object, $parse, App::LINK);
         return $read;
