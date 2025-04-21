@@ -143,7 +143,7 @@ class Dir {
         return $name;
     }
 
-    public function ignore(string|array $ignore=null, string $attribute=null): mixed
+    public function ignore(string|array $ignore=null, string|array $attribute=null): mixed
     {
         $node = $this->node();
         if(!isset($node)){
