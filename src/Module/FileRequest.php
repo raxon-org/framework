@@ -174,7 +174,7 @@ class FileRequest {
         $input = $request->data('request');
         $dir = false;
         $file = false;
-        if(in_array($input, [null, ''], true)){
+        if(!in_array($input, [null, ''], true)){
             $dir = str_replace(['../', '..'], '', Dir::name($input));
             $file = str_replace($dir, '', $input);
         }
