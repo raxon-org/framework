@@ -729,6 +729,8 @@ class Controller {
         $data = new Data($data);
         $flags = App::flags($object);
         $options = App::options($object);
+        $options->source = $url;
+
         $parse = new Parse($object, $data, $flags, $options);
 //        Controller::decorate($object);
         $read = $parse->compile($read, $data);
