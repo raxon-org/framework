@@ -10,7 +10,7 @@
 <section name="header">
     <h3>HTTP/1.0 501 Not Implemented:</h3>
 </section><section name="message">
-    <h3>{{$exception.message}}</h3>
+    <h3>{{$exception.message|string.newline.to.break}}</h3>
 </section><section name="detail">
     <label>Exception: </label>
     <span>{{$exception.className}}</span><br>
