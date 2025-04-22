@@ -201,8 +201,6 @@ class Controller {
             !empty($template) &&
             is_string($template)
         ){
-            d($template);
-            d('is_string template');
             $called = get_called_class();
             if(defined($called .'::DIR')){
                 $dir = $called::DIR;
@@ -215,9 +213,6 @@ class Controller {
             $name = $template;
         }
         elseif(empty($url)) {
-            trace();
-            d($template);
-            ddd('empty url');
             $called = get_called_class();
             if(defined($called .'::DIR')){
                 $dir = $called::DIR;
