@@ -12,6 +12,8 @@ namespace Raxon;
 
 use Raxon\Exception\RouteNotExistException;
 use Raxon\Module\SharedMemory;
+use Raxon\Parse\Build\Php;
+use Raxon\Parse\Module\Build;
 use stdClass;
 
 use Raxon\Module\Autoload;
@@ -1802,7 +1804,7 @@ class App extends Data {
                 $temp_source = $options->source ?? 'source';
                 $options->source = 'internal_' . Core::uuid();
                 $options->source_root = $temp_source;
-                $options->class = ParseModule::class_name($this, $options->source);
+                $options->class = Build::class_name($options->source);
                 $parse = new ParseModule($this, $data, $flags, $options);
                 $read = $parse->compile(Core::object($read), $data);
                 $data = new Data($read);
