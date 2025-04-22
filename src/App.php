@@ -1720,7 +1720,7 @@ class App extends Data {
                 $is_json = $this->config('package.raxon/parse.build.state.source.is.json');
                 $this->config('package.raxon/parse.build.state.source.is.json', true);
                 $read = Core::object($read);
-                $read = $parse->compile($read, $data);
+                $read = $parse->compile($read, $data, true);
                 ddd($read);
                 $data = new Data($read);
                 $readback = [
