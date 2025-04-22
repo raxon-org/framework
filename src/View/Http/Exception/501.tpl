@@ -7,6 +7,7 @@
     </style>
 </head>
 <body>
+{{dd($exception)}}
 <section name="header">
     <h3>HTTP/1.0 501 Not Implemented:</h3>
 </section><section name="message">
