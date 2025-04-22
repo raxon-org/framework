@@ -311,6 +311,7 @@ class FileRequest {
                 $url .= $object->config('ds');
             }
             $url .= $file;
+            d($ram_url);
             if(
                 $is_ram_url === false &&
                 $ram_url !== false &&
