@@ -38,7 +38,7 @@ class Controller {
     const PREPEND = 'prepend';
     const APPEND = 'append';
 
-    const DIR = __DIR__ . DIRECTORY_SEPARATOR;
+//    const DIR = __DIR__ . DIRECTORY_SEPARATOR;
 
     /**
      * @throws ObjectException
