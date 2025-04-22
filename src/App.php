@@ -1670,6 +1670,12 @@ class App extends Data {
      */
     public function compile_read($url, $attribute=null, $flags=null, $options=null): mixed
     {
+        if($options === null){
+            $options = (object) [];
+        }
+        if($flags === null){
+            $flags = (object) [];
+        }
         $cache = $this->data(App::CACHE);
         if($attribute !== null){
             if($cache){
