@@ -1719,12 +1719,13 @@ class App extends Data {
                 $parse = new ParseModule($this, $data, $flags, $options);
                 $is_json = $this->config('package.raxon/parse.build.state.source.is.json');
                 $this->config('package.raxon/parse.build.state.source.is.json', true);
-
+                $read = Core::object($read);
                 d(Core::object($read));
                 d(json_last_error());
                 d(json_last_error_msg());
 
-                $read = $parse->compile(Core::object($read), $data);
+                $read = $parse->compile($read, $data);
+                ddd($read);
                 $data = new Data($read);
                 $readback = [
                     'script',
