@@ -1747,6 +1747,7 @@ class App extends Data {
             if($attribute !== null && $cache){
                 $cache->set($attribute, $data);
             }
+            ddd($data);
             return $data;
         } else {
             return false;
