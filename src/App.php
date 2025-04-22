@@ -1799,7 +1799,7 @@ class App extends Data {
                 unset($data->{App::NAMESPACE});
                 $data = new Data($data);
                 $flags = App::flags($this);
-                $options = App::options($this);
+                $options = (object) [];
                 $options->source = $url;
                 $temp_source = $options->source ?? 'source';
                 $options->source = 'internal_' . Core::uuid();
