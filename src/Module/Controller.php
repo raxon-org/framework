@@ -215,6 +215,7 @@ class Controller {
             $name = $template;
         }
         elseif(empty($url)) {
+            trace();
             d($template);
             ddd('empty url');
             $called = get_called_class();
