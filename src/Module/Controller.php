@@ -733,7 +733,6 @@ class Controller {
         $options->source = $url;
         $parse = new Parse($object, $data, $flags, $options);
 //        Controller::decorate($object);
-        echo 'here is data1' . PHP_EOL;
         $read = $parse->compile($read, $data);
         Parse::readback($object, $parse, App::SCRIPT);
         Parse::readback($object, $parse, App::LINK);
