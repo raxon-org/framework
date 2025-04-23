@@ -1725,6 +1725,7 @@ class App extends Data {
                 d($read);
                 d($data->get('script'));
                 $data = new Data($read);
+                /*
                 $readback = [
                     'script',
                     'link'
@@ -1740,6 +1741,7 @@ class App extends Data {
                         $this->data($name, $temp);
                     }
                 }
+                */
                 if($is_json !== null){
                     $this->config('package.raxon/parse.build.state.source.is.json', $is_json);
                 } else {
