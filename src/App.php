@@ -1713,14 +1713,14 @@ class App extends Data {
                         $this->config('require.mtime', $require_mtime);
                     }
                 }
-                $data = clone $this->data();
-                unset($data->{App::NAMESPACE});
-                $data = new Data($data);
-                $parse = new ParseModule($this, $data, $flags, $options);
+//                $data = clone $this->data();
+//                unset($data->{App::NAMESPACE});
+//                $data = new Data($data);
+                $parse = new ParseModule($this, $this->data(), $flags, $options);
                 $is_json = $this->config('package.raxon/parse.build.state.source.is.json');
                 $this->config('package.raxon/parse.build.state.source.is.json', true);
                 $read = Core::object($read);
-                $read = $parse->compile($read, $data);
+                $read = $parse->compile($read, $this->data());
 
                 $script = $this->data('script') ?? [];
                 $script_merge = $data->get('script') ?? [];
