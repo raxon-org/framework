@@ -1723,12 +1723,14 @@ class App extends Data {
                 $read = $parse->compile($read, $data);
 
                 $script = $this->data('script') ?? [];
-                $script = array_merge($script, $data->get('script'));
+                $script_merge = $data->get('script') ?? [];
+                $script = array_merge($script, $script_merge);
                 if(array_key_exists(0, $script)){
                     $this->data('script', $script);
                 }
                 $link = $this->data('link') ?? [];
-                $link = array_merge($link, $data->get('link'));
+                $link_merge = $data->get('link') ?? [];
+                $link = array_merge($link, $link_merge);
                 if(array_key_exists(0, $link)){
                     $this->data('link', $link);
                 }
