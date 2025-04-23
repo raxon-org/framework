@@ -1734,9 +1734,9 @@ class App extends Data {
                 if(array_key_exists(0, $link)){
                     $this->data('link', $link);
                 }
-                d($url);
-                d($read);
-                d($script);
+//                d($url);
+//                d($read);
+//                d($script);
                 $data = new Data($read);
                 /*
                 $readback = [
