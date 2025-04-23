@@ -87,19 +87,27 @@ if(!function_exists('ddd')){
 }
 
 if(!function_exists('trace')){
-    function trace($length=null): void
+    function trace($length=null): null | array
     {
         $trace = debug_backtrace(1);
+        $is_return = false;
+        $content = [];
+        if($length === true){
+            $is_return = true;
+        }
         if(!is_numeric($length)){
             $length = count($trace);
         }
-        if(!defined('IS_CLI')){
-            echo '<pre class="priya-trace">';
+        if(!$is_return){
+            if(!defined('IS_CLI')){
+                $content[] = '<pre class="priya-trace">';
+            }
         }
+
         // don't need the first one (0)
         // we do, where did we put it...
 
-        echo Cli::debug('Trace') . PHP_EOL;
+        $content[] = Cli::debug('Trace') . PHP_EOL;
         for($i = 0; $i < $length; $i++){
             if(array_key_exists($i, $trace)){
                 if(
@@ -108,18 +116,24 @@ if(!function_exists('trace')){
                     array_key_exists('function', $trace[$i])
                 ){
                     $list[] = $trace[$i]['function'] . ':' . $trace[$i]['file'] .':' . $trace[$i]['line'];
-                    echo cli::notice($trace[$i]['function']) . ':' . $trace[$i]['file'] .':' . $trace[$i]['line']  . PHP_EOL;
+                    $content[] = cli::notice($trace[$i]['function']) . ':' . $trace[$i]['file'] .':' . $trace[$i]['line']  . PHP_EOL;
                 }
                 elseif(
                     array_key_exists('file', $trace[$i]) &&
                     array_key_exists('line', $trace[$i])
                 ) {
-                    echo $trace[$i]['file'] . ':' . $trace[$i]['line'] . PHP_EOL;
+                    $content[] = $trace[$i]['file'] . ':' . $trace[$i]['line'] . PHP_EOL;
                 }
             }
         }
-        if(!defined('IS_CLI')){
-            echo '</pre>' . PHP_EOL;
+        if($is_return){
+            return $content;
+        } else {
+            if(!defined('IS_CLI')){
+                $content[] = '</pre>' . PHP_EOL;
+            }
+            echo implode('', $content);
         }
+        return null;
     }
 }
