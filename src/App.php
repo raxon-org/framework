@@ -1713,8 +1713,8 @@ class App extends Data {
                         $this->config('require.mtime', $require_mtime);
                     }
                 }
-                $data = $this->data();
-                //unset($data->{App::NAMESPACE});
+                $data = clone $this->data();
+                unset($data->{App::NAMESPACE});
                 $data = new Data($data);
                 $parse = new ParseModule($this, $data, $flags, $options);
                 $is_json = $this->config('package.raxon/parse.build.state.source.is.json');
