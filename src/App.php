@@ -1723,7 +1723,7 @@ class App extends Data {
                 $read = $parse->compile($read, $data);
                 d($url);
                 d($read);
-                d($this->data());
+                d($this->data('script'));
                 d($data->get('script'));
                 $data = new Data($read);
                 /*
