@@ -1721,10 +1721,20 @@ class App extends Data {
                 $this->config('package.raxon/parse.build.state.source.is.json', true);
                 $read = Core::object($read);
                 $read = $parse->compile($read, $data);
+
+                $script = $this->data('script') ?? [];
+                $script = array_merge($script, $data->get('script'));
+                if(array_key_exists(0, $script)){
+                    $this->data('script', $script);
+                }
+                $link = $this->data('link') ?? [];
+                $link = array_merge($link, $data->get('link'));
+                if(array_key_exists(0, $link)){
+                    $this->data('link', $link);
+                }
                 d($url);
                 d($read);
-                d($this->data('script'));
-                d($data->get('script'));
+                d($script);
                 $data = new Data($read);
                 /*
                 $readback = [
