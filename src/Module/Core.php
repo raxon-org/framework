@@ -350,7 +350,7 @@ class Core
         exit;
     }
 
-    public static function is_array_nested(array $array = []): bool
+    public static function is_array_nested(mixed $array = []): bool
     {
         $array = (array)$array;
         foreach ($array as $value) {
