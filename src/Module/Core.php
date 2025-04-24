@@ -122,8 +122,6 @@ class Core
      */
     public static function execute(App $object, string $command, string &$output = null, string &$notification = null, string $type = null): mixed
     {
-        trace();
-        ddd('strange');
         if ($output === null) {
             $output = '';
         }
