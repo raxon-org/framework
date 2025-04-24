@@ -116,7 +116,12 @@ if(!function_exists('trace')){
                     array_key_exists('function', $trace[$i])
                 ){
                     $list[] = $trace[$i]['function'] . ':' . $trace[$i]['file'] .':' . $trace[$i]['line'];
-                    $content[] = cli::notice($trace[$i]['function']) . ':' . $trace[$i]['file'] .':' . $trace[$i]['line']  . PHP_EOL;
+                    if($is_return){
+                        $content[] = $trace[$i]['function'] . ':' . $trace[$i]['file'] .':' . $trace[$i]['line']  . PHP_EOL;
+                    } else {
+                        $content[] = cli::notice($trace[$i]['function']) . ':' . $trace[$i]['file'] .':' . $trace[$i]['line']  . PHP_EOL;
+                    }
+
                 }
                 elseif(
                     array_key_exists('file', $trace[$i]) &&
