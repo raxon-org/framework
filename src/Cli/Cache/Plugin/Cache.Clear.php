@@ -2,14 +2,14 @@
 namespace Plugin;
 
 use Exception;
-
+use Raxon\App;
+use Raxon\Cli\Cache\Controller\Cache;
 use Raxon\Config;
 use Raxon\Module\Core;
+use Raxon\Module\Data;
 use Raxon\Module\Dir;
 use Raxon\Module\File;
-use Raxon\Module\Parse;
-
-use Raxon\Cli\Cache\Controller\Cache;
+use Raxon\Parse\Module\Parse;
 
 trait Cache_Clear
 {
@@ -23,13 +23,16 @@ trait Cache_Clear
         $temp_dir = $object->config('framework.dir.temp');
         $dir = new Dir();
         $read = $dir->read($temp_dir, true);
-        $parse = new Parse($object);
+        $data  = new Data();
+        $options = (object) [];
+        $options->source = 'Internal_' . str_replace('-', '_', Core::uuid());
+        $parse = new Parse($object, $data, App::flags($object), $options);
         if(
             $object->config('ramdisk.size') &&
             empty($object->config(Config::POSIX_ID))
         ){
             $command = Cache::RAMDISK_CLEAR_COMMAND;
-            $execute = $parse->compile($command);
+            $execute = $parse->compile($command, $data);
             echo 'Executing: ' . $execute . "...\n";
             Core::execute($object, $execute, $output);
             echo $output . PHP_EOL;
