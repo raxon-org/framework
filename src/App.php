@@ -1536,9 +1536,9 @@ class App extends Data {
                 }
                 catch(ObjectException $exception){
                     if($logger_error){
-                        $this->logger($logger_error)->error('Syntax error in ' . $url);
+                        $this->logger($logger_error)->error('Syntax error in ' . $url . PHP_EOL . (string) $exception);
                     }
-                    throw new ObjectException('Syntax error in ' . $url);
+                    throw new ObjectException('Syntax error in ' . $url . PHP_EOL . (string) $exception );
                 }
             } else {
                 $data = new Data();
