@@ -588,10 +588,12 @@ class Core
                         }
                     }
                     catch (Exception $exception){
-                        $input = json_decode($input);
+
+                        $input_decode = json_decode($input);
                         if (json_last_error()) {
                             throw new ObjectException(json_last_error_msg() . PHP_EOL . (string) $input . PHP_EOL);
                         }
+                        $input = $input_decode;
                     }
                 }
             } elseif ($output == Core::OBJECT_ARRAY) {
