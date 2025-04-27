@@ -283,7 +283,7 @@ class Data {
      */
     public function delete($attribute=''): bool
     {
-        return $this->data('delete', $attibute);
+        return $this->data('delete', $attribute);
     }
 
     /**
