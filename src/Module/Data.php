@@ -379,7 +379,6 @@ class Data {
                     if(is_int($attribute)){
                         $attribute = (string) $attribute;
                     }
-                    var_dump($attribute);
                     Core::object_delete($attribute, $this->data()); //for sorting an object
                     Core::object_set($attribute, $value, $this->data());
                     return null;
