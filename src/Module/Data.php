@@ -283,7 +283,7 @@ class Data {
      */
     public function delete($attribute=''): bool
     {
-        return $this->data('delete', $attribute);
+        return $this->data('delete', $attibute);
     }
 
     /**
@@ -379,6 +379,7 @@ class Data {
                     if(is_int($attribute)){
                         $attribute = (string) $attribute;
                     }
+                    d($attribute);
                     Core::object_delete($attribute, $this->data()); //for sorting an object
                     Core::object_set($attribute, $value, $this->data());
                     return null;
