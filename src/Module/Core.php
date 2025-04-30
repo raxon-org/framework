@@ -671,7 +671,7 @@ class Core
         }
     }
 
-    public static function object_delete(mixed $attributeList = [], array|object $object = null, array|object $parent = null, int|string $key = null): bool
+    public static function object_delete(mixed $attributeList = [], mixed $object = null, mixed $parent = null, int|string $key = null): bool
     {
         if (is_scalar($attributeList)) {
             $explode = explode('.', $attributeList, 3);
