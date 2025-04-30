@@ -273,6 +273,7 @@ class Data {
         }
         $explode = explode('[', $attribute, 2);
         if(array_key_exists(1, $explode)){
+            d($this->data);
             d($explode);
         }
         if(!empty($part_after)){
