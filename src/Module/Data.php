@@ -274,7 +274,8 @@ class Data {
         $explode = explode('[', $attribute, 2);
         if(array_key_exists(1, $explode)){
             d($this->data);
-            d($explode);
+            $temp = explode('][', substr($explode[1], 0, -1);
+            d($temp);
         }
         if(!empty($part_after)){
 //            ddd($part_after);
