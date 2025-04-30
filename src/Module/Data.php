@@ -283,6 +283,8 @@ class Data {
 //            ddd($part_after);
 //            $attribute .= '.'
         }
+        d($attribute);
+        d($value);
         return $this->data('set', $attribute, $value, $is_debug);
     }
 
