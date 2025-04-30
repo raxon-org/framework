@@ -271,12 +271,10 @@ class Data {
             $attribute .= '.' . $this->index($attribute);
 //            d($attribute);
         }
-        d($attribute);
         $explode = explode('[', $attribute, 2);
         if(array_key_exists(1, $explode)){
             $attribute = $explode[0];
             $temp = explode('][', substr($explode[1], 0, -1));
-            d($temp);
             foreach($temp as $nested_attribute_key){
                 if(substr($nested_attribute_key, 0, 1) === '$'){
                     $nested_attribute_value = $this->get(substr($nested_attribute_key, 1));
@@ -285,8 +283,6 @@ class Data {
                 }
                 $attribute .= '.' . $nested_attribute_value;
             }
-            d($attribute);
-            d($value);
         }
         if(!empty($part_after)){
 //            ddd($part_after);
