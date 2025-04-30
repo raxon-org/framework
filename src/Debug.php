@@ -38,7 +38,7 @@ if(!function_exists('d')){
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">' . PHP_EOL;
         }
-        if(array_key_exists('trace', $options)){
+        if(array_key_exists('trace', $options) && $options['trace'] !== true){
             echo $options['trace'];
         } else {
             echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
@@ -57,7 +57,7 @@ if(!function_exists('dd')){
         if(!defined('IS_CLI')){
             echo '<pre class="priya-debug">' . PHP_EOL;
         }
-        if(array_key_exists('trace', $options)){
+        if(array_key_exists('trace', $options) && $options['trace'] !== true){
             echo $options['trace'];
         } else {
             echo $trace[0]['file'] . ':' . $trace[0]['line'] . PHP_EOL;
