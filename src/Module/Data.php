@@ -276,7 +276,7 @@ class Data {
             $temp = explode('][', substr($explode[1], 0, -1));
             foreach($temp as $nested_attribute_key){
                 $nested_attribute_value = $this->get($nested_attribute_key);
-                $attribute .= '.' . $nested_attribute_value;
+                $attribute .= '.' . $this->index($nested_attribute_value);
             }
         }
         if(!empty($part_after)){
