@@ -279,6 +279,8 @@ class Data {
                 $nested_attribute_value = $this->get(substr($nested_attribute_key, 1));
                 $attribute .= '.' . $nested_attribute_value;
             }
+            d($attribute);
+            d($value);
         }
         if(!empty($part_after)){
 //            ddd($part_after);
