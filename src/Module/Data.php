@@ -271,6 +271,10 @@ class Data {
             $attribute .= '.' . $this->index($attribute);
 //            d($attribute);
         }
+        $explode = explode('[', $attribute);
+        if(array_key_exists(1, $explode)){
+            ddd($explode);
+        }
         if(!empty($part_after)){
 //            ddd($part_after);
 //            $attribute .= '.'
