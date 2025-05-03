@@ -72,7 +72,7 @@ if(!function_exists('dd')){
 
 if(!function_exists('ddd')){
     #[NoReturn]
-    function ddd($data=null): mixed
+    function ddd($data=null): void
     {
         $trace = debug_backtrace(1);
         if(!defined('IS_CLI')){
