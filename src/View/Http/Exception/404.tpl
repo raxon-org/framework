@@ -86,6 +86,7 @@ config('framework.environment') === 'development' &&
         <tr class="trace">
             <td class="function"><b>Function:</b> {{$trace.function}}</td>
         </tr>
+        /**
         <tr class="trace-source">
             <td colspan="4">
                 <label>Source: </label><br>
@@ -109,6 +110,7 @@ config('framework.environment') === 'development' &&
                 {{/if}}
             </td>
         </tr>
+        **/
         {{/foreach}}
     </table>
 </section>
