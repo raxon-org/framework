@@ -82,7 +82,7 @@ if(!function_exists('ddd')){
         if(!defined('IS_CLI')){
             echo '</pre>';
         }
-        trace();
+        d(trace(true));
         dd($data);
     }
 }
