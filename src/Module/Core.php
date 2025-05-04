@@ -2136,7 +2136,7 @@ class Core
                 }
                 $parse_options = $parse->parse_options();
                 $options = (object) [
-                    'source' => hash('sha256', Core::object($read, Core::JSON_LINE));
+                    'source' => hash('sha256', Core::object($read, Core::JSON_LINE))
                 ];
                 $parse->parse_options($options);
                 $result = $parse->compile($read, $data->data());
@@ -2148,7 +2148,7 @@ class Core
                 $read->{$parse->object()->config('parse.read.object.this.key')} = $key;
                 $parse_options = $parse->parse_options();
                 $options = (object) [
-                    'source' => hash('sha256', Core::object($read, Core::JSON_LINE));
+                    'source' => hash('sha256', Core::object($read, Core::JSON_LINE))
                 ];
                 $parse->parse_options($options);
                 $result = $parse->compile($read, $data->data());
@@ -2170,7 +2170,7 @@ class Core
                 if ($compile) {
                     $parse_options = $parse->parse_options();
                     $options = (object) [
-                        'source' => hash('sha256', Core::object($read, Core::JSON_LINE));
+                        'source' => hash('sha256', Core::object($read, Core::JSON_LINE))
                     ];
                     $parse->parse_options($options);
                     $read = $parse->compile($read, $data->data());
