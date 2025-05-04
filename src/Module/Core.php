@@ -2146,7 +2146,8 @@ class Core
             } else {
                 $explode = explode('.', $select);
                 $key = array_pop($explode);
-                $read->{$parse->object()->config('parse.read.object.this.key')} = $key;
+                $read->{$parse->object()->config('parse.read.object.this.property')} = $key;
+                $read->{$parse->object()->config('parse.read.object.this.attribute')} = $key;
                 $parse_options = $parse->parse_options();
                 $options = (object) [
                     'source' => hash('sha256', Core::object($read, Core::JSON_LINE)),
