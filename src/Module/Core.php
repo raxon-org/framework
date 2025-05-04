@@ -2127,7 +2127,7 @@ class Core
                 throw new ObjectException('Could not compile item: ' . $select . ', url: ' . $url  . ', scope: ' . $scope . PHP_EOL);
             }
             if(is_array($read)){
-                $explode = explode('.', $select);
+                $explode = explode('.', $select, 2);
                 $key = array_pop($explode);
                 foreach($read as $nr => $record){
                     if(is_object($record)){
@@ -2144,7 +2144,7 @@ class Core
                 $parse->parse_options($parse_options);
                 return $result;
             } else {
-                $explode = explode('.', $select);
+                $explode = explode('.', $select, 2);
                 $key = array_pop($explode);
                 $read->{$parse->object()->config('parse.read.object.this.property')} = $key;
                 $read->{$parse->object()->config('parse.read.object.this.attribute')} = $key;
