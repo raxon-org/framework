@@ -11,11 +11,7 @@
 namespace Raxon;
 
 use Raxon\Exception\RouteNotExistException;
-use Raxon\Module\SharedMemory;
-use Raxon\Parse\Build\Php;
 use Raxon\Parse\Module\Build;
-use stdClass;
-
 use Raxon\Module\Autoload;
 use Raxon\Module\Cache;
 use Raxon\Module\Cli;
@@ -35,7 +31,7 @@ use Raxon\Module\Host;
 use Raxon\Module\Logger;
 use Raxon\Module\Middleware;
 use Raxon\Module\OutputFilter;
-use Raxon\Module\Parse;
+use Raxon\Parse\Module\Parse;
 use Raxon\Module\Response;
 use Raxon\Module\Route;
 use Raxon\Module\Server;
@@ -614,7 +610,15 @@ class App extends Data {
                         echo $exception;
                         return null;
                     } else {
-                        $parse = new Module\Parse($object, $object->data());
+                        $data = new Data($object->data());
+                        $flags = App::flags($object);
+                        $options = (object) [];
+                        $options->source = $url;
+                        $temp_source = $options->source ?? 'source';
+                        $options->source = 'internal_' . Core::uuid();
+                        $options->source_root = $temp_source;
+                        $options->class = Build::class_name($options->source);
+                        $parse = new Parse($object, $data, $flags, $options);
                         $read = File::read($is_url);
                         $data = (object) [];
                         $data->exception = (object) Core::object_array($exception);
@@ -1330,10 +1334,10 @@ class App extends Data {
                 $this->config('require.mtime', $require_mtime);
             }
         }
-
-        $parse = new Parse($this);
+        $flags = App::flags($this);
         $data = new Data();
         $data->data($this->data());
+        $parse = new Parse($this, $data);
         $node = new Data();
         $logger = false;
         if($this->config('framework.environment') === Config::MODE_DEVELOPMENT){
@@ -1389,9 +1393,9 @@ class App extends Data {
                 $this->config('require.mtime', $require_mtime);
             }
         }
-        $parse = new Parse($this);
         $data = new Data();
         $data->data($this->data());
+        $parse = new Parse($this, $data);
         $node = new Data();
         $logger = false;
         if($this->config('framework.environment') === Config::MODE_DEVELOPMENT){
@@ -1450,9 +1454,9 @@ class App extends Data {
                 $this->config('require.mtime', $require_mtime);
             }
         }
-        $parse = new Parse($this);
         $data = new Data();
         $data->data($this->data());
+        $parse = new Parse($this, $data);
         $logger = false;
         if($this->config('framework.environment') === Config::MODE_DEVELOPMENT){
             $logger = $this->config('project.log.debug');
