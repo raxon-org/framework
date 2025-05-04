@@ -19,6 +19,9 @@ use Defuse\Crypto\Key;
 use Raxon\App;
 use Raxon\Config;
 
+use Raxon\Parse\Module\Parse;
+
+
 use Defuse\Crypto\Exception\BadFormatException;
 use Defuse\Crypto\Exception\EnvironmentIsBrokenException;
 
@@ -2131,12 +2134,12 @@ class Core
                         $record->{$parse->object()->config('parse.read.object.this.key')} = $key;
                     }
                 }
-                return $parse->compile($read, $data->data(), $parse->storage());
+                return $parse->compile($read, $data->data());
             } else {
                 $explode = explode('.', $select);
                 $key = array_pop($explode);
                 $read->{$parse->object()->config('parse.read.object.this.key')} = $key;
-                return $parse->compile($read, $data->data(), $parse->storage());
+                return $parse->compile($read, $data->data());
             }
         } else {
             //document
@@ -2151,7 +2154,7 @@ class Core
                     throw new ObjectException('Could not read item: ' . $select . PHP_EOL);
                 }
                 if ($compile) {
-                    $read = $parse->compile($read, $data->data(), $parse->storage());
+                    $read = $parse->compile($read, $data->data());
                 }
                 $json = new Data();
                 $json->data($read);
