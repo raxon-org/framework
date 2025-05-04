@@ -2139,6 +2139,12 @@ class Core
                 $explode = explode('.', $select);
                 $key = array_pop($explode);
                 $read->{$parse->object()->config('parse.read.object.this.key')} = $key;
+
+                $parse_options = $parse->parse_options();
+//                $options = (object) [
+//                    'source' => hash('sha256')
+//                ];
+                ddd($read);
                 return $parse->compile($read, $data->data());
             }
         } else {
