@@ -2131,7 +2131,8 @@ class Core
                 $key = array_pop($explode);
                 foreach($read as $nr => $record){
                     if(is_object($record)){
-                        $record->{$parse->object()->config('parse.read.object.this.key')} = $key;
+                        $record->{$parse->object()->config('package.raxon/parse.object.this.property')} = $key;
+                        $record->{$parse->object()->config('package.raxon/parse.object.this.attribute')} = $key;
                     }
                 }
                 $parse_options = $parse->parse_options();
@@ -2146,9 +2147,8 @@ class Core
             } else {
                 $explode = explode('.', $select, 2);
                 $key = array_pop($explode);
-                ddd($parse->object()->config('parse.read.object.this.property'));
-                $read->{$parse->object()->config('parse.read.object.this.property')} = $key;
-                $read->{$parse->object()->config('parse.read.object.this.attribute')} = $key;
+                $read->{$parse->object()->config('package.raxon/parse.object.this.property')} = $key;
+                $read->{$parse->object()->config('package.raxon/parse.object.this.attribute')} = $key;
                 $parse_options = $parse->parse_options();
                 $options = (object) [
                     'source' => hash('sha256', Core::object($read, Core::JSON_LINE)),
