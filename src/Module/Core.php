@@ -2146,6 +2146,7 @@ class Core
             } else {
                 $explode = explode('.', $select, 2);
                 $key = array_pop($explode);
+                ddd($parse->object()->config('parse.read.object.this.property'));
                 $read->{$parse->object()->config('parse.read.object.this.property')} = $key;
                 $read->{$parse->object()->config('parse.read.object.this.attribute')} = $key;
                 $parse_options = $parse->parse_options();
