@@ -628,8 +628,6 @@ class App extends Data {
                             'url' => $url,
                             'exception' => $exception
                         ]);
-                        d($is_url);
-                        ddd($read);
                         return $parse->compile($read, $data);
                     }
                 }
