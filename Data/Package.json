@@ -821,35 +821,35 @@
       }
     },
     "raxon/parse" : {
-      "composer.production" : "composer require {{$this.#property}}:~2024",
-      "composer" : "composer require {{$this.#property}}:dev-main",
+      "composer.production" : "composer require {{$this.#property|default:''}}:~2024",
+      "composer" : "composer require {{$this.#property|default:''}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#property}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#property|default:''}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#property|default:''}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
-          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/src/Package/",
-          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#property)}}",
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property|default:''}}/src/Package/",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#property|default:'')}}",
           "recursive": true
         },
         {
-          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/src/Node/",
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property|default:''}}/src/Node/",
           "to" : "{{config('project.dir.node')}}",
           "recursive": true
         },
         {
-          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/src/Plugin/",
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property|default:''}}/src/Plugin/",
           "to" : "{{config('project.dir.plugin')}}",
           "recursive": true
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#property}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#property|default:''}} setup"
       ],
       "update" : {
         "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} update"
+          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property|default:''}} update"
         ]
       }
     },
