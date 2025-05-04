@@ -615,7 +615,8 @@ class App extends Data {
                         $options = (object) [];
                         $options->source = $url;
                         $temp_source = $options->source ?? 'source';
-                        $options->source = 'internal_' . Core::uuid();
+//                        $options->source = 'internal_' . Core::uuid();
+                        $options->source = $is_url;
                         $options->source_root = $temp_source;
                         $options->class = Build::class_name($options->source);
                         $parse = new Parse($object, $data, $flags, $options);
