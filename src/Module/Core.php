@@ -2134,18 +2134,26 @@ class Core
                         $record->{$parse->object()->config('parse.read.object.this.key')} = $key;
                     }
                 }
-                return $parse->compile($read, $data->data());
+                $parse_options = $parse->parse_options();
+                $options = (object) [
+                    'source' => hash('sha256', Core::object($read, Core::JSON_LINE));
+                ];
+                $parse->parse_options($options);
+                $result = $parse->compile($read, $data->data());
+                $parse->parse_options($parse_options);
+                return $result;
             } else {
                 $explode = explode('.', $select);
                 $key = array_pop($explode);
                 $read->{$parse->object()->config('parse.read.object.this.key')} = $key;
-
                 $parse_options = $parse->parse_options();
-//                $options = (object) [
-//                    'source' => hash('sha256')
-//                ];
-                ddd($read);
-                return $parse->compile($read, $data->data());
+                $options = (object) [
+                    'source' => hash('sha256', Core::object($read, Core::JSON_LINE));
+                ];
+                $parse->parse_options($options);
+                $result = $parse->compile($read, $data->data());
+                $parse->parse_options($parse_options);
+                return $result;
             }
         } else {
             //document
@@ -2160,7 +2168,13 @@ class Core
                     throw new ObjectException('Could not read item: ' . $select . PHP_EOL);
                 }
                 if ($compile) {
+                    $parse_options = $parse->parse_options();
+                    $options = (object) [
+                        'source' => hash('sha256', Core::object($read, Core::JSON_LINE));
+                    ];
+                    $parse->parse_options($options);
                     $read = $parse->compile($read, $data->data());
+                    $parse->parse_options($parse_options);
                 }
                 $json = new Data();
                 $json->data($read);
