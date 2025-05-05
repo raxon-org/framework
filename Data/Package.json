@@ -830,16 +830,16 @@
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property|default:''}}/src/Package/",
-          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#parentNode.#property|default:'')}}",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#property|default:'')}}",
           "recursive": true
         },
         {
-          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property|default:''}}/src/Node/",
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property|default:''}}/src/Node/",
           "to" : "{{config('project.dir.node')}}",
           "recursive": true
         },
         {
-          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property|default:''}}/src/Plugin/",
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property|default:''}}/src/Plugin/",
           "to" : "{{config('project.dir.plugin')}}",
           "recursive": true
         }
