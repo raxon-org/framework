@@ -829,17 +829,17 @@
       "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property|default:''}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
-          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property|default:''}}/src/Package/",
-          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#property|default:'')}}",
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property|default:''}}/src/Package/",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#parentNode.#property|default:'')}}",
           "recursive": true
         },
         {
-          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property|default:''}}/src/Node/",
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property|default:''}}/src/Node/",
           "to" : "{{config('project.dir.node')}}",
           "recursive": true
         },
         {
-          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property|default:''}}/src/Plugin/",
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property|default:''}}/src/Plugin/",
           "to" : "{{config('project.dir.plugin')}}",
           "recursive": true
         }
@@ -849,7 +849,7 @@
       ],
       "update" : {
         "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property|default:''}} update"
+          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property|default:''}} update"
         ]
       }
     },
