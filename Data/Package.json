@@ -851,6 +851,7 @@
         "command2" : [
           "{{d($this.#property)}}",
           "{{d($this.#parentNode.#depth)}}",
+          "{{d($this.#parentNode)}}",
           "{{dd($this.#parentNode.#property)}}",
           "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#depth|default:''}} update"
         ]
