@@ -2138,7 +2138,6 @@ class Core
                 $parse_options = $parse->parse_options();
                 $options = (object) [
                     'source' => hash('sha256', Core::object($read, Core::JSON_LINE)),
-                    'depth' => 0
                 ];
                 $parse->parse_options($options);
                 $result = $parse->compile($read, $data->data());
@@ -2152,7 +2151,6 @@ class Core
                 $parse_options = $parse->parse_options();
                 $options = (object) [
                     'source' => hash('sha256', Core::object($read, Core::JSON_LINE)),
-                    'depth' => 0
                 ];
                 $parse->parse_options($options);;
                 $result = $parse->compile($read, $data->data());
