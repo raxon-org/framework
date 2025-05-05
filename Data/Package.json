@@ -821,6 +821,7 @@
       }
     },
     "raxon/parse" : {
+      "debug": "{{dd('{{$this}}')}}",
       "composer.production" : "composer require {{$this.#parentNode.#property|default:''}}:~2024",
       "composer" : "composer require {{$this.#parentNode.#property|default:''}}:dev-main",
       "route" : [
