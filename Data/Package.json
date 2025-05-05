@@ -839,7 +839,7 @@
           "recursive": true
         },
         {
-          "debug": "{{$this.#parentNode.#key|default:''}}",
+          "debug": "{{$this.#property|default:''}}",
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property|default:''}}/src/Plugin/",
           "to" : "{{config('project.dir.plugin')}}",
           "recursive": true
