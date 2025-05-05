@@ -834,7 +834,7 @@
           "recursive": true
         },
         {
-          "from" : "{{config('project.dir.vendor')}}{{$this.#rootNode.#property|default:''}}/src/Node/",
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property|default:''}}/src/Node/",
           "to" : "{{config('project.dir.node')}}",
           "recursive": true
         },
