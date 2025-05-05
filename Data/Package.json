@@ -829,8 +829,10 @@
       "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property|default:''}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
-          "debug" : "{{d($this.#parentNode)}}",
-          "debug2" : "{{dd($this.#parentNode.#property)}}",
+          "debug" : "{{d($this.#property)}}",
+          "debug2" : "{{d($this.#rootNode)}}",
+          "debug4" : "{{d($this.#parentNode)}}",
+          "debug3" : "{{dd($this.#parentNode.#property)}}",
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property|default:''}}/src/Package/",
           "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#property|default:'')}}",
           "recursive": true
