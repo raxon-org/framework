@@ -845,11 +845,11 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#rootNode.#property|default:''}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property|default:''}} setup"
       ],
       "update" : {
         "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property|default:''}} update"
+          "{{binary('php Bin/Raxon.php')}} {{$this.#rootNode.#property|default:''}} update"
         ]
       }
     },
