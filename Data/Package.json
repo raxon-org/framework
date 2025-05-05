@@ -848,7 +848,7 @@
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property|default:''}} setup"
       ],
       "update" : {
-        "command" : [
+        "command2" : [
           "{{d(trace(true))}}",
           "{{dd($this.#parentNode)}}",
           "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#depth|default:''}} update"
