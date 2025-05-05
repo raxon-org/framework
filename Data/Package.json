@@ -849,7 +849,7 @@
       ],
       "update" : {
         "command2" : [
-          "{{d(trace(true))}}",
+          "{{d($this.$property)}}",
           "{{dd($this.#parentNode)}}",
           "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#depth|default:''}} update"
         ]
