@@ -848,13 +848,8 @@
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property|default:''}} setup"
       ],
       "update" : {
-        "command2" : [
-          "{{d($this.#property)}}",
-          "{{d($this.#parentNode.#depth)}}",
-          "{{d($this.#parentNode)}}",
-          "{{d($this.#parentNode.#parentNode.#property)}}",
-          "{{dd($this.#parentNode.#property)}}",
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#depth|default:''}} update"
+        "command" : [
+          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property|default:''}} update"
         ]
       }
     },
