@@ -845,7 +845,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property|default:''}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#rootNode.#property|default:''}} setup"
       ],
       "update" : {
         "command" : [
