@@ -849,7 +849,6 @@
       ],
       "update" : {
         "command" : [
-          "{{d($this.#rootNode.#property)}}",
           "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property|default:''}} update"
         ]
       }
