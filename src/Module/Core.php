@@ -2135,13 +2135,13 @@ class Core
                         $record->{$parse->object()->config('package.raxon/parse.object.this.attribute')} = $key;
                     }
                 }
-                $parse_options = $parse->parse_options();
+                $parse_options = $parse->options();
                 $options = (object) [
                     'source' => hash('sha256', Core::object($read, Core::JSON_LINE)),
                 ];
-                $parse->parse_options($options);
+                $parse->options($options);
                 $result = $parse->compile($read, $data->data());
-                $parse->parse_options($parse_options);
+                $parse->options($parse_options);
                 return $result;
             } else {
                 $explode = explode('.', $select, 2);
@@ -2152,9 +2152,9 @@ class Core
                 $options = (object) [
                     'source' => hash('sha256', Core::object($read, Core::JSON_LINE)),
                 ];
-                $parse->parse_options($options);
+                $parse->options($options);
                 $result = $parse->compile($read, $data->data());
-                $parse->parse_options($parse_options);
+                $parse->options($parse_options);
                 return $result;
             }
         } else {
@@ -2175,9 +2175,9 @@ class Core
                         'source' => hash('sha256', Core::object($read, Core::JSON_LINE)),
                         'depth' => 0
                     ];
-                    $parse->parse_options($options);
+                    $parse->options($options);
                     $read = $parse->compile($read, $data->data());
-                    $parse->parse_options($parse_options);
+                    $parse->options($parse_options);
                 }
                 $json = new Data();
                 $json->data($read);
