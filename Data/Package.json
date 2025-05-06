@@ -829,7 +829,7 @@
       "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property|default:''}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
-          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property|default:''}}/src/Package/",
+          "from" : "{{config('project.dir.vendor')}}{{dd('{{$this}}')}}/src/Package/",
           "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#parentNode.#property|default:'')}}",
           "recursive": true
         },
