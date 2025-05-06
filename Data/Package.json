@@ -1,12 +1,12 @@
 {
   "package" : {
     "raxon_app/filemanager" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -25,7 +25,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -34,12 +34,12 @@
       }
     },
     "raxon/account" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -63,7 +63,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -72,12 +72,12 @@
       }
     },
     "raxon/application" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -91,7 +91,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -100,12 +100,12 @@
       }
     },
     "raxon/basic" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -124,7 +124,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -133,10 +133,10 @@
       }
     },
     "raxon/boot" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
       "copy" : [
         {
@@ -181,7 +181,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -190,12 +190,12 @@
       }
     },
     "raxon/config" : {
-      "composer" : "composer require {{$this.#key}}:dev-main",
-      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -214,7 +214,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -223,12 +223,12 @@
       }
     },
     "raxon/doctrine" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -247,7 +247,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -256,12 +256,12 @@
       }
     },
     "raxon/email" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Entity/",
@@ -305,7 +305,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -314,12 +314,12 @@
       }
     },
     "raxon/log" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -338,7 +338,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup",
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup",
         "{{binary('php Bin/Raxon.php')}} cache:clear"
       ],
       "update" : {
@@ -348,10 +348,10 @@
       }
     },
     "raxon/event" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
       "copy" : [
         {
@@ -376,7 +376,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -385,12 +385,12 @@
       }
     },
     "raxon/host" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -404,7 +404,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -413,12 +413,12 @@
       }
     },
     "raxon/keyboard" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -432,7 +432,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -441,12 +441,12 @@
       }
     },
     "raxon/node" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -470,7 +470,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -479,12 +479,12 @@
       }
     },
     "raxon/raxon" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -503,7 +503,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -512,10 +512,10 @@
       }
     },
     "raxon/route" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
       "copy" : [
         {
@@ -535,7 +535,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -544,10 +544,10 @@
       }
     },
     "raxon/ollama" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
       "copy" : [
         {
@@ -567,7 +567,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -576,12 +576,12 @@
       }
     },
     "raxon/autoload" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -600,11 +600,11 @@
         }
       ],
       "import": [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Autoload.json",
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Autoload.Prefix.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Autoload.json",
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Autoload.Prefix.json"
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -613,12 +613,12 @@
       }
     },
     "raxon/server" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -637,7 +637,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -646,12 +646,12 @@
       }
     },
     "raxon/middleware" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -670,7 +670,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -679,12 +679,12 @@
       }
     },
     "raxon/output_filter" : {
-      "composer" : "composer require {{$this.#key}}:dev-main",
-      "composer.production" : "composer require {{$this.#key}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -703,7 +703,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -712,12 +712,12 @@
       }
     },
     "raxon/example" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -741,7 +741,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -750,13 +750,13 @@
       }
     },
     "raxon/priya" : {
-      "composer" : "composer require {{$this.#key}}:*",
+      "composer" : "composer require {{$this.#parentNode.#property}}:*",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -765,12 +765,12 @@
       }
     },
     "raxon/test" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -784,7 +784,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -793,12 +793,12 @@
       }
     },
     "raxon/task" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
@@ -812,7 +812,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
@@ -854,12 +854,12 @@
       }
     },
     "raxon/markdown" : {
-      "composer.production" : "composer require {{$this.#key}}:~2024",
-      "composer" : "composer require {{$this.#key}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#key}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#key}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#key}}/src/Package/",
@@ -868,7 +868,7 @@
         }
       ],
       "command" : [
-        "{{binary('php Bin/Raxon.php')}} {{$this.#key}} setup"
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ],
       "update" : {
         "command" : [
