@@ -1396,7 +1396,11 @@ class App extends Data {
         }
         $data = new Data();
         $data->data($this->data());
-        $parse = new Parse($this, $data);
+        $flags = App::flags($this);
+        $options = (object) [
+            'source' => $url,
+        ];
+        $parse = new Parse($this, $data, $flags, $options);
         $node = new Data();
         $logger = false;
         if($this->config('framework.environment') === Config::MODE_DEVELOPMENT){
