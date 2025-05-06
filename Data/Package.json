@@ -821,25 +821,25 @@
       }
     },
     "raxon/parse" : {
-      "composer.production" : "composer require {{$this.#parentNode.#property|default:''}}:~2024",
-      "composer" : "composer require {{$this.#parentNode.#property|default:''}}:dev-main",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property|default:''}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property|default:''}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
         {
-          "from" : "{{config('project.dir.vendor')}}{{$this.#property|default:''}}/src/Package/",
-          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#parentNode.#property|default:'')}}",
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#parentNode.#property)}}",
           "recursive": true
         },
         {
-          "from" : "{{config('project.dir.vendor')}}{{$this.#key|default:''}}/src/Node/",
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Node/",
           "to" : "{{config('project.dir.node')}}",
           "recursive": true
         },
         {
-          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property|default:''}}/src/Plugin/",
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Plugin/",
           "to" : "{{config('project.dir.plugin')}}",
           "recursive": true
         }
