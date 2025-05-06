@@ -731,6 +731,7 @@ class Controller {
         $flags = App::flags($object);
         $options = (object) [];
         $options->source = $url;
+        $options->duration = true;
         $parse = new Parse($object, $data, $flags, $options);
 //        Controller::decorate($object);
         $read = $parse->compile($read, $data);
