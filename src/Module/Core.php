@@ -2148,7 +2148,7 @@ class Core
                 $key = array_pop($explode);
                 $read->{$parse->object()->config('package.raxon/parse.object.this.property')} = $key;
                 $read->{$parse->object()->config('package.raxon/parse.object.this.attribute')} = $key;
-                $parse_options = $parse->parse_options();
+                $parse_options = $parse->options();
                 $options = (object) [
                     'source' => hash('sha256', Core::object($read, Core::JSON_LINE)),
                 ];
@@ -2170,7 +2170,7 @@ class Core
                     throw new ObjectException('Could not read item: ' . $select . PHP_EOL);
                 }
                 if ($compile) {
-                    $parse_options = $parse->parse_options();
+                    $parse_options = $parse->options();
                     $options = (object) [
                         'source' => hash('sha256', Core::object($read, Core::JSON_LINE)),
                         'depth' => 0
