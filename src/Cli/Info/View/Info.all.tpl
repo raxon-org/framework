@@ -13,9 +13,7 @@ Welcome to raxon.org                  {{terminal.color('blue')}}(c) Remco van de
 {{if(is.array($record.info))}}
 {{$info = implode("\n", $record.info)}}
 {{parse.string($info)}}
-
 {{elseif(!is.empty($record.info))}}
 {{parse.string($record.info)}}
-
 {{/if}}
 {{/foreach}}
