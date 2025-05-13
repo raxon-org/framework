@@ -3,10 +3,10 @@
 {{$route = data.filter($route, [
 'method' => 'CLI'
 ])}}
-{{$route = info_all_add($route)}}
+{{$route = info.all.add($route)}}
 Welcome to raxon.org                  {{terminal.color('blue')}}(c) Remco van der Velde {{terminal.color('green')}}({{config('framework.version')}}){{terminal.color('reset')}}
 
 {{$route = data.sort($route, [
 'info' => 'ASC'
 ])}}
-{{Package.Raxon.Framework:info:info.output($route)}}
+{{info.output($route)}}
