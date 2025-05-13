@@ -26,8 +26,20 @@ trait Info_Output
                 $output[] = $info;
             }
         }
-        ddd($output);
-
+        $command = [];
+        $description = [];
+        foreach($output as $line){
+            $explode = explode('|', $line, 2);
+            if(count($explode) > 1){
+                $command[] = trim($explode[0]);
+                $description[] = trim($explode[1]);
+            } else {
+                $command[] = trim($explode[0]);
+                $description[] = '';
+            }
+        }
+        d($command);
+        ddd($description);
         return $result;
     }
 }
