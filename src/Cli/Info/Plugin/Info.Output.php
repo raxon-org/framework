@@ -15,7 +15,15 @@ trait Info_Output
     {
         $object = $this->object();
         $result = [];
-        ddd($list);
+        $output = [];
+        foreach($list as $uuid => $route){
+            $info = $route->info;
+            foreach($info as $line){
+                $output[] = $line;
+            }
+        }
+        ddd($output);
+
         return $result;
     }
 }
