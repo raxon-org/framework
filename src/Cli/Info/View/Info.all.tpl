@@ -9,11 +9,14 @@ Welcome to raxon.org                  {{terminal.color('blue')}}(c) Remco van de
 {{$route = data.sort($route, [
 'info' => 'ASC'
 ])}}
+{{$output = []}}
 {{foreach($route as $nr => $record)}}
 {{if(is.array($record.info))}}
 {{$info = implode("\n", $record.info)}}
-{{parse.string($info)}}
+{{$output[] = parse.string($info)}}
 {{elseif(!is.empty($record.info))}}
-{{parse.string($record.info)}}
+{{$output[] = parse.string($record.info)}}
 {{/if}}
 {{/foreach}}
+{{$output = explode("\n", implode('', $output))}}
+{{dd($output)}}
