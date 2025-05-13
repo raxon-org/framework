@@ -44,7 +44,7 @@ trait Info_Output
         }
         foreach($description as $nr => $line){
             $counter = $nr + 1;
-            echo '[' . $counter . ']' . $description . PHP_EOL;
+            echo '[' . $counter . ']' . $line . PHP_EOL;
         }
     }
 }
