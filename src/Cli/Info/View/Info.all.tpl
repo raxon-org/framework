@@ -32,5 +32,11 @@ Welcome to raxon.org                  {{terminal.color('blue')}}(c) Remco van de
 {{$description[$nr] = ''}}
 {{/if}}
 {{/foreach}}
-{{d($command)}}
+{{foreach($command as $nr => $cmd)}}
+{{$counter = $nr + 1}}
+{{if($nr < 10)}}
+{{$counter = '0' + $counter}}
+{{/if}}
+[ {{$counter}} ] {{$cmd}}
+{/foreach}
 {{dd($description)}}
