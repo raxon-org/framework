@@ -9,4 +9,5 @@ Welcome to raxon.org                  {{terminal.color('blue')}}(c) Remco van de
 {{$route = data.sort($route, [
 'info' => 'ASC'
 ])}}
-{{info.output($route)}}
+{{$output = info.output($route)}}
+{{implode('',$output)}}

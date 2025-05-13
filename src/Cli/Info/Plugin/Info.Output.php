@@ -13,7 +13,7 @@ trait Info_Output
     /**
      * @throws Exception
      */
-    protected function info_output(array $list =[]): void
+    protected function info_output(array $list =[]): array
     {
         $object = $this->object();
         $result = [];
@@ -40,18 +40,19 @@ trait Info_Output
                 $description[] = '';
             }
         }
-        echo Cli::alert('Commands:') . PHP_EOL;
+        $result[] = Cli::alert('Commands:') . PHP_EOL;
         $command = $this->info_parse($command);
         foreach($command as $nr => $line){
             $counter = $nr + 1;
-            echo '[' . $counter . '] ' . $line . PHP_EOL;
+            $result[] = '[' . $counter . '] ' . $line . PHP_EOL;
         }
-        echo Cli::alert('Descriptions:') . PHP_EOL;
+        $result[] = Cli::alert('Descriptions:') . PHP_EOL;
         $description = $this->info_parse($description);
         foreach($description as $nr => $line){
             $counter = $nr + 1;
-            echo '[' . $counter . '] ' . $line . PHP_EOL;
+            $result[] = '[' . $counter . '] ' . $line . PHP_EOL;
         }
+        return $result;
     }
 
     /**
