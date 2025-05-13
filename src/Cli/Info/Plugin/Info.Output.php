@@ -41,21 +41,23 @@ trait Info_Output
             }
         }
         echo Cli::alert('Commands:') . PHP_EOL;
+        $command = $this->info_parse($command);
         foreach($command as $nr => $line){
             $counter = $nr + 1;
-            echo '[' . $counter . '] ' . $this->info_parse_string($line . PHP_EOL);
+            echo '[' . $counter . '] ' . $line . PHP_EOL;
         }
         echo Cli::alert('Descriptions:') . PHP_EOL;
+        $description = $this->info_parse($description);
         foreach($description as $nr => $line){
             $counter = $nr + 1;
-            echo '[' . $counter . '] ' . $this->info_parse_string($line . PHP_EOL);
+            echo '[' . $counter . '] ' . $line . PHP_EOL;
         }
     }
 
     /**
      * @throws Exception
      */
-    protected function info_parse_string(mixed $mixed, array|object $data = null): mixed
+    protected function info_parse(mixed $mixed, array|object $data = null): mixed
     {
         $parse = $this->parse();
 
