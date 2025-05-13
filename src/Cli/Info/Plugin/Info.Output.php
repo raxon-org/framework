@@ -3,7 +3,7 @@ namespace Plugin;
 
 use Exception;
 
-use Raxon\Module\Cli;
+use Raxon\Module\Core;
 
 trait Info_Output
 {
@@ -40,7 +40,7 @@ trait Info_Output
         }
         foreach($command as $nr => $line){
             $counter = $nr + 1;
-            echo '[' . $counter . ']' . $line . PHP_EOL;
+            echo '[' . $counter . ']' . str_replace('{{binary()}}', Core::binary($object), $line . PHP_EOL);
         }
         foreach($description as $nr => $line){
             $counter = $nr + 1;
