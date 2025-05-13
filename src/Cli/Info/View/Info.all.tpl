@@ -18,5 +18,5 @@ Welcome to raxon.org                  {{terminal.color('blue')}}(c) Remco van de
 {{$output[] = parse.string($record.info)}}
 {{/if}}
 {{/foreach}}
-{{$output = explode("\n", implode('', $output))}}
+{{$output = explode("\n", implode("\n", $output))}}
 {{dd($output)}}
