@@ -18,8 +18,12 @@ trait Info_Output
         $output = [];
         foreach($list as $uuid => $route){
             $info = $route->info;
-            foreach($info as $line){
-                $output[] = $line;
+            if(is_array($info)){
+                foreach($info as $line){
+                    $output[] = $line;
+                }
+            } else {
+                $output[] = $info;
             }
         }
         ddd($output);
