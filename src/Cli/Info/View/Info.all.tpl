@@ -18,5 +18,19 @@ Welcome to raxon.org                  {{terminal.color('blue')}}(c) Remco van de
 {{$output[] = parse.string($record.info)}}
 {{/if}}
 {{/foreach}}
+{{$command = []}}
+{{$description = []}}
 {{$output = explode("\n", implode("\n", $output))}}
-{{dd($output)}}
+{{foreach($output as $nr => $line)}}
+{{$explode = explode('|', $line)}}
+{{if(array.key.exist(0, $explode))}}
+{{$command[$nr] = trim($explode[0])}}
+{{/if}}
+{{if(array.key.exist(1, $explode))}}
+{{$description[$nr] = trim($explode[1])}}
+{{else}}
+{{$description[$nr] = ''}}
+{{/if}}
+{{/foreach}}
+{{d($command)}}
+{{dd($description)}}
