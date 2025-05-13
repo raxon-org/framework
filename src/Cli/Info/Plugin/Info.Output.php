@@ -11,7 +11,7 @@ trait Info_Output
     /**
      * @throws Exception
      */
-    protected function info_output(array $list =[]): array
+    protected function info_output(array $list =[]): void
     {
         $object = $this->object();
         $result = [];
@@ -38,8 +38,13 @@ trait Info_Output
                 $description[] = '';
             }
         }
-        d($command);
-        ddd($description);
-        return $result;
+        foreach($command as $nr => $line){
+            $counter = $nr + 1;
+            echo '[' . $counter . ']' . $line . PHP_EOL;
+        }
+        foreach($description as $nr => $line){
+            $counter = $nr + 1;
+            echo '[' . $counter . ']' . $description . PHP_EOL;
+        }
     }
 }
