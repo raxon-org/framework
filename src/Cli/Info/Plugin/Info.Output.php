@@ -4,6 +4,7 @@ namespace Plugin;
 use Exception;
 
 use Raxon\Module\Core;
+use Raxon\Module\CLi;
 use Raxon\Module\Data;
 
 trait Info_Output
@@ -39,13 +40,15 @@ trait Info_Output
                 $description[] = '';
             }
         }
+        echo Cli::alert('Commands:') . PHP_EOL;
         foreach($command as $nr => $line){
             $counter = $nr + 1;
-            echo '[' . $counter . ']' . $this->info_parse_string($line . PHP_EOL);
+            echo '[' . $counter . '] ' . $this->info_parse_string($line . PHP_EOL);
         }
+        echo Cli::alert('Descriptions:') . PHP_EOL;
         foreach($description as $nr => $line){
             $counter = $nr + 1;
-            echo '[' . $counter . ']' . $this->info_parse_string($line . PHP_EOL);
+            echo '[' . $counter . '] ' . $this->info_parse_string($line . PHP_EOL);
         }
     }
 
