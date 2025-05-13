@@ -23,10 +23,10 @@ Welcome to raxon.org                  {{terminal.color('blue')}}(c) Remco van de
 {{$output = explode("\n", implode("\n", $output))}}
 {{foreach($output as $nr => $line)}}
 {{$explode = explode('|', $line)}}
-{{if(array.key.exist(0, $explode))}}
+{{if(array.key.exist($explode, 0))}}
 {{$command[$nr] = string.trim($explode[0])}}
 {{/if}}
-{{if(array.key.exist(1, $explode))}}
+{{if(array.key.exist($explode, 1))}}
 {{$description[$nr] = string.trim($explode[1])}}
 {{else}}
 {{$description[$nr] = ''}}
