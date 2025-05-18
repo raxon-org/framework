@@ -114,6 +114,7 @@ class Install extends Controller {
             is_array($package->get('copy'))
         ){
             foreach($package->get('copy') as $copy){
+                ddd($copy);
                 if(
                     property_exists($copy, 'from') &&
                     property_exists($copy, 'to') &&
