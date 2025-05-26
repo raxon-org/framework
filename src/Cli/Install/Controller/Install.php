@@ -72,6 +72,7 @@ class Install extends Controller {
             $object->config('extension.json')
         ;
         $object->set(Controller::PROPERTY_VIEW_URL, $url);
+        d($key);
         $package = $object->parse_select(
             $url,
             'package.' . $key
