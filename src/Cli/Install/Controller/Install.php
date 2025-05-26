@@ -10,20 +10,18 @@
  */
 namespace Raxon\Cli\Install\Controller;
 
+use Exception;
 use Raxon\App;
 use Raxon\Config;
-
 use Raxon\Module\Cli;
 use Raxon\Module\Core;
 use Raxon\Module\Controller;
+use Raxon\Module\Data;
 use Raxon\Module\Dir;
 use Raxon\Module\Event;
 use Raxon\Module\File;
-use Raxon\Parse\Module\Parse;
-
 use Raxon\Node\Module\Node;
-
-use Exception;
+use Raxon\Parse\Module\Parse;
 
 class Install extends Controller {
     const DIR = __DIR__;
