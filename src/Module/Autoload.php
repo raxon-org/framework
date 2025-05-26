@@ -82,6 +82,7 @@ class Autoload {
         $autoload->addPrefix('Plugin',  $object->config(Config::DATA_PROJECT_DIR_PLUGIN));
         $autoload->addPrefix('Package',  $object->config(Config::DATA_PROJECT_DIR_PACKAGE));
         $autoload->addPrefix('Source',  $object->config(Config::DATA_PROJECT_DIR_SOURCE));
+        ddd($autoload);
         $autoload->is_init = true;
         if(
             !empty($prefix) &&
