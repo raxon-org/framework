@@ -170,6 +170,11 @@
           "recursive": true
         },
         {
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/src/Shared/",
+          "to" : "{{config('project.dir.shared')}}",
+          "recursive": true
+        },
+        {
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/src/Validate/",
           "to" : "{{config('project.dir.validate')}}",
           "recursive": true
