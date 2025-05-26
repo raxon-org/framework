@@ -19,7 +19,7 @@ use Raxon\Module\Controller;
 use Raxon\Module\Dir;
 use Raxon\Module\Event;
 use Raxon\Module\File;
-use Raxon\Module\Parse;
+use Raxon\Parse\Module\Parse;
 
 use Raxon\Node\Module\Node;
 
