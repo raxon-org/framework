@@ -258,13 +258,13 @@ class Install extends Controller {
                                 );
                             }
                             if(!$record){
-                                ddd($import);
                                 $response = $node->create(
                                     $class,
                                     $role_system,
                                     $import,
                                     []
                                 );
+                                ddd($response);
                                 $count++;
                             }
                             elseif(
