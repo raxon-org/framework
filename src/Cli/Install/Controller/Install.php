@@ -257,11 +257,11 @@ class Install extends Controller {
                                     ]
                                 );
                             }
-                            ddd($record);
                             if(!$record){
+                                ddd($import);
                                 $response = $node->create(
                                     $class,
-                                    $node->role_system(),
+                                    $role_system,
                                     $import,
                                     []
                                 );
