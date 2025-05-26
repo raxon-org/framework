@@ -101,6 +101,7 @@ class Install extends Controller {
         }
         $node = new Node($object);
         $role_system = $node->role_system();
+        ddd($role_system);
         if(empty($role_system)){
             //install role system...
             $node->role_system_create('raxon/boot');
