@@ -38,7 +38,7 @@ class Install extends Controller {
          * - create symlink Plugin to /Application/vendor/raxon/parse/src/Plugin
          */
         $autoload = $object->data(App::AUTOLOAD_RAXON);
-        ddd($autoload);
+        d($autoload);
         $id = $object->config(Config::POSIX_ID);
         $options = App::options($object);
         if(property_exists($options, 'skip')){
