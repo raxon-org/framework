@@ -406,8 +406,11 @@ class Install extends Controller {
             )
         ){
             $command = '{{binary()}} cache:clear';
-            $parse = new Parse($object, $object->data());
-            $command = $parse->compile($command, $object->data());
+            $flags = App::flags($object);
+            $options->source = 'Internal_' . hash('sha256', $command);
+            $data = new Data($object->data());
+            $parse = new Parse($object, $data, $flags, $options);
+            $command = $parse->compile($command, $data);
             Core::execute($object, $command, $output);
             if($output){
                 echo $output;
