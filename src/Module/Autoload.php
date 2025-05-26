@@ -170,7 +170,6 @@ class Autoload {
         */
         $autoload->register();
         $autoload->environment($object->config('framework.environment'));
-        d('happening');
         $object->data(App::AUTOLOAD_RAXON, $autoload);
     }
 
