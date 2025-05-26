@@ -108,7 +108,6 @@ class Install extends Controller {
             $node->role_system_create('raxon/route');
         }
         $role_system = $node->role_system();
-        ddd($package);
         if(
             $package->has('copy') &&
             is_array($package->get('copy'))
@@ -230,7 +229,7 @@ class Install extends Controller {
                             if(property_exists($import, 'host')){
                                 $record = $node->record(
                                     $class,
-                                    $node->role_system(),
+                                    $role_system,
                                     [
                                         'filter' => [
                                             'name' => [
@@ -247,7 +246,7 @@ class Install extends Controller {
                             } else {
                                 $record = $node->record(
                                     $class,
-                                    $node->role_system(),
+                                    $role_system,
                                     [
                                         'filter' => [
                                             'name' => [
@@ -258,6 +257,7 @@ class Install extends Controller {
                                     ]
                                 );
                             }
+                            ddd($record);
                             if(!$record){
                                 $response = $node->create(
                                     $class,
