@@ -108,7 +108,7 @@ class Install extends Controller {
             $node->role_system_create('raxon/route');
         }
         $role_system = $node->role_system();
-        ddd($role_system);
+        ddd($package);
         if(
             $package->has('copy') &&
             is_array($package->get('copy'))
