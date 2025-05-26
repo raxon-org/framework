@@ -1069,5 +1069,14 @@ class Config extends Data {
         $key = Config::DATA_FRAMEWORK_ENVIRONMENT;
         $value = $this->data(Config::DICTIONARY . '.' . Config::ENVIRONMENT);
         $this->data($key, $value);
+
+        $key = Config::DATA_PARSE_DIR_PLUGIN;
+        $value =
+            $this->data(Config::DATA_PROJECT_DIR_VENDOR) .
+            'raxon/parse/src/' .
+            $this->data(Config::DICTIONARY . '.' . Config::PLUGIN) .
+            $this->data(Config::DS)
+        ;
+        $this->data($key, $value);
     }
 }
