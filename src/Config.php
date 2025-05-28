@@ -500,7 +500,7 @@ class Config extends Data {
     public static function parameters(App $object, $parameters=[]): array
     {
         if(empty($parameters)){
-            return $parameters;
+            return [];
         }
         if(!is_array($parameters)){
             return [];
