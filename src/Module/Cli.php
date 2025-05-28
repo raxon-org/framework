@@ -96,7 +96,7 @@ class Cli {
         return exec('tput lines');
     }
 
-    public static function tput(string $tput='', array $arguments=[]): int | string
+    public static function tput(string $tput='', mixed $arguments=[]): int | string
     {
         if(!is_array($arguments)){
             $arguments = (array) $arguments;
