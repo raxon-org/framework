@@ -47,7 +47,7 @@ class Time {
         }
         if($hours > 0){
             if($compact){
-                $string .= $hours . ':';
+                $string .= $hours . ' ' . Time::H . ' ';
             } else {
                 if($hours === 1){
                     $string .= $hours . ' ' . Time::HOUR . ' ' . Time::_AND_ . ' ';
@@ -58,7 +58,7 @@ class Time {
         }
         if ($minutes > 0){
             if($compact){
-                $string .= $seconds . ':';
+                $string .= $minutes . ' ' . Time::MIN . ' ';
             } else {
                 if($minutes === 1){
                     $string .= $minutes . ' ' . Time::MINUTE . ' ' . Time::_AND_ . ' ';
@@ -76,7 +76,7 @@ class Time {
             }
         } else {
             if($compact){
-                $string .= $seconds;
+                $string .= $seconds . ' ' . Time::SEC;
             } else {
                 if($seconds === 1){
                     $string .= $seconds . ' ' . Time::SECOND;
