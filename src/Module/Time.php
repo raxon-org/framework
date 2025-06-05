@@ -10,16 +10,6 @@
  */
 namespace Raxon\Module;
 
-use Exception;
-use Raxon\App;
-use Raxon\Config;
-use Raxon\Exception\ErrorException;
-use Raxon\Exception\FileAppendException;
-use Raxon\Exception\FileMoveException;
-use Raxon\Exception\FileWriteException;
-use SplFileObject;
-use stdClass;
-
 class Time {
     const IN = 'In ';
     const ALMOST_THERE = 'Almost there';
