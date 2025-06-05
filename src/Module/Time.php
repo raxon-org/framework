@@ -25,7 +25,7 @@ use Raxon\Exception\FileWriteException;
 
 const IN = 'In ';
 const ALMOST_THERE = 'Almost there';
-const DONE = 'Done';
+const MSEC = 'msec';
 const SEC = 'sec';
 const SECOND = 'second';
 const SECONDS = 'seconds';
@@ -84,7 +84,7 @@ class Time {
         }
         if($seconds < 1){
             if($compact){
-                $string = Time::DONE;
+                $string = round($seconds, 3) * 1000 . ' ' . Time::MSEC;
             } else {
                 $string = Time::ALMOST_THERE;
             }
