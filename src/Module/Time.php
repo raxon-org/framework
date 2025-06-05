@@ -10,37 +10,33 @@
  */
 namespace Raxon\Module;
 
-use SplFileObject;
-use stdClass;
-
+use Exception;
 use Raxon\App;
 use Raxon\Config;
-
-use Exception;
-
 use Raxon\Exception\ErrorException;
 use Raxon\Exception\FileAppendException;
 use Raxon\Exception\FileMoveException;
 use Raxon\Exception\FileWriteException;
-
-const IN = 'In ';
-const ALMOST_THERE = 'Almost there';
-const MSEC = 'msec';
-const SEC = 'sec';
-const SECOND = 'second';
-const SECONDS = 'seconds';
-const MIN = 'min';
-const MINUTE = 'minute';
-const MINUTES = 'minutes';
-const H = 'h';
-const HOUR = 'hour';
-const HOURS = 'hours';
-const D = 'd';
-const DAY = 'day';
-const DAYS = 'days';
-const _AND_ = 'and';
+use SplFileObject;
+use stdClass;
 
 class Time {
+    const IN = 'In ';
+    const ALMOST_THERE = 'Almost there';
+    const MSEC = 'msec';
+    const SEC = 'sec';
+    const SECOND = 'second';
+    const SECONDS = 'seconds';
+    const MIN = 'min';
+    const MINUTE = 'minute';
+    const MINUTES = 'minutes';
+    const H = 'h';
+    const HOUR = 'hour';
+    const HOURS = 'hours';
+    const D = 'd';
+    const DAY = 'day';
+    const DAYS = 'days';
+    const _AND_ = 'and';
 
     public static function format(int $seconds=0, string $string=Time::IN, $compact=false): string
     {
