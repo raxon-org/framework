@@ -31,7 +31,7 @@ class Time {
     public static function format(int $seconds=0, string $string=Time::IN, $compact=false): string
     {
         $days = floor($seconds / (3600 * 24));
-        $hours = floor($seconds / 3600);
+        $hours = floor(($seconds / 3600) % 24);
         $minutes = floor(($seconds / 60) % 60);
         $seconds = $seconds % 60;
         if($days > 0){
