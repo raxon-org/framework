@@ -539,6 +539,9 @@ class Data {
         return $index;
     }
 
+    /**
+     * @throws Exception
+     */
     public function count($attribute=null): int
     {
         $get = $this->get($attribute);
