@@ -539,6 +539,21 @@ class Data {
         return $index;
     }
 
+    public function count($attribute=null): int
+    {
+        $get = $this->get($attribute);
+        $count = 0;
+        if(
+            is_array($get) ||
+            is_object($get)
+        ){
+            foreach($get as $nr => $unused){
+                $count++;
+            }
+        }
+        return $count;
+    }
+
 
     public function do_not_nest_key($do_not_nest_key=null): ?bool
     {
