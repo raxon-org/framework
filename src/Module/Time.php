@@ -69,11 +69,20 @@ class Time {
 
         }
         if($seconds < 1){
-            if($compact){
-                $string = round($seconds, 3) * 1000 . ' ' . Time::MSEC;
+            if($days === 0 && $hours === 0 && $minutes === 0){
+                if($compact){
+                    $string = round($seconds, 3) * 1000 . ' ' . Time::MSEC;
+                } else {
+                    $string = Time::ALMOST_THERE;
+                }
             } else {
-                $string = Time::ALMOST_THERE;
+                if($compact){
+                    $string .= $seconds . ' ' . Time::SEC;
+                } else {
+                    $string .= $seconds . ' ' . Time::SECONDS;
+                }
             }
+
         } else {
             if($compact){
                 $string .= $seconds . ' ' . Time::SEC;
