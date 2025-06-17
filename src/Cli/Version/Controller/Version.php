@@ -121,6 +121,7 @@ class Version extends Controller {
     /**
      * @throws ObjectException
      * @throws FileWriteException
+     * @throws Exception
      */
     private static function update(App $object){
         $config = $object->data(App::CONFIG);
