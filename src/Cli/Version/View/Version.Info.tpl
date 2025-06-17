@@ -1,5 +1,5 @@
 {{RAX}}
-Raxon-framework version: {{raxon.version()}}, Built: {{raxon.built()}}
+Raxon-framework version: {{app.version()}}, Built: {{app.built()}}
 
 Copyright (c) 2018-{{date('Y')}} Remco van der Velde
 {{$installation.directory = config('project.dir.root')}}
