@@ -19,7 +19,7 @@ use Exception;
 
 use Raxon\Exception\ObjectException;
 
-class   Init extends Controller {
+class Init extends Controller {
     const DIR = __DIR__;
     const NAME = 'Init';
     const INFO = '{{binary()}} init                           | Init events with flags / options';
@@ -30,6 +30,7 @@ class   Init extends Controller {
      */
     public static function run(App $object): void
     {
+        // app init --restart-system
         Event::trigger($object, 'cli.init.run', [
             'flags' => App::flags($object),
             'options' => App::options($object)
