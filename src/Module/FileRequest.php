@@ -172,7 +172,7 @@ class FileRequest {
         $logger_error = $object->config('project.log.error');
         $request = $object->data(App::REQUEST);
         $input = $request->data('request');
-        var_dump($request)
+        var_dump($request);
         var_dump($input);
         die;
         $dir = false;
