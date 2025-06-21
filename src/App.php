@@ -196,7 +196,7 @@ class App extends Data {
                 d($url);
 
                 d($object->request());
-                ddd($destination);
+                d($destination);
                 if(
                     is_object($destination) &&
                     property_exists($destination, 'name') &&
