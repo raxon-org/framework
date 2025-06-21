@@ -105,8 +105,8 @@ class App extends Data {
         require_once __DIR__ . '/Error.php';
         Config::configure($this);
         Logger::configure($this);
-        Host::configure($this);
-        Domain::configure($this);
+//        Host::configure($this);
+//        Domain::configure($this);
         Event::configure($this);
         Middleware::configure($this);
         OutputFilter::configure($this);
@@ -180,6 +180,8 @@ class App extends Data {
         try {
             $file = FileRequest::get($object);
             if ($file === false) {
+                Host::configure($object);
+                Domain::configure($object);
                 App::configure($object);
                 Route::configure($object);
                 $destination = Route::request($object);
