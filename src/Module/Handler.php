@@ -274,7 +274,12 @@ class Handler {
         } else {
             $request = Handler::request_key_group($_REQUEST);
             if(!property_exists($request, 'request')){
-                $request->request = '/';
+                $uri = ltrim($_SERVER['REQUEST_URI'], '/');
+                $uri = explode('?', $uri, 2);
+                $request->request = $uri[0];
+                if(empty($request->request)){
+                    $request->request = '/';
+                }
             } else {
                 $uri = ltrim($_SERVER['REQUEST_URI'], '/');
                 $uri = explode('?', $uri, 2);
