@@ -172,6 +172,8 @@ class FileRequest {
         $logger_error = $object->config('project.log.error');
         $request = $object->data(App::REQUEST);
         $input = $request->data('request');
+        d($request)
+        ddd($input);
         $dir = false;
         $file = false;
         if(!in_array($input, [null, ''], true)){
