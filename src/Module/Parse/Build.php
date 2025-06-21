@@ -76,7 +76,7 @@ class Build {
     /**
      * @throws Exception
      */
-    public function __construct(App $object=null, Parse $parse=null, $is_debug=false){
+    public function __construct(App|null $object=null, Parse|null $parse=null, $is_debug=false){
         $this->is_debug = $is_debug;
         $this->object($object);
         $this->parse($parse);
@@ -1117,7 +1117,7 @@ class Build {
         return $meta;
     }
 
-    public function object(App $object=null): ?App
+    public function object(App|null $object=null): ?App
     {
         if($object !== null){
             $this->setObject($object);
@@ -1125,7 +1125,7 @@ class Build {
         return $this->getObject();
     }
 
-    private function setObject(App $object=null): void
+    private function setObject(App|null $object=null): void
     {
         $this->object = $object;
     }
@@ -1135,7 +1135,7 @@ class Build {
         return $this->object;
     }
 
-    public function parse(Parse $parse=null): ?Parse
+    public function parse(Parse|null $parse=null): ?Parse
     {
         if($parse !== null){
             $this->setParse($parse);
@@ -1143,7 +1143,7 @@ class Build {
         return $this->getParse();
     }
 
-    private function setParse(Parse $parse=null): void
+    private function setParse(Parse|null $parse=null): void
     {
         $this->parse = $parse;
     }
@@ -1153,7 +1153,7 @@ class Build {
         return $this->parse;
     }
 
-    public function storage(Data $object=null): ?Data
+    public function storage(Data|null $object=null): ?Data
     {
         if($object !== null){
             $this->setStorage($object);
@@ -1161,7 +1161,7 @@ class Build {
         return $this->getStorage();
     }
 
-    private function setStorage(Data $object=null): void
+    private function setStorage(Data|null $object=null): void
     {
         $this->storage = $object;
     }

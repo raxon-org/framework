@@ -150,7 +150,7 @@ class Parse {
         return $this->use_this;
     }
 
-    public function object(App $object=null): ?App
+    public function object(App|null $object=null): ?App
     {
         if($object !== null){
             $this->setObject($object);
@@ -158,7 +158,7 @@ class Parse {
         return $this->getObject();
     }
 
-    private function setObject(App $object=null): void
+    private function setObject(App|null $object=null): void
     {
         $this->object= $object;
     }
@@ -186,7 +186,7 @@ class Parse {
         return $this->limit;
     }
 
-    public function storage(object $storage=null): ?object
+    public function storage(object|null $storage=null): ?object
     {
         if($storage !== null){
             $this->setStorage($storage);
@@ -194,7 +194,7 @@ class Parse {
         return $this->getStorage();
     }
 
-    private function setStorage(object $storage=null): void
+    private function setStorage(object|null $storage=null): void
     {
         $this->storage = $storage;
     }
@@ -204,7 +204,7 @@ class Parse {
         return $this->storage;
     }
 
-    public function build(Build $build=null): ?Build
+    public function build(Build|null $build=null): ?Build
     {
         if($build !== null){
             $this->setBuild($build);
@@ -212,7 +212,7 @@ class Parse {
         return $this->getBuild();
     }
 
-    private function setBuild(Build $build=null): void
+    private function setBuild(Build|null $build=null): void
     {
         $this->build= $build;
     }
