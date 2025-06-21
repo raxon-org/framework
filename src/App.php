@@ -185,18 +185,6 @@ class App extends Data {
                 App::configure($object);
                 Route::configure($object);
                 $destination = Route::request($object);
-                $subdomain = $object->config('host.subdomain');
-                $domain = $object->config('host.domain');
-                $extension = $object->config('host.extension');
-                $url = $object->config('project.dir.domain');
-                d($subdomain);
-                d($domain);
-                d($extension);
-
-                d($url);
-
-                d($object->request());
-                d($destination);
                 if(
                     is_object($destination) &&
                     property_exists($destination, 'name') &&
