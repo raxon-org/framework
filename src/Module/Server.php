@@ -36,6 +36,9 @@ class Server {
         if($object->config('framework.environment') === Config::MODE_DEVELOPMENT){
             $logger = $object->config(' project.log.debug');
         }
+        if(headers_sent($filename, $line)){
+            throw new Exception('Headers already sent: ' . $filename . '; line: ' . $line . ';');
+        }
         header("HTTP/1.1 200 OK");
         if (array_key_exists('HTTP_ORIGIN', $_SERVER)) {
             $origin = $_SERVER['HTTP_ORIGIN'];
