@@ -123,7 +123,7 @@ class Core
      * @throws ObjectException
      * @throws Exception
      */
-    public static function execute(App $object, string $command, string &$output = null, string &$notification = null, string $type = null): mixed
+    public static function execute(App $object, string $command, ?string &$output = null, ?string &$notification = null, ?string $type = null): mixed
     {
         if ($output === null) {
             $output = '';
@@ -295,7 +295,7 @@ class Core
         }
     }
 
-    public static function output_mode(string $mode = null): void
+    public static function output_mode(?string $mode = null): void
     {
         if (
             !in_array(
@@ -448,7 +448,7 @@ class Core
     /**
      * @throws ReflectionException
      */
-    public static function object_array(object $object = null): array
+    public static function object_array(?object $object = null): array
     {
         $list = [];
         if ($object === null) {
@@ -500,7 +500,7 @@ class Core
     /**
      * @throws ObjectException
      */
-    public static function object(mixed $input = '', string $output = null, string $type = null): mixed
+    public static function object(mixed $input = '', ?string $output = null, ?string $type = null): mixed
     {
         if ($output === null) {
             $output = Core::OBJECT_OBJECT;
@@ -2098,7 +2098,7 @@ class Core
      * @throws FileWriteException
      * @throws Exception
      */
-    public static function object_select(Parse $parse, Data $data, string $url='', string $select=null, bool $compile=false, string $scope='scope:object'): mixed
+    public static function object_select(Parse $parse, Data $data, string $url='', ?string $select=null, bool $compile=false, string $scope='scope:object'): mixed
     {
         $object = $parse->object();
         $logger_error = $object->config('project.log.error');
