@@ -179,6 +179,7 @@ class App extends Data {
         $logger_error =  $object->config('project.log.error');
         try {
             $file = FileRequest::get($object);
+            ddd($file);
             if ($file === false) {
                 Host::configure($object);
                 Domain::configure($object);
