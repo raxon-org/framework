@@ -123,7 +123,7 @@ class Core
      * @throws ObjectException
      * @throws Exception
      */
-    public static function execute(App $object, string $command, ?string &$output = null, ?string &$notification = null, ?string $type = null): mixed
+    public static function execute(App $object, string $command, string|null &$output = null, string|null &$notification = null, string|null $type = null): mixed
     {
         if ($output === null) {
             $output = '';
@@ -295,7 +295,7 @@ class Core
         }
     }
 
-    public static function output_mode(?string $mode = null): void
+    public static function output_mode(string|null $mode = null): void
     {
         if (
             !in_array(
@@ -448,7 +448,7 @@ class Core
     /**
      * @throws ReflectionException
      */
-    public static function object_array(?object $object = null): array
+    public static function object_array(object|null $object = null): array
     {
         $list = [];
         if ($object === null) {
@@ -500,7 +500,7 @@ class Core
     /**
      * @throws ObjectException
      */
-    public static function object(mixed $input = '', ?string $output = null, ?string $type = null): mixed
+    public static function object(mixed $input = '', string|null $output = null, string|null $type = null): mixed
     {
         if ($output === null) {
             $output = Core::OBJECT_OBJECT;
