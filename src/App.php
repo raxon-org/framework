@@ -181,7 +181,6 @@ class App extends Data {
             Host::configure($object);
             Domain::configure($object);
             $file = FileRequest::get($object);
-            ddd($file);
             if ($file === false) {
                 App::configure($object);
                 Route::configure($object);
