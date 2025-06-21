@@ -1635,7 +1635,7 @@ class Core
         return null;
     }
 
-    private static function object_get_nested(mixed $attributeList='', array|object|null $object, string $key='', bool $is_debug=false): mixed
+    private static function object_get_nested(mixed $attributeList='', array|object|null $object=null, string $key='', bool $is_debug=false): mixed
     {
         $is_collect = [];
         $is_collect[] = $key;

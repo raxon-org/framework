@@ -866,7 +866,7 @@ class Handler {
         return null;
     }
 
-    public static function cookie(mixed $attribute=null, mixed $value=null, int $duration=null): mixed
+    public static function cookie(mixed $attribute=null, mixed $value=null, int|null $duration=null): mixed
     {
         $result = '';
         $cookie = [];
