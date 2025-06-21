@@ -49,7 +49,7 @@ class Route extends Data {
         return $this->cache_url;
     }
 
-    public function current(Destination $current=null): ?Destination
+    public function current(Destination|null $current=null): ?Destination
     {
         if($current !== null){
             $this->setCurrent($current);
@@ -57,7 +57,7 @@ class Route extends Data {
         return $this->getCurrent();
     }
 
-    private function setCurrent(Destination $current=null): void
+    private function setCurrent(Destination|null $current=null): void
     {
         $this->current = $current;
     }

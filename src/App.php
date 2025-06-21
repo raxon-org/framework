@@ -771,7 +771,7 @@ class App extends Data {
     /**
      * @throws Exception
      */
-    public function logger($name='', $logger=null): LoggerInterface
+    public function logger(string $name='', LoggerInterface|null $logger=null): LoggerInterface
     {
         if($logger !== null){
             $this->setLogger($name, $logger);
@@ -782,7 +782,7 @@ class App extends Data {
     /**
      * @throws Exception
      */
-    private function setLogger($name='', LoggerInterface $logger=null): void
+    private function setLogger($name='', LoggerInterface|null $logger=null): void
     {
         if(empty($name)){
             $name = $this->config('project.log.debug');

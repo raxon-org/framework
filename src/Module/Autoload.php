@@ -212,7 +212,7 @@ class Autoload {
         }
     }
 
-    public function object(App $object=null){
+    public function object(App|null $object=null){
         if($object !== null){
             $this->setObject($object);
         }

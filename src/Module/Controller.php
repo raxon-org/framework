@@ -44,7 +44,7 @@ class Controller {
      * @throws ObjectException
      * @throws Exception
      */
-    public static function autoload(App $object, Data $read=null): void
+    public static function autoload(App $object, Data|null $read=null): void
     {
         $logger = false;
         if($object->config('framework.environment') == Config::MODE_DEVELOPMENT){

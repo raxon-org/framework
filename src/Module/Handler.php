@@ -113,7 +113,7 @@ class Handler {
         }
     }
 
-    public static function header(string $string='', int|string $http_response_code=null, bool $replace=true): mixed
+    public static function header(string $string='', int|string|null $http_response_code=null, bool $replace=true): mixed
     {
         if(empty($string)){
             return headers_list();

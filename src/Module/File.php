@@ -180,7 +180,7 @@ class File {
         }
     }
 
-    public static function touch(string $url, int $time=null, int $atime=null): bool
+    public static function touch(string $url, int|null $time=null, int|null $atime=null): bool
     {
         if($time === null){
             $time = time();
@@ -226,7 +226,7 @@ class File {
         return $node;
     }
 
-    public static function chown(string $url='', string $owner=null, string $group=null, bool $recursive=false): bool
+    public static function chown(string $url='', string|null $owner=null, string|null $group=null, bool $recursive=false): bool
     {
         if($owner === null){
             $owner = 'root:root';

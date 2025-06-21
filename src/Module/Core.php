@@ -674,7 +674,7 @@ class Core
         }
     }
 
-    public static function object_delete(mixed $attributeList = [], mixed $object = null, mixed $parent = null, int|string $key = null): bool
+    public static function object_delete(mixed $attributeList = [], mixed $object = null, mixed $parent = null, int|string|null $key = null): bool
     {
         if (is_scalar($attributeList)) {
             $explode = explode('.', $attributeList, 3);
@@ -755,7 +755,7 @@ class Core
         return false;
     }
 
-    public static function object_has_property(mixed $attributeList = [], array|object $object = null): bool
+    public static function object_has_property(mixed $attributeList = [], array|object|null $object = null): bool
     {
         if(is_string($attributeList) || is_numeric($attributeList)) {
             $attributeList = Core::explode_multi(Core::ATTRIBUTE_EXPLODE, (string) $attributeList);
@@ -1160,7 +1160,7 @@ class Core
         return false;
     }
 
-    public static function object_has(mixed $attributeList = [], array|object $object = null): bool
+    public static function object_has(mixed $attributeList = [], array|object|null $object = null): bool
     {
         if (
             is_object($object) &&
@@ -1187,7 +1187,7 @@ class Core
         return false;
     }
 
-    public static function object_get(mixed $attributeList = [], array|object $object = null, bool $is_debug=false): mixed
+    public static function object_get(mixed $attributeList = [], array|object|null $object = null, bool $is_debug=false): mixed
     {
         if(is_string($attributeList) || is_numeric($attributeList)) {
             $attributeList = Core::explode_multi(Core::ATTRIBUTE_EXPLODE, (string) $attributeList);
@@ -1635,7 +1635,7 @@ class Core
         return null;
     }
 
-    private static function object_get_nested(mixed $attributeList='', array|object $object, string $key='', bool $is_debug=false): mixed
+    private static function object_get_nested(mixed $attributeList='', array|object|null $object, string $key='', bool $is_debug=false): mixed
     {
         $is_collect = [];
         $is_collect[] = $key;
@@ -1754,7 +1754,7 @@ class Core
     /**
      * @throws Exception
      */
-    public static function object_set(mixed $attributeList=[], mixed $value=null, array|object $object=null, string $return='child'): mixed
+    public static function object_set(mixed $attributeList=[], mixed $value=null, array|object|null $object=null, string $return='child'): mixed
     {
 //        Core::interactive(); //maybe dangerous in template generation, it flushes directly and doesn't return parse.
         if(empty($object)){
@@ -1880,7 +1880,7 @@ class Core
         return $return;
     }
 
-    public static function object_is_empty(array|object $object = null): bool
+    public static function object_is_empty(array|object|null $object = null): bool
     {
         if (!is_object($object)) {
             return true;

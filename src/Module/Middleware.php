@@ -119,7 +119,7 @@ class Middleware extends Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public static function trigger(App $object, Destination $destination=null, $options=[]): Destination
+    public static function trigger(App $object, Destination|null $destination=null, $options=[]): Destination
     {
         $middlewares = $object->get(App::MIDDLEWARE)->data(Middleware::OBJECT);
         $target = null;

@@ -1092,7 +1092,7 @@ class Token {
         return $token;
     }
 
-    private static function array_finalize($array=[], $options): array
+    private static function array_finalize($array=[], $options=null): array
     {
         $result = [];
         $count = 0;

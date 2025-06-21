@@ -53,7 +53,7 @@ class Dir {
     /**
      * @throws DirectoryCreateException
      */
-    public static function create(string $url, int $chmod=null): bool
+    public static function create(string $url, int|null $chmod=null): bool
     {
         if($url !== Dir::SEPARATOR){
             $url = rtrim($url, Dir::SEPARATOR);
@@ -118,7 +118,7 @@ class Dir {
         return $total;
     }
 
-    public static function name(string $url, int $levels=null): string
+    public static function name(string $url, int|null $levels=null): string
     {
         $is_backslash = false;
         if(stristr($url, '\\') !== false){
@@ -143,7 +143,7 @@ class Dir {
         return $name;
     }
 
-    public function ignore(string|array $ignore=null, string|array $attribute=null): mixed
+    public function ignore(string|array|null $ignore=null, string|array|null $attribute=null): mixed
     {
         $node = $this->node();
         if(!isset($node)){
@@ -258,7 +258,7 @@ class Dir {
         return $list;
     }
 
-    public function count(int $count=null): int
+    public function count(int|null $count=null): int
     {
         if($count === null){
             return $this->getCount();

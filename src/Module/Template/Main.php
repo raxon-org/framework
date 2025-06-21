@@ -35,7 +35,7 @@ class Main {
 		$this->storage($data);
 	}
 
-    public function object(App $object=null): ?App
+    public function object(App|null $object=null): ?App
     {
         if($object !== null){
             $this->setObject($object);
@@ -43,7 +43,7 @@ class Main {
         return $this->getObject();
     }
 
-    private function setObject(App $object=null): void
+    private function setObject(App|null $object=null): void
     {
         $this->object= $object;
     }
@@ -53,7 +53,7 @@ class Main {
         return $this->object;
     }
 
-	public function parse(Parse $parse=null): ?Parse
+	public function parse(Parse|null $parse=null): ?Parse
     {
 	    if($parse !== null){
 	        $this->setParse($parse);
@@ -61,7 +61,7 @@ class Main {
 	    return $this->getParse();
 	}
 
-	private function setParse(Parse $parse=null): void
+	private function setParse(Parse|null $parse=null): void
     {
 	    $this->parse = $parse;
 	}
@@ -71,7 +71,7 @@ class Main {
 	    return $this->parse;
 	}
 
-	public function storage(Data $storage=null): ?Data
+	public function storage(Data|null $storage=null): ?Data
     {
 	    if($storage !== null){
 	        $this->setStorage($storage);
@@ -79,7 +79,7 @@ class Main {
 	    return $this->getStorage();
 	}
 
-	private function setStorage(Data $storage=null): void
+	private function setStorage(Data|null $storage=null): void
     {
 	    $this->storage = $storage;
 	}
