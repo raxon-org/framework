@@ -178,11 +178,11 @@ class App extends Data {
         }
         $logger_error =  $object->config('project.log.error');
         try {
+            Host::configure($object);
+            Domain::configure($object);
             $file = FileRequest::get($object);
             ddd($file);
             if ($file === false) {
-                Host::configure($object);
-                Domain::configure($object);
                 App::configure($object);
                 Route::configure($object);
                 $destination = Route::request($object);
