@@ -298,8 +298,9 @@ class Value {
         return '(' . $result . ') ';
     }
 
-    public static function contains_replace($contains=[], $replace=[], $string): mixed
+    public static function contains_replace($contains=[], $replace=[], $string=null): mixed
     {
+        trace();
         if(!is_string($string)){
             return $string;
         }
