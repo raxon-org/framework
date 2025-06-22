@@ -22,7 +22,7 @@ class PluginNotFoundException extends Exception {
     protected $object;
     protected $location;
 
-    public function __construct($message = "", $location=[], $code = 0, Throwable $previous = null) {
+    public function __construct($message = "", $location=[], $code = 0, Throwable|null $previous = null) {
         $this->setLocation($location);
         parent::__construct($message, $code, $previous);
     }

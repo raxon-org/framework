@@ -25,7 +25,7 @@ class ParseException extends Exception {
     protected $object;
     protected $options;
 
-    public function __construct($message = "", $options=[], App $object=null, $code = 0, Throwable $previous = null) {
+    public function __construct($message = "", $options=[], App|null $object=null, $code = 0, Throwable|null $previous = null) {
         $this->object($object);
         if(!empty($options)){
             $this->setOptions($options);

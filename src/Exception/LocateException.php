@@ -22,7 +22,7 @@ class LocateException extends Exception {
     protected $location;
     protected $debug_trace;
 
-    public function __construct($message = "", $location=[], $code = 0, Throwable $previous = null) {
+    public function __construct($message = "", $location=[], $code = 0, Throwable|null $previous = null) {
         $this->setLocation($location);
         $this->setDebugTrace();
         if($code === 0){
