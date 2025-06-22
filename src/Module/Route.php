@@ -892,7 +892,7 @@ class Route extends Data {
                         if(count($temp) === 2){
                             $attribute = $temp[0];
                             $type = ucfirst($temp[1]);
-                            $className = '\\Raxon\\Org\\Module\\Route\\Type' . $type;
+                            $className = '\\Raxon\\Module\\Route\\Type' . $type;
                             $exist = class_exists($className);
                             if($exist){
                                 $value = null;
