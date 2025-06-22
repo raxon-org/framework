@@ -524,7 +524,7 @@ class File {
 
     }
 
-    public static function extension(string $url): string
+    public static function extension(string|null $url=null): string
     {
         if(substr($url, -1) === '/'){
             return '';
