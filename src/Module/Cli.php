@@ -206,7 +206,7 @@ class Cli {
         return $result;
     }
 
-    public static function color(array|object $color=null, array|object $background=null): string
+    public static function color(array|object|null $color=null, array|object|null $background=null): string
     {
         $result = [];
         if (
