@@ -387,39 +387,47 @@ class Handler {
         return $data;
     }
 
+    private static function query_result(array $result=[]){
+        if(is_array($result)){
+            foreach($result as $key => $value){
+                $value = Handler::query_result($value);
+                $key_original =  $key;
+                if(
+                    in_array(
+                        substr($key, 0, 1),
+                        [
+                            '\'',
+                            '"'
+                        ],
+                        true
+                    )
+                ){
+                    $key = substr($key, 1);
+                }
+                if(
+                    in_array(
+                        substr($key, -1, 1),
+                        [
+                            '\'',
+                            '"'
+                        ],
+                        true
+                    )
+                ){
+                    $key = substr($key, 1);
+                }
+                unset($result[$key_original]);
+                $result[$key] = $value;
+            }
+        }
+        return $result;
+
+    }
+
     public static function query($query=''): array
     {
         parse_str($query, $result);
-        ddd($result);
-        foreach($result as $key => $value){
-            $key_original =  $key;
-            if(
-                in_array(
-                    substr($key, 0, 1),
-                    [
-                        '\'',
-                        '"'
-                    ],
-                    true
-                )
-            ){
-                $key = substr($key, 1);
-            }
-            if(
-                in_array(
-                    substr($key, -1, 1),
-                    [
-                        '\'',
-                        '"'
-                    ],
-                    true
-                )
-            ){
-                $key = substr($key, 1);
-            }
-            unset($result[$key_original]);
-            $result[$key] = $value;
-        }
+        $result = Handler::query_result($result);
         return $result;
     }
 
