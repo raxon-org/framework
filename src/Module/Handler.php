@@ -451,11 +451,14 @@ class Handler {
 
     }
 
+    /**
+     * @throws ObjectException
+     */
     public static function query($query=''): array
     {
         parse_str($query, $result);
         $result = Handler::query_result($result);
-        return $result;
+        return Core::object($result, Core::OBJECT);
     }
 
     /**
