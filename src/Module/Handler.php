@@ -417,8 +417,8 @@ class Handler {
             ){
                 $key = substr($key, 1);
             }
-            $result[$key] = $value;
             unset($result[$key_original]);
+            $result[$key] = $value;
         }
         return $result;
     }
