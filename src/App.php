@@ -479,14 +479,6 @@ class App extends Data {
                     ){
                         $functions[] = $function;
                         $object->config('controller.function', $function);
-                        $request = Core::deep_clone(
-                            $object->get(
-                                App::NAMESPACE . '.' .
-                                Handler::NAME_REQUEST . '.' .
-                                Handler::NAME_INPUT
-                            )->data()
-                        );
-                        $object->config('request', $request);
                         if($logger){
                             $object->logger($logger)->info(
                                 'Controller (' .

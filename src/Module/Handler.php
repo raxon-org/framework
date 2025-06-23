@@ -261,6 +261,8 @@ class Handler {
     private static function request_input(App $object): Data
     {
         $data = new Data();
+        $query_string = '';
+        $query = [];
         if(defined('IS_CLI')){
             global $argc, $argv;
             $temp = $argv;
@@ -277,7 +279,8 @@ class Handler {
                 $uri = ltrim($_SERVER['REQUEST_URI'], '/');
                 $uri = explode('?', $uri, 2);
                 $request->request = $uri[0];
-                $query = Handler::query($uri[1]);
+                $query_string = $uri[1];
+                $query = Handler::query($query_string);
                 if(empty($request->request)){
                     $request->request = '/';
                 }
@@ -285,7 +288,8 @@ class Handler {
                 $uri = ltrim($_SERVER['REQUEST_URI'], '/');
                 $uri = explode('?', $uri, 2);
                 $request->request = $uri[0];
-                $query = Handler::query($uri[1]);
+                $query_string = $uri[1];
+                $query = Handler::query($query_string);
                 if(empty($request->request)){
                     $request->request = '/';
                 }                
@@ -308,8 +312,6 @@ class Handler {
                 }
                 $data->set($attribute, $value);
             }
-            $object->config('request.get', $query);
-            ddd($object->config());
             foreach($query as $attribute => $value){
                 $data->set($attribute, $value);
             }
@@ -384,6 +386,13 @@ class Handler {
                 }
             }
         }
+        $request = Core::deep_clone(
+            $data->data()
+        );
+        $object->config('request.query', $query_string);
+        $object->config('request.input', $request);
+        $object->config('request.get', $query);
+        ddd($object->config());
         return $data;
     }
 
