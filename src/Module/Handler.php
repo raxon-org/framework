@@ -392,7 +392,6 @@ class Handler {
         $object->config('request.query', $query_string);
         $object->config('request.input', $request);
         $object->config('request.get', $query);
-        ddd($object->config());
         return $data;
     }
 
