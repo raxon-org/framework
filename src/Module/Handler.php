@@ -308,6 +308,7 @@ class Handler {
                 }
                 $data->set($attribute, $value);
             }
+            $object->config('server.get', $query);
             ddd($object->config());
             foreach($query as $attribute => $value){
                 $data->set($attribute, $value);
