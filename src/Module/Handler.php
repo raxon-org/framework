@@ -277,7 +277,7 @@ class Handler {
                 $uri = ltrim($_SERVER['REQUEST_URI'], '/');
                 $uri = explode('?', $uri, 2);
                 $request->request = $uri[0];
-                $request->query = $uri[1];
+                parse_str($uri[1], $query);
                 if(empty($request->request)){
                     $request->request = '/';
                 }
@@ -285,11 +285,12 @@ class Handler {
                 $uri = ltrim($_SERVER['REQUEST_URI'], '/');
                 $uri = explode('?', $uri, 2);
                 $request->request = $uri[0];
-                $request->query = $uri[1];
+                parse_str($uri[1], $query);
                 if(empty($request->request)){
                     $request->request = '/';
                 }                
             }
+            ddd($query);
             foreach($request as $attribute => $value){
                 if(is_numeric($value)){
                     $value = $value + 0;
