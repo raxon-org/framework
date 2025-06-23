@@ -277,7 +277,8 @@ class Handler {
                 $uri = ltrim($_SERVER['REQUEST_URI'], '/');
                 $uri = explode('?', $uri, 2);
                 $request->request = $uri[0];
-                parse_str($uri[1], $query);
+                $query = Handler::query($uri[1]);
+                ddd($query);
                 if(empty($request->request)){
                     $request->request = '/';
                 }
@@ -285,7 +286,8 @@ class Handler {
                 $uri = ltrim($_SERVER['REQUEST_URI'], '/');
                 $uri = explode('?', $uri, 2);
                 $request->request = $uri[0];
-                parse_str($uri[1], $query);
+                $query = Handler::query($uri[1]);
+                ddd($query);
                 if(empty($request->request)){
                     $request->request = '/';
                 }                
@@ -381,6 +383,41 @@ class Handler {
             }
         }
         return $data;
+    }
+
+    public static function query($query=''): array
+    {
+        parse_str($query, $result);
+        foreach($result as $key => $value){
+            $key_original =  $key;
+            if(
+                in_array(
+                    substr($key, 0, 1),
+                    [
+                        '\'',
+                        '"'
+                    ],
+                    true
+                )
+            ){
+                $key = substr($key, 1);
+            }
+            if(
+                in_array(
+                    substr($key, -1, 1),
+                    [
+                        '\'',
+                        '"'
+                    ],
+                    true
+                )
+            ){
+                $key = substr($key, 1);
+            }
+            $result[$key] = $value;
+            unset($result[$key_original]);
+        }
+        return $result;
     }
 
     /**
