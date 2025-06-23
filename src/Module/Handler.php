@@ -387,7 +387,8 @@ class Handler {
         return $data;
     }
 
-    private static function query_result(array $result=[]){
+    private static function query_result(mixed $result=null): mixed
+    {
         if(is_array($result)){
             foreach($result as $key => $value){
                 $value = Handler::query_result($value);
