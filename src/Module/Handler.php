@@ -92,7 +92,7 @@ class Handler {
             App::NAMESPACE . '.' .
             Handler::NAME_REQUEST . '.' .
             Handler::NAME_INPUT,
-            Handler::request_input()
+            Handler::request_input($object)
         );
         $object->data(
             App::NAMESPACE . '.' .
@@ -258,7 +258,7 @@ class Handler {
      * @throws ObjectException
      * @throws Exception
      */
-    private static function request_input(): Data
+    private static function request_input(App $object): Data
     {
         $data = new Data();
         if(defined('IS_CLI')){
@@ -278,8 +278,6 @@ class Handler {
                 $uri = explode('?', $uri, 2);
                 $request->request = $uri[0];
                 $query = Handler::query($uri[1]);
-                d($uri[1]);
-                ddd($query);
                 if(empty($request->request)){
                     $request->request = '/';
                 }
@@ -288,13 +286,10 @@ class Handler {
                 $uri = explode('?', $uri, 2);
                 $request->request = $uri[0];
                 $query = Handler::query($uri[1]);
-                d($uri[1]);
-                ddd($query);
                 if(empty($request->request)){
                     $request->request = '/';
                 }                
             }
-            ddd($query);
             foreach($request as $attribute => $value){
                 if(is_numeric($value)){
                     $value = $value + 0;
@@ -311,6 +306,10 @@ class Handler {
                             break;
                     }
                 }
+                $data->set($attribute, $value);
+            }
+            ddd($object->config());
+            foreach($query as $attribute => $value){
                 $data->set($attribute, $value);
             }
             /* --backend-disabled
