@@ -279,7 +279,7 @@ class Handler {
                 $uri = ltrim($_SERVER['REQUEST_URI'], '/');
                 $uri = explode('?', $uri, 2);
                 $request->request = $uri[0];
-                $query_string = $uri[1];
+                $query_string = $uri[1] ?? '';
                 $query = Handler::query($query_string);
                 if(empty($request->request)){
                     $request->request = '/';
@@ -288,7 +288,7 @@ class Handler {
                 $uri = ltrim($_SERVER['REQUEST_URI'], '/');
                 $uri = explode('?', $uri, 2);
                 $request->request = $uri[0];
-                $query_string = $uri[1];
+                $query_string = $uri[1] ?? '';
                 $query = Handler::query($query_string);
                 if(empty($request->request)){
                     $request->request = '/';
