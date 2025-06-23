@@ -390,6 +390,7 @@ class Handler {
     public static function query($query=''): array
     {
         parse_str($query, $result);
+        ddd($result);
         foreach($result as $key => $value){
             $key_original =  $key;
             if(
