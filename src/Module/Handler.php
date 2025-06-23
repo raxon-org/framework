@@ -421,6 +421,23 @@ class Handler {
                 $result[$key] = $value;
             }
         }
+        elseif(is_string($result)){
+            switch($result){
+                case 'null':
+                    $result = null;
+                break;
+                case 'true':
+                    $result = true;
+                break;
+                case 'false':
+                    $result = false;
+                break;
+                default:
+                    if(is_numeric($result)){
+                        $result += 0;
+                    }
+            }
+        }
         return $result;
 
     }
