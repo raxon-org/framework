@@ -34,7 +34,8 @@ class Time {
         $hours = floor(($seconds / 3600) % 24);
         $minutes = floor(($seconds / 60) % 60);
         $explode = explode('.', $seconds);
-        $msec = round($explode[1] ?? 0, 3);
+        $msec = $explode[1] ?? 0;
+        $msec = round($msec, 3);
         $seconds = $seconds % 60;
         if($days > 0){
             if($compact){
