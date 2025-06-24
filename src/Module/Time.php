@@ -36,6 +36,7 @@ class Time {
         $explode = explode('.', $seconds);
         $msec = (int) $explode[1] ?? 0;
         $msec = round($msec/10, 3) * 10;
+        ddd($msec);
         $seconds = $seconds % 60;
         if($days > 0){
             if($compact){
