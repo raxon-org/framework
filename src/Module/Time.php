@@ -28,11 +28,13 @@ class Time {
     const DAYS = 'days';
     const _AND_ = 'and';
 
-    public static function format(int $seconds=0, string $string=Time::IN, $compact=false): string
+    public static function format(int|float $seconds=0, string $string=Time::IN, $compact=false): string
     {
         $days = floor($seconds / (3600 * 24));
         $hours = floor(($seconds / 3600) % 24);
         $minutes = floor(($seconds / 60) % 60);
+        $explode = explode('.', $seconds);
+        $msec = round($explode[1] ?? 0, 3);
         $seconds = $seconds % 60;
         if($days > 0){
             if($compact){
@@ -77,20 +79,20 @@ class Time {
                 }
             } else {
                 if($compact){
-                    $string .= $seconds . ' ' . Time::SEC;
+                    $string .= $seconds . '.' . $msec . ' ' . Time::SEC;
                 } else {
-                    $string .= $seconds . ' ' . Time::SECONDS;
+                    $string .= $seconds . '.' . $msec . ' ' . Time::SECONDS;
                 }
             }
 
         } else {
             if($compact){
-                $string .= $seconds . ' ' . Time::SEC;
+                $string .= $seconds . '.' . $msec . ' ' . Time::SEC;
             } else {
                 if($seconds === 1){
-                    $string .= $seconds . ' ' . Time::SECOND;
+                    $string .= $seconds . '.' . $msec . ' ' . Time::SECOND;
                 } else {
-                    $string .= $seconds . ' ' . Time::SECONDS;
+                    $string .= $seconds . '.' . $msec . ' ' . Time::SECONDS;
                 }
             }
         }
