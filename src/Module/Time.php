@@ -37,7 +37,6 @@ class Time {
         $msec = (int) $explode[1] ?? 0;
         $msec = (float) ('0' . '.' . $msec);
         $msec = round(($msec), 3) * 1000;
-        ddd($msec);
         $seconds = $seconds % 60;
         if($days > 0){
             if($compact){
