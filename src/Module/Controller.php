@@ -615,24 +615,29 @@ class Controller {
         $config->data(Config::DATA_CONTROLLER_NAME, strtolower(File::basename($config->data(Config::DATA_CONTROLLER_CLASS))));
         $config->data(Config::DATA_CONTROLLER_TITLE, File::basename($config->data(Config::DATA_CONTROLLER_CLASS)));
         $host_dir_public = $config->data(Config::DATA_HOST_DIR_PUBLIC);
-        d($host_dir_public);
-        ddd($config);
-        $explode = explode($config->data('ds'), $host_dir_public);
-        $slash = array_pop($explode);
-        $public = array_pop($explode);
-        $extension = array_pop($explode);
-        $explode[] = $public;
-        $explode[] = $slash;
-        $host_dir_public = implode($config->data('ds'), $explode);
+        if($host_dir_public){
+            $explode = explode($config->data('ds'), $host_dir_public);
+            $slash = array_pop($explode);
+            $public = array_pop($explode);
+            $extension = array_pop($explode);
+            $explode[] = $public;
+            $explode[] = $slash;
+            $host_dir_public = implode($config->data('ds'), $explode);
+        }
         $controller_dir_public = $config->data(Config::DATA_CONTROLLER_DIR_PUBLIC);
-        $explode = explode($config->data('ds'), $controller_dir_public);
-        $slash = array_pop($explode);
-        $public = array_pop($explode);
-        $extension = array_pop($explode);
-        $explode[] = $public;
-        $explode[] = $slash;
-        $controller_dir_public = implode($config->data('ds'), $explode);
-        if($host_dir_public == $controller_dir_public){
+        if($controller_dir_public){
+            $explode = explode($config->data('ds'), $controller_dir_public);
+            $slash = array_pop($explode);
+            $public = array_pop($explode);
+            $extension = array_pop($explode);
+            $explode[] = $public;
+            $explode[] = $slash;
+            $controller_dir_public = implode($config->data('ds'), $explode);
+        }
+        if(
+            $host_dir_public &&
+            $host_dir_public === $controller_dir_public
+        ){
             $controller_dir_public = $config->data(Config::DATA_CONTROLLER_DIR_PUBLIC);
             $controller_dir_public .= $config->data(Config::DATA_CONTROLLER_TITLE) . $config->data('ds');
             $config->data(Config::DATA_CONTROLLER_DIR_PUBLIC, $controller_dir_public);
