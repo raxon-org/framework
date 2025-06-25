@@ -398,7 +398,6 @@ class Config extends Data {
         Config::volume($object);
         $node = new Node($object);
         header('status: 200');
-        die;
         $class = Config::OBJECT;
         $dir_cache = false;
         if($object->config(Config::POSIX_ID) === 0){
@@ -477,6 +476,7 @@ class Config extends Data {
         } else {
             throw new Exception('Posix id not allowed: ' . $object->config('posix.id') . ' for ' . $object->config('framework.dir.temp'));
         }
+        header('status: 200');
         $options = [
             'relation' => true,
             'ramdisk' => true,
@@ -486,9 +486,11 @@ class Config extends Data {
         if(!$role_system){
             return;
         }
+        header('status: 200');
         if(!$node->role_has_permission($role_system, 'System:Config:record')){
             return;
         }
+        header('status: 200');
         $response = $node->record($class, $role_system, $options);
         if(
             $response &&
@@ -496,6 +498,8 @@ class Config extends Data {
         ){
             $object->config(Core::object_merge($object->config(), $response['node']));
         }
+        header('status: 200');
+        die;
     }
 
     /**
