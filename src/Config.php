@@ -570,7 +570,7 @@ class Config extends Data {
                                 array_key_exists('method', $record) &&
                                 array_key_exists('argument', $record['method'])
                             ){
-                                foreach($record['method']['argument'] as $argument_nr => $argument){
+                                foreach($record['method']['argument'] as $argument_nr => $argument_list){
                                     foreach($argument_list as $argument){
                                         d($argument);
                                     }
