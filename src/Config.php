@@ -563,6 +563,22 @@ class Config extends Data {
                 trace();
                 d($parameters);
                 $tree = Token::tokenize($object, $flags, $options, $parameter);
+                if($tree){
+                    foreach($tree as $line_nr => $set){
+                        foreach($set as $nr => $record){
+                            if(
+                                array_key_exists('method', $record) &&
+                                array_key_exists('argument', $record['method'])
+                            ){
+                                foreach($record['method']['argument'] as $argument_nr => $argument){
+                                    foreach($argument_list as $argument){
+                                        d($argument);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 ddd($tree);
 
                 /*
