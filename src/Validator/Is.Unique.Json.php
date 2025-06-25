@@ -17,7 +17,7 @@ use Raxon\Module\Data;
  * @throws \Raxon\Exception\ObjectException
  * @throws Exception
  */
-function validate_is_unique_json(App $object, object $record=null, mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
+function validate_is_unique_json(App $object, object|null $record=null, mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     $data = new Data($record);
     $original_uuid = $data->data('uuid');

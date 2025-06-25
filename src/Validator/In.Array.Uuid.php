@@ -18,7 +18,7 @@ use Raxon\Exception\ObjectException;
 /**
  * @throws ObjectException
  */
-function validate_in_array_uuid(App $object, object $record=null, mixed $array=null, mixed $field='', mixed $argument='', mixed $function=false): bool
+function validate_in_array_uuid(App $object, object|null $record=null, mixed $array=null, mixed $field='', mixed $argument='', mixed $function=false): bool
 {
     if(
         is_string($array) &&
