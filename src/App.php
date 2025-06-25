@@ -182,6 +182,7 @@ class App extends Data {
             Domain::configure($object);
             $file = FileRequest::get($object);
             if ($file === false) {
+                header('status: 200');
                 echo 'hello world';
                 die;
                 App::configure($object);
