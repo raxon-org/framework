@@ -506,6 +506,8 @@ class Config extends Data {
             return [];
         }
         $uuid = Core::uuid();
+        var_dump($parameters);
+die;
         foreach($parameters as $nr => $parameter){
             if(is_array($parameter)){
                 $parameters[$nr] = Config::parameters($object, $parameter);
