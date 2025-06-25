@@ -615,6 +615,8 @@ class Controller {
         $config->data(Config::DATA_CONTROLLER_NAME, strtolower(File::basename($config->data(Config::DATA_CONTROLLER_CLASS))));
         $config->data(Config::DATA_CONTROLLER_TITLE, File::basename($config->data(Config::DATA_CONTROLLER_CLASS)));
         $host_dir_public = $config->data(Config::DATA_HOST_DIR_PUBLIC);
+        d($host_dir_public);
+        ddd($config);
         $explode = explode($config->data('ds'), $host_dir_public);
         $slash = array_pop($explode);
         $public = array_pop($explode);
