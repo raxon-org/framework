@@ -650,7 +650,7 @@ class Controller {
             array_pop($explode);
             if($explode){
                 $host = implode($config->data('ds'), $explode);
-                if($host){
+                if($host && $root){
                     $explode = explode($host, $root, 2);
                     if(array_key_exists(1, $explode)){
                         $explode = explode($config->data('ds'), $explode[1]);
