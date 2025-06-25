@@ -562,7 +562,7 @@ class Config extends Data {
             } else {
                 $tree = Token::tokenize($object, $flags, $options, $parameter);
                 if($tree){
-                    $parameters[$key][$nr]  = '';
+                    $parameters[$key]  = '';
                     foreach($tree as $line_nr => $set){
                         foreach($set as $nr => $record){
                             if(
