@@ -112,9 +112,6 @@ class App extends Data {
         OutputFilter::configure($this);
         Autoload::configure($this);
         Autoload::ramdisk_configure($this);
-
-        echo 'hello world';
-        die;
     }
 
     /**
@@ -184,6 +181,8 @@ class App extends Data {
             Host::configure($object);
             Domain::configure($object);
             $file = FileRequest::get($object);
+            echo 'hello world';
+            die;
             if ($file === false) {
                 App::configure($object);
                 Route::configure($object);
