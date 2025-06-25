@@ -499,7 +499,7 @@ class Config extends Data {
             $object->config(Core::object_merge($object->config(), $response['node']));
         }
         header('status: 200');
-        die;
+//        die;
     }
 
     /**
