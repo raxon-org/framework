@@ -112,6 +112,9 @@ class App extends Data {
         OutputFilter::configure($this);
         Autoload::configure($this);
         Autoload::ramdisk_configure($this);
+
+        echo 'hello world';
+        die;
     }
 
     /**
