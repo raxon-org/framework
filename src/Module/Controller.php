@@ -644,22 +644,26 @@ class Controller {
         }
         $root = $config->data(Config::DATA_CONTROLLER_DIR_ROOT);
         $host = $config->data(Config::DATA_HOST_DIR_ROOT);
-        $explode = explode($config->data('ds'), $host);
-        array_pop($explode);
-        array_pop($explode);
-        $host = implode($config->data('ds'), $explode);
         if($host){
-            $explode = explode($host, $root, 2);
-            if(array_key_exists(1, $explode)){
-                $explode = explode($config->data('ds'), $explode[1]);
-                if(array_key_exists(1, $explode)){
-                    $extension = strtolower($explode[1]);
-                    $domain = Host::domain();
-                    $subdomain = Host::subdomain();
-                    if($subdomain){
-                        $config->data(Config::DATA_ROUTE_PREFIX, $subdomain . '-' . $domain . '-' . $extension);
-                    } else {
-                        $config->data(Config::DATA_ROUTE_PREFIX, $domain . '-' . $extension);
+            $explode = explode($config->data('ds'), $host);
+            array_pop($explode);
+            array_pop($explode);
+            if($explode){
+                $host = implode($config->data('ds'), $explode);
+                if($host){
+                    $explode = explode($host, $root, 2);
+                    if(array_key_exists(1, $explode)){
+                        $explode = explode($config->data('ds'), $explode[1]);
+                        if(array_key_exists(1, $explode)){
+                            $extension = strtolower($explode[1]);
+                            $domain = Host::domain();
+                            $subdomain = Host::subdomain();
+                            if($subdomain){
+                                $config->data(Config::DATA_ROUTE_PREFIX, $subdomain . '-' . $domain . '-' . $extension);
+                            } else {
+                                $config->data(Config::DATA_ROUTE_PREFIX, $domain . '-' . $extension);
+                            }
+                        }
                     }
                 }
             }
