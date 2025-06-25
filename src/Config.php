@@ -569,10 +569,9 @@ class Config extends Data {
                                 array_key_exists('method', $record) &&
                                 array_key_exists('argument', $record['method'])
                             ){
-                                foreach($record['method']['argument'] as $argument_nr => $argument_list){
-                                    foreach($argument_list as $argument){
-                                        d($record['method']);
-                                        $value = $object->config($argument['execute']);
+                                foreach($record['method']['argument'] as $argument_nr => $argument){
+                                    foreach($argument['array'] as $argument_array) {
+                                        $value = $object->config($argument_array['execute']);
                                         if(
                                             is_object($value) ||
                                             is_array($value)
