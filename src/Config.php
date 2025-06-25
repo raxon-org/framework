@@ -560,8 +560,6 @@ class Config extends Data {
                     */
                 }
             } else {
-                trace();
-                d($parameters);
                 $tree = Token::tokenize($object, $flags, $options, $parameter);
                 if($tree){
                     foreach($tree as $line_nr => $set){
@@ -572,9 +570,22 @@ class Config extends Data {
                             ){
                                 foreach($record['method']['argument'] as $argument_nr => $argument_list){
                                     foreach($argument_list as $argument){
-                                        d($argument);
+                                        $value = $object->config($argument['execute']);
+                                        if(
+                                            is_object($value) ||
+                                            is_array($value)
+                                        ){
+                                            if(!is_array($parameters[$key])){
+                                                $parameters[$key] = [];
+                                            }
+                                            $parameters[$key][] = $value;
+                                        } else {
+                                            $parameters[$key] .= $value;
+                                        }
                                     }
                                 }
+                            } else {
+                                ddd($record);
                             }
                         }
                     }
