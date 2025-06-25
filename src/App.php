@@ -183,10 +183,10 @@ class App extends Data {
             $file = FileRequest::get($object);
             if ($file === false) {
                 App::configure($object);
-                Route::configure($object);
-                $destination = Route::request($object);
                 echo 'hello world';
                 die;
+                Route::configure($object);
+                $destination = Route::request($object);
                 if ($destination === false) {
                     $object->config('framework.environment', Config::MODE_PRODUCTION);
                     if ($object->config('framework.environment') === Config::MODE_DEVELOPMENT) {
