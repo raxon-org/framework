@@ -571,7 +571,7 @@ class Config extends Data {
                             ){
                                 foreach($record['method']['argument'] as $argument_nr => $argument_list){
                                     foreach($argument_list as $argument){
-                                        d($argument);
+                                        d($record['method']);
                                         $value = $object->config($argument['execute']);
                                         if(
                                             is_object($value) ||
