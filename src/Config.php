@@ -14,9 +14,11 @@ use Raxon\Module\Core;
 use Raxon\Module\Data;
 use Raxon\Module\Dir;
 use Raxon\Module\File;
-use Raxon\Module\Parse;
-use Raxon\Module\Parse\Token;
+//use Raxon\Module\Parse;
+//use Raxon\Module\Parse\Token;
 
+use Raxon\Parse\Module\Parse;
+use Raxon\Parse\Module\Token;
 use Raxon\Node\Module\Node;
 
 use Exception;
@@ -506,6 +508,8 @@ class Config extends Data {
             return [];
         }
         $uuid = Core::uuid();
+        $flags = (object) [];
+        $options = (object) [];
         foreach($parameters as $nr => $parameter){
             if($parameter === null){
               continue;
@@ -552,6 +556,10 @@ class Config extends Data {
         foreach($parameters as $key => $parameter){
             if(is_array($parameter)){
                 foreach($parameter as $nr => $value){
+                    $tree = Token::tokenize($object, $flags, $options, $value);
+                    ddd($tree);
+
+                    /*
                     $tree = Parse\Token::tree($value);
                     if(
                         !empty($tree) &&
@@ -587,8 +595,13 @@ class Config extends Data {
                             }
                         }
                     }
+                    */
                 }
             } else {
+                $tree = Token::tokenize($object, $flags, $options, $value);
+                ddd($tree);
+
+                /*
                 $tree = Parse\Token::tree($parameter);
                 if(
                     !empty($tree) &&
@@ -624,6 +637,7 @@ class Config extends Data {
                         }
                     }
                 }
+                */
             }
         }
         foreach($parameters as $key => $sublist){
