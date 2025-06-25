@@ -17,6 +17,7 @@ use Raxon\Module\Cli;
  */
 function exceptions_error_handler($severity, $message, $filename, $lineNumber): void
 {
+    /*
     if(
         in_array(
             $severity,
@@ -29,6 +30,7 @@ function exceptions_error_handler($severity, $message, $filename, $lineNumber): 
     ){
         return;
     }
+    */
     throw new ErrorException($message, 0, $severity, $filename, $lineNumber);
 }
 
