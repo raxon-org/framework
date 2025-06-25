@@ -598,6 +598,8 @@ class Config extends Data {
                     */
                 }
             } else {
+                trace();
+                d($parameters);
                 $tree = Token::tokenize($object, $flags, $options, $parameter);
                 ddd($tree);
 
