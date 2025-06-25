@@ -511,46 +511,8 @@ class Config extends Data {
         $flags = (object) [];
         $options = (object) [];
         foreach($parameters as $nr => $parameter){
-            if($parameter === null){
-              continue;
-            }
-            elseif(is_array($parameter)){
+            if(is_array($parameter)){
                 $parameters[$nr] = Config::parameters($object, $parameter);
-            } else {
-                $parameter = str_replace(
-                    [
-                        '{',
-                        '}',
-                    ],
-                    [
-                        '[$ldelim-' . $uuid . ']',
-                        '[$rdelim-' . $uuid . ']',
-                    ],
-                    $parameter
-                );
-                $parameter = str_replace(
-                    [
-                        '[$ldelim-' . $uuid . ']',
-                        '[$rdelim-' . $uuid . ']',
-                    ],
-                    [
-                        '{$ldelim}',
-                        '{$rdelim}',
-                    ],
-                    $parameter
-                );
-                $parameter = str_replace(
-                    [
-                        '{$ldelim}{$ldelim}',
-                        '{$rdelim}{$rdelim}',
-                    ],
-                    [
-                        '{',
-                        '}',
-                    ],
-                    $parameter
-                );
-                $parameters[$nr] = $parameter;
             }
         }
         foreach($parameters as $key => $parameter){
