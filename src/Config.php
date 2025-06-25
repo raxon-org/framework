@@ -529,22 +529,25 @@ class Config extends Data {
                                 ){
                                     foreach($record['method']['argument'] as $argument_nr => $argument){
                                         foreach($argument['array'] as $argument_array) {
-                                            $value = $object->config($argument_array['execute']);
-                                            if(
-                                                is_object($value) ||
-                                                is_array($value)
-                                            ){
-                                                if(!is_array($parameters[$key])){
-                                                    $parameters[$key][$nr] = [];
+                                            if(array_key_exists('execute', $argument_array)){
+                                                $value = $object->config($argument_array['execute']);
+                                                if(
+                                                    is_object($value) ||
+                                                    is_array($value)
+                                                ){
+                                                    if(!is_array($parameters[$key])){
+                                                        $parameters[$key][$nr] = [];
+                                                    }
+                                                    $parameters[$key][$nr][] = $value;
+                                                } else {
+                                                    $parameters[$key][$nr] .= $value;
                                                 }
-                                                $parameters[$key][$nr][] = $value;
-                                            } else {
-                                                $parameters[$key][$nr] .= $value;
                                             }
+
                                         }
                                     }
                                 } else {
-                                    $parameters[$key][$nr] .= $record['text'];
+                                    $parameters[$key][$nr] .= $record['text'] ?? '';
                                 }
                             }
                         }
@@ -562,23 +565,25 @@ class Config extends Data {
                             ){
                                 foreach($record['method']['argument'] as $argument_nr => $argument){
                                     foreach($argument['array'] as $argument_array) {
-                                        d($argument_array);
-                                        $value = $object->config($argument_array['execute']);
-                                        if(
-                                            is_object($value) ||
-                                            is_array($value)
-                                        ){
-                                            if(!is_array($parameters[$key])){
-                                                $parameters[$key] = [];
+                                        if(array_key_exists('execute', $argument_array)){
+                                            $value = $object->config($argument_array['execute']);
+                                            if(
+                                                is_object($value) ||
+                                                is_array($value)
+                                            ){
+                                                if(!is_array($parameters[$key])){
+                                                    $parameters[$key] = [];
+                                                }
+                                                $parameters[$key][] = $value;
+                                            } else {
+                                                $parameters[$key] .= $value;
                                             }
-                                            $parameters[$key][] = $value;
-                                        } else {
-                                            $parameters[$key] .= $value;
                                         }
+
                                     }
                                 }
                             } else {
-                                $parameters[$key] .= $record['text'];
+                                $parameters[$key] .= $record['text'] ?? '';
                             }
                         }
                     }
