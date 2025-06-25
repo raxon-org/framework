@@ -101,6 +101,8 @@ class App extends Data {
         $this->data(App::OUTPUTFILTER, clone $data);
         $this->data(App::CACHE, clone $data);
         App::is_cli();
+        header('status: 200');
+        die;
         require_once __DIR__ . '/Debug.php';
         require_once __DIR__ . '/Error.php';
         Config::configure($this);
@@ -112,8 +114,7 @@ class App extends Data {
         OutputFilter::configure($this);
         Autoload::configure($this);
         Autoload::ramdisk_configure($this);
-        header('status: 200');
-        die;
+
     }
 
     /**
