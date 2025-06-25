@@ -182,9 +182,9 @@ class App extends Data {
             Domain::configure($object);
             $file = FileRequest::get($object);
             if ($file === false) {
-                App::configure($object);
                 echo 'hello world';
                 die;
+                App::configure($object);
                 Route::configure($object);
                 $destination = Route::request($object);
                 if ($destination === false) {
