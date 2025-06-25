@@ -579,6 +579,7 @@ class Config extends Data {
                         }
                     }
                 }
+                trace();
                 ddd($tree);
 
                 /*
