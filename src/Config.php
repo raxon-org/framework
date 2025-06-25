@@ -519,45 +519,36 @@ class Config extends Data {
             if(is_array($parameter)){
                 foreach($parameter as $nr => $value){
                     $tree = Token::tokenize($object, $flags, $options, $value);
-                    ddd($tree);
-
-                    /*
-                    $tree = Parse\Token::tree($value);
-                    if(
-                        !empty($tree) &&
-                        is_array($tree)
-                    ){
+                    if($tree){
                         $parameters[$key][$nr]  = '';
-                        foreach($tree as $tree_nr => $record){
-                            if(
-                                $record['type'] === Token::TYPE_METHOD &&
-                                array_key_exists('method', $record) &&
-                                array_key_exists('attribute', $record['method'])
-                            ){
-                                foreach($record['method']['attribute'] as $attribute_nr => $attribute_list){
-                                    foreach($attribute_list as $attribute){
-                                        $value = $object->config($attribute['execute']);
-                                        if(
-                                            is_object($value) ||
-                                            is_array($value)
-                                        ){
-                                            if(empty($parameters[$key])){
-                                                $parameters[$key][$nr] = [];
+                        foreach($tree as $line_nr => $set){
+                            foreach($set as $nr => $record){
+                                if(
+                                    array_key_exists('method', $record) &&
+                                    array_key_exists('argument', $record['method'])
+                                ){
+                                    foreach($record['method']['argument'] as $argument_nr => $argument){
+                                        foreach($argument['array'] as $argument_array) {
+                                            $value = $object->config($argument_array['execute']);
+                                            if(
+                                                is_object($value) ||
+                                                is_array($value)
+                                            ){
+                                                if(!is_array($parameters[$key])){
+                                                    $parameters[$key][$nr] = [];
+                                                }
+                                                $parameters[$key][$nr][] = $value;
+                                            } else {
+                                                $parameters[$key][$nr] .= $value;
                                             }
-                                            $parameters[$key][$nr][] = $object->config($attribute['execute']);
-                                        } else {
-                                            $parameters[$key][$nr] .= $object->config($attribute['execute']);
                                         }
-
                                     }
+                                } else {
+                                    $parameters[$key][$nr] .= $record['text'];
                                 }
-                            }
-                            elseif($record['type'] === Token::TYPE_STRING){
-                                $parameters[$key][$nr] .= $record['value'];
                             }
                         }
                     }
-                    */
                 }
             } else {
                 $tree = Token::tokenize($object, $flags, $options, $parameter);
@@ -586,50 +577,11 @@ class Config extends Data {
                                     }
                                 }
                             } else {
-                                ddd($record);
+                                $parameters[$key] .= $record['text'];
                             }
                         }
                     }
                 }
-                ddd($tree);
-
-                /*
-                $tree = Parse\Token::tree($parameter);
-                if(
-                    !empty($tree) &&
-                    is_array($tree)
-                ){
-                    $parameters[$key]  = '';
-                    foreach($tree as $tree_nr => $record){
-                        if(
-                            $record['type'] === Token::TYPE_METHOD &&
-                            array_key_exists('method', $record) &&
-                            array_key_exists('attribute', $record['method'])
-                        ){
-                            foreach($record['method']['attribute'] as $attribute_nr => $attribute_list){
-                                foreach($attribute_list as $attribute){
-                                    $value = $object->config($attribute['execute']);
-                                    if(
-                                        is_object($value) ||
-                                        is_array($value)
-                                    ){
-                                        if(empty($parameters[$key])){
-                                            $parameters[$key] = [];
-                                        }
-                                        $parameters[$key][] = $object->config($attribute['execute']);
-                                    } else {
-                                        $parameters[$key] .= $object->config($attribute['execute']);
-                                    }
-
-                                }
-                            }
-                        }
-                        elseif($record['type'] === Token::TYPE_STRING){
-                            $parameters[$key] .= $record['value'];
-                        }
-                    }
-                }
-                */
             }
         }
         foreach($parameters as $key => $sublist){
