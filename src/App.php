@@ -1324,7 +1324,9 @@ class App extends Data {
         $flags = App::flags($this);
         $data = new Data();
         $data->data($this->data());
-        $parse = new Parse($this, $data);
+        $options = (object) [];
+        $options->source = $url; //'Internal_' . str_replace('-', '_', Core::uuid());
+        $parse = new Parse($this, $data, $flags, $options);
         $node = new Data();
         $logger = false;
         if($this->config('framework.environment') === Config::MODE_DEVELOPMENT){
@@ -1447,7 +1449,10 @@ class App extends Data {
         }
         $data = new Data();
         $data->data($this->data());
-        $parse = new Parse($this, $data);
+        $flags = App::flags($oobject);
+        $options = (object) [];
+        $options->source = $url;
+        $parse = new Parse($this, $data, $flags, $options);
         $logger = false;
         if($this->config('framework.environment') === Config::MODE_DEVELOPMENT){
             $logger = $this->config('project.log.debug');
@@ -1711,7 +1716,7 @@ class App extends Data {
                 $data = clone $this->data();
                 unset($data->{App::NAMESPACE});
                 $data = new Data($data);
-                $parse = new ParseModule($this, $data, $flags, $options);
+                $parse = new Parse($this, $data, $flags, $options);
                 $is_json = $this->config('package.raxon/parse.build.state.source.is.json');
                 $this->config('package.raxon/parse.build.state.source.is.json', true);
                 $read = Core::object($read);
@@ -1825,7 +1830,7 @@ class App extends Data {
                 $options->source = 'internal_' . Core::uuid();
                 $options->source_root = $temp_source;
                 $options->class = Build::class_name($options->source);
-                $parse = new ParseModule($this, $data, $flags, $options);
+                $parse = new Parse($this, $data, $flags, $options);
                 $read = $parse->compile(Core::object($read), $data);
                 $data = new Data($read);
                 $readback = [
