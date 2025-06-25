@@ -181,20 +181,12 @@ class App extends Data {
             Host::configure($object);
             Domain::configure($object);
             $file = FileRequest::get($object);
-            echo 'hello world';
-            die;
             if ($file === false) {
                 App::configure($object);
                 Route::configure($object);
                 $destination = Route::request($object);
-                if(
-                    is_object($destination) &&
-                    property_exists($destination, 'name') &&
-                    $destination->name !== 'index'
-                ){
-                    ddd($destination);
-                }
-
+                echo 'hello world';
+                die;
                 if ($destination === false) {
                     $object->config('framework.environment', Config::MODE_PRODUCTION);
                     if ($object->config('framework.environment') === Config::MODE_DEVELOPMENT) {
