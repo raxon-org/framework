@@ -396,9 +396,9 @@ class Config extends Data {
     public static function configure(App $object): void
     {
         Config::volume($object);
+        $node = new Node($object);
         header('status: 200');
         die;
-        $node = new Node($object);
         $class = Config::OBJECT;
         $dir_cache = false;
         if($object->config(Config::POSIX_ID) === 0){
