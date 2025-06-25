@@ -93,6 +93,9 @@ class App extends Data {
      * @throws Exception
      */
     public function __construct($autoload, $config){
+        header('status: 200');
+        var_dump(get_included_files());
+        die;
         $this->data(App::AUTOLOAD_COMPOSER, $autoload);
         $this->data(App::CONFIG, $config);
         $data = new Data();
