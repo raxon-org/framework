@@ -34,7 +34,11 @@ class Time {
         $hours = floor((int) ($seconds / 3600) % 24);
         $minutes = floor((int) ($seconds / 60) % 60);
         $explode = explode('.', $seconds);
-        $msec = (int) $explode[1] ?? 0;
+        if(array_key_exists(1, $explode)){
+            $msec = (int) $explode[1];
+        } else {
+            $msec = 0;
+        }
         $msec = (float) ('0' . '.' . $msec);
         $msec = round(($msec), 3) * 1000;
         $seconds = (int) $seconds % 60;
