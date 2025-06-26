@@ -2009,4 +2009,15 @@ class App extends Data {
         }
         return false;
     }
+
+    public static function worker_cleanup(App $object){
+        $object->config('delete', 'controller');
+        $object->config('delete', 'domain');
+        $object->config('delete', 'host');
+        $object->config('delete', 'request');
+        $object->config('delete', 'response');
+        $object->config('delete', 'user');
+        $object->config('time.start', microtime(true));
+    }
+
 }
