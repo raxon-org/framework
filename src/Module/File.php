@@ -244,6 +244,10 @@ class File {
         $owner = escapeshellarg($owner);
         $group = escapeshellarg($group);
         $url = escapeshellarg($url);
+        if(posix_geteuid() !== 0){
+            trace();
+            return false;
+        }
         if($recursive){
             exec('chown ' . $owner . ':' . $group . ' -R ' . $url, $output);
         } else {
