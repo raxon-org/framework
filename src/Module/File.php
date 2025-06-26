@@ -247,6 +247,7 @@ class File {
         if($recursive){
             exec('chown ' . $owner . ':' . $group . ' -R ' . $url, $output);
         } else {
+            trace();
             exec('chown ' . $owner . ':' . $group . ' ' . $url, $output);
         }
         return true;
