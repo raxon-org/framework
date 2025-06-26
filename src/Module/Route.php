@@ -1164,7 +1164,10 @@ class Route extends Data {
             $object->data(App::ROUTE, $route);
         }
         elseif(!empty($host)) {
-            ddd($host);
+            $hash = hash('sha256', App::ROUTE . '.' . $host);
+            $cache = $object->data(App::CACHE);
+            d($hash);
+            ddd($cache);
             $node = new Node($object);
             $response = $node->list(
                 Route::OBJECT,
