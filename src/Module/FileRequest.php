@@ -490,10 +490,14 @@ class FileRequest {
                         $file_mtime->set(sha1($ram_url), $url);
                         $file_mtime->write($file_mtime_url);
                     }
-                    $command = 'chmod 640 ' . $ram_url;
-                    exec($command);
-                    $command = 'chmod 640 ' . $file_mtime_url;
-                    exec($command);
+                    File::permission($object, [
+                        'ram_url' => $ram_url,
+                        'mtime_url' => $file_mtime_url
+                    ]);
+//                    $command = 'chmod 640 ' . $ram_url;
+//                    exec($command);
+//                    $command = 'chmod 640 ' . $file_mtime_url;
+//                    exec($command);
                 }
                 return $read;
             }
@@ -508,7 +512,6 @@ class FileRequest {
             if($logger_error){
                 $object->logger($logger_error)->error('HTTP/1.0 404 Not Found', [ $location ]);
             }
-            ddd($location);
             throw new LocateException('Cannot find location for file...', $location);
         } else {
             if(
