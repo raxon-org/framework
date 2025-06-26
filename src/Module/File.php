@@ -741,18 +741,18 @@ class File {
                     exec($command);
                 }
             }
-            if ($object->config('framework.environment') === Config::MODE_DEVELOPMENT) {
-                foreach($options as $key => $value){
-                    if(Dir::is($value) && File::exist($value)){
-                        $value = escapeshellarg($value);
-                        $command = 'chmod 777 ' . $value;
-                        exec($command);
-                    }
-                    elseif(File::is($value) && File::exist($value)) {
-                        $value = escapeshellarg($value);
-                        $command = 'chmod 666 ' . $value;
-                        exec($command);
-                    }
+        }
+        if ($object->config('framework.environment') === Config::MODE_DEVELOPMENT) {
+            foreach($options as $key => $value){
+                if(Dir::is($value) && File::exist($value)){
+                    $value = escapeshellarg($value);
+                    $command = 'chmod 777 ' . $value;
+                    exec($command);
+                }
+                elseif(File::is($value) && File::exist($value)) {
+                    $value = escapeshellarg($value);
+                    $command = 'chmod 666 ' . $value;
+                    exec($command);
                 }
             }
         }
