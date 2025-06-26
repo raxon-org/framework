@@ -30,9 +30,9 @@ class Time {
 
     public static function format(int|float $seconds=0, string $string=Time::IN, $compact=false): string
     {
-        $days = (int) floor($seconds / (3600 * 24));
-        $hours = (int) floor(($seconds / 3600) % 24);
-        $minutes = (int) floor(($seconds / 60) % 60);
+        $days = floor($seconds / (3600 * 24));
+        $hours = floor((int) ($seconds / 3600) % 24);
+        $minutes = floor((int) ($seconds / 60) % 60);
         $explode = explode('.', $seconds);
         $msec = (int) $explode[1] ?? 0;
         $msec = (float) ('0' . '.' . $msec);
