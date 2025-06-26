@@ -58,7 +58,7 @@ trait Info_Output
     /**
      * @throws Exception
      */
-    protected function info_parse(mixed $mixed, array|object $data = null): mixed
+    protected function info_parse(mixed $mixed, array|object|null $data = null): mixed
     {
         $parse = $this->parse();
 
