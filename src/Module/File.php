@@ -738,6 +738,7 @@ class File {
                 if (File::exist($value)) {
                     $value = escapeshellarg($value);
                     $command = 'chown www-data:www-data ' . $value;
+                    ddd($object->config(Config::POSIX_ID));
                     exec($command);
                 }
             }
