@@ -2010,7 +2010,11 @@ class App extends Data {
         return false;
     }
 
-    public static function worker_cleanup(App $object){
+    /**
+     * @throws Exception
+     */
+    public static function worker_cleanup(App $object): void
+    {
         $object->config('delete', 'controller');
         $object->config('delete', 'domain');
         $object->config('delete', 'host');
