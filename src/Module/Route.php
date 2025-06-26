@@ -1166,8 +1166,13 @@ class Route extends Data {
         elseif(!empty($host)) {
             $hash = hash('sha256', App::ROUTE . '.' . $host);
             $cache = $object->data(App::CACHE);
-            d($hash);
-            ddd($cache);
+            if($cache){
+                $get = $cache->get($hash);
+                if($get){
+                    $object->data(App::ROUTE, $get);
+                    return;
+                }
+            }
             $node = new Node($object);
             $response = $node->list(
                 Route::OBJECT,
@@ -1213,6 +1218,9 @@ class Route extends Data {
                 $route->data($response['list']);
             }
             $object->data(App::ROUTE, $route);
+            if($cache){
+                $cache->set($hash, $route);
+            }
         }
     }
 
