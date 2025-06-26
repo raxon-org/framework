@@ -2021,6 +2021,7 @@ class App extends Data {
         $object->config('delete', 'request');
         $object->config('delete', 'response');
         $object->config('delete', 'user');
+        $object->config('delete', 'require');
         $object->config('time.start', microtime(true));
     }
 
