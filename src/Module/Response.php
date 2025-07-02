@@ -139,7 +139,12 @@ class Response {
             case Response::TYPE_OBJECT :
             case Response::TYPE_OBJECT_LINE :
                 $json = new stdClass();
-                $json->html = ltrim($response->data());
+                $response_data = $response->data();
+                if($response_data === null){
+                    $json->html = '';
+                } else {
+                    $json->html = ltrim($response_data);
+                }            
                 if(empty($json->html)){
 //                    d($response);
 //                    trace();
