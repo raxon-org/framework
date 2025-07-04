@@ -435,8 +435,7 @@ class Host {
                     'key' => $cache_key,
                     'ttl' => $ttl,
                 ]
-            );
-            d($host);
+            );            
             if ($host) {
                 $host = (array) Core::object($host, Core::OBJECT_OBJECT);
             } else {
@@ -488,6 +487,7 @@ class Host {
                     'ttl' => $ttl,
                 ]
             );
+            d($host);
             if ($host) {
                 $host = (array) Core::object($host, Core::OBJECT_OBJECT);
             } else {
