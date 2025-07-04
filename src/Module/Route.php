@@ -517,6 +517,7 @@ class Route extends Data {
             }
             $host_name = $object->config('host.name');
             if(empty($host_name)){
+                d($object->config('host'));
                 trace();
                 die;
             }
