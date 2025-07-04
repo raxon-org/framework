@@ -455,6 +455,7 @@ class Host {
                         'ramdisk' => true
                     ]
                 );
+                ddd($host);
                 Cache::write(
                     $object,
                     [
@@ -505,6 +506,7 @@ class Host {
                         'ramdisk' => true
                     ]
                 );
+                ddd($host);
                 Cache::write(
                     $object,
                     [
