@@ -163,6 +163,8 @@ class Host {
         } else {
             $name = $object->config('host.domain') . '.' . $object->config('host.extension');
         }
+        d($object->config('host'));
+        d($name);
         $map = Host::map($object, $node, $name);
         $host = Host::get($object, $node, $name, $map);
         ddd($host);
