@@ -473,6 +473,7 @@ class Host {
             property_exists($map, 'destination') &&
             !empty($map->destination)
         ) {
+            ddd($map);
             $name = Controller::name($map->destination);
             $cache_key = Cache::key($object, [
                 'name' => Cache::name($object, [
