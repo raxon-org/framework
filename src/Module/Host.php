@@ -356,8 +356,7 @@ class Host {
         }
         if($map){
             $map = (array) Core::object($map, Core::OBJECT_OBJECT);
-        } else {
-            ddd($name);
+        } else {            
             $map = $node->record(
                 'System.Host.Mapper',
                 $node->role_system(),
@@ -369,7 +368,7 @@ class Host {
                     'filter' => [
                         'source' => [
                             'value' => $name,
-                            'operator' => '==='
+                            'operator' => 'partial'
                         ]
                     ],
                     'ttl' => $ttl,
