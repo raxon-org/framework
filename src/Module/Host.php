@@ -436,6 +436,7 @@ class Host {
                     'ttl' => $ttl,
                 ]
             );
+            d($host);
             if ($host) {
                 $host = (array) Core::object($host, Core::OBJECT_OBJECT);
             } else {
