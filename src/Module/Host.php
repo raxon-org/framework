@@ -352,7 +352,7 @@ class Host {
             ]
         );
         if($map === 'false'){
-            return false;
+            $map = false;
         }
         if($map){
             $map = (array) Core::object($map, Core::OBJECT_OBJECT);
