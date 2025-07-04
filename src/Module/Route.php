@@ -516,10 +516,7 @@ class Route extends Data {
                 array_pop($select->attribute);
             }
             $select->method = Handler::method();
-            $host_name = $object->config('host.name');
-            if($host_name){
-                $select->host = strtolower($host_name);
-            }            
+            $select->host = strtolower($object->config('host.name'));
             $request = Route::route_select($object, $select);
             $route =  $object->data(App::ROUTE);
             Route::add_request($object, $request);
