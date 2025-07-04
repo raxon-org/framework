@@ -357,6 +357,7 @@ class Host {
         if($map){
             $map = (array) Core::object($map, Core::OBJECT_OBJECT);
         } else {
+            ddd($name);
             $map = $node->record(
                 'System.Host.Mapper',
                 $node->role_system(),
