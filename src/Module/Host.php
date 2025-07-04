@@ -167,6 +167,7 @@ class Host {
         $host = Host::get($object, $node, $name, $map);
         $object->config('host.map', $map);
         $object->config('host', Core::object_merge($object->config('host'), $host));
+        ddd($object->config('host'));
         return true;
     }
 
