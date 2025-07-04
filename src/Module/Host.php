@@ -417,8 +417,7 @@ class Host {
         if(empty($name)){
             return false;
         }
-        $name = Controller::name($name);
-        d($name);
+        $name = Controller::name($name);        
         if(empty($map)) {
             $cache_key = Cache::key($object, [
                 'name' => Cache::name($object, [
@@ -454,8 +453,7 @@ class Host {
                         'ttl' => $ttl,
                         'ramdisk' => true
                     ]
-                );
-                ddd($host);
+                );                
                 Cache::write(
                     $object,
                     [
