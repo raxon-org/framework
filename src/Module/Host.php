@@ -486,9 +486,11 @@ class Host {
                     'key' => $cache_key,
                     'ttl' => $ttl,
                 ]
-            );
-            d($host);
-            if ($host) {
+            );            
+            if (
+                $host && 
+                $host !== '{}'
+            ) {
                 $host = (array) Core::object($host, Core::OBJECT_OBJECT);
             } else {
                 $host = $node->record(
