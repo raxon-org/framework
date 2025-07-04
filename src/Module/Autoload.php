@@ -253,12 +253,6 @@ class Autoload {
             return;
         }
         $prefix = trim($prefix, '\\\/'); //.'\\';
-        if($directory === null){
-            d($prefix);
-            d($extension);
-            trace();
-            die;
-        }
         $directory = str_replace('\\\/', DIRECTORY_SEPARATOR, rtrim($directory,'\\\/')) . DIRECTORY_SEPARATOR; //see File::dir()
         $list = $this->getPrefixList();
         if(empty($list)){
