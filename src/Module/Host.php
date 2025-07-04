@@ -419,6 +419,7 @@ class Host {
             return false;
         }
         $name = Controller::name($name);
+        d($name);
         if(empty($map)) {
             $cache_key = Cache::key($object, [
                 'name' => Cache::name($object, [
