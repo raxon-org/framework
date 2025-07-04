@@ -515,6 +515,11 @@ class Route extends Data {
             while(end($select->attribute) === ''){
                 array_pop($select->attribute);
             }
+            $host_name = $object->config('host.name');
+            if(empty($host_name)){
+                trace();
+                die;
+            }
             $select->method = Handler::method();
             $select->host = strtolower($object->config('host.name'));
             $request = Route::route_select($object, $select);
