@@ -510,6 +510,7 @@ class Host {
                         'ramdisk' => true
                     ]
                 );
+                d($name);
                 ddd($host);
                 Cache::write(
                     $object,
