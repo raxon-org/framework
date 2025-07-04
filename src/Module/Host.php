@@ -511,9 +511,7 @@ class Host {
                         'ttl' => $ttl,
                         'ramdisk' => true
                     ]
-                );
-                d($name);
-                ddd($host);
+                );                
                 Cache::write(
                     $object,
                     [
