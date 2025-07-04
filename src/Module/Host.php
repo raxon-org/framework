@@ -448,7 +448,7 @@ class Host {
                         'filter' => [
                             'name' => [
                                 'value' => $name,
-                                'operator' => '==='
+                                'operator' => 'partial'
                             ]
                         ],
                         'ttl' => $ttl,
@@ -498,7 +498,7 @@ class Host {
                         'filter' => [
                             'name' => [
                                 'value' => $name,
-                                'operator' => '==='
+                                'operator' => 'partial'
                             ]
                         ],
                         'ttl' => $ttl,
