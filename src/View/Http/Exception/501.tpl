@@ -21,7 +21,6 @@
     <label>Code: </label>
     <span>{{$exception.code}}</span><br>
 </section>
-/**
 {{if(
 config('framework.environment') === 'development') &&
 !is.empty($exception.file)
@@ -91,6 +90,5 @@ config('framework.environment') === 'development') &&
     </table>
 </section>
 {{/if}}
-**/
 </body>
 </html>
