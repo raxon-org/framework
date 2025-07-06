@@ -111,9 +111,7 @@ class App extends Data {
         Middleware::configure($this);
         OutputFilter::configure($this);
         Autoload::configure($this);
-        Autoload::ramdisk_configure($this);
-        ddd($this->config('framework.environment'));
-
+        Autoload::ramdisk_configure($this);        
     }
 
     /**
@@ -187,8 +185,7 @@ class App extends Data {
                 App::configure($object);
                 Route::configure($object);
                 $destination = Route::request($object);
-                if ($destination === false) {
-                    $object->config('framework.environment', Config::MODE_PRODUCTION);
+                if ($destination === false) {                    
                     if ($object->config('framework.environment') === Config::MODE_DEVELOPMENT) {
                         if($logger){
                             $object->logger($logger)->error('Couldn\'t determine route (' . $object->request('request') . ')...');
