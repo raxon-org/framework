@@ -1,3 +1,4 @@
+{{d(config('framework.environment'))}}
 {{d($exception)}}
 <html>
 <head>
