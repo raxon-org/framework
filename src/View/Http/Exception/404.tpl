@@ -1,4 +1,3 @@
-{{RAX}}
 <html>
 <head>
     <title>HTTP/1.0 404 Not Found: {{$exception.file}}</title>
@@ -53,8 +52,7 @@ config('framework.environment') === 'development' &&
     {{if($source)}}
     {{$read = explode("\n", $source)}}
     <table class="source">
-        {{for($i=$exception.line - 3 - 1; $i <= ($exception.line + 3 - 1); $i++)}}
-        {{d($i <= ($exception.line + 3 - 1))}}
+        {{for($i=$exception.line - 3 - 1; $i <= ($exception.line + 3 - 1); $i++)}}        
         {{if($i > 250)}}
         {{break()}}
         {{/if}}
