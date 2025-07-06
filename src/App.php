@@ -112,7 +112,7 @@ class App extends Data {
         OutputFilter::configure($this);
         Autoload::configure($this);
         Autoload::ramdisk_configure($this);
-        ddd($object->config());
+        ddd($this->config());
 
     }
 
