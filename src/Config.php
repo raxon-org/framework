@@ -486,8 +486,10 @@ class Config extends Data {
         }
         if(!$node->role_has_permission($role_system, 'System:Config:record')){
             return;
-        }
+        }        
         $response = $node->record($class, $role_system, $options);
+        d($response);
+        ddd($object->config())
         if(
             $response &&
             array_key_exists('node', $response)

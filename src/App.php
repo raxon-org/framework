@@ -1450,7 +1450,7 @@ class App extends Data {
         }
         $data = new Data();
         $data->data($this->data());
-        $flags = App::flags($oobject);
+        $flags = App::flags($this);
         $options = (object) [];
         $options->source = $url;
         $parse = new Parse($this, $data, $flags, $options);
