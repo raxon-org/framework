@@ -489,7 +489,7 @@ class Config extends Data {
         }        
         $response = $node->record($class, $role_system, $options);
         d($response);
-        ddd($object->config())
+        ddd($object->config());
         if(
             $response &&
             array_key_exists('node', $response)
