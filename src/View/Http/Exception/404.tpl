@@ -73,6 +73,7 @@ config('framework.environment') === 'development' &&
     {{/if}}
 </section>
 {{/if}}
+/*
 {{if(
 config('framework.environment') === 'development' &&
 !is.empty($exception.trace)
@@ -117,5 +118,6 @@ config('framework.environment') === 'development' &&
     </table>
 </section>
 {{/if}}
+*/
 </body>
 </html>
