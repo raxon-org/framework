@@ -488,14 +488,14 @@ class Config extends Data {
             return;
         }        
         $response = $node->record($class, $role_system, $options);
-        d($response);
-        ddd($object->config());
+        d($response);        
         if(
             $response &&
             array_key_exists('node', $response)
         ){
             $object->config(Core::object_merge($object->config(), $response['node']));
         }
+        ddd($object->config());
     }
 
     /**
