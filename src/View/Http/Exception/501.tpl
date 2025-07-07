@@ -1,6 +1,3 @@
-{{d(config())}}
-{{d(config('framework.environment'))}}
-{{d($exception)}}
 <html>
 <head>
     <title>HTTP/1.0 501 Not Implemented: {{$exception.file}}</title>
