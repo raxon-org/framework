@@ -53,8 +53,8 @@ config('framework.environment') === 'development' &&
     {{$read = explode("\n", $source)}}
     <table class="source">
         {{for($i = ($exception.line - 4); $i <= ($exception.line + 2); $i++)}}                
-        {{$row = $read[$i - 1]}}
         {{$row_nr = $i - 1}}
+        {{$row = $read[$row_nr]}}        
         {{if(
         $row_nr === $exception.line &&
         is.set($row)
@@ -93,8 +93,8 @@ config('framework.environment') === 'development' &&
                 {{$read = explode("\n", $source)}}
                 <table>
                     {{for( $i = ($trace.line - 4); $i <= ($trace.line + 2); $i++)}}
-                    {{$row = $read[$i - 1]}}
                     {{$row_nr = $i - 1}}
+                    {{$row = $read[$row_nr]}}                    
                     {{if(
                     $row_nr === $trace.line &&
                     is.set($row)
