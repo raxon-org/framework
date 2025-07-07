@@ -200,36 +200,31 @@ class App extends Data {
                             if(!in_array($port, [80, 443], true)){
                                 $host .= ':' . $port;
                             }
-                            $url .= ucfirst($subdomain) . '.' . ucfirst($domain) . '.' . ucfirst($extension);
+                            $url .= ucfirst($subdomain) . '.' . ucfirst($domain) . '.' . ucfirst($extension) . $object->config('ds');
                         } else {
                             $host = $domain . '.' . $extension;
                             if(!in_array($port, [80, 443], true)){
                                 $host .= ':' . $port;
                             }
-                            $url .= ucfirst($domain) . '.' . ucfirst($extension);
+                            $url .= ucfirst($domain) . '.' . ucfirst($extension) . $object->config('ds');
                         }
                         $route = $host . '/';
                         if($object->request('request') !== '/'){
                             $route .= $object->request('request');
                         }
-                        $url .= $object->config('ds') .
+                        $controller_dir_root = $url;
+                        $controller_dir_view = $controller_dir_root . 
                             'View' .
-                            $object->config('ds') .
+                            $object->config('ds')
+                        ;
+                        $url = $controller_dir_view .                            
                             'Http' .
                             $object->config('ds') .
                             'Exception' .
                             $object->config('ds') .
                             '404.tpl';                        
                         if(!File::exist($url)){
-                            $url = $object->config('framework.dir.view') .
-                                'Http' .
-                                $object->config('ds') .
-                                'Exception' .
-                                $object->config('ds') .
-                                '404.tpl';
-                                $object->config(
-                                    'controller.dir.root',
-                                    $object->config('project.dir.root') .
+                            $controller_dir_root = $object->config('project.dir.root') .
                                     'vendor' .
                                     $object->config('ds') .
                                     'raxon' .
@@ -238,13 +233,23 @@ class App extends Data {
                                     $object->config('ds') .
                                     'src' .
                                     $object->config('ds')
-                                );
-                        } else {
-                            $object->config(
-                                'controller.dir.root',
-                                $object->config('project.dir.domain')
-                            );
-                        }                        
+                            ;
+                            $controller_dir_view = $object->config('framework.dir.view');
+                            $url = $object->config('framework.dir.view') .
+                                'Http' .
+                                $object->config('ds') .
+                                'Exception' .
+                                $object->config('ds') .
+                                '404.tpl';                                
+                        } 
+                        $object->config(
+                            'controller.dir.root',
+                            $controller_dir_root
+                        );
+                        $object->config(
+                            'controller.dir.view',
+                            $controller_dir_view
+                        );                    
                         $exception = new RouteNotExistException('404 Not Found (route: '. $route .')', 404);
                         $response = new Response(
                             Controller::response(
