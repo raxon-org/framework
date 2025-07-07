@@ -51,12 +51,13 @@ config('framework.environment') === 'development' &&
     {{$source = file.read($exception.file)}}
     {{if($source)}}
     {{$read = explode("\n", $source)}}
+    {{$read_line = $exception.line - 1}}
     <table class="source">
-        {{for($i = ($exception.line - 4); $i <= ($exception.line + 2); $i++)}}                
+        {{for($i = ($read_line - 3); $i <= ($read_line + 3); $i++)}}                        
+        {{$row = $read[$i]}}        
         {{$row_nr = $i}}
-        {{$row = $read[$row_nr]}}        
         {{if(
-        $row_nr === $exception.line - 1 &&
+        $row_nr === $read_line &&
         is.set($row)
         )}}
         <tr class="selected"><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
@@ -91,19 +92,20 @@ config('framework.environment') === 'development' &&
                 {{$source = file.read($trace.file)}}
                 {{if($source)}}
                 {{$read = explode("\n", $source)}}
-                <table>
-                    {{for( $i = ($trace.line - 4); $i <= ($trace.line + 2); $i++)}}
+                {{$read_line = $exception.line - 1}}
+                <table class="source">
+                {{for($i = ($read_line - 3); $i <= ($read_line + 3); $i++)}}                        
+                    {{$row = $read[$i]}}        
                     {{$row_nr = $i}}
-                    {{$row = $read[$row_nr]}}                    
                     {{if(
-                    $row_nr === $trace.line - 1 &&
+                    $row_nr === $read_line &&
                     is.set($row)
                     )}}
                     <tr class="selected"><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
                     {{elseif(is.set($row))}}
                     <tr><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
                     {{/if}}
-                    {{/for}}
+                {{/for}}
                 </table>
                 {{/if}}
             </td>
