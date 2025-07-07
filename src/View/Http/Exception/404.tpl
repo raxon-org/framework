@@ -53,10 +53,10 @@ config('framework.environment') === 'development' &&
     {{$read = explode("\n", $source)}}
     <table class="source">
         {{for($i = ($exception.line - 4); $i <= ($exception.line + 2); $i++)}}                
-        {{$row = $read[$i]}}
-        {{$row_nr = $i + 1}}
+        {{$row = $read[$i - 1]}}
+        {{$row_nr = $i - 1}}
         {{if(
-        $i === $exception.line - 1 &&
+        $row_nr === $exception.line &&
         is.set($row)
         )}}
         <tr class="selected"><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
@@ -93,10 +93,10 @@ config('framework.environment') === 'development' &&
                 {{$read = explode("\n", $source)}}
                 <table>
                     {{for( $i = ($trace.line - 4); $i <= ($trace.line + 2); $i++)}}
-                    {{$row = $read[$i]}}
-                    {{$row_nr = $i + 1}}
+                    {{$row = $read[$i - 1]}}
+                    {{$row_nr = $i - 1}}
                     {{if(
-                    $i === $trace.line - 1 &&
+                    $row_nr === $trace.line &&
                     is.set($row)
                     )}}
                     <tr class="selected"><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
