@@ -219,8 +219,7 @@ class App extends Data {
                             $object->config('ds') .
                             'Exception' .
                             $object->config('ds') .
-                            '404.tpl';
-                        d($url);
+                            '404.tpl';                        
                         if(!File::exist($url)){
                             $url = $object->config('framework.dir.view') .
                                 'Http' .
@@ -228,19 +227,24 @@ class App extends Data {
                                 'Exception' .
                                 $object->config('ds') .
                                 '404.tpl';
-                        }
-                        $object->config(
-                            'controller.dir.root',
-                            $object->config('project.dir.root') .
-                            'vendor' .
-                            $object->config('ds') .
-                            'raxon' .
-                            $object->config('ds') .
-                            'framework' .
-                            $object->config('ds') .
-                            'src' .
-                            $object->config('ds')
-                        );
+                                $object->config(
+                                    'controller.dir.root',
+                                    $object->config('project.dir.root') .
+                                    'vendor' .
+                                    $object->config('ds') .
+                                    'raxon' .
+                                    $object->config('ds') .
+                                    'framework' .
+                                    $object->config('ds') .
+                                    'src' .
+                                    $object->config('ds')
+                                );
+                        } else {
+                            $object->config(
+                                'controller.dir.root',
+                                $object->config('project.dir.domain')
+                            );
+                        }                        
                         $exception = new RouteNotExistException('404 Not Found (route: '. $route .')', 404);
                         $response = new Response(
                             Controller::response(
