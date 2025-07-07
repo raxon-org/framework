@@ -33,7 +33,7 @@ config('framework.environment') === 'development' &&
     <table>
         {{for($i=($exception.line - 3); $i <= ($exception.line + 3); $i++)}}
         {{$row = $read[$i]}}
-        {{$row_nr = $i + 1}}
+        {{$row_nr = $i}}
         {{if(
         $i === $exception.line &&
         is.set($row)
@@ -70,7 +70,7 @@ config('framework.environment') === 'development' &&
                 <table>
                     {{for($i=($trace.line - 3); $i <= ($trace.line + 3); $i++)}}
                     {{$row = $read[$i]}}
-                    {{$row_nr = $i + 1}}
+                    {{$row_nr = $i}}
                     {{if(
                     $i === $trace.line &&
                     is.set($row)
