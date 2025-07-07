@@ -56,7 +56,7 @@ config('framework.environment') === 'development' &&
         {{$row_nr = $i}}
         {{$row = $read[$row_nr]}}        
         {{if(
-        $row_nr === $exception.line &&
+        $row_nr === $exception.line - 1 &&
         is.set($row)
         )}}
         <tr class="selected"><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
@@ -96,7 +96,7 @@ config('framework.environment') === 'development' &&
                     {{$row_nr = $i}}
                     {{$row = $read[$row_nr]}}                    
                     {{if(
-                    $row_nr === $trace.line &&
+                    $row_nr === $trace.line - 1 &&
                     is.set($row)
                     )}}
                     <tr class="selected"><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
