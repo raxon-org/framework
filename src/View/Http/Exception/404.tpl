@@ -55,9 +55,9 @@ config('framework.environment') === 'development' &&
     <table class="source">
         {{for($i = ($read_line - 3); $i <= ($read_line + 3); $i++)}}                        
         {{$row = $read[$i]}}        
-        {{$row_nr = $i}}
+        {{$row_nr = $i + 1}}
         {{if(
-        $row_nr === $read_line &&
+        $i === $read_line &&
         is.set($row)
         )}}
         <tr class="selected"><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
@@ -96,9 +96,9 @@ config('framework.environment') === 'development' &&
                 <table class="source">
                 {{for($i = ($read_line - 3); $i <= ($read_line + 3); $i++)}}                        
                     {{$row = $read[$i]}}        
-                    {{$row_nr = $i}}
+                    {{$row_nr = $i + 1}}
                     {{if(
-                    $row_nr === $read_line &&
+                    $i === $read_line &&
                     is.set($row)
                     )}}
                     <tr class="selected"><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
