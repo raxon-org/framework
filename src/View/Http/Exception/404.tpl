@@ -92,7 +92,7 @@ config('framework.environment') === 'development' &&
                 {{$source = file.read($trace.file)}}
                 {{if($source)}}
                 {{$read = explode("\n", $source)}}
-                {{$read_line = $exception.line - 1}}
+                {{$read_line = $trace.line - 1}}
                 <table class="source">
                 {{for($i = ($read_line - 3); $i <= ($read_line + 3); $i++)}}                        
                     {{$row = $read[$i]}}        
