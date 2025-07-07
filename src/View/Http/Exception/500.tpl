@@ -31,11 +31,11 @@ config('framework.environment') === 'development' &&
     {{if($source)}}
     {{$read = explode("\n", $source)}}
     <table>
-        {{for($i=$exception.line - 3 - 1; $i <= $exception.line + 3 - 1; $i++)}}
+        {{for($i=($exception.line - 3); $i <= ($exception.line + 3); $i++)}}
         {{$row = $read[$i]}}
         {{$row_nr = $i + 1}}
         {{if(
-        $i === $exception.line - 1 &&
+        $i === $exception.line &&
         is.set($row)
         )}}
         <tr class="selected"><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
@@ -68,11 +68,11 @@ config('framework.environment') === 'development' &&
                 {{if($source)}}
                 {{$read = explode("\n", $source)}}
                 <table>
-                    {{for($i=$trace.line - 3 - 1; $i <= $trace.line + 3 - 1; $i++)}}
+                    {{for($i=($trace.line - 3); $i <= ($trace.line + 3); $i++)}}
                     {{$row = $read[$i]}}
                     {{$row_nr = $i + 1}}
                     {{if(
-                    $i === $trace.line - 1 &&
+                    $i === $trace.line &&
                     is.set($row)
                     )}}
                     <tr class="selected"><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
