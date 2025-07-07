@@ -54,7 +54,7 @@ config('framework.environment') === 'development' &&
     {{$read_line = $exception.line - 1}}
     <table class="source">
         {{for($i = ($read_line - 3); $i <= ($read_line + 3); $i++)}}                        
-        {{$row = $read[$i]}}        
+        {{$row = $read[$i + 1]}}        
         {{$row_nr = $i + 1}}
         {{if(
         $i === $read_line &&

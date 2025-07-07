@@ -24,22 +24,21 @@
     <span>{{$exception.code}}</span><br>
 </section>
 {{if(
-config('framework.environment') === 'development') &&
+config('framework.environment') === 'development' &&
 !is.empty($exception.file)
-}}
+)}}
 <section name="source">
     <label>Source: </label><br>
-    {{if(file.exist($exception.file))}}
     {{$source = file.read($exception.file)}}
-    {{/if}}
     {{if($source)}}
     {{$read = explode("\n", $source)}}
-    <table>
-        {{for($i=($exception.line - 3); $i <= ($exception.line + 3); $i++)}}
-        {{$row = $read[$i]}}
-        {{$row_nr = $i}}
+    {{$read_line = $exception.line - 1}}
+    <table class="source">
+        {{for($i = ($read_line - 3); $i <= ($read_line + 3); $i++)}}                        
+        {{$row = $read[$i]}}        
+        {{$row_nr = $i + 1}}
         {{if(
-        $i === $exception.line &&
+        $i === $read_line &&
         is.set($row)
         )}}
         <tr class="selected"><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
@@ -52,18 +51,21 @@ config('framework.environment') === 'development') &&
 </section>
 {{/if}}
 {{if(
-config('framework.environment') === 'development') &&
+config('framework.environment') === 'development' &&
 !is.empty($exception.trace)
 )}}
 <section name="trace">
     <label>Trace: </label><br>
-    <table>
+    <table class="trace">
         {{foreach($exception.trace as $nr => $trace)}}
         <tr class="trace">
-            <td class="tab">&nbsp;</td>
-            <td class="title">{{$trace.file}} ({{$trace.line}})</td>
-            <td class="function">{{$trace.function}}</td>
-            <td class="class">{{$trace.class}}</td>
+            <td class="title"><b>File:</b> {{$trace.file}} (<b>{{$trace.line}}</b>)</td>
+        </tr>
+        <tr class="trace">
+            <td class="class"><b>Class:</b> {{$trace.class}}</td>
+        </tr>
+        <tr class="trace">
+            <td class="function"><b>Function:</b> {{$trace.function}}</td>
         </tr>
         <tr class="trace-source">
             <td colspan="4">
@@ -71,19 +73,20 @@ config('framework.environment') === 'development') &&
                 {{$source = file.read($trace.file)}}
                 {{if($source)}}
                 {{$read = explode("\n", $source)}}
-                <table>
-                    {{for($i=($trace.line - 3); $i <= ($trace.line + 3); $i++)}}
-                    {{$row = $read[$i]}}
-                    {{$row_nr = $i}}
+                {{$read_line = $trace.line - 1}}
+                <table class="source">
+                {{for($i = ($read_line - 3); $i <= ($read_line + 3); $i++)}}                        
+                    {{$row = $read[$i]}}        
+                    {{$row_nr = $i + 1}}
                     {{if(
-                    $i === $trace.line &&
+                    $i === $read_line &&
                     is.set($row)
                     )}}
                     <tr class="selected"><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
                     {{elseif(is.set($row))}}
                     <tr><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
                     {{/if}}
-                    {{/for}}
+                {{/for}}
                 </table>
                 {{/if}}
             </td>
