@@ -123,10 +123,8 @@ class Data {
                         }
                         return $param;
                     }
-                }
-                $pointer = next($data);
+                }                
             }
-
         }
         if($result === null || is_bool($result)){
             return $result;
