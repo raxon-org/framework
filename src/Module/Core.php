@@ -576,6 +576,7 @@ class Core
                     catch (Exception $exception){
                         $json = json_decode($input);
                         if (json_last_error()) {
+                            trace();
                             d($input);
                             d($json);
                             throw new ObjectException(json_last_error_msg() . json_last_error());
