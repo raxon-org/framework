@@ -1,6 +1,6 @@
 {{RAX}}
 {{if(config('silence') === true)}}
-diffrence.org silence mode... {{terminal.color('green')}}{{config('framework.version')}}{{terminal.color('reset')}}
+raxon.org silence mode... {{terminal.color('green')}}{{config('framework.version')}}{{terminal.color('reset')}}
 
 {{else}}
 Welcome to raxon.org {{terminal.color('green')}}{{config('framework.version')}}{{terminal.color('reset')}}
