@@ -549,6 +549,7 @@ class Core
             return $json;
         } elseif (is_string($input)) {
             $input = trim($input);
+            $input = preg_replace('/[[:cntrl:]]/', '', $input);
             if ($output == Core::OBJECT_OBJECT) {
                 if (substr($input, 0, 1) == '{' && substr($input, -1, 1) == '}') {
                     try {
@@ -565,8 +566,7 @@ class Core
                         }
                     }
                     return $json;
-                } elseif (substr($input, 0, 1) == '[' && substr($input, -1, 1) == ']') {
-                    $input = preg_replace('/[[:cntrl:]]/', '', $input);
+                } elseif (substr($input, 0, 1) == '[' && substr($input, -1, 1) == ']') {                    
                     try {
                         if(function_exists('simd_json_decode')){
                             $json = @simd_json_decode($input);
