@@ -566,6 +566,7 @@ class Core
                     }
                     return $json;
                 } elseif (substr($input, 0, 1) == '[' && substr($input, -1, 1) == ']') {
+                    $input = preg_replace('/[[:cntrl:]]/', '', $input);
                     try {
                         if(function_exists('simd_json_decode')){
                             $json = @simd_json_decode($input);
