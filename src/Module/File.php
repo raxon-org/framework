@@ -416,6 +416,7 @@ class File {
 
     public static function read(string $url='', array $options=[]) : string | array
     {
+        $url = str_replace('\\/', '/', $url);
         $return = $options['return'] ?? File::STRING;
         if(strpos($url, File::SCHEME_HTTP) === 0){
             //check network connection first (@) added for that              //error
