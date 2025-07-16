@@ -435,6 +435,7 @@ class File {
                 }
 
             } catch (Exception $exception){
+                echo $exception . PHP_EOL;
                 switch($return){
                     case File::ARRAY:
                         return [];
@@ -460,6 +461,7 @@ class File {
             }
 
         } catch (Exception $exception){
+            echo $exception . PHP_EOL;
             switch($return){
                 case File::ARRAY:
                     return [];
