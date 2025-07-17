@@ -580,7 +580,7 @@ class Core
                             trace();
                             d($input);
                             d($json);
-                            d(json_last_error_msg() . json_last_error());
+                            ddd(json_last_error_msg() . json_last_error());
                             throw new ObjectException(json_last_error_msg() . json_last_error());
                         }
                     }
