@@ -283,6 +283,8 @@ class Parse {
                 return Parse::replace_raw($string);
             }
         }
+        trace();
+        d($string);
         return $string;
     }
 
