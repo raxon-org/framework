@@ -47,8 +47,7 @@ class Install extends Controller {
                     $options->skip[$nr] = trim($skip);
                 }
             }
-        }
-        $options->json = true;
+        }        
         $key = App::parameter($object, 'install', 1);
         if(
             !in_array(
