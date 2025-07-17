@@ -48,6 +48,7 @@ class Install extends Controller {
                 }
             }
         }
+        $options->json = true;
         $key = App::parameter($object, 'install', 1);
         if(
             !in_array(
