@@ -834,7 +834,7 @@
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
       "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
-        "/test/{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
       "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "copy" : [
