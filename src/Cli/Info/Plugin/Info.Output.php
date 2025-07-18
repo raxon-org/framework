@@ -89,6 +89,13 @@ trait Info_Output
         $options->source = 'Internal_' . $hash;
         $parse->options($options);
         if(!empty($data)){
+            $object = $this->object();
+            $literal = $object->data('literal');
+            if(is_array($literal) || is_object($literal)){
+                foreach($literal as $key => $value){
+                    $data->set('literal.' . $key, $value);
+                }               
+            }      
             $result = $parse->compile($mixed, $data);
         } else {
             $result = $parse->compile($mixed, []);
