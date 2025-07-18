@@ -4,7 +4,7 @@
 'method' => 'CLI'
 ])}}
 {{$route = info.all.add($route)}}
-Welcome to raxon.org                  {{terminal.color('blue')}}(c) Remco van der Velde {{terminal.color('green')}}({{config('framework.version')}}){{terminal.color('reset')}}
+Welcome to https://raxon.org                  {{terminal.color('blue')}}(c) Remco van der Velde {{terminal.color('green')}}({{config('framework.version')}}){{terminal.color('reset')}}
 
 {{$route = data.sort($route, [
 'info' => 'ASC'
