@@ -11,4 +11,3 @@ Welcome to raxon.org                  {{terminal.color('blue')}}(c) Remco van de
 ])}}
 {{$output = info.output($route)}}
 {{implode('',$output)}}
-{{dd($literal)}}
