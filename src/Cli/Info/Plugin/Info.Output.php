@@ -88,7 +88,7 @@ trait Info_Output
         }
         $options->source = 'Internal_' . $hash;
         $parse->options($options);
-        if(!empty($parseData)){
+        if(!empty($data)){
             $result = $parse->compile($mixed, $data);
         } else {
             $result = $parse->compile($mixed, []);
