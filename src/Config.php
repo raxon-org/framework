@@ -52,6 +52,8 @@ class Config extends Data {
     const VALUE_PUBLIC = 'Public';
     const DOMAIN = 'domain';
     const VALUE_DOMAIN = 'Domain';
+    const AUDIO = 'audio';
+    const VALUE_AUDIO = 'Audio';
     const HOST = 'host';
     const VALUE_HOST = 'Host';
     const TEMP = 'temp';
@@ -177,6 +179,7 @@ class Config extends Data {
     const DATA_PROJECT_DIR_PUBLIC =  Config::DATA_PROJECT_DIR . '.' . 'public';
     const DATA_PROJECT_DIR_HOST =  Config::DATA_PROJECT_DIR . '.' . 'host';
     const DATA_PROJECT_DIR_DOMAIN =  Config::DATA_PROJECT_DIR . '.' . 'domain';
+    const DATA_PROJECT_DIR_AUDIO =  Config::DATA_PROJECT_DIR . '.' . 'audio';
     const DATA_PROJECT_DIR_PLUGIN =  Config::DATA_PROJECT_DIR . '.' . 'plugin';
     const DATA_PROJECT_DIR_LOG =  Config::DATA_PROJECT_DIR . '.' . 'log';
     const DATA_PROJECT_DIR_EXECUTE =  Config::DATA_PROJECT_DIR . '.' . 'execute';
@@ -300,6 +303,11 @@ class Config extends Data {
             }
             $key = Config::DATA_PROJECT_DIR_DOMAIN;
             $value = $volume->data('volume.dir.domain');
+            if($value){
+                $config->data($key, $value);
+            }
+            $key = Config::DATA_PROJECT_DIR_AUDIO;            
+            $value = $volume->data('volume.dir.audio');
             if($value){
                 $config->data($key, $value);
             }
@@ -670,6 +678,10 @@ class Config extends Data {
         $value = Config::VALUE_DOMAIN;
         $this->data($key, $value);
 
+        $key = Config::DICTIONARY . '.' . Config::AUDIO;
+        $value = Config::VALUE_AUDIO;
+        $this->data($key, $value);
+
         $key = Config::DICTIONARY . '.' . Config::LOG;
         $value = Config::VALUE_LOG;
         $this->data($key, $value);
@@ -899,6 +911,14 @@ class Config extends Data {
         $value =
             $this->data(Config::DATA_PROJECT_DIR_ROOT) .
             $this->data(Config::DICTIONARY . '.' . Config::DOMAIN) .
+            $this->data(Config::DS)
+        ;
+        $this->data($key, $value);
+
+        $key = Config::DATA_PROJECT_DIR_AUDIO;
+        $value =
+            $this->data(Config::DATA_PROJECT_DIR_ROOT) .
+            $this->data(Config::DICTIONARY . '.' . Config::AUDIO) .
             $this->data(Config::DS)
         ;
         $this->data($key, $value);
