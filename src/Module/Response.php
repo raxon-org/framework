@@ -20,6 +20,7 @@ use Raxon\Exception\ObjectException;
 
 class Response {
     const TYPE_CLI = 'cli';
+    const TYPE_TEXT = 'text';
     const TYPE_JSON = 'json';
     const TYPE_HTML = 'html';
     const TYPE_OBJECT = 'object';
@@ -110,7 +111,10 @@ class Response {
                         Handler::header('Content-Type: application/json', null, true);
                         break;
                     case Response::TYPE_HTML :
-                        Handler::header('Content-Type: text/html', null, true);
+                        Handler::header('Content-Type: text/html', null, true);                        
+                        break;
+                    case Response::TYPE_TEXT :
+                        Handler::header('Content-Type: text/plain', null, true);
                         break;
                     case Response::TYPE_FILE :
                         break;
@@ -209,6 +213,7 @@ class Response {
                 return null;
             case Response::TYPE_FILE :
             case Response::TYPE_HTML :
+            case Response::TYPE_TEXT :
                 return $response->data();
         }
         return null;
