@@ -44,5 +44,6 @@ trait Reset
                     echo $notification;
                 }
             }
+        }
     }
 }
