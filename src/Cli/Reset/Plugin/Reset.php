@@ -33,6 +33,7 @@ trait Reset
                 'app raxon/basic cron restart',
                 'app raxon/basic php restore',
                 'app raxon/basic php restart',
+                'app cache clear'
             ];
             $object = $this->object();
             foreach($commands as $command){
