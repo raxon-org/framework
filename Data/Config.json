@@ -19,7 +19,8 @@
                 "ramdisk",
                 "rewrite",
                 "bin",
-                "zip"
+                "zip",
+                "reset"
             ]
         },
         "name": "raxon/framework",
