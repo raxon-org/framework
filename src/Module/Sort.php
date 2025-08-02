@@ -20,7 +20,7 @@ class Sort extends Data {
     /**
      * @throws Exception
      */
-    public static function list($list): Sort
+    public static function list(array | object $list): Sort
     {
         return new Sort($list);
     }
@@ -28,7 +28,7 @@ class Sort extends Data {
     /**
      * @throws Exception
      */
-    public function with($sort=[], $options=[]): mixed
+    public function with(array $sort=[], array $options=[]): mixed
     {
         if(array_key_exists('output', $options)){
             $output = $options['output'];
@@ -305,7 +305,7 @@ class Sort extends Data {
         return $list;
     }
 
-    public function uuid_compare_ascending($a, $b): int
+    public function uuid_compare_ascending(mixed $a, mixed $b): int
     {
         $object_a = null;
         $object_b = null;
@@ -358,7 +358,7 @@ class Sort extends Data {
         return 0;
     }
 
-    public function uuid_compare_descending($a, $b): int
+    public function uuid_compare_descending(mixed $a, mixed $b): int
     {
         $object_a = null;
         $object_b = null;
