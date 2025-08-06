@@ -37,8 +37,9 @@ trait Reset
                     echo $notification;
                 }
             }
-        }
+        }        
         if(property_exists($options, 'ollama') && !empty($options->ollama)){                        
+            sleep(1); //cache clear problem...
             $commands = $data->get('ollama.command');            
             foreach($commands as $command){
                 Core::execute($object, $command, $output, $notification);
