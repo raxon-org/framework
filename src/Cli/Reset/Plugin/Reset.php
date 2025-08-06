@@ -23,27 +23,23 @@ trait Reset
             unset($options->app);
         }
         $object = $this->object();
-        $commands = $object->data_read($object->config('controller.dir.data') . 'Reset.json' );
-ddd($commands);
+        $data = $object->data_read($object->config('controller.dir.data') . 'Reset.json' );
 
-        if(property_exists($options, 'application') && !empty($options->application)){
-            $name = $options->application;
-            //frankenphp  init ?
-            
-
-
-
-            $commands = [
-                'app raxon/basic apache2 setup',
-                'app raxon/basic apache2 restore',
-                'app raxon/basic apache2 restart',
-                'app raxon/basic cron restore',
-                'app raxon/basic cron restart',
-                'app raxon/basic php restore',
-                'app raxon/basic php restart',
-                'app cache clear'
-            ];
-            
+        if(property_exists($options, 'application') && !empty($options->application)){            
+            //frankenphp  init ?    
+            $commands = $data->get('application.command');            
+            foreach($commands as $command){
+                Core::execute($object, $command, $output, $notification);
+                if($output){
+                    echo $output;
+                }
+                if($notification){
+                    echo $notification;
+                }
+            }
+        }
+        if(property_exists($options, 'ollama') && !empty($options->ollama)){                        
+            $commands = $data->get('ollama.command');            
             foreach($commands as $command){
                 Core::execute($object, $command, $output, $notification);
                 if($output){
