@@ -22,9 +22,17 @@ trait Reset
             $options->application = $options->app;
             unset($options->app);
         }
+        $object = $this->object();
+        $commands = $object->data_read($object->config('controller.dir.data') . 'Reset.json' );
+ddd($commands);
+
         if(property_exists($options, 'application') && !empty($options->application)){
             $name = $options->application;
             //frankenphp  init ?
+            
+
+
+
             $commands = [
                 'app raxon/basic apache2 setup',
                 'app raxon/basic apache2 restore',
@@ -35,7 +43,7 @@ trait Reset
                 'app raxon/basic php restart',
                 'app cache clear'
             ];
-            $object = $this->object();
+            
             foreach($commands as $command){
                 Core::execute($object, $command, $output, $notification);
                 if($output){

@@ -1,0 +1,23 @@
+{
+    "application": {
+        "description": "Reset the application to a clean state. (for example after a re-installation.)",
+        "command": [
+            "app raxon/basic apache2 setup",
+            "app raxon/basic apache2 restore",
+            "app raxon/basic apache2 restart",
+            "app raxon/basic cron restore",
+            "app raxon/basic cron restart",
+            "app raxon/basic php restore",
+            "app raxon/basic php restart",
+            "app cache clear"
+        ]
+    },
+    "ollama": {
+        "description": "Reset the ollama to a clean state. (for example after a re-installation.)",
+        "command": [
+            "app raxon/ollama stop",
+            "app raxon/ollama stop",
+            "app raxon/ollama start"            
+        ]
+    }
+}
