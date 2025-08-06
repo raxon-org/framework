@@ -9,7 +9,8 @@
             "app raxon/basic cron restart",
             "app raxon/basic php restore",
             "app raxon/basic php restart",
-            "app cache clear"
+            "app cache clear",
+            "app cache status"
         ]
     },
     "ollama": {
@@ -17,7 +18,7 @@
         "command": [
             "app raxon/ollama stop",
             "app raxon/ollama stop",
-            "app raxon/ollama start"            
+            "app raxon/ollama start &"            
         ]
     }
 }
