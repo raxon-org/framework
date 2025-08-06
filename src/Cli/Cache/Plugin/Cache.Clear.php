@@ -71,6 +71,7 @@ trait Cache_Clear
         }
         opcache_reset();
         opcache_invalidate('/Application/vendor/raxon/framework/src/Module/Parse.php', true);
+        Dir::create($temp_dir, Dir::CHMOD);
         File::permission($object, [
             'dir' => $temp_dir,
             'dir_www' => $temp_dir . '33/'
