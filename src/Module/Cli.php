@@ -357,4 +357,8 @@ class Cli {
         $label[] = CLi::warning('Warning', ['uppercase' => true]);
         return implode(PHP_EOL, $label);
     }
+
+    public static function gotoxy(int $x, int $y): void{
+        echo Cli::tput('cursor.position', [$x, $y]);
+    }
 }
