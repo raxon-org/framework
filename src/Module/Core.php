@@ -2192,15 +2192,27 @@ class Core
         }
     }
 
-    public static function array_codepoint(){
+    public static function array_codepoint(App $object){
         $codepoints = [];
         $lines = file('https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt');
         foreach ($lines as $line) {
-            $fields = explode(';', $line);
-            d($fields);
+            $fields = explode(';', $line);            
             $hex = $fields[0];
-            $codepoints[] = hexdec($hex);
+            $codepoints[] = ['int' => hexdec($hex), 'description' => $fields[1]];
         }
+        usort($codepoints, function($a, $b) {
+            return $a['int'] <=> $b['int'];
+        });        
+        $data = new Data();
+        $data->data('codepoint', $codepoints);
+        $dir = $object->config('project.dir.data') . '/Unicode/';
+        Dir::create($dir, Dir::CHMOD);
+        $url = $dir . 'Data.json';
+        $data->write($url);
+        File::permission($object, [
+            'dir' => $dir,
+            'file' => $url,
+        ]);
         return $codepoints;
     }
 }
