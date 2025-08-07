@@ -2197,7 +2197,7 @@ class Core
         $lines = file('https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt');
         foreach ($lines as $line) {
             $fields = explode(';', $line);
-            ddd($fields);
+            d($fields);
             $hex = $fields[0];
             $codepoints[] = hexdec($hex);
         }
