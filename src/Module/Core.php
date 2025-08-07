@@ -2191,4 +2191,16 @@ class Core
             return null;
         }
     }
+
+    public static function array_codepoint(){
+        $codepoints = [];
+        $lines = file('https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt');
+        foreach ($lines as $line) {
+            $fields = explode(';', $line);
+            ddd($fields);
+            $hex = $fields[0];
+            $codepoints[] = hexdec($hex);
+        }
+        return $codepoints;
+    }
 }
