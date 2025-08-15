@@ -1,4 +1,3 @@
-{{RAX}}
 {{if(config('silence') === true)}}
 raxon.org silence mode... {{terminal.color('green')}}{{config('framework.version')}}{{terminal.color('reset')}}
 

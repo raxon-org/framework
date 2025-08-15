@@ -1,3 +1,2 @@
-{{RAX}}
 {{zip.extract()}}
 

@@ -1,4 +1,3 @@
-{{RAX}}
 {{$url = config('framework.dir.root') + 'LICENSE'}}
 {{if (file.exist($url))}}
 {{file.read($url)}}

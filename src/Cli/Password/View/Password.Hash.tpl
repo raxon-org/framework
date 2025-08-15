@@ -1,4 +1,3 @@
-{{RAX}}
 {{while(true)}}
 {{$password = terminal.readline('Password: ', 'hidden')}}
 {{$again = terminal.readline('Password again: ', 'hidden')}}

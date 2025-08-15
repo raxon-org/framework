@@ -1,3 +1,2 @@
-{{RAX}}
 {{ramdisk.speedtest()}}
 

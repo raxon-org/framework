@@ -1,2 +1,1 @@
-{{RAX}}
 {{ramdisk.unmount()}}
