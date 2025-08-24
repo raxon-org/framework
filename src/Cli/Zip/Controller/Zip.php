@@ -25,8 +25,8 @@ class Zip extends Controller {
     const DIR = __DIR__;
     const NAME = 'Zip';
     const INFO = [
-        '{{binary()}} zip archive <source> <dest...> | Create a zip archive in <destination> from <source>',
-        '{{binary()}} zip extract <source> <dest...> | Extract a zip archive in <destination> from <source>',
+        '{{binary()}} zip archive -source -target    | Create a zip archive in <destination> from <source>',
+        '{{binary()}} zip extract -source -target    | Extract a zip archive in <destination> from <source>',
     ];
     const COMMAND = [
         'archive',
