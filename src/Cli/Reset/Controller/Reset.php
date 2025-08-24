@@ -27,7 +27,7 @@ class Reset extends Controller {
 
     const DEFAULT_NAME = 'app';
     
-    const INFO = '{{binary()}} reset                            | After re-installation run this command...';
+    const INFO = '{{binary()}} reset                            | Reset certain parts after a re-installation';
 
     /**
      * @throws ObjectException
