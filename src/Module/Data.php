@@ -139,7 +139,7 @@ class Data {
      * @throws ObjectException
      * @throws Exception
      */
-    public static function flags($data): object
+    public static function flags($data): object | array
     {
         $flags = (object) [];
         foreach($data as $nr => $parameter){

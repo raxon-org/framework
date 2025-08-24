@@ -1101,29 +1101,148 @@ class App extends Data {
     /**
      * @throws Exception
      */
-    public static function flags($object): object
+    public static function flags($object, $type=''): object | array
     {
         $flags = $object->data(App::FLAGS);
         if(empty($flags)){
             App::flags_options($object);
             $flags = $object->data(App::FLAGS);
         }
-        return $flags;
+        switch($type){            
+            case 'command':
+                $command_flags = [];
+                foreach($flags as $flag => $value){
+                    if($value === false){
+                        $value = 'false';
+                    }
+                    elseif($value === true){
+                        $value = 'true';
+                    }
+                    elseif($value === null){
+                        $value = 'null';
+                    }
+                    if(
+                        in_array(
+                            $value,
+                            [
+                                'false',
+                                'true',
+                                'null'
+                            ],
+                            true
+                        ) ||
+                        is_numeric($value)
+                    ){
+                        $command_flags[] = '--' . $flag . '=' . $value;
+                    } else {
+                        if(is_array($value)){
+                            foreach ($value as $val){
+                                if($value === false){
+                                    $val = 'false';
+                                }
+                                elseif($value === true){
+                                    $val = 'true';
+                                }
+                                elseif($value === null){
+                                    $val = 'null';
+                                }
+                                if(
+                                    in_array(
+                                        $val,
+                                        [
+                                            'false',
+                                            'true',
+                                            'null'
+                                        ],
+                                        true
+                                    ) ||
+                                    is_numeric($val)
+                                ){
+                                    $command_flags[] = '--' . $flag . '[]=' . $val;
+                                } else {
+                                    $command_flags[] = '--' . $flag . '[]=\'' . $val . '\'';
+                                }
+                            }
+                        } elseif(!is_object($value)) {
+                            $command_flags[] = '--' . $flag . '=\'' . $value . '\'';
+                        } else {
+                            foreach($value as $key => $val){
+                                if($value === false){
+                                    $val = 'false';
+                                }
+                                elseif($value === true){
+                                    $val = 'true';
+                                }
+                                elseif($value === null){
+                                    $val = 'null';
+                                }
+                                if(
+                                    in_array(
+                                        $val,
+                                        [
+                                            'false',
+                                            'true',
+                                            'null'
+                                        ],
+                                        true
+                                    ) ||
+                                    is_numeric($val)
+                                ){
+                                    $command_flags[] = '--' . $flag . '.' . $key . '=' . $val;
+                                }
+                                elseif(is_object($val)){
+                                   foreach($val as $k => $v){
+                                        if($value === false){
+                                             $v = 'false';
+                                        }
+                                        elseif($value === true){
+                                             $v = 'true';
+                                        }
+                                        elseif($value === null){
+                                             $v = 'null';
+                                        }
+                                        if(
+                                             in_array(
+                                                  $v,
+                                                  [
+                                                    'false',
+                                                    'true',
+                                                    'null'
+                                                  ],
+                                                  true
+                                             ) ||
+                                             is_numeric($v)
+                                        ){
+                                             $command_flags[] = '--' . $flag . '.' . $key . '.' . $k . '=' . $v;
+                                        } else {
+                                             $command_flags[] = '--' . $flag . '.' . $key . '.' . $k . '=\'' . $v . '\'';
+                                        }
+                                   }
+                                } else {
+                                    $command_flags[] = '--' . $flag . '.' . $key . '=\'' . $val . '\'';
+                                }
+                            }
+                        }
+                    }
+                }
+                return $command_flags;
+            default:            
+                return $flags;
+        }
+        return $flags;    
     }
 
     /**
      * @throws Exception
      */
-    public static function options($object, $type='default'): mixed
+    public static function options($object, $type=''): object | array
     {
         $options = $object->data(App::OPTIONS);
         if(empty($options)){
             App::flags_options($object);
             $options = $object->data(App::OPTIONS);
         }
-        switch($type) {
-            case 'default':
-                return $options;
+        switch($type) {         
             case 'command':
                 $command_options = [];
                 foreach($options as $option => $value){
@@ -1241,6 +1360,8 @@ class App extends Data {
                     }
                 }
                 return $command_options;
+            default:
+                return $options;       
         }
         return $options;
     }
