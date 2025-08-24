@@ -420,7 +420,7 @@ class Install extends Controller {
             }
         }
         echo 'Press ctrl-c to stop the installation...' . PHP_EOL;
-        $command_options = App::options($object, 'command');
+        $command_options = App::options($object, '#command');
         if(
             $package->has('command') &&
             is_array($package->get('command'))
