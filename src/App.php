@@ -1109,7 +1109,7 @@ class App extends Data {
             $flags = $object->data(App::FLAGS);
         }
         switch($type){            
-            case 'command':
+            case '#command':
                 $command_flags = [];
                 foreach($flags as $flag => $value){
                     if($value === false){
@@ -1226,6 +1226,7 @@ class App extends Data {
                     }
                 }
                 return $command_flags;
+            case '#default':
             default:            
                 return $flags;
         }
@@ -1243,7 +1244,7 @@ class App extends Data {
             $options = $object->data(App::OPTIONS);
         }
         switch($type) {         
-            case 'command':
+            case '#command':
                 $command_options = [];
                 foreach($options as $option => $value){
                     if($value === false){
@@ -1360,6 +1361,7 @@ class App extends Data {
                     }
                 }
                 return $command_options;
+            case '#default':
             default:
                 return $options;       
         }
