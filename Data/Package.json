@@ -52,7 +52,7 @@
           "recursive": true
         },
         {
-          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/src/Shared/",
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Shared/",
           "to" : "{{config('project.dir.shared')}}",
           "recursive": true
         },
