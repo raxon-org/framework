@@ -875,6 +875,11 @@
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
           "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#parentNode.#property)}}",
           "recursive": true
+        },
+        {
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Shared/",
+          "to" : "{{config('project.dir.shared')}}",
+          "recursive": true
         }
       ],
       "command" : [
