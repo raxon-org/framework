@@ -147,7 +147,8 @@ class Update extends Controller {
         $name = Update::name(__FUNCTION__, Update::NAME);        
         Event::trigger($object, 'cli.' . strtolower(Update::NAME) . '.' . __FUNCTION__, [
             'name' => $name,
-            'class' => $class
+            'class' => $class,
+            'list' => $response
         ]);
     }
 
