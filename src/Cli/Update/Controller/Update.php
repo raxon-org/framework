@@ -120,7 +120,7 @@ class Update extends Controller {
      * @throws FileWriteException
      * @throws Exception
      */
-    private static function update(App $object){
+    private static function execute(App $object){
         d('Update');
     }
 
