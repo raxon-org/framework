@@ -125,7 +125,10 @@ class Update extends Controller {
         $class = 'System.Installation';                
         $node = new Node($object);
         $response = $node->list($class, $node->role_system(), [
-            'limit' => 100000
+            'limit' => 100000,
+            'order' => [
+                'ctime' => 'ASC'
+            ]
         ]);
         if($response && array_key_exists('list', $response)){
             foreach($response['list'] as $item){
