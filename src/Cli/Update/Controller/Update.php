@@ -86,7 +86,7 @@ class Update extends Controller {
             ]);
             throw $exception;
         }
-        $response = Version::{$command}($object);
+        $response = Update::{$command}($object);
         Event::trigger($object, 'cli.' . strtolower(Update::NAME) . '.' . __FUNCTION__, [
             'command' => $command
         ]);
@@ -106,7 +106,7 @@ class Update extends Controller {
             ]);
             return $response;
         } catch(Exception | LocateException | UrlEmptyException | UrlNotExistException $exception){
-            Event::trigger($object, 'cli.' . strtolower(Version::NAME) . '.' . __FUNCTION__, [
+            Event::trigger($object, 'cli.' . strtolower(Update::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url,
                 'exception' => $exception
