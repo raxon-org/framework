@@ -139,6 +139,14 @@ class Update extends Controller {
                 'ctime' => 'ASC'
             ]
         ]);
+        $command = 'composer update';
+        Core::execute($object, $command, $output, $notification);
+        if($output){
+            echo $output . PHP_EOL;
+        }
+        if($notification){
+            echo $notification . PHP_EOL;
+        }
         if($response && array_key_exists('list', $response)){
             foreach($response['list'] as $item){
                 if(property_exists($item, 'name')){
@@ -152,6 +160,14 @@ class Update extends Controller {
                     }
                 }
             }
+        }
+        $command = Core::binary($object) . ' update info';
+        Core::execute($object, $command, $output, $notification);
+        if($output){
+            echo $output . PHP_EOL;
+        }
+        if($notification){
+            echo $notification . PHP_EOL;
         }
         $name = Update::name(__FUNCTION__, Update::NAME);        
         Event::trigger($object, 'cli.' . strtolower(Update::NAME) . '.' . __FUNCTION__, [
