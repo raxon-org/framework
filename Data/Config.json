@@ -20,7 +20,8 @@
                 "rewrite",
                 "bin",
                 "zip",
-                "reset"
+                "reset",
+                "update"
             ]
         },
         "name": "raxon/framework",
