@@ -98,6 +98,15 @@ class Update extends Controller {
         $name = false;
         $url = false;
         try {
+            $class = 'System.Installation';                
+            $node = new Node($object);
+            $response = $node->list($class, $node->role_system(), [
+            'limit' => 100000,
+                'order' => [
+                    'name' => 'ASC'
+                ]
+            ]);
+            $object->data('list', $response);
             $name = Update::name(__FUNCTION__, Update::NAME);
             $url = Update::locate($object, $name);
             $response = Update::response($object, $url);
