@@ -147,6 +147,19 @@ class Update extends Controller {
         if($notification){
             echo $notification . PHP_EOL;
         }
+        try {
+            $command = Core::binary($object) . ' install raxon/boot -patch';
+            Core::execute($object, $command, $output, $notification);
+            if($output){
+                echo $output . PHP_EOL;
+            }
+            if($notification){
+                echo $notification . PHP_EOL;
+            }
+        }
+        catch(Exception $exception){
+            // Ignore
+        }
         if($response && array_key_exists('list', $response)){
             foreach($response['list'] as $item){
                 if(property_exists($item, 'name')){
