@@ -130,7 +130,7 @@ class Update extends Controller {
         if($response && array_key_exists('list', $response)){
             foreach($response['list'] as $item){
                 if(property_exists($item, 'name')){
-                    $command = Core::binary() . ' install ' . $item->name . ' -patch';
+                    $command = Core::binary($object) . ' install ' . $item->name . ' -patch';
                     Core::execute($object, $command, $output, $notification);
                     if($output){
                         echo $output . PHP_EOL;
