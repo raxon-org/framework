@@ -36,7 +36,7 @@ class Update extends Controller {
     const COMMAND_EXECUTE = 'execute';
     const COMMAND = [
         Update::COMMAND_INFO,
-        Update::COMMAND_UPDATE
+        Update::COMMAND_EXECUTE
     ];
 
     const DEFAULT_COMMAND = Update::COMMAND_EXECUTE;
