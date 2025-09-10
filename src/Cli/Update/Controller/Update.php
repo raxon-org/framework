@@ -8,7 +8,7 @@
  * @changeLog
  *  -    all
  */
-namespace Raxon\Cli\Version\Controller;
+namespace Raxon\Cli\Update\Controller;
 
 use Raxon\App;
 use Raxon\Config;
