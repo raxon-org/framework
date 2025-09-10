@@ -106,7 +106,7 @@ class Update extends Controller {
                     'name' => 'ASC'
                 ]
             ]);
-            $object->data('list', $response);
+            $object->data('list', $response['list'] ?? []);
             $name = Update::name(__FUNCTION__, Update::NAME);
             $url = Update::locate($object, $name);
             $response = Update::response($object, $url);
