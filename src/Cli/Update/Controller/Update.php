@@ -121,9 +121,11 @@ class Update extends Controller {
      * @throws FileWriteException
      * @throws Exception
      */
-    private static function execute(App $object){
+    private static function execute(App $object){        
+        $class = 'System.Installation';                
         $node = new Node($object);
-        d($node);
+        $response = $node->record($class, $node->role_system(), []);
+        ddd($response);
     }
 
 }
