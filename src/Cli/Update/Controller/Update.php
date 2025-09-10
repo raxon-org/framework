@@ -121,7 +121,8 @@ class Update extends Controller {
      * @throws Exception
      */
     private static function execute(App $object){
-        d('Update');
+        $url = $object->config('project.dir');
+        d($url);
     }
 
 }
