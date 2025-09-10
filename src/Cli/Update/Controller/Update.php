@@ -124,7 +124,9 @@ class Update extends Controller {
     private static function execute(App $object){        
         $class = 'System.Installation';                
         $node = new Node($object);
-        $response = $node->list($class, $node->role_system(), []);
+        $response = $node->list($class, $node->role_system(), [
+            'limit' => 100000
+        ]);
         ddd($response);
     }
 
