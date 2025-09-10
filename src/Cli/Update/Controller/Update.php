@@ -19,6 +19,7 @@ use Raxon\Module\File;
 use Raxon\Module\Data;
 use Raxon\Module\Controller;
 use Raxon\Module\Parse;
+use Raxon\Node\Module\Node;
 
 use Exception;
 
@@ -121,8 +122,8 @@ class Update extends Controller {
      * @throws Exception
      */
     private static function execute(App $object){
-        $url = $object->config('project.dir');
-        d($url);
+        $node = new Node($object);
+        d($node);
     }
 
 }
