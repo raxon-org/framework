@@ -153,9 +153,11 @@ class Update extends Controller {
             if($output){
                 echo $output . PHP_EOL;
             }
+            /*
             if($notification){
                 echo $notification . PHP_EOL;
             }
+            */    
         }
         catch(Exception $exception){
             // Ignore
