@@ -152,12 +152,11 @@ class Update extends Controller {
             Core::execute($object, $command, $output, $notification);
             if($output){
                 echo $output . PHP_EOL;
-            }
-            /*
+            }            
             if($notification){
                 echo $notification . PHP_EOL;
             }
-            */    
+                
         }
         catch(Exception $exception){
             // Ignore
