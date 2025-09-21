@@ -26,12 +26,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/account" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -64,12 +59,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/application" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -92,12 +82,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/basic" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -125,12 +110,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/boot" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -187,12 +167,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/config" : {
       "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
@@ -220,12 +195,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/doctrine" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -253,12 +223,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/email" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -311,12 +276,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/log" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -345,12 +305,7 @@
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup",
         "{{binary('php Bin/Raxon.php')}} cache:clear"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/event" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -382,12 +337,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/host" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -410,12 +360,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/keyboard" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -438,12 +383,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/node" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -476,12 +416,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/raxon" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -509,12 +444,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/route" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -541,12 +471,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/ollama" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -573,12 +498,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/autoload" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -610,12 +530,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/server" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -643,12 +558,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/middleware" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -676,12 +586,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/output_filter" : {
       "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
@@ -709,12 +614,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/example" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -747,12 +647,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/priya" : {
       "composer" : "composer require {{$this.#parentNode.#property}}:*",
@@ -762,12 +657,7 @@
       "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/test" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -790,12 +680,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/task" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -823,12 +708,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/parse" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -856,12 +736,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property|>default:''}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property|>default:''}} update"
-        ]
-      }
+      ]
     },
     "raxon/markdown" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -884,12 +759,7 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/search" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -907,12 +777,7 @@
       ],      
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     },
     "raxon/deno" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -930,12 +795,25 @@
       ],
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
+      ]
+    },
+    "raxon/git" : {
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
+      "route" : [
+        "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      "installation" : "{{config('project.dir.data')}}{{config('dictionary.package')}}{{config('ds')}}{{$this.#parentNode.#property}}{{config('ds')}}{{config('dictionary.installation')}}{{config('extension.json')}}",
+      "copy" : [
+        {
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Package/",
+          "to" : "{{app.package.dir(config('project.dir.package'), $this.#parentNode.#parentNode.#property)}}",
+          "recursive": true
+        }        
+      ],
+      "command" : [
+        "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
+      ]
     },
     "raxon/frankenphp" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
@@ -953,12 +831,7 @@
       ],      
       "command" : [
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
-      ],
-      "update" : {
-        "command" : [
-          "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#parentNode.#property}} update"
-        ]
-      }
+      ]
     }
   }
 }
