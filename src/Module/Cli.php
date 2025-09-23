@@ -346,15 +346,15 @@ class Cli {
     public static function labels(): string
     {
         $label=[];
-        $label[] = CLi::notice('Labels: ');
-        $label[] = CLi::alert('Alert', ['uppercase' => true]);
-        $label[] = CLi::critical('Critical', ['uppercase' => true]);
-        $label[] = CLi::debug('Debug', ['uppercase' => true]);
-        $label[] = CLi::emergency('Emergency', ['uppercase' => true]);
-        $label[] = CLi::error('Error', ['uppercase' => true]);
-        $label[] = CLi::info('Info', ['uppercase' => true]);
-        $label[] = CLi::notice('Notice', ['uppercase' => true]);
-        $label[] = CLi::warning('Warning', ['uppercase' => true]);
+        $label[] = Cli::notice('Labels: ');
+        $label[] = Cli::alert('Alert', ['uppercase' => true]);
+        $label[] = Cli::critical('Critical', ['uppercase' => true]);
+        $label[] = Cli::debug('Debug', ['uppercase' => true]);
+        $label[] = Cli::emergency('Emergency', ['uppercase' => true]);
+        $label[] = Cli::error('Error', ['uppercase' => true]);
+        $label[] = Cli::info('Info', ['uppercase' => true]);
+        $label[] = Cli::notice('Notice', ['uppercase' => true]);
+        $label[] = Cli::warning('Warning', ['uppercase' => true]);
         return implode(PHP_EOL, $label);
     }
 
