@@ -161,6 +161,7 @@ class Update extends Controller {
         catch(Exception $exception){
             // Ignore
         }
+        $git_sync = false;
         if($response && array_key_exists('list', $response)){
             foreach($response['list'] as $item){
                 if(property_exists($item, 'name')){
@@ -172,7 +173,20 @@ class Update extends Controller {
                     if($notification){
                         echo $notification . PHP_EOL;
                     }
+                    if($item->name === 'raxon/git'){
+                        $git_sync = true;
+                    }
                 }
+            }
+        }
+        if($git_sync){
+            $command = Core::binary($object) . ' raxon/git sync';
+            Core::execute($object, $command, $output, $notification);
+            if($output){
+                echo $output . PHP_EOL;
+            }
+            if($notification){
+                echo $notification . PHP_EOL;
             }
         }
         $command = Core::binary($object) . ' update info';
@@ -183,6 +197,8 @@ class Update extends Controller {
         if($notification){
             echo $notification . PHP_EOL;
         }
+
+
         $name = Update::name(__FUNCTION__, Update::NAME);        
         Event::trigger($object, 'cli.' . strtolower(Update::NAME) . '.' . __FUNCTION__, [
             'name' => $name,
