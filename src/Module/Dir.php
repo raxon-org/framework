@@ -203,6 +203,7 @@ class Dir {
             return false;
         }
         try {
+            $list_symlink = [];
             if ($handle = @opendir($url)) {
                 while (false !== ($entry = readdir($handle))) {
                     $recursiveList = [];
@@ -234,6 +235,12 @@ class Dir {
                         $file->type = File::TYPE;
                     }
                     if(is_link($entry)){
+                        // array of symlinks, if one is in their it should break the current directory
+                        if(!in_array($entry, $list_symlink, true)){
+                            $list_symlink[] = $entry;
+                        } else {
+                            continue; // or break or return the current $list;
+                        }
                         $file->link = true;
                     }
                     $list[] = $file;
