@@ -235,7 +235,7 @@ class Dir {
                         $file->type = File::TYPE;
                     }
                     if(is_link($entry)){
-                        // array of symlinks, if one is in their it should break the current directory
+                        // array of symlinks, if one is in there it should break the current directory
                         if(!in_array($entry, $list_symlink, true)){
                             $list_symlink[] = $entry;
                         } else {
