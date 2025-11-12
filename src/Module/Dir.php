@@ -239,7 +239,14 @@ class Dir {
                         if(!in_array($entry, $list_symlink, true)){
                             $list_symlink[] = $entry;
                         } else {
-                            continue; // or break or return the current $list;
+                            if(is_resource($handle)){
+                                closedir($handle);
+                            }
+                            if(is_dir($cwd)){
+                                @chdir($cwd);
+                            }
+                            $this->count($count);
+                            return $list;
                         }
                         $file->link = true;
                     }
