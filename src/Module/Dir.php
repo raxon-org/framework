@@ -183,7 +183,7 @@ class Dir {
         return $node->ignore;
     }
 
-    public function read(string $url='', bool $recursive=false, string $format='flat'): bool | array
+    public function read(string $url='', bool $recursive=false, string $format='flat', $disable_symlink=false): bool | array
     {
         if(substr($url,-1) !== Dir::SEPARATOR){
             $url .= Dir::SEPARATOR;
@@ -235,6 +235,9 @@ class Dir {
                         $file->type = File::TYPE;
                     }
                     if(is_link($entry)){
+                        if($disable_symlink === true){
+                            continue;
+                        }
                         // array of symlinks, if one is in there it should break the current directory
                         if(!in_array($entry, $list_symlink, true)){
                             $list_symlink[] = $entry;
