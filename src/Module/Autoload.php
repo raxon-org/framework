@@ -429,7 +429,6 @@ class Autoload {
 //        Logger::debug('Autoload loader: ', [ $load ], 'debug'); //found miss slow and fatal crash (push the button)
         $file = $this->locate($load);
         if (!empty($file)) {
-            echo $file . PHP_EOL;
             require_once $file;
             return true;
         }
