@@ -324,8 +324,7 @@ class Dir {
                 Dir::create(substr($target, 1, -1), Dir::CHMOD);
             }
             $command = 'cp -R ' . $source . ' ' . $target;
-            exec($command, $output);
-            ddd($command);
+            exec($command);
             return true;
         } else {
             return false;
