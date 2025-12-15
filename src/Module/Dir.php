@@ -320,14 +320,12 @@ class Dir {
         if(is_dir($source)){
             $source = escapeshellarg($source . '*');
             $target = escapeshellarg($target);
-            d(!is_dir(substr($target, 1, -1)));
-            ddd($target);
-            if(!is_dir($target)){
-                Dir::create($target, Dir::CHMOD);
+            if(!is_dir(substr($target, 1, -1))){
+                Dir::create(substr($target, 1, -1), Dir::CHMOD);
             }
             $command = 'cp -R ' . $source . ' ' . $target;
-            ddd($command);
             exec($command, $output);
+            ddd($command);
             return true;
         } else {
             return false;
