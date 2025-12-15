@@ -327,9 +327,6 @@ class Dir {
                 if($file->type === File::TYPE){
                     $dir_name = Dir::name($file->url);
                     $temp = explode($source, $dir_name);
-                    d($source);
-                    d($dir_name);
-                    ddd($temp);
                     if(array_key_exists(1, $temp)){
                         $destination_dir = $target . $temp[1];
                         ddd($destination_dir);
