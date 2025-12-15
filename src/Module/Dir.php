@@ -318,7 +318,7 @@ class Dir {
             $source .= Dir::SEPARATOR;
         }
         if(is_dir($source)){
-            $source = escapeshellarg($source . '*');
+            $source = escapeshellarg($source);
             $target = escapeshellarg($target);
             if(!is_dir(substr($target, 1, -1))){
                 Dir::create(substr($target, 1, -1), Dir::CHMOD);
