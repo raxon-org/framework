@@ -329,7 +329,6 @@ class Dir {
                     $temp = explode($source, $dir_name);
                     if(array_key_exists(1, $temp)){
                         $destination_dir = $target . $temp[1];
-                        ddd($destination_dir);
                         if(!is_dir($destination_dir)){
                             Dir::create($destination_dir, Dir::CHMOD);
                         }
