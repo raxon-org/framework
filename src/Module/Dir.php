@@ -318,12 +318,12 @@ class Dir {
             $source .= Dir::SEPARATOR;
         }
         if(is_dir($source)){
-            $source = escapeshellarg($source);
+            $source = escapeshellarg($source . '*');
             $target = escapeshellarg($target);
             if(!is_dir($target)){
                 Dir::create($target, Dir::CHMOD);
             }
-            $command = 'cp -R ' . $source . '* ' . $target;
+            $command = 'cp -R ' . $source . ' ' . $target;
             ddd($command);
             exec($command, $output);
             return true;
