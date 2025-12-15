@@ -323,9 +323,8 @@ class Dir {
             if(!is_dir($target)){
                 Dir::create($target, Dir::CHMOD);
             }
-            d($source);
-            ddd($target);
-            exec('cp ' . $source . '* ' . $target . ' -R');
+            exec('cp ' . $source . '* ' . $target . ' -R', $output);
+            d($output);
             return true;
         } else {
             return false;
