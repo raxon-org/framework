@@ -325,7 +325,7 @@ class Dir {
             $read = $dir->read($source, true);
             foreach($read as $file){
                 if($file->type === File::TYPE){
-                    $dir_name = dirname($file->url);
+                    $dir_name = Dir::name($file->url);
                     $temp = explode($source, $dir_name);
                     d($source);
                     d($dir_name);
