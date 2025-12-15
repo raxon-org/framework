@@ -318,19 +318,17 @@ class Dir {
             $source .= Dir::SEPARATOR;
         }
         if(is_dir($source)){
-            $source = escapeshellarg($source);
-            $target = escapeshellarg($target);
-            if(!is_dir(substr($target, 1, -1))){
-                Dir::create(substr($target, 1, -1), Dir::CHMOD);
+            if(!is_dir($target)){
+                Dir::create($target, Dir::CHMOD);
             }
             $dir = new Dir();
             $read = $dir->read($source, true);
             foreach($read as $file){
                 if($file->type === File::TYPE){
                     $dir_name = dirname($file->url);
-                    $temp = explode(substr($source, 1, -1), $dir_name);
+                    $temp = explode($source, $dir_name);
                     if(array_key_exists(1, $temp)){
-                        $destination_dir = substr($target, 1, -1) . $temp[1];
+                        $destination_dir = $target . $temp[1];
                         ddd($destination_dir);
                         if(!is_dir($destination_dir)){
                             Dir::create($destination_dir, Dir::CHMOD);
