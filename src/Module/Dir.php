@@ -323,8 +323,23 @@ class Dir {
             if(!is_dir(substr($target, 1, -1))){
                 Dir::create(substr($target, 1, -1), Dir::CHMOD);
             }
-            $command = 'cp -R ' . $source . ' ' . $target;
-            exec($command);
+            $dir = new Dir();
+            $read = $dir->read($source, true);
+            foreach($read as $file){
+                if($file->type === File::TYPE){
+                    $dir_name = dirname($file->url);
+                    $temp = explode(substr($source, 1, -1), $dir_name);
+                    if(array_key_exists(1, $temp)){
+                        $destination_dir = substr($target, 1, -1) . $temp[1];
+                        ddd($destination_dir);
+                        if(!is_dir($destination_dir)){
+                            Dir::create($destination_dir, Dir::CHMOD);
+                        }
+                        $destination = $destination_dir . $file->name;
+                        File::copy($file->url, $destination);
+                    }
+                }
+            }
             return true;
         } else {
             return false;
