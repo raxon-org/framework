@@ -320,6 +320,9 @@ class Dir {
         if(is_dir($source)){
             $source = escapeshellarg($source);
             $target = escapeshellarg($target);
+            if(!is_dir($target)){
+                Dir::create($target, Dir::CHMOD);
+            }
             exec('cp ' . $source . '* ' . $target . ' -R');
             return true;
         } else {
