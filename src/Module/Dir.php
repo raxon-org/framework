@@ -320,7 +320,7 @@ class Dir {
         if(is_dir($source)){
             $source = escapeshellarg($source . '*');
             $target = escapeshellarg($target);
-            d(!is_dir($target));
+            d(!is_dir(substr($target, 1, -1)));
             ddd($target);
             if(!is_dir($target)){
                 Dir::create($target, Dir::CHMOD);
