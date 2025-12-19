@@ -128,6 +128,9 @@ class Config extends Data {
     const DATA_PDO = 'pdo';
     const DATA_DIR_VENDOR = 'dir.vendor';
     const DATA_FRAMEWORK_VERSION = 'framework.version';
+    const DATA_FRAMEWORK_VERSION_MAJOR = 'framework.major';
+    const DATA_FRAMEWORK_VERSION_MINOR = 'framework.minor';
+    const DATA_FRAMEWORK_VERSION_PATCH = 'framwork.patch';
     const DATA_FRAMEWORK_BUILT = 'framework.built';
     const DATA_FRAMEWORK_DIR = 'framework.dir';
     const DATA_FRAMEWORK_DIR_ROOT = Config::DATA_FRAMEWORK_DIR . '.' . 'root';
