@@ -83,20 +83,14 @@ class File {
     {
         $owner = fileowner($url);
         $user_info = posix_getpwuid($owner);
-        if(array_key_exists('name', $user_info)){
-            return $user_info['name'];
-        }
-        return '';
+        return $user_info['name'] ?? '';
     }
 
     public static function group(string $url=''): string
     {
         $owner = filegroup($url);
         $group_info = posix_getgrgid($owner);
-        if(array_key_exists('name', $group_info)){
-            return $group_info['name'];
-        }
-        return '';
+        return $group_info['name'] ?? '';
     }
 
     public static function rights(string $url=''): string
