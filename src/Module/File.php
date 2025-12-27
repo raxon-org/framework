@@ -79,6 +79,21 @@ class File {
         return str_replace('\\\/', '/', rtrim($directory,'\\\/')) . '/';
     }
 
+    public static function owner(string $url=''): string
+    {
+        return posix_getpwuid(fileowner($url))['name'];
+    }
+
+    public static function group(string $url=''): string
+    {
+        return posix_getgrgid(filegroup($url))['name'];
+    }
+
+    public static function rights(string $url=''): string
+    {
+        return substr(sprintf('%o', fileperms($url)), -4);
+    }
+
     public static function mtime(string $url=''): bool | int | null
     {
         try {
