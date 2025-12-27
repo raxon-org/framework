@@ -81,12 +81,22 @@ class File {
 
     public static function owner(string $url=''): string
     {
-        return posix_getpwuid(fileowner($url))['name'];
+        $owner = fileowner($url);
+        $user_info = posix_getpwuid($owner);
+        if(array_key_exists('name', $user_info)){
+            return $user_info['name'];
+        }
+        return '';
     }
 
     public static function group(string $url=''): string
     {
-        return posix_getgrgid(filegroup($url))['name'];
+        $owner = filegroup($url);
+        $group_info = posix_getgrgid($owner);
+        if(array_key_exists('name', $group_info)){
+            return $group_info['name'];
+        }
+        return '';
     }
 
     public static function rights(string $url=''): string
