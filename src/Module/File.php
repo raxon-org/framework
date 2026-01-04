@@ -81,6 +81,9 @@ class File {
 
     public static function owner(string $url=''): string
     {
+        if(File::is_link($url)){
+            return '';
+        }
         $owner = fileowner($url);
         $user_info = posix_getpwuid($owner);
         return $user_info['name'] ?? '';
@@ -88,6 +91,9 @@ class File {
 
     public static function group(string $url=''): string
     {
+        if(File::is_link($url)){
+            return '';
+        }
         $owner = filegroup($url);
         $group_info = posix_getgrgid($owner);
         return $group_info['name'] ?? '';
