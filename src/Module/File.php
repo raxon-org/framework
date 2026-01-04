@@ -101,6 +101,9 @@ class File {
 
     public static function rights(string $url=''): string
     {
+        if(File::is_link($url)){
+            return '0600';
+        }
         return substr(sprintf('%o', fileperms($url)), -4);
     }
 
