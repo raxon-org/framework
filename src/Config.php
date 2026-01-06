@@ -194,6 +194,13 @@ class Config extends Data {
     const DATA_PROJECT_DIR_HOST =  Config::DATA_PROJECT_DIR . '.' . 'host';
     const DATA_PROJECT_DIR_DOMAIN =  Config::DATA_PROJECT_DIR . '.' . 'domain';
     const DATA_PROJECT_DIR_AUDIO =  Config::DATA_PROJECT_DIR . '.' . 'audio';
+    const DATA_PROJECT_DIR_BOOK =  Config::DATA_PROJECT_DIR . '.' . 'book';
+    const DATA_PROJECT_DIR_DESKTOP =  Config::DATA_PROJECT_DIR . '.' . 'desktop';
+    const DATA_PROJECT_DIR_DOCUMENT =  Config::DATA_PROJECT_DIR . '.' . 'document';
+    const DATA_PROJECT_DIR_PHOTO =  Config::DATA_PROJECT_DIR . '.' . 'photo';
+    const DATA_PROJECT_DIR_VIDEO =  Config::DATA_PROJECT_DIR . '.' . 'video';
+
+
     const DATA_PROJECT_DIR_PLUGIN =  Config::DATA_PROJECT_DIR . '.' . 'plugin';
     const DATA_PROJECT_DIR_LOG =  Config::DATA_PROJECT_DIR . '.' . 'log';
     const DATA_PROJECT_DIR_EXECUTE =  Config::DATA_PROJECT_DIR . '.' . 'execute';
@@ -322,6 +329,31 @@ class Config extends Data {
             }
             $key = Config::DATA_PROJECT_DIR_AUDIO;            
             $value = $volume->data('volume.dir.audio');
+            if($value){
+                $config->data($key, $value);
+            }
+            $key = Config::DATA_PROJECT_DIR_BOOK;
+            $value = $volume->data('volume.dir.book');
+            if($value){
+                $config->data($key, $value);
+            }
+            $key = Config::DATA_PROJECT_DIR_DESKTOP;
+            $value = $volume->data('volume.dir.desktop');
+            if($value){
+                $config->data($key, $value);
+            }
+            $key = Config::DATA_PROJECT_DIR_DOCUMENT;
+            $value = $volume->data('volume.dir.document');
+            if($value){
+                $config->data($key, $value);
+            }
+            $key = Config::DATA_PROJECT_DIR_PHOTO;
+            $value = $volume->data('volume.dir.photo');
+            if($value){
+                $config->data($key, $value);
+            }
+            $key = Config::DATA_PROJECT_DIR_VIDEO;
+            $value = $volume->data('volume.dir.video');
             if($value){
                 $config->data($key, $value);
             }
@@ -953,6 +985,46 @@ class Config extends Data {
         $value =
             $this->data(Config::DATA_PROJECT_DIR_ROOT) .
             $this->data(Config::DICTIONARY . '.' . Config::AUDIO) .
+            $this->data(Config::DS)
+        ;
+        $this->data($key, $value);
+
+        $key = Config::DATA_PROJECT_DIR_BOOK;
+        $value =
+            $this->data(Config::DATA_PROJECT_DIR_ROOT) .
+            $this->data(Config::DICTIONARY . '.' . Config::BOOK) .
+            $this->data(Config::DS)
+        ;
+        $this->data($key, $value);
+
+        $key = Config::DATA_PROJECT_DIR_DESKTOP;
+        $value =
+            $this->data(Config::DATA_PROJECT_DIR_ROOT) .
+            $this->data(Config::DICTIONARY . '.' . Config::DESKTOP) .
+            $this->data(Config::DS)
+        ;
+        $this->data($key, $value);
+
+        $key = Config::DATA_PROJECT_DIR_DOCUMENT;
+        $value =
+            $this->data(Config::DATA_PROJECT_DIR_ROOT) .
+            $this->data(Config::DICTIONARY . '.' . Config::DOCUMENT) .
+            $this->data(Config::DS)
+        ;
+        $this->data($key, $value);
+
+        $key = Config::DATA_PROJECT_DIR_PHOTO;
+        $value =
+            $this->data(Config::DATA_PROJECT_DIR_ROOT) .
+            $this->data(Config::DICTIONARY . '.' . Config::PHOTO) .
+            $this->data(Config::DS)
+        ;
+        $this->data($key, $value);
+
+        $key = Config::DATA_PROJECT_DIR_VIDEO;
+        $value =
+            $this->data(Config::DATA_PROJECT_DIR_ROOT) .
+            $this->data(Config::DICTIONARY . '.' . Config::VIDEO) .
             $this->data(Config::DS)
         ;
         $this->data($key, $value);
