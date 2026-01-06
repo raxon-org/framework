@@ -122,6 +122,17 @@ class Config extends Data {
     const VALUE_VALIDATOR = 'Validator';
     const TEST = 'test';
     const VALUE_TEST = 'Test';
+    const DESKTOP = 'desktop';
+    const VALUE_DESKTOP = 'Desktop';
+    const BOOK = 'book';
+    const VALUE_BOOK = 'Book';
+    const DOCUMENT = 'document';
+    const VALUE_DOCUMENT = 'Document';
+    const PHOTO = 'photo';
+    const VALUE_PHOTO = 'Photo';
+    const VIDEO = 'video';
+    const VALUE_VIDEO = 'Video';
+
     const ROUTE = 'Route.json';
     const CONFIG = 'Config.json';
     const DICTIONARY = 'dictionary';
@@ -683,6 +694,26 @@ class Config extends Data {
 
         $key = Config::DICTIONARY . '.' . Config::AUDIO;
         $value = Config::VALUE_AUDIO;
+        $this->data($key, $value);
+
+        $key = Config::DICTIONARY . '.' . Config::BOOK;
+        $value = Config::VALUE_BOOK;
+        $this->data($key, $value);
+
+        $key = Config::DICTIONARY . '.' . Config::DESKTOP;
+        $value = Config::VALUE_DESKTOP;
+        $this->data($key, $value);
+
+        $key = Config::DICTIONARY . '.' . Config::DOCUMENT;
+        $value = Config::VALUE_DOCUMENT;
+        $this->data($key, $value);
+
+        $key = Config::DICTIONARY . '.' . Config::PHOTO;
+        $value = Config::VALUE_PHOTO;
+        $this->data($key, $value);
+
+        $key = Config::DICTIONARY . '.' . Config::VIDEO;
+        $value = Config::VALUE_VIDEO;
         $this->data($key, $value);
 
         $key = Config::DICTIONARY . '.' . Config::LOG;
