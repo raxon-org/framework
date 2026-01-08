@@ -27,7 +27,7 @@ class Bin extends Controller {
 
     const INFO = '{{binary()}} bin                            | Creates binary';
 
-    use Plugin\Binary\Binary_Create;
+    use Plugin\Binary_Create;
 
     /**
      * @throws ObjectException
