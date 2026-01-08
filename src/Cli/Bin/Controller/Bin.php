@@ -14,6 +14,7 @@ use Exception;
 use Raxon\App;
 use Raxon\Exception\ObjectException;
 use Raxon\Module\Controller;
+use Plugin;
 
 class Bin extends Controller {
     const DIR = __DIR__;
@@ -26,7 +27,7 @@ class Bin extends Controller {
 
     const INFO = '{{binary()}} bin                            | Creates binary';
 
-    use \Raxon\Parse\Plugin\Binary\Binary_Create;
+    use Plugin\Binary\Binary_Create;
 
     /**
      * @throws ObjectException
