@@ -37,12 +37,15 @@ class Bin extends Controller {
 
     /**
      * @throws ObjectException
+     * @throws Exception
      */
     public static function run(App $object){
         $name = $object->parameter($object, Bin::NAME, 1);
         if(empty($name)){
             $name = Bin::DEFAULT_NAME;
         }
+        $autoload = $object->data(App::AUTOLOAD_RAXON);
+        $autoload->addPrefix('Plugin', Bin::DIR . '../Plugin/');
         (new Bin)->binary_create($name);
     }
 }
