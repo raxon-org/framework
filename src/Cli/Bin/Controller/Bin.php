@@ -46,6 +46,7 @@ class Bin extends Controller {
         }
         $autoload = $object->data(App::AUTOLOAD_RAXON);
         $autoload->addPrefix('Plugin', Bin::DIR . '../Plugin/');
+        ddd($autoload->getPrefixList());
         (new Bin)->binary_create($name);
     }
 }
