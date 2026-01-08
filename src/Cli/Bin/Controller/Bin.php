@@ -16,6 +16,7 @@ use Raxon\Module\Controller;
 use Raxon\Module\Event;
 
 use Exception;
+use Plugin;
 
 use Raxon\Exception\LocateException;
 use Raxon\Exception\UrlEmptyException;
@@ -32,6 +33,8 @@ class Bin extends Controller {
 
     const INFO = '{{binary()}} bin                            | Creates binary';
 
+    use Plugin\Binary_Create;
+
     /**
      * @throws ObjectException
      */
@@ -40,24 +43,6 @@ class Bin extends Controller {
         if(empty($name)){
             $name = Bin::DEFAULT_NAME;
         }
-        $url = false;
-        $object->data('name', $name);
-        try {
-            $name = Bin::name('create', Bin::NAME);
-            $url = Bin::locate($object, $name);
-            $result = Bin::response($object, $url);
-            Event::trigger($object, 'cli.' . strtolower(Bin::NAME) . '.' . __FUNCTION__, [
-                'name' => $name,
-                'url' => $url
-            ]);
-            return $result;
-        } catch(Exception | LocateException | UrlEmptyException | UrlNotExistException $exception){
-            Event::trigger($object, 'cli.' . strtolower(Bin::NAME) . '.' . __FUNCTION__, [
-                'name' => $name,
-                'url' => $url,
-                'exception' => $exception
-            ]);
-            return $exception;
-        }
+        (new Bin)->binary_create($name);
     }
 }

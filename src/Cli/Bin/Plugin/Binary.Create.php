@@ -16,7 +16,7 @@ trait Binary_Create
     /**
      * @throws Exception
      */
-    protected function binary_create($fallback = null): void
+    protected function binary_create($name = null): void
     {
         $object = $this->object();
         $id = posix_geteuid();
