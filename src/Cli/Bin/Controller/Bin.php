@@ -17,6 +17,8 @@ use Raxon\Module\Controller;
 use Plugin;
 
 class Bin extends Controller {
+    private $object;
+
     const DIR = __DIR__;
     const NAME = 'Bin';
 
@@ -29,6 +31,19 @@ class Bin extends Controller {
 
     use Plugin\Binary_Create;
 
+    public function __construct(App $object){
+        $this->object($object);
+    }
+
+    public function object($object = null){
+        if($object !== null){
+            $this->object = $object;
+        }
+        return $this->object;
+
+    }
+
+
     /**
      * @throws ObjectException
      * @throws Exception
@@ -38,6 +53,6 @@ class Bin extends Controller {
         if(empty($name)){
             $name = Bin::DEFAULT_NAME;
         }
-        (new Bin)->binary_create($name);
+        (new Bin($object))->binary_create($name);
     }
 }
