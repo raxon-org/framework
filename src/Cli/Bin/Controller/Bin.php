@@ -16,7 +16,6 @@ use Raxon\Module\Controller;
 use Raxon\Module\Event;
 
 use Exception;
-use Plugin;
 
 use Raxon\Exception\LocateException;
 use Raxon\Exception\UrlEmptyException;
@@ -32,8 +31,6 @@ class Bin extends Controller {
     const BINARY = 'Binary';
 
     const INFO = '{{binary()}} bin                            | Creates binary';
-
-    use Plugin\Binary_Create;
 
     /**
      * @throws ObjectException
