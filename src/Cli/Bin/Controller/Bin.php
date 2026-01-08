@@ -13,13 +13,9 @@ namespace Raxon\Cli\Bin\Controller;
 use Raxon\App;
 use Raxon\Exception\ObjectException;
 use Raxon\Module\Controller;
-use Raxon\Module\Event;
 
 use Exception;
-
-use Raxon\Exception\LocateException;
-use Raxon\Exception\UrlEmptyException;
-use Raxon\Exception\UrlNotExistException;
+use Plugin;
 
 class Bin extends Controller {
     const DIR = __DIR__;
@@ -32,6 +28,8 @@ class Bin extends Controller {
 
     const INFO = '{{binary()}} bin                            | Creates binary';
 
+    use Plugin\Binary_Create;
+
     /**
      * @throws ObjectException
      * @throws Exception
@@ -41,9 +39,6 @@ class Bin extends Controller {
         if(empty($name)){
             $name = Bin::DEFAULT_NAME;
         }
-        $autoload = $object->data(App::AUTOLOAD_RAXON);
-        $autoload->addPrefix('Plugin', Bin::DIR . '../Plugin/');
-        ddd($autoload->getPrefixList());
         (new Bin)->binary_create($name);
     }
 }
