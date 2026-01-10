@@ -17,6 +17,9 @@ use Raxon\Module\Parse\Token;
  */
 function validate_string_length(App $object, object|null $record=null, mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
 {
+    if($string === null){
+        return false;
+    }
     $length = strlen($string);
     if(is_array($argument)){
         $arguments = $argument;
