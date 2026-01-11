@@ -89,7 +89,7 @@ config('framework.environment') === 'development' &&
         <tr class="trace-source">
             <td colspan="4">
                 <label>Source: </label><br>
-                {{if(file.exist($trace.file))}}
+                {{if(is.string($trace.file) && file.exist($trace.file))}}
                 {{$source = file.read($trace.file)}}
                 {{if($source)}}
                 {{$read = explode("\n", $source)}}
