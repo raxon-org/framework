@@ -78,17 +78,18 @@ config('framework.environment') === 'development' &&
     <table class="trace">
         {{foreach($exception.trace as $nr => $trace)}}
         <tr class="trace">
-            <td class="title"><b>File:</b> {{$trace.file}} (<b>{{$trace.line}}</b>)</td>
+            <td class="title"><b>File:</b> {{$trace.file|>default:'unknown'}} (<b>{{$trace.line|>default:'unknown'}}</b>)</td>
         </tr>
         <tr class="trace">
-            <td class="class"><b>Class:</b> {{$trace.class}}</td>
+            <td class="class"><b>Class:</b> {{$trace.class|>default:'unknown'}}</td>
         </tr>
         <tr class="trace">
-            <td class="function"><b>Function:</b> {{$trace.function}}</td>
+            <td class="function"><b>Function:</b> {{$trace.function|>default:'unknown'}}</td>
         </tr>
         <tr class="trace-source">
             <td colspan="4">
                 <label>Source: </label><br>
+                {{if(file.exist($trace.file))}}
                 {{$source = file.read($trace.file)}}
                 {{if($source)}}
                 {{$read = explode("\n", $source)}}
@@ -107,6 +108,7 @@ config('framework.environment') === 'development' &&
                     {{/if}}
                 {{/for}}
                 </table>
+                {{/if}}
                 {{/if}}
             </td>
         </tr>
