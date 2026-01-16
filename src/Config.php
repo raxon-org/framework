@@ -503,17 +503,20 @@ class Config extends Data {
             if(!Dir::is($dir_cache)){//
                 if(!File::is_writeable($dir_cache)){
                     //bug at startup, create admin task for this...
+                    //if raxon/task is installed...
                     $task = 'mkdir -p ' . $dir_cache . ' && chmod 777 ' . $dir_cache;
                     $command = Core::binary($object) . ' raxon/task create -command[]=\''. $task .'\' -connection=system';
                     exec($command, $output, $code);
                     if($code !== 0) {
                         throw new Exception('Command failed with code ' . $code . '.');
                     }
+
+                } else {
+                    Dir::create($dir_cache, Dir::CHMOD);
+                    File::permission($object, [
+                        'cache' => $dir_cache
+                    ]);
                 }
-                Dir::create($dir_cache, Dir::CHMOD);
-                File::permission($object, [
-                    'cache' => $dir_cache
-                ]);
             }
         }
         elseif($object->config('posix.id') === Config::USER_DATA_DIR){
