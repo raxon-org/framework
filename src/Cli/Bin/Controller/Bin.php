@@ -12,12 +12,13 @@ namespace Raxon\Cli\Bin\Controller;
 
 use Exception;
 use Raxon\App;
+use Raxon\Config;
 use Raxon\Exception\ObjectException;
 use Raxon\Module\Controller;
-use Plugin;
+use Raxon\Module\Dir;
+use Raxon\Module\File;
 
 class Bin extends Controller {
-    private $object;
 
     const DIR = __DIR__;
     const NAME = 'Bin';
@@ -29,21 +30,6 @@ class Bin extends Controller {
 
     const INFO = '{{binary()}} bin                            | Creates binary';
 
-    use Plugin\Binary_Create;
-
-    public function __construct(App $object){
-        $this->object($object);
-    }
-
-    public function object($object = null){
-        if($object !== null){
-            $this->object = $object;
-        }
-        return $this->object;
-
-    }
-
-
     /**
      * @throws ObjectException
      * @throws Exception
@@ -53,6 +39,42 @@ class Bin extends Controller {
         if(empty($name)){
             $name = Bin::DEFAULT_NAME;
         }
-        (new Bin($object))->binary_create($name);
+        $id = posix_geteuid();
+        if(
+            !in_array(
+                $id,
+                [
+                    0
+                ],
+                true
+            )
+        ){
+            throw new Exception('Only root can execute bin...');
+        }
+        $execute = $object->config(Config::DATA_PROJECT_DIR_BINARY) . Bin::EXE;
+        Dir::create($object->config(Config::DATA_PROJECT_DIR_BINARY), Dir::CHMOD);
+        $dir = Dir::name(Bin::DIR) .
+            $object->config(
+                Config::DICTIONARY .
+                '.' .
+                Config::DATA
+            ) .
+            $object->config('ds');
+        $source = $dir . Bin::EXE;
+        if(File::exist($execute)){
+            File::delete($execute);
+        }
+        File::copy($source, $execute);
+        $url_binary = $object->config(Config::DATA_PROJECT_DIR_BINARY) . \Raxon\Cli\Bin\Controller\Bin::BINARY;
+        File::write($url_binary, $name . PHP_EOL);
+        $url = \Raxon\Cli\Bin\Controller\Bin::TARGET . $name;
+        $content = [];
+        $content[] = '#!/bin/bash';
+        # added $name as this was a bug in updating the cms
+        $content[] = '_=' . $name . ' php ' . $execute . ' "$@"';
+        $content = implode(PHP_EOL, $content);
+        File::write($url, $content);
+        shell_exec('chmod +x ' . $url);
+        echo 'Binary created...' . PHP_EOL;
     }
 }
