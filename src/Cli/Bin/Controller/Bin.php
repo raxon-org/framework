@@ -29,7 +29,7 @@ class Bin extends Controller {
 
     const INFO = '{{binary()}} bin                            | Creates binary';
 
-    //use Plugin\Binary_Create;
+    use Plugin\Binary_Create;
 
     public function __construct(App $object){
         $this->object($object);
@@ -53,8 +53,6 @@ class Bin extends Controller {
         if(empty($name)){
             $name = Bin::DEFAULT_NAME;
         }
-        $trace = debug_backtrace();
-        dd($trace);
         (new Bin($object))->binary_create($name);
     }
 }
