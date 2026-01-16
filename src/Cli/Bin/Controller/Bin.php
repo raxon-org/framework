@@ -53,8 +53,8 @@ class Bin extends Controller {
         if(empty($name)){
             $name = Bin::DEFAULT_NAME;
         }
-        trace();
-        dd('end');
+        $trace = debug_backtrace();
+        dd($trace);
         (new Bin($object))->binary_create($name);
     }
 }
