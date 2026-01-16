@@ -504,7 +504,7 @@ class Config extends Data {
                 if(!File::is_writeable($dir_cache)){
                     //bug at startup, create admin task for this...
                     $task = 'mkdir -p ' . $dir_cache . ' && chmod 777 ' . $dir_cache;
-                    $command = Core::binary($object) . ' raxon/task create -user.email=development@raxon.org -command[]=\''. $task .'\' -connection=system';
+                    $command = Core::binary($object) . ' raxon/task create -command[]=\''. $task .'\' -connection=system';
                     exec($command, $output, $code);
                     if($code !== 0) {
                         throw new Exception('Command failed with code ' . $code . '.');
