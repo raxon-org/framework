@@ -10,7 +10,9 @@
             "app raxon/basic php restore",
             "app raxon/basic php restart",
             "app cache clear",
-            "app cache status"
+            "app cache status",
+            "mv /root/.ollama/models /root/.ollama/models.local",
+            "ln -s /mnt/Disk2/Media/Ollama/models /root/.ollama/models"
         ]
     },
     "ollama": {
