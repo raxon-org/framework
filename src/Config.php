@@ -479,6 +479,8 @@ class Config extends Data {
                 'Cache' .
                 $object->config('ds')
             ;
+            $dir_node = $dir_www_cache . 'Node' . $object->config('ds');
+            $dir_node_list = $dir_node . 'List' . $object->config('ds');
             if(!Dir::is($dir_www)){
                 Dir::create($dir_www, Dir::CHMOD);
                 File::permission($object, [
@@ -495,6 +497,18 @@ class Config extends Data {
                 Dir::create($dir_www_cache, Dir::CHMOD);
                 File::permission($object, [
                     'cache' => $dir_www_cache
+                ]);
+            }
+            if(!Dir::is($dir_node)){
+                Dir::create($dir_node, Dir::CHMOD);
+                File::permission($object, [
+                    'dir_node' => $dir_node
+                ]);
+            }
+            if(!Dir::is($dir_node_list)){
+                Dir::create($dir_node_list, Dir::CHMOD);
+                File::permission($object, [
+                    'dir_node_list' => $dir_node_list
                 ]);
             }
         }
