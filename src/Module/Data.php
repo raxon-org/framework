@@ -614,6 +614,10 @@ class Data {
     {
         $dir = Dir::name($url);
         if(!Dir::exist($dir)){
+            $temp = new Dir();
+            $read = $temp->read('/tmp/raxon/org/', true);
+            ddd($read);
+
             d($dir);
             Dir::create($dir, Dir::CHMOD);
         }
