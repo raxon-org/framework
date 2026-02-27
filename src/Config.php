@@ -483,6 +483,7 @@ class Config extends Data {
             }
             if(!Dir::is($dir_cache)){
                 Dir::create($dir_cache, Dir::CHMOD);
+                ddd(File::exist($dir_cache));
                 File::permission($object, [
                     'cache' => $dir_cache
                 ]);
