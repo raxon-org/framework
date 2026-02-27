@@ -475,18 +475,26 @@ class Config extends Data {
                 'Cache' .
                 $object->config('ds')
             ;
+            $dir_www_cache = $dir_www .
+                'Cache' .
+                $object->config('ds')
+            ;
             if(!Dir::is($dir_www)){
                 Dir::create($dir_www, Dir::CHMOD);
                 File::permission($object, [
                     'dir_www' => $dir_www
                 ]);
             }
-            d($dir_cache);
             if(!Dir::is($dir_cache)){
                 Dir::create($dir_cache, Dir::CHMOD);
-                ddd(File::exist($dir_cache));
                 File::permission($object, [
                     'cache' => $dir_cache
+                ]);
+            }
+            if(!Dir::is($dir_www_cache)){
+                Dir::create($dir_www_cache, Dir::CHMOD);
+                File::permission($object, [
+                    'cache' => $dir_www_cache
                 ]);
             }
         }
