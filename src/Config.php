@@ -481,6 +481,7 @@ class Config extends Data {
                     'dir_www' => $dir_www
                 ]);
             }
+            d($dir_cache);
             if(!Dir::is($dir_cache)){
                 Dir::create($dir_cache, Dir::CHMOD);
                 ddd(File::exist($dir_cache));
