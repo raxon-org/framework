@@ -616,6 +616,7 @@ class Data {
         if(!Dir::exist($dir)){
             $temp = new Dir();
             $read = $temp->read('/tmp/raxon/org/', true);
+            d($dir);
             ddd($read);
 
             d($dir);
