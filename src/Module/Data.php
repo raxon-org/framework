@@ -613,7 +613,9 @@ class Data {
     public function write($url='', $options=[]): array | bool | int
     {
         $dir = Dir::name($url);
-        Dir::create($dir, Dir::CHMOD);
+        if(!Dir::exist($dir)){
+            Dir::create($dir, Dir::CHMOD);
+        }
         $is_chown = false;
         if(posix_geteuid() === 0){
             $is_chown = true;
