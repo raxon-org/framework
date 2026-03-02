@@ -31,6 +31,10 @@
 is.array($exception.location)
 )}}
 {{d(
+is.array($exception.location) &&
+config('framework.environment') === 'development'
+)}}
+{{d(
 !is.empty($exception.location) &&
 is.array($exception.location) &&
 config('framework.environment') === 'development'
