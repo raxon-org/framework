@@ -23,6 +23,8 @@
     <label>Route: </label>
     <span>{{$exception.route}}</span><br>
     {{/if}}
+    <label>Environment: </label>
+    <span>{{config('framework.environment')}}</span><br>
 </section>
 {{if(
 !is.empty($exception.location) &&
