@@ -28,8 +28,7 @@
 </section>
 {{if(
 !is.empty($exception.location) &&
-is.array($exception.location) &&
-config('framework.environment') === 'development'
+is.array($exception.location)
 )}}
 <h1>YES #########################################</h1>
 <section name="location">
