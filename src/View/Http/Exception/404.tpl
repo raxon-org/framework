@@ -26,26 +26,12 @@
     <label>Environment: </label>
     <span>{{config('framework.environment')}}</span><br>
 </section>
-{{d(
-!is.empty($exception.location) &&
-is.array($exception.location)
-)}}
-{{d(
-is.array($exception.location) &&
-config('framework.environment') === 'development'
-)}}
-{{d(
-!is.empty($exception.location) &&
-is.array($exception.location) &&
-(
-config('framework.environment') === 'development'
-)
 
 )}}
 {{if(
 !is.empty($exception.location) &&
 is.array($exception.location) &&
-config('framework.environment') === 'development'
+(config('framework.environment') === 'development')
 )}}
 <h1>YES #########################################</h1>
 <section name="location">
