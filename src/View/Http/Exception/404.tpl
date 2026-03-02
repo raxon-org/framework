@@ -37,7 +37,10 @@ config('framework.environment') === 'development'
 {{d(
 !is.empty($exception.location) &&
 is.array($exception.location) &&
+(
 config('framework.environment') === 'development'
+)
+
 )}}
 {{if(
 !is.empty($exception.location) &&
