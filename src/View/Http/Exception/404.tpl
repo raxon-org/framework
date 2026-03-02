@@ -26,6 +26,7 @@
     <label>Environment: </label>
     <span>{{config('framework.environment')}}</span><br>
 </section>
+{{dd($exception)}}
 {{if(
 !is.empty($exception.location) &&
 is.array($exception.location) &&
