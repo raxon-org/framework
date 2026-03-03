@@ -31,7 +31,6 @@
 is.array($exception.location) &&
 config('framework.environment') === 'development'
 )}}
-<h1>YES #########################################</h1>
 <section name="location">
     <label>Locations: </label><br>
     <table class="location">
