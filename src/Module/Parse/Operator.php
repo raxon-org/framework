@@ -366,8 +366,6 @@ class Operator {
                         $result[$assign_key] = '$this->value_modulo(' . $left_value . ', ' . $right_value . ')';
                     break;
                     case '+' :
-                        d($left_value);
-                        d($right_value);
                         $result[$assign_key] = '$this->value_plus(' . $left_value . ', ' . $right_value . ')';
                     break;
                     case '-' :
