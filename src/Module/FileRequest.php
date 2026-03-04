@@ -61,7 +61,6 @@ class FileRequest {
                 $explode_3[] = $explode_2[$i];
             }
             $object->config('application.name', end($explode_3));
-            ddd($object->config());
             $explode_3[] = 'Public';
             $count_explode_2 = count($explode_2);
             for($i = 2; $i < $count_explode_2; $i++){
