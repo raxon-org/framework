@@ -66,7 +66,7 @@ class FileRequest {
                 $explode_3[] = $explode_2[$i];
             }
             $location[] = '###' . $object->config('domain.dir.root') .
-                rtrim(implode($object->config('d3'), $explode_2), '/') .
+                rtrim(implode($object->config('ds'), $explode_2), '/') .
                 $object->config('ds')
             ;
         }
