@@ -60,12 +60,13 @@ class FileRequest {
             for($i = 0; $i < 2; $i++){
                 $explode_3[] = $explode_2[$i];
             }
+            ddd($object->config());
             $explode_3[] = 'Public';
             $count_explode_2 = count($explode_2);
             for($i = 2; $i < $count_explode_2; $i++){
                 $explode_3[] = $explode_2[$i];
             }
-            $location[] = '###' . $object->config('domain.dir.root') .
+            $location[] = $object->config('domain.dir.root') .
                 rtrim(implode($object->config('ds'), $explode_3), '/') .
                 $object->config('ds')
             ;
