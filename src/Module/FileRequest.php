@@ -55,10 +55,21 @@ class FileRequest {
             rtrim(implode($object->config('ds'), $explode), '/') .
             $object->config('ds')
         ;
-        $location[] = '###' . $object->config('domain.dir.root') .
-            rtrim(implode($object->config('ds'), $explode_2), '/') .
-            $object->config('ds')
-        ;
+        if($controller === 'Application'){
+            $explode_3 = [];
+            for($i = 0; $i < 2; $i++){
+                $explode_3[] = $explode_2[$i];
+            }
+            $explode_3[] = 'Public';
+            $count_explode_2 = count($explode_2);
+            for($i = 2; $i < $count_explode_2; $i++){
+                $explode_3[] = $explode_2[$i];
+            }
+            $location[] = '###' . $object->config('domain.dir.root') .
+                rtrim(implode($object->config('d3'), $explode_2), '/') .
+                $object->config('ds')
+            ;
+        }
         $location[] = $object->config('domain.dir.root') .
             $dir .
             'Public' .
