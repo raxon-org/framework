@@ -512,7 +512,6 @@ class FileRequest {
             if($logger_error){
                 $object->logger($logger_error)->error('HTTP/1.0 404 Not Found', [ $location ]);
             }
-            d($location);
             throw new LocateException('Cannot find location for file...', $location);
         } else {
             if(
