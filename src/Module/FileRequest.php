@@ -28,9 +28,9 @@ class FileRequest {
     {
         $location = [];
         $explode = explode('/', $dir);
+        $explode_2 = $explode;
         $controller = array_shift($explode);
         $view = $explode;
-        $explode_2 = $explode;
         array_unshift($explode, 'Public');
         if (!empty($controller)) {
             array_unshift($explode, $controller);
