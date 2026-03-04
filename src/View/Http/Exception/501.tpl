@@ -72,6 +72,7 @@ config('framework.environment') === 'development' &&
                 {{$read = explode("\n", $source)}}
                 {{$read_line = $trace.line - 1}}
                 <table class="source">
+                /*
                 {{for($i = ($read_line - 3); $i <= ($read_line + 3); $i++)}}                        
                     {{$row = $read[$i]}}        
                     {{$row_nr = $i + 1}}
@@ -84,6 +85,7 @@ config('framework.environment') === 'development' &&
                     <tr><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
                     {{/if}}
                 {{/for}}
+                */
                 </table>
                 {{/if}}
             </td>
