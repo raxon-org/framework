@@ -1,6 +1,6 @@
 {
   "package" : {
-    "raxon_app/desktop" : {
+    "raxon/desktop" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
       "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
