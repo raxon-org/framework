@@ -56,7 +56,7 @@
         "{{binary('php Bin/Raxon.php')}} {{$this.#parentNode.#property}} setup"
       ]
     },
-    "raxon_app/filemanager" : {
+    "raxon/filemanager" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2024",
       "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
