@@ -12,7 +12,8 @@
             "app cache clear",
             "app cache status",
             "mv /root/.ollama/models /root/.ollama/models.local",
-            "ln -s /mnt/Disk2/Media/Ollama/models /root/.ollama/models"
+            "ln -s /mnt/Disk2/Media/Ollama/models /root/.ollama/models",
+            "app raxon/basic ssh restore"
         ]
     },
     "ollama": {
