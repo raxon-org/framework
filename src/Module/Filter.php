@@ -272,6 +272,7 @@ class Filter extends Data {
                                 }
                             }
                         }
+                        breakpoint($record);
                         if (
                             is_array($record) &&
                             array_key_exists('operator', $record) &&
