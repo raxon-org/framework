@@ -272,7 +272,6 @@ class Filter extends Data {
                                 }
                             }
                         }
-                        d($record);
                         if (
                             is_array($record) &&
                             array_key_exists('operator', $record) &&
@@ -1284,7 +1283,6 @@ class Filter extends Data {
     public function where($where=[]): mixed
     {
         $type = $this->type();
-        d($type);
         switch($type){
             case 'list' :
                 return $this->where_list($where);
