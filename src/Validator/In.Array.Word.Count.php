@@ -9,6 +9,7 @@
  *     -            all
  */
 use Raxon\App;
+use Raxon\Module\Parse\Token;
 
 /**
  * @throws Exception
