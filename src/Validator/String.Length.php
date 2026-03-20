@@ -56,6 +56,12 @@ function validate_string_length(App $object, object|null $record=null, mixed $st
                 case '<' :
                     $result = $length < $right;
                     break;
+                case '>>':
+                    $result = $length >> $right;
+                    break;
+                case '<<':
+                    $result = $length << $right;
+                    break;
                 case '>=' :
                     $result = $length >= $right;
                     break;

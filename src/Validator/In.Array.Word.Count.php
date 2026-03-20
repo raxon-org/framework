@@ -10,35 +10,73 @@
  */
 use Raxon\App;
 
-function validate_in_array_word_count(App $object, object|null $record=null,  mixed $in='', mixed $field='', mixed $array=[], mixed $function=false): bool
+/**
+ * @throws Exception
+ */
+function validate_in_array_word_count(App $object, object|null $record=null, mixed $in='', mixed $field='', mixed $comparison='', mixed $function=false): bool
 {
-    d($array);;
-    d($in);
-    d($field);
-    ddd($function);
+    $count = 0;
     if(is_array($in)){
         foreach($in as $text){
-            if(in_array(null, $array, true)){
-                if($text === null){
-                    return true;
-                }
-            }
-            if(!in_array($text, $array, true)){
-                return false;
-            }
-        }
-        return true;
-    } else {
-        if(in_array(null, $array, true)){
-            if($in === null){
-                return true;
-            }
-            return in_array($in, $array, true);
-        } else {
-            if(empty($in)){
-                return false;
-            }
-            return in_array($in, $array, true);
+            $count += str_word_count($text);
         }
     }
+    $argument = Token::tree('{if($argument ' . $comparison . ')}{/if}');
+    $left = null;
+    $equation = null;
+    $right = null;
+    foreach($argument[1]['method']['attribute'][0] as $nr => $record_argument){
+        if(empty($left)){
+            $left = $record_argument;
+        }
+        elseif(empty($equation)){
+            $equation = $record_argument['value'];
+        }
+        elseif(empty($right)){
+            $right = $record_argument['execute'];
+            break;
+        }
+    }
+    $result = false;
+    switch($equation){
+        case '>' :
+            $result = $count > $right;
+        break;
+        case '<' :
+            $result = $count < $right;
+        break;
+        case '>=' :
+            $result = $count >= $right;
+        break;
+        case '<=' :
+            $result = $count <= $right;
+        break;
+        case '>>':
+            $result = $count >> $right;
+        break;
+        case '<<':
+            $result = $count << $right;
+        break;
+        case '==' :
+            $result = $count == $right;
+        break;
+        case '!=' :
+            $result = $count != $right;
+        break;
+        case '===' :
+            $result = $count === $right;
+        break;
+        case '!==' :
+            $result = $count !== $right;
+        break;
+        default:
+            throw new Exception('Unknown equation');
+    }
+    if($result === false){
+        return false;
+    }
+
+
+
+
 }
