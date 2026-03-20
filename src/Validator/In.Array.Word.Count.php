@@ -9,7 +9,7 @@
  *     -            all
  */
 use Raxon\App;
-use Raxon\Module\Parse\Token;
+use Raxon\Parse\Module\Token;
 
 /**
  * @throws Exception
@@ -22,6 +22,11 @@ function validate_in_array_word_count(App $object, object|null $record=null, mix
             $count += str_word_count($text);
         }
     }
+    $flags = (object) [];
+    $options = (object) [];
+    $tree = Token::tokenize($object, $flags, $options, '{{if($argument ' . $comparison . ')}}{{/if}}');
+    ddd($tree);
+
     $argument = Token::tree('{if($argument ' . $comparison . ')}{/if}');
     $left = null;
     $equation = null;
