@@ -81,8 +81,5 @@ function validate_in_array_word_count(App $object, object|null $record=null, mix
     if($result === false){
         return false;
     }
-
-
-
-
+    return $result;
 }
