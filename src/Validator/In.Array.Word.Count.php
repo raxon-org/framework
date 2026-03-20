@@ -10,8 +10,12 @@
  */
 use Raxon\App;
 
-function validate_in_array(App $object, object|null $record=null,  mixed $in='', mixed $field='', mixed $array=[], mixed $function=false): bool
+function in_array_word_count(App $object, object|null $record=null,  mixed $in='', mixed $field='', mixed $array=[], mixed $function=false): bool
 {
+    d($array);;
+    d($in);
+    d($field);
+    ddd($function);
     if(is_array($in)){
         foreach($in as $text){
             if(in_array(null, $array, true)){
