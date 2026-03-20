@@ -27,13 +27,10 @@ function validate_in_array_word_count(App $object, object|null $record=null, mix
     $tree = Token::tokenize($object, $flags, $options, '{{if($argument ' . $comparison . ')}}{{/if}}');
     $tag = reset($tree);
     $if = reset($tag);
-    ddd($if);
-
-    $argument = Token::tree('{if($argument ' . $comparison . ')}{/if}');
     $left = null;
     $equation = null;
     $right = null;
-    foreach($argument[1]['method']['attribute'][0] as $nr => $record_argument){
+    foreach($if['method']['argument'][0]['array'] as $nr => $record_argument){
         if(empty($left)){
             $left = $record_argument;
         }

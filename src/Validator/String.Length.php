@@ -21,79 +21,15 @@ function validate_string_length(App $object, object|null $record=null, mixed $st
         return false;
     }
     $length = strlen($string);
-    if(is_array($argument)){
-        $arguments = $argument;
-        foreach($arguments as $argument){
-            if(
-                $argument === null)
-            {
-                if($string === null){
-                    return true;
-                }
-                continue;
-            }
-            $argument = Token::tree('{if($argument ' . $argument . ')}{/if}');
-            $left = null;
-            $equation = null;
-            $right = null;
-            foreach($argument[1]['method']['attribute'][0] as $nr => $record_argument){
-                if(empty($left)){
-                    $left = $record_argument;
-                }
-                elseif(empty($equation)){
-                    $equation = $record_argument['value'];
-                }
-                elseif(empty($right)){
-                    $right = $record_argument['execute'];
-                    break;
-                }
-            }
-            $result = false;
-            switch($equation){
-                case '>' :
-                    $result = $length > $right;
-                    break;
-                case '<' :
-                    $result = $length < $right;
-                    break;
-                case '>>':
-                    $result = $length >> $right;
-                    break;
-                case '<<':
-                    $result = $length << $right;
-                    break;
-                case '>=' :
-                    $result = $length >= $right;
-                    break;
-                case '<=' :
-                    $result = $length <= $right;
-                    break;
-                case '==' :
-                    $result = $length == $right;
-                    break;
-                case '!=' :
-                    $result = $length != $right;
-                    break;
-                case '===' :
-                    $result = $length === $right;
-                    break;
-                case '!==' :
-                    $result = $length !== $right;
-                    break;
-                default:
-                    throw new Exception('Unknown equation');
-            }
-            if($result === false){
-                return false;
-            }
-        }
-        return true;
-    }
-    $argument = Token::tree('{if($argument ' . $argument . ')}{/if}');
+    $flags = (object) [];
+    $options = (object) [];
+    $tree = Token::tokenize($object, $flags, $options, '{{if($argument ' . $argument . ')}}{{/if}}');
+    $tag = reset($tree);
+    $if = reset($tag);
     $left = null;
     $equation = null;
     $right = null;
-    foreach($argument[1]['method']['attribute'][0] as $nr => $record_argument){
+    foreach($if['method']['argument'][0]['array'] as $nr => $record_argument){
         if(empty($left)){
             $left = $record_argument;
         }
@@ -109,28 +45,34 @@ function validate_string_length(App $object, object|null $record=null, mixed $st
     switch($equation){
         case '>' :
             $result = $length > $right;
-            break;
+        break;
         case '<' :
             $result = $length < $right;
-            break;
+        break;
+        case '>>' :
+            $result = $length >> $right;
+        break;
+        case '<<' :
+            $result = $length << $right;
+        break;
         case '>=' :
             $result = $length >= $right;
-            break;
+        break;
         case '<=' :
             $result = $length <= $right;
-            break;
+        break;
         case '==' :
             $result = $length == $right;
-            break;
+        break;
         case '!=' :
             $result = $length != $right;
-            break;
+        break;
         case '===' :
             $result = $length === $right;
-            break;
+        break;
         case '!==' :
             $result = $length !== $right;
-            break;
+        break;
         default:
             throw new Exception('Unknown equation');
     }
