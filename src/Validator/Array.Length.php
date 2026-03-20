@@ -10,132 +10,71 @@
  */
 
 use Raxon\App;
-
-use Raxon\Module\Parse\Token;
+use Raxon\Parse\Module\Token;
 
 /**
  * @throws Exception
  */
 function validate_array_length(App $object, object|null $record=null, mixed $array=null, mixed $field='', mixed $argument='', mixed $function=false): bool
 {
+    if(empty($array)){
+        return false;
+    }
+    $length = count($array);
+    $flags = (object) [];
+    $options = (object) [];
+    $tree = Token::tokenize($object, $flags, $options, '{{if($argument ' . $argument . ')}}{{/if}}');
+    $tag = reset($tree);
+    $if = reset($tag);
+    $left = null;
+    $equation = null;
+    $right = null;
+    foreach($if['method']['argument'][0]['array'] as $nr => $record_argument){
+        if(empty($left)){
+            $left = $record_argument;
+        }
+        elseif(empty($equation)){
+            $equation = $record_argument['value'];
+        }
+        elseif(empty($right)){
+            $right = $record_argument['execute'];
+            break;
+        }
+    }
     $result = false;
-    $length = null;
-    if(is_array($argument)) {
-        $arguments = $argument;
-        foreach ($arguments as $argument) {
-            if (
-                $argument === null) {
-                if ($array === null) {
-                    return true;
-                }
-                continue;
-            }
-            if($length === null){
-                if(is_array($array)){
-                    $length = count($array);
-                } else {
-                    return false;
-                }
-            }
-            $argument = Token::tree('{if($argument ' . $argument . ')}{/if}');
-            $left = null;
-            $equation = null;
-            $right = null;
-            foreach($argument[1]['method']['attribute'][0] as $nr => $record_attribute){
-                if(empty($left)){
-                    $left = $record_attribute;
-                }
-                elseif(empty($equation)){
-                    $equation = $record_attribute['value'];
-                }
-                elseif(empty($right)){
-                    $right = $record_attribute['execute'];
-                    break;
-                }
-            }
-            switch($equation){
-                case '>' :
-                    $result = $length > $right;
-                    break;
-                case '<' :
-                    $result = $length < $right;
-                    break;
-                case '>=' :
-                    $result = $length >= $right;
-                    break;
-                case '<=' :
-                    $result = $length <= $right;
-                    break;
-                case '==' :
-                    $result = $length == $right;
-                    break;
-                case '!=' :
-                    $result = $length != $right;
-                    break;
-                case '===' :
-                    $result = $length === $right;
-                    break;
-                case '!==' :
-                    $result = $length !== $right;
-                    break;
-                default:
-                    throw new Exception('Unknown equation');
-            }
-            if($result === false){
-                return false;
-            }
-        }
-        return true;
-    } else {
-        if(empty($array)){
-            return false;
-        }
-        $length = count($array);
-        $argument = Token::tree('{if($argument ' . $argument . ')}{/if}');
-        $left = null;
-        $equation = null;
-        $right = null;
-        foreach($argument[1]['method']['attribute'][0] as $nr => $record_attribute){
-            if(empty($left)){
-                $left = $record_attribute;
-            }
-            elseif(empty($equation)){
-                $equation = $record_attribute['value'];
-            }
-            elseif(empty($right)){
-                $right = $record_attribute['execute'];
-                break;
-            }
-        }
-
-        switch($equation){
-            case '>' :
-                $result = $length > $right;
-                break;
-            case '<' :
-                $result = $length < $right;
-                break;
-            case '>=' :
-                $result = $length >= $right;
-                break;
-            case '<=' :
-                $result = $length <= $right;
-                break;
-            case '==' :
-                $result = $length == $right;
-                break;
-            case '!=' :
-                $result = $length != $right;
-                break;
-            case '===' :
-                $result = $length === $right;
-                break;
-            case '!==' :
-                $result = $length !== $right;
-                break;
-            default:
-                throw new Exception('Unknown equation');
-        }
+    switch($equation){
+        case '>' :
+            $result = $length > $right;
+            break;
+        case '<' :
+            $result = $length < $right;
+            break;
+        case '>>' :
+            $result = $length >> $right;
+            break;
+        case '<<' :
+            $result = $length << $right;
+            break;
+        case '>=' :
+            $result = $length >= $right;
+            break;
+        case '<=' :
+            $result = $length <= $right;
+            break;
+        case '==' :
+            $result = $length == $right;
+            break;
+        case '!=' :
+            $result = $length != $right;
+            break;
+        case '===' :
+            $result = $length === $right;
+            break;
+        case '!==' :
+            $result = $length !== $right;
+            break;
+        default:
+            throw new Exception('Unknown equation');
     }
     return $result;    
 }

@@ -10,7 +10,7 @@
  */
 use Raxon\App;
 
-use Raxon\Module\Parse\Token;
+use Raxon\Parse\Module\Token;
 
 /**
  * @throws Exception
@@ -49,11 +49,15 @@ function validate_string_has_number(App $object, object|null $record=null, mixed
         }
     }
     $length = count($test);
-    $argument = Token::tree('{if($argument ' . $argument . ')}{/if}');
+    $flags = (object) [];
+    $options = (object) [];
+    $tree = Token::tokenize($object, $flags, $options, '{{if($argument ' . $argument . ')}}{{/if}}');
+    $tag = reset($tree);
+    $if = reset($tag);
     $left = null;
     $equation = null;
     $right = null;
-    foreach($argument[1]['method']['attribute'][0] as $nr => $record_argument){
+    foreach($if['method']['argument'][0]['array'] as $nr => $record_argument){
         if(empty($left)){
             $left = $record_argument;
         }
@@ -69,22 +73,28 @@ function validate_string_has_number(App $object, object|null $record=null, mixed
     switch($equation){
         case '>' :
             $result = $length > $right;
-        break;
+            break;
         case '<' :
             $result = $length < $right;
-        break;
+            break;
+        case '>>' :
+            $result = $length >> $right;
+            break;
+        case '<<' :
+            $result = $length << $right;
+            break;
         case '>=' :
             $result = $length >= $right;
-        break;
+            break;
         case '<=' :
             $result = $length <= $right;
-        break;                
+            break;
         case '==' :
             $result = $length == $right;
-        break;
+            break;
         case '!=' :
             $result = $length != $right;
-        break;
+            break;
         case '===' :
             $result = $length === $right;
             break;
@@ -94,5 +104,4 @@ function validate_string_has_number(App $object, object|null $record=null, mixed
         default:
             throw new Exception('Unknown equation');
     }
-    return $result;    
 }
