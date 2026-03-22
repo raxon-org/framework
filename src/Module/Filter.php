@@ -1210,7 +1210,17 @@ class Filter extends Data {
                                             }
                                         }
                                     }
-                                    break;
+                                break;
+                                case 'in.array' :
+                                    $value = $data->get($attribute);
+                                    d($record);
+                                    ddd($value);
+                                    if (is_array($value)) {
+                                        if (in_array($record['value'], $value, true)) {
+                                            $skip = true;
+                                        }
+                                    }
+                                break;
                             }
                             if ($skip === false) {
                                 switch($this->type()) {
