@@ -296,7 +296,7 @@ class Filter extends Data {
                                             $skip = true;
                                         }
                                     }
-                                    break;
+                                break;
                                 case '!==' :
                                 case Filter::OPERATOR_NOT_STRICTLY_EXACT :
                                 case Filter::OPERATOR_NOT_STRICTLY_EQUAL :
@@ -313,7 +313,7 @@ class Filter extends Data {
                                             $skip = true;
                                         }
                                     }
-                                    break;
+                                break;
                                 case '==' :
                                 case Filter::OPERATOR_EXACT :
                                 case Filter::OPERATOR_EQUAL :
@@ -330,7 +330,7 @@ class Filter extends Data {
                                             $skip = true;
                                         }
                                     }
-                                    break;
+                                break;
                                 case '!=' :
                                 case Filter::OPERATOR_NOT_EXACT :
                                 case Filter::OPERATOR_NOT_EQUAL :
@@ -347,7 +347,7 @@ class Filter extends Data {
                                             $skip = true;
                                         }
                                     }
-                                    break;
+                                break;
                                 case Filter::OPERATOR_IN :
                                     $value = $data->get($attribute);
                                     if (is_array($record['value'])) {
@@ -531,7 +531,7 @@ class Filter extends Data {
                                             }
                                         }
                                     }
-                                    break;
+                                break;
                                 case Filter::OPERATOR_NOT_IN :
                                     $value = $data->get($attribute);
                                     if (is_array($record['value'])) {
@@ -720,7 +720,7 @@ class Filter extends Data {
                                             }
                                         }
                                     }
-                                    break;
+                                break;
                                 case '>' :
                                 case Filter::OPERATOR_GT :
                                 case FILTER::OPERATOR_GREATER_THAN :
@@ -743,7 +743,7 @@ class Filter extends Data {
                                             $skip = true;
                                         }
                                     }
-                                    break;
+                                break;
                                 case '>=' :
                                 case Filter::OPERATOR_GTE :
                                 case FILTER::OPERATOR_GREATER_THAN_EQUAL :
@@ -766,7 +766,7 @@ class Filter extends Data {
                                             $skip = true;
                                         }
                                     }
-                                    break;
+                                break;
                                 case '<' :
                                 case Filter::OPERATOR_LT :
                                 case FILTER::OPERATOR_LOWER_THAN :
@@ -789,7 +789,7 @@ class Filter extends Data {
                                             $skip = true;
                                         }
                                     }
-                                    break;
+                                break;
                                 case '<=' :
                                 case Filter::OPERATOR_LTE :
                                 case FILTER::OPERATOR_LOWER_THAN_EQUAL :
@@ -812,7 +812,7 @@ class Filter extends Data {
                                             $skip = true;
                                         }
                                     }
-                                    break;
+                                break;
                                 case '> <' :
                                 case Filter::OPERATOR_BETWEEN :
                                     $value = $data->get($attribute);
@@ -844,7 +844,7 @@ class Filter extends Data {
                                     } else {
                                         throw new Exception('Value is range: ?..?');
                                     }
-                                    break;
+                                break;
                                 case '>=<' :
                                 case Filter::OPERATOR_BETWEEN_EQUALS :
                                     $value = $data->get($attribute);
@@ -877,7 +877,7 @@ class Filter extends Data {
                                     } else {
                                         throw new Exception('Value is range: ?..?');
                                     }
-                                    break;
+                                break;
                                 case Filter::OPERATOR_BEFORE :
                                     $value = $data->get($attribute);
                                     if (is_string($value)) {
@@ -896,7 +896,7 @@ class Filter extends Data {
                                     ) {
                                         $skip = true;
                                     }
-                                    break;
+                                break;
                                 case Filter::OPERATOR_AFTER :
                                     $value = $data->get($attribute);
                                     if (is_string($value)) {
@@ -915,7 +915,7 @@ class Filter extends Data {
                                     ) {
                                         $skip = true;
                                     }
-                                    break;
+                                break;
                                 case Filter::OPERATOR_STRICTLY_BEFORE :
                                     $value = $data->get($attribute);
                                     if (is_string($value)) {
@@ -934,7 +934,7 @@ class Filter extends Data {
                                     ) {
                                         $skip = true;
                                     }
-                                    break;
+                                break;
                                 case Filter::OPERATOR_STRICTLY_AFTER :
                                     $value = $data->get($attribute);
                                     if (is_string($value)) {
@@ -953,7 +953,7 @@ class Filter extends Data {
                                     ) {
                                         $skip = true;
                                     }
-                                    break;
+                                break;
                                 case Filter::OPERATOR_PARTIAL :
                                     $value = $data->get($attribute);
                                     if (
@@ -995,7 +995,7 @@ class Filter extends Data {
                                             }
                                         }
                                     }
-                                    break;
+                                break;
                                 case Filter::OPERATOR_NOT_PARTIAL :
                                     $value = $data->get($attribute);
                                     if (is_scalar($record['value'])) {
@@ -1031,7 +1031,7 @@ class Filter extends Data {
                                             }
                                         }
                                     }
-                                    break;
+                                break;
                                 case Filter::OPERATOR_START :
                                     $value = $data->get($attribute);
                                     if (
@@ -1075,7 +1075,7 @@ class Filter extends Data {
                                             }
                                         }
                                     }
-                                    break;
+                                break;
                                 case Filter::OPERATOR_NOT_START :
                                     $value = $data->get($attribute);
                                     if (
@@ -1118,7 +1118,7 @@ class Filter extends Data {
                                             }
                                         }
                                     }
-                                    break;
+                                break;
                                 case Filter::OPERATOR_END :
                                     $value = $data->get($attribute);
                                     if (is_string($record['value'])) {
@@ -1163,7 +1163,7 @@ class Filter extends Data {
                                             }
                                         }
                                     }
-                                    break;
+                                break;
                                 case Filter::OPERATOR_NOT_END :
                                     $value = $data->get($attribute);
                                     if (
@@ -1213,10 +1213,9 @@ class Filter extends Data {
                                 break;
                                 case 'in.array' :
                                     $value = $data->get($attribute);
-                                    d($record);
-                                    ddd($value);
+                                    $record['strict'] = $record['strict'] ?? true;
                                     if (is_array($value)) {
-                                        if (in_array($record['value'], $value, true)) {
+                                        if (in_array($record['value'], $value, $record['strict'])) {
                                             $skip = true;
                                         }
                                     }
