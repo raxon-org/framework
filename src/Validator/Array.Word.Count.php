@@ -14,7 +14,7 @@ use Raxon\Parse\Module\Token;
 /**
  * @throws Exception
  */
-function validate_in_array_word_count(App $object, object|null $record=null, mixed $in='', mixed $field='', mixed $comparison='', mixed $function=false): bool
+function validate_array_word_count(App $object, object|null $record=null, mixed $in='', mixed $field='', mixed $comparison='', mixed $function=false): bool
 {
     $count = 0;
     if(is_array($in)){
