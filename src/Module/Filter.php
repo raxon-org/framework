@@ -284,6 +284,8 @@ class Filter extends Data {
                                 case Filter::OPERATOR_STRICTLY_EXACT :
                                 case Filter::OPERATOR_STRICTLY_EQUAL :
                                     $value = $data->get($attribute);
+                                    d($record);
+                                    d($value);
                                     if (
                                         $value === null ||
                                         is_scalar($value)
