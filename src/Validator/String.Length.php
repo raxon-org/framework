@@ -10,7 +10,7 @@
  */
 use Raxon\App;
 
-use Raxon\Module\Parse\Token;
+use Raxon\Parse\Module\Token;
 
 /**
  * @throws Exception
