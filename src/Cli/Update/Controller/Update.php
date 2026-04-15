@@ -162,6 +162,8 @@ class Update extends Controller {
             // Ignore
         }
         $git_sync = false;
+        $options = App::options($object);
+        ddd($options);
         if($response && array_key_exists('list', $response)){
             foreach($response['list'] as $item){
                 if(property_exists($item, 'name')){
