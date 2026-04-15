@@ -163,11 +163,12 @@ class Update extends Controller {
         }
         $git_sync = false;
         $options = App::options($object);
-        ddd($options);
+        $frontend =$options->frontend->host ?? null;
+        $backend = $options->backend->host ?? null;
         if($response && array_key_exists('list', $response)){
             foreach($response['list'] as $item){
                 if(property_exists($item, 'name')){
-                    $command = Core::binary($object) . ' install ' . $item->name . ' -patch';
+                    $command = Core::binary($object) . ' install ' . $item->name . ' -patch -frontend.host=' . $frontend . ' -backend.host=' . $backend;
                     Core::execute($object, $command, $output, $notification);
                     if($output){
                         echo $output . PHP_EOL;
