@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-namespace Package\Raxon\Audio\SpeechToText;
 
 function readAudio($path, int $chunkSize = 2048): array
 {
