@@ -6,6 +6,9 @@ use Package\Raxon\Audio\SpeechToText\Samplerate;
 use Package\Raxon\Audio\SpeechToText\SegmentData;
 use Package\Raxon\Audio\SpeechToText\Sndfile;
 
+/**
+ * @throws Exception
+ */
 function readAudio($path, int $chunkSize = 2048): array
 {
     $sfInfo = Sndfile::new('SF_INFO');
@@ -198,8 +201,8 @@ function outputSrt(array $segments, string $outputFilePath): string
 /**
  * Creates a CSV file from segments
  *
- * @param  SegmentData  $segments  Array of segments
- * @param  string  $outputFilePath  Output file path
+ * @param array $segments Array of segments
+ * @param string $outputFilePath Output file path
  * @return string Absolute path of the created file
  */
 function outputCsv(array $segments, string $outputFilePath): string
