@@ -6,7 +6,6 @@ use Package\Raxon\Audio\SpeechToText\Samplerate;
 use Package\Raxon\Audio\SpeechToText\SegmentData;
 use Package\Raxon\Audio\SpeechToText\Sndfile;
 
-
 function readAudio($path, int $chunkSize = 2048): array
 {
     $sfInfo = Sndfile::new('SF_INFO');
