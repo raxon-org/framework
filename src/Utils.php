@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+use Package\Raxon\Audio\SpeechToText\Samplerate;
+use Package\Raxon\Audio\SpeechToText\SegmentData;
+use Package\Raxon\Audio\SpeechToText\Sndfile;
+
 
 function readAudio($path, int $chunkSize = 2048): array
 {
