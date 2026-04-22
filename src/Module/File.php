@@ -560,6 +560,9 @@ class File {
 
     public static function extension(string|null $url=null): string
     {
+        if($url === null){
+            return '';
+        }
         if(substr($url, -1) === '/'){
             return '';
         }
