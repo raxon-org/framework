@@ -535,7 +535,12 @@ class File {
             return copy($source, $destination);
         }
         catch(\ErrorException $exception){
-            throw new Exception ('Couldn\'t copy source (' . $source . ') to destination (' . $destination .').');
+            if(File::exist($destination)){
+                throw new Exception ('Couldn\'t copy source (' . $source . ') to destination (' . $destination .'). Destination already exists.');
+            } else {
+                throw new Exception ('Couldn\'t copy source (' . $source . ') to destination (' . $destination .').');
+            }
+
         }
     }
 
