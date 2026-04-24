@@ -47,6 +47,9 @@ config('framework.environment') === 'development' &&
     {{/if}}
 </section>
 {{/if}}
+
+<h1>Tipjes on the ground...</h1>
+
 {{if(
 config('framework.environment') === 'development' &&
 !is.empty($exception.trace)
