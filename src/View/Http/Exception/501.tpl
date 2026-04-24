@@ -51,8 +51,44 @@ config('framework.environment') === 'development' &&
 config('framework.environment') === 'development' &&
 !is.empty($exception.trace)
 )}}
-
-{{d($exception.trace)}}
+<section name="trace">
+    <label>Trace: </label><br>
+    <table class="trace">
+        {{foreach($exception.trace as $nr => $trace)}}
+        <tr class="trace">
+            <td class="title"><b>File:</b> {{$trace.file|>default:'unknown file'}} (<b>{{$trace.line|>default:'unknown line'}}</b>)</td>
+        </tr>
+        <tr class="trace">
+            <td class="class"><b>Class:</b> {{$trace.class|>default:'unknown class'}}</td>
+        </tr>
+        <tr class="trace">
+            <td class="function"><b>Function:</b> {{$trace.function|>default:'unknown function'}}</td>
+        </tr>
+        <tr class="trace-source">
+            <td colspan="4">
+                <label>Source: </label><br>
+                {{$source = file.read($trace.file)}}
+                {{if($source)}}
+                {{$read = explode("\n", $source)}}
+                {{$read_line = $trace.line - 1}}
+                <table class="source">
+                    {{for($i = ($read_line - 3); $i <= ($read_line + 3); $i++)}}
+                    {{$row = $read[$i]}}
+                    {{$row_nr = $i + 1}}
+                    {{if(
+                    $i === $read_line &&
+                    is.set($row)
+                    )}}
+                    <tr class="selected"><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
+                    {{elseif(is.set($row))}}
+                    <tr><td class="line"><pre>{{$row_nr}}</pre></td><td class="row"><pre>{{$row}}</pre></td></tr>
+                    {{/if}}
+                    {{/for}}
+                </table>
+                {{/if}}
+            </td>
+        </tr>
+        {{/foreach}}
 {{/if}}
 </body>
 </html>
