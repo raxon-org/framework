@@ -48,7 +48,7 @@ config('framework.environment') === 'development' &&
 </section>
 {{/if}}
 
-<h1>{{implode('', $exception.trace)}}</h1>
+<h1>{{d($exception.trace)}}</h1>
 
 {{if(
 config('framework.environment') === 'development' &&
