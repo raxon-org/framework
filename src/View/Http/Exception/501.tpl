@@ -48,12 +48,13 @@ config('framework.environment') === 'development' &&
 </section>
 {{/if}}
 
-<h1>{{d($exception.trace)}}</h1>
+
 
 {{if(
 config('framework.environment') === 'development' &&
 !is.empty($exception.trace)
 )}}
+{{d($exception.trace)}}
 <section name="trace">
     <label>Trace: </label><br>
     <table class="trace">
