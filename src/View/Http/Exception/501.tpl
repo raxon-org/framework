@@ -48,7 +48,7 @@ config('framework.environment') === 'development' &&
 </section>
 {{/if}}
 
-<h1>Tipjes on the ground...</h1>
+<h1>{{config('framework.environment')}}</h1>
 
 {{if(
 config('framework.environment') === 'development' &&
