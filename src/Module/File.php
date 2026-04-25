@@ -442,6 +442,28 @@ class File {
         }
     }
 
+    public static function read_part(string $url='', $start=0, $length=(1024*1024), $bytes=0) : string
+    {
+        if(strpos($url, File::SCHEME_HTTP) === 0){
+            //check network connection first (@) added for that              //error
+            throw new Exception('Not implemented yet');
+        }
+        if(empty($url)){
+            return '';
+        }
+        $fopen = fopen($url, 'r');
+        if($fopen === false){
+            return '';
+        }
+        fseek($fopen, $start);
+        if($start + $length >= $bytes){
+            $length = $bytes - $start;
+        }
+        $read = fread($fopen, $length);
+        fclose($fopen);
+        return $read;
+    }
+
     public static function read(string $url='', array $options=[]) : string | array
     {        
         $return = $options['return'] ?? File::STRING;
