@@ -315,7 +315,7 @@ class File {
             !$overwrite &&
             File::exist($destination)
         ){
-            throw new FileMoveException('Destination file ('. $destination .' ) already exists...');
+            throw new FileMoveException('Destination file ('. $destination .') already exists...');
         } else {
             $source = escapeshellarg($source);
             $destination = escapeshellarg($destination);
