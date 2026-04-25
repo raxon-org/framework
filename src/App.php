@@ -1637,21 +1637,18 @@ class App extends Data {
             if($options['counter'] === true){
                 echo 'Loading data: ' . $url . PHP_EOL;
             }
+            /*
             $start = microtime(true);
             $read = File::read($url);
             $end = microtime(true);
             $duration = $end - $start;
             d($duration . ' msec');
-
-            $start = microtime(true);
+            */
             $bytes = File::size($url);
             $read = '';
             for($i =0; $i < $bytes; $i += 1024 * 1024){
                 $read .= File::read_part($url, $i, 1024 * 1024, $bytes);
             }
-            $end = microtime(true);
-            $duration = $end - $start;
-            d($duration . ' msec');
             $mtime = File::mtime($url);
             $require_disabled = $this->config('require.disabled');
             if($require_disabled){
@@ -1835,7 +1832,12 @@ class App extends Data {
         }
         if(File::exist($url)){
             $options->source = $url;
-            $read = File::read($url);
+            $bytes = File::size($url);
+            $read = '';
+            for($i =0; $i < $bytes; $i += 1024 * 1024){
+                $read .= File::read_part($url, $i, 1024 * 1024, $bytes);
+            }
+//            $read = File::read($url);
             if($read){
                 $mtime = File::mtime($url);
                 $require_disabled = $this->config('require.disabled');
@@ -1937,7 +1939,11 @@ class App extends Data {
             }
         }
         if(File::exist($url)){
-            $read = File::read($url);
+            $bytes = File::size($url);
+            $read = '';
+            for($i =0; $i < $bytes; $i += 1024 * 1024){
+                $read .= File::read_part($url, $i, 1024 * 1024, $bytes);
+            }
             if($read){
                 $mtime = File::mtime($url);
 //                $parse = new Parse($this);
