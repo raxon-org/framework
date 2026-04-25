@@ -1637,7 +1637,21 @@ class App extends Data {
             if($options['counter'] === true){
                 echo 'Loading data: ' . $url . PHP_EOL;
             }
+            $start = microtime(true);
             $read = File::read($url);
+            $end = microtime(true);
+            $duration = $end - $start;
+            d($duration . ' msec');
+
+            $start = microtime(true);
+            $bytes = File::size($url);
+            $read = '';
+            for($i =0; $i < $bytes; $i += 1024 * 1024){
+                $read .= File::read_part($url, $i, 1024 * 1024, $bytes);
+            }
+            $end = microtime(true);
+            $duration = $end - $start;
+            d($duration . ' msec');
             $mtime = File::mtime($url);
             $require_disabled = $this->config('require.disabled');
             if($require_disabled){
