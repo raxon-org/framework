@@ -718,9 +718,16 @@ class File {
      */
     public static function upload(Data $upload, string $target): bool
     {
-        d($upload);
-        ddd($target);
-        return move_uploaded_file($upload->data('tmp_name'), $target . $upload->data('name'));
+        $bytes = $upload->data('size');
+        for($i = 0; $i < $bytes; $i += $bytes){
+            $chunk = $upload->data('tmp_name');
+            $chunk = File::read($chunk);
+            $size = File::append($target . $upload->data('name'), $chunk);
+            if($size !== $bytes){
+                throw new Exception('File.upload failed, written != bytes....');
+            }
+        }
+//        return move_uploaded_file($upload->data('tmp_name'), $target . $upload->data('name'));
     }
 
     public static function size_format(float|int $size=0): string
