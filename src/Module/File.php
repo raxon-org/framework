@@ -718,6 +718,8 @@ class File {
      */
     public static function upload(Data $upload, string $target): bool
     {
+        d($upload);
+        ddd($target);
         return move_uploaded_file($upload->data('tmp_name'), $target . $upload->data('name'));
     }
 
