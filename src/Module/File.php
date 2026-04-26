@@ -720,7 +720,8 @@ class File {
     {
         $bytes = $upload->data('size');
         for($i = 0; $i < $bytes; $i += $bytes){
-            $chunk = $upload->data('tmp_name');
+            $chunk = $target . $upload->data('name') . '.tmp.' . $i;
+            move_uploaded_file($upload->data('tmp_name'), $target . $upload->data('name') . '.tmp.' . $i);
             $chunk = File::read($chunk);
             $size = File::append($target . $upload->data('name'), $chunk);
             if($size !== $bytes){
