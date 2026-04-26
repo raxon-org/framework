@@ -84,7 +84,7 @@ class Controller {
         ){
             $before = File::basename($before);
         }
-//        $name = str_replace(':','.', $name); // @off @ 2026 04 26
+        $name = str_replace(':','.', $name);
         $name = Core::ucfirst_sentence(str_replace('_','.', $name));
         if($before !== null){
             return $before . $delimiter . $name;
