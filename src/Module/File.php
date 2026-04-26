@@ -720,11 +720,11 @@ class File {
     {
         $bytes = $upload->data('size');
         for($i = 0; $i < $bytes; $i += $bytes){
-            $chunk = $target . $upload->data('name') . '.tmp.' . $i;
+            $chunk_url = $target . $upload->data('name') . '.tmp.' . $i;
             move_uploaded_file($upload->data('tmp_name'), $target . $upload->data('name') . '.tmp.' . $i);
-            $chunk = File::read($chunk);
+            $chunk = File::read($chunk_url);
             $size = File::append($target . $upload->data('name'), $chunk);
-            File::delete($chunk);
+            File::delete($chunk_url);
             if($size !== $bytes){
                 throw new Exception('File.upload failed, written != bytes....');
             }
