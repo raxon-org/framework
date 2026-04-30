@@ -729,7 +729,7 @@ class File {
                 throw new Exception('File.upload failed, written != bytes....');
             }
         }
-//        return move_uploaded_file($upload->data('tmp_name'), $target . $upload->data('name'));
+        return true;
     }
 
     public static function size_format(float|int $size=0): string
