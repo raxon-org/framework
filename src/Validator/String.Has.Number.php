@@ -111,4 +111,5 @@ function validate_string_has_number(App $object, object|null $record=null, mixed
         default:
             throw new Exception('Unknown equation');
     }
+    return $result;
 }
