@@ -20,6 +20,13 @@ function validate_string_has_number(App $object, object|null $record=null, mixed
     $split = str_split($string);
     $test = [];
     $nr = 0;
+    d($string);
+    d($nr);
+    d($test);
+    d($argument);
+    d($function);
+    d($record);
+    dd($split);
     foreach($split as $char){
         if(
             in_array(
