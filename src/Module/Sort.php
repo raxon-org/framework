@@ -71,10 +71,10 @@ class Sort extends Data {
                         $value = $this->data($uuid . '.' . $attribute);
                         if(is_scalar($value)) {
                             if(is_array($node)){
-                                $result[$value][] = $node;
+                                $result["{$value}"][] = $node;
                             }
                             elseif(is_object($node)){
-                                $result[$value][] = $node;
+                                $result["{$value}"][] = $node;
                             }
                         }
                         elseif (is_array($value)){
@@ -85,7 +85,7 @@ class Sort extends Data {
                                 }
                             }
                             $attr = substr($attr, 1);
-                            $result[$attr][] = $node;
+                            $result["{$attr}"][] = $node;
                         }
                         elseif(is_object($value)){
                             $attr = '';
@@ -95,7 +95,7 @@ class Sort extends Data {
                                 }
                             }
                             $attr = substr($attr, 1);
-                            $result[$attr][] = $node;
+                            $result["{$attr}"][] = $node;
                         } else {
                             $result[''][] = $node;
                         }
