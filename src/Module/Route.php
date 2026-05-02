@@ -1371,4 +1371,19 @@ class Route extends Data {
             return $resource;
         }
     }
+
+    public static function name(string|null $name=null): ?string
+    {
+        return strtolower(str_replace(
+            [
+                '.',
+                ' '
+            ],
+            [
+                '-',
+                '-'
+            ],
+            $name
+        ));
+    }
 }
