@@ -900,7 +900,8 @@
       ]
     },
     "raxon/priya" : {
-      "composer" : "composer require {{$this.#parentNode.#property}}:*",
+      "composer.production" : "composer require {{$this.#parentNode.#property}}:*",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
