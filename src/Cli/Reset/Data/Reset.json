@@ -12,7 +12,8 @@
             "app cache clear",
             "app cache status",
             "app raxon/ollama reset",
-            "app raxon/basic ssh restore"
+            "app raxon/basic ssh restore",
+            "app raxon/server restore"
         ]
     },
     "ollama": {

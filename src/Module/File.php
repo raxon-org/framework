@@ -817,12 +817,12 @@ class File {
             foreach($options as $key => $value){
                 if(Dir::is($value) && File::exist($value)){
                     $value = escapeshellarg($value);
-                    $command = 'chmod 777 ' . $value;
+                    $command = 'chmod 770 ' . $value;
                     exec($command);
                 }
                 elseif(File::is($value) && File::exist($value)) {
                     $value = escapeshellarg($value);
-                    $command = 'chmod 666 ' . $value;
+                    $command = 'chmod 660 ' . $value;
                     exec($command);
                 }
             }
