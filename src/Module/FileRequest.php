@@ -155,6 +155,7 @@ class FileRequest {
      */
     public static function get(App $object): string | bool
     {
+        ddd('test');
         if (
             array_key_exists('REQUEST_METHOD', $_SERVER) &&
             $_SERVER['REQUEST_METHOD'] == 'OPTIONS'
