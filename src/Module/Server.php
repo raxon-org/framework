@@ -58,7 +58,6 @@ class Server {
             $_SERVER['REQUEST_METHOD'] === 'OPTIONS'
         ) {
             $allow_credential = $object->config('server.cors.allow_credential');
-            ddd($allow_credential);
             if($allow_credential === true){
                 header('Access-Control-Allow-Credentials: true');
             }
