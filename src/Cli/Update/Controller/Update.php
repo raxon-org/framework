@@ -58,7 +58,7 @@ class Update extends Controller {
     const DATA_FRAMEWORK_PATCH = 'framework.patch';
 
     const EXCEPTION_COMMAND_PARAMETER = '{$command}';
-    const EXCEPTION_COMMAND = 'invalid command (' . Version::EXCEPTION_COMMAND_PARAMETER . ')' . PHP_EOL;
+    const EXCEPTION_COMMAND = 'invalid command (' . Update::EXCEPTION_COMMAND_PARAMETER . ')' . PHP_EOL;
 
     /**
      * @throws Exception
