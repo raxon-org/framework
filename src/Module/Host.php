@@ -60,9 +60,12 @@ class Host {
                 $object->config('ds'),
                 $object->config('ds')
             );
+            d($sentence);
             $sentence = ltrim($sentence, $object->config('ds'));
+            d($sentence);
             $value = $object->config('project.dir.host') .
                 $sentence;
+            d($value);
         } else {
             $sentence = Core::ucfirst_sentence(
                 $object->config('host.subdomain') .
