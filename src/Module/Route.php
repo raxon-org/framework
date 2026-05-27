@@ -72,10 +72,7 @@ class Route extends Data {
         $url = Host::remove_scheme($url);
         $allowed_host = [];
         $disallowed_host = [];
-        $debug = debug_backtrace(1);
-        d($debug);
         if(property_exists($select, 'host')){
-            /*
             foreach($select->host as $host){
                 $host = strtolower($host);
                 if(substr($host, 0, 1) == '!'){
@@ -84,7 +81,6 @@ class Route extends Data {
                 }
                 $allowed_host[] = $host;
             }
-            */
             if(in_array($url, $disallowed_host, true)){
                 return false;
             }
@@ -516,7 +512,6 @@ class Route extends Data {
                 array_pop($select->attribute);
             }
             $host_name = $object->config('host.name');
-            d($host_name);
             if(empty($host_name)){
                 throw new Exception('empty host.name, is the host mapped ?');                
             }
