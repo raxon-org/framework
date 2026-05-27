@@ -1113,6 +1113,7 @@ class Route extends Data {
             $object->data(App::ROUTE, $route);
         }
         $host_name = $object->config('host.name');
+        d($host_name);
         $host = false;
         if($host_name){
             $host = strtolower($host_name);
