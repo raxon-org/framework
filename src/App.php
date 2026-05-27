@@ -187,9 +187,6 @@ class App extends Data {
                 App::configure($object);
                 Route::configure($object);
                 $destination = Route::request($object);
-                if(!defined('IS_CLI')){
-                    dd($destination);
-                }
                 if ($destination === false) {                    
                     if ($object->config('framework.environment') === Config::MODE_DEVELOPMENT) {
                         if($logger){
