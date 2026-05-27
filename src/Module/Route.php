@@ -516,6 +516,7 @@ class Route extends Data {
                 array_pop($select->attribute);
             }
             $host_name = $object->config('host.name');
+            d($host_name);
             if(empty($host_name)){
                 throw new Exception('empty host.name, is the host mapped ?');                
             }
