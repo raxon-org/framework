@@ -370,7 +370,7 @@ class Host {
                     'filter' => [
                         'source' => [
                             'value' => $name,
-                            'operator' => 'partial'
+                            'operator' => 'strictly-exact'
                         ]
                     ],
                     'ttl' => $ttl,
