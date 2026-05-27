@@ -38,15 +38,12 @@ class Host {
         $object->config($key, $value);
         $key = 'host.extension';
         $value = Host::extension();
-        d($value);
         $object->config($key, $value);
         $key = 'host.domain';
         $value = Host::domain();
-        d($value);
         $object->config($key, $value);
         $key = 'host.subdomain';
         $subdomain = Host::subdomain();
-        d($subdomain);
         $object->config($key, $subdomain);
         $key = 'host.port';
         $port = Host::port();
@@ -60,12 +57,9 @@ class Host {
                 $object->config('ds'),
                 $object->config('ds')
             );
-            d($sentence);
             $sentence = ltrim($sentence, $object->config('ds'));
-            d($sentence);
             $value = $object->config('project.dir.host') .
                 $sentence;
-            d($value);
         } else {
             $sentence = Core::ucfirst_sentence(
                 $object->config('host.subdomain') .
@@ -168,9 +162,12 @@ class Host {
             $name = $object->config('host.subdomain') . '.' . $object->config('host.domain') . '.' . $object->config('host.extension');
         } else {
             $name = $object->config('host.domain') . '.' . $object->config('host.extension');
-        }                
-        $map = Host::map($object, $node, $name);        
+        }
+        d($name);
+        $map = Host::map($object, $node, $name);
+        d($map);
         $host = Host::get($object, $node, $name, $map);
+        d($host);
         $object->config('host.map', $map);
         $object->config('host', Core::object_merge($object->config('host'), $host));        
         return true;
