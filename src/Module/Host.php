@@ -38,12 +38,15 @@ class Host {
         $object->config($key, $value);
         $key = 'host.extension';
         $value = Host::extension();
+        d($value);
         $object->config($key, $value);
         $key = 'host.domain';
         $value = Host::domain();
+        d($value);
         $object->config($key, $value);
         $key = 'host.subdomain';
         $subdomain = Host::subdomain();
+        d($subdomain);
         $object->config($key, $subdomain);
         $key = 'host.port';
         $port = Host::port();
