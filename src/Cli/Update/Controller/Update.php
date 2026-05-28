@@ -80,7 +80,7 @@ class Update extends Controller {
                 $command,
                 Update::EXCEPTION_COMMAND
             );
-            $exception .= PHP_EOL . 'available commands: ' . PHP_EOL;
+            $exception .= 'available commands: ' . PHP_EOL;
             foreach(Update::COMMAND as $item){
                 $exception .= '    ' . $item . PHP_EOL;
             }
