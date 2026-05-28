@@ -452,7 +452,12 @@
             "port" : [
                 80,
                 443
-            ]
+            ],
+            "user": {
+              "block": {
+                "period": "15 minutes"
+              }
+            }
         }
     }
 }
