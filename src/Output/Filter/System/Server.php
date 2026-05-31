@@ -45,4 +45,16 @@ class Server extends Controller {
         return $response;
 
     }
+
+    public static function extension(App $object, $response=null): object
+    {
+        ddd($response);
+        return $response;
+    }
+
+    public static function contentType(App $object, $response=null): object
+    {
+        ddd($response);
+        return $response;
+    }
 }
