@@ -572,13 +572,12 @@ class Config extends Data {
             'ramdisk_dir' => $dir_cache,
         ];
         $role_system = $node->role_system();
-
-        ddd($role_system);
+        $role_system = false;
         if(!$role_system){
-            return;
+            throw new Exception('System role not found.');
         }
         if(!$node->role_has_permission($role_system, 'System:Config:record')){
-            return;
+            throw new Exception('System has not this permission: System:Config:record');
         }        
         $response = $node->record($class, $role_system, $options);        
         if(
