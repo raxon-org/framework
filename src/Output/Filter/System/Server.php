@@ -92,15 +92,49 @@ class Server extends Controller {
         return $response;
     }
 
-    public static function extension(App $object, $response=null): object
+    public static function extension(App $object, $response=null): array|object
     {
-        dd($response);
+        $extension_list = [];
+        $is_extension_list = false;
+        foreach($response as $nr => $extension){
+            if(
+                property_exists($extension, '#class') &&
+                property_exists($extension, 'uuid') &&
+                property_exists($extension, 'extension') &&
+                property_exists($extension, 'file_extension')
+            ){
+                if(!in_array($extension->extension, $extension_list, true)){
+                    $extension_list[$extension->extension] = $extension->file_extension;
+                    $is_extension_list = true;
+                }
+            }
+        }
+        if($is_extension_list){
+            return (object) $extension_list;
+        }
         return $response;
     }
 
-    public static function contentType(App $object, $response=null): object
+    public static function contentType(App $object, $response=null): array|object
     {
-        dd($response);
+        $content_type_list = [];
+        $is_content_type_list = false;
+        foreach($response as $nr => $contentType){
+            if(
+                property_exists($contentType, '#class') &&
+                property_exists($contentType, 'uuid') &&
+                property_exists($contentType, 'extension') &&
+                property_exists($contentType, 'content_type')
+            ){
+                if(!in_array($contentType->extension, $content_type_list, true)){
+                    $content_type_list[$contentType->extension] = $contentType->content_type;
+                    $is_content_type_list = true;
+                }
+            }
+        }
+        if($is_content_type_list){
+            return (object) $content_type_list;
+        }
         return $response;
     }
 }
