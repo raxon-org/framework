@@ -575,7 +575,7 @@ class Config extends Data {
         if(!$role_system){
             throw new Exception('System role not found.');
         }
-        if(!$node->role_has_permission($role_system, 'System:Config:record2')){
+        if(!$node->role_has_permission($role_system, 'System:Config:record')){
             throw new Exception('System has not this permission: System:Config:record');
         }        
         $response = $node->record($class, $role_system, $options);        
