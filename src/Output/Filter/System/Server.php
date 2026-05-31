@@ -1,5 +1,4 @@
 <?php
-
 namespace Raxon\Output\Filter\System;
 
 use Raxon\App;
@@ -46,7 +45,7 @@ class Server extends Controller {
 
     }
 
-    public static function output_filter(App $object, $response=null): object
+    public static function output_filter(App $object, mixed $response=null): array|object
     {
         foreach($response as $nr => $record){
             if(property_exists($record, 'extension')){
