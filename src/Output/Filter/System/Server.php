@@ -46,6 +46,12 @@ class Server extends Controller {
 
     }
 
+    public static function output_filter(App $object, $response=null): object
+    {
+        dd($response);
+        return $response;
+    }
+
     public static function extension(App $object, $response=null): object
     {
         dd($response);
