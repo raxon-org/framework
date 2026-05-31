@@ -44,6 +44,10 @@
       "webm",
       "mp4"
     ],
+    "extension": {
+      "txt" : ".txt",
+      "json": ".json"
+    },
     "error": {
         "extension": {
             "tpl": [
