@@ -32,6 +32,18 @@
         "version": "2026.02.1078",
         "built": "2026-02-13 14:54:16"
     },
+    "sourceType": [
+      "wav",
+      "ogg",
+      "mp3",
+      "png",
+      "jpg",
+      "bmp",
+      "gif",
+      "webp",
+      "webm",
+      "mp4"
+    ],
     "contentType": {
         "btree":"text\/plain",
         "lock":"text\/plain",
