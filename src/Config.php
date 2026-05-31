@@ -585,7 +585,6 @@ class Config extends Data {
         ){
             $object->config(Core::object_merge($object->config(), $response['node']));
             //dirty hack below
-            dd($object->config('server.extension'));
             $object->config('extension', $object->config('server.extension'));
             $object->config('contentType', $object->config('server.contentType'));
         }        
