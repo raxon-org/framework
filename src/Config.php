@@ -584,6 +584,7 @@ class Config extends Data {
             array_key_exists('node', $response)
         ){
             $object->config(Core::object_merge($object->config(), $response['node']));
+            dd($object->config('server.extension'));
         }        
     }
 
