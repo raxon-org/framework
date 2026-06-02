@@ -449,14 +449,14 @@ class Config extends Data {
      */
     public static function configure(App $object, object $options=null): void
     {
+        $starttime = null;
         if(
             $options !== null &&
             property_exists($options, 'clear')
         ){
             //clear old config.
+            $starttime = microtime(true);
             $object->data(App::CONFIG)->clear();
-            dd($object->data(App::CONFIG)->is_empty());
-
         }
         Config::volume($object);
         $node = new Node($object);
@@ -598,7 +598,12 @@ class Config extends Data {
             //dirty hack below
             $object->config('extension', $object->config('server.extension'));
             $object->config('contentType', $object->config('server.contentType'));
-        }        
+        }
+        if($starttime !== null){
+            $duration = microtime(true) - $starttime;
+            ddd(($duration * 1000) . ' msec');
+        }
+
     }
 
     /**
