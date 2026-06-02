@@ -832,8 +832,8 @@ class Autoload {
             !empty($this->expose())
         ){
             if(empty($this->expose())){
-                $debug_backtrace = debug_backtrace(true);
-                ddd($debug_backtrace);
+                //filtering out doctrine packages, because they use class_exists to enable features
+                breakpoint($load);
                 throw new LocateException('Autoload error, cannot load (' . $load .') class. (see ' . $dir_temp . 'Autoload.log' . ')', Autoload::exception_filelist($fileList));
             }
             $object = new stdClass();
