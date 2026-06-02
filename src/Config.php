@@ -460,7 +460,8 @@ class Config extends Data {
                 'dir.vendor' => $object->config('dir.vendor'),
                 'time.start' => $object->config('time.start'),
             ]);
-            $object->data(App::CONFIG)->set($config);;
+            ddd($config);
+            $object->data(App::CONFIG)->data($config);;
         }
         Config::volume($object);
         $node = new Node($object);
