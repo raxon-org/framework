@@ -605,11 +605,6 @@ class Config extends Data {
             $object->config('extension', $object->config('server.extension'));
             $object->config('contentType', $object->config('server.contentType'));
         }
-        if($starttime !== null){
-            $duration = microtime(true) - $starttime;
-            ddd(($duration * 1000) . ' msec');
-        }
-
     }
 
     /**
