@@ -462,7 +462,6 @@ class Config extends Data {
                 'dir.vendor' => $object->config(Config::DATA_PROJECT_DIR_VENDOR),
                 'time.start' => $object->config('time.start'),
             ]);
-            ddd($config);
             $object->data(App::CONFIG)->data($config);;
         }
         Config::volume($object);
