@@ -832,6 +832,8 @@ class Autoload {
             !empty($this->expose())
         ){
             if(empty($this->expose())){
+                $debug_backtrace = debug_backtrace(true);
+                ddd($debug_backtrace);
                 throw new LocateException('Autoload error, cannot load (' . $load .') class. (see ' . $dir_temp . 'Autoload.log' . ')', Autoload::exception_filelist($fileList));
             }
             $object = new stdClass();
