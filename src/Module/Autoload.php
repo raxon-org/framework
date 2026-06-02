@@ -833,7 +833,9 @@ class Autoload {
         ){
             if(empty($this->expose())){
                 //filtering out doctrine packages, because they use class_exists to enable features
-                breakpoint($load);
+                if(str_starts_with($load, 'Doctrine\\')){
+                    return false;
+                }
                 throw new LocateException('Autoload error, cannot load (' . $load .') class. (see ' . $dir_temp . 'Autoload.log' . ')', Autoload::exception_filelist($fileList));
             }
             $object = new stdClass();
