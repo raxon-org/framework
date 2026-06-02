@@ -47,7 +47,8 @@
     "extension": {
       "txt" : ".txt",
       "json": ".json",
-      "php": ".php"
+      "php": ".php",
+      "tpl": ".tpl"
     },
     "error": {
         "extension": {
