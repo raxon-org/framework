@@ -456,7 +456,11 @@ class Config extends Data {
         ){
             //clear old config.
             $starttime = microtime(true);
-            $object->data(App::CONFIG)->clear();
+            $config = new Config([
+                'dir.vendor' => $object->config('dir.vendor'),
+                'time.start' => $object->config('time.start'),
+            ]);
+            $object->data(App::CONFIG)->set($config);;
         }
         Config::volume($object);
         $node = new Node($object);
