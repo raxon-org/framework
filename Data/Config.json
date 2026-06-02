@@ -46,7 +46,8 @@
     ],
     "extension": {
       "txt" : ".txt",
-      "json": ".json"
+      "json": ".json",
+      "php": ".php"
     },
     "error": {
         "extension": {
