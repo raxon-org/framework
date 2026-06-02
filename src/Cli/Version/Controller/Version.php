@@ -18,7 +18,7 @@ use Raxon\Module\Event;
 use Raxon\Module\File;
 use Raxon\Module\Data;
 use Raxon\Module\Controller;
-use Raxon\Module\Parse;
+use Raxon\Parse\Module\Parse;
 
 use Exception;
 
@@ -108,7 +108,7 @@ class Version extends Controller {
                 'url' => $url
             ]);
             return $response;
-        } catch(Exception | LocateException | UrlEmptyException | UrlNotExistException $exception){
+        } catch(Exception | LocateException | UrlEmptyException | UrlNotExistException | ObjectException $exception){
             Event::trigger($object, 'cli.' . strtolower(Version::NAME) . '.' . __FUNCTION__, [
                 'name' => $name,
                 'url' => $url,
@@ -168,13 +168,22 @@ class Version extends Controller {
             ]);
             return $exception;
         }
-        $parse = new Parse($object);
+        $data = new Data();
+        $flags = (object) [];
+        $options = (object) [];
+
+        $parse = new Parse($object, $data, $flags, $options);
         $command = Version::UPDATE_COMMAND;
         foreach($command as $record){
             $execute = $parse->compile($record);
             echo 'Executing: ' . $execute . '...' . PHP_EOL;
-            Core::execute($object, $execute, $output);
-            echo $output . PHP_EOL;
+            Core::execute($object, $execute, $output, $notification);
+            if($output){
+                echo $output . PHP_EOL;
+            }
+            if($notification){
+                echo $notification . PHP_EOL;
+            }
         }
         return null;
     }
