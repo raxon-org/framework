@@ -456,7 +456,8 @@ class Config extends Data {
         ){
             //clear old config.
             $starttime = microtime(true);
-            $dir_vendor = $object->config('dir.vendor');
+            $dir_vendor = $object->config();
+            ddd($dir_vendor);
             $time_start = $object->config('time.start');
             d($dir_vendor);
             dd($time_start);
