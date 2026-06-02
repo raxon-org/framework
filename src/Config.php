@@ -447,9 +447,12 @@ class Config extends Data {
      * @throws ObjectException
      * @throws Exception
      */
-    public static function configure(App $object, object $options): void
+    public static function configure(App $object, object $options=null): void
     {
-        if(property_exists($options, 'clear')){
+        if(
+            $options !== null &&
+            property_exists($options, 'clear')
+        ){
             //clear old config.
             $object->data(App::CONFIG)->clear();
             dd($object->data(App::CONFIG)->is_empty());
