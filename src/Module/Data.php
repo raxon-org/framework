@@ -616,11 +616,13 @@ class Data {
         if(!Dir::exist($dir)){
             Dir::create($dir, Dir::CHMOD);
         }
+        /*
         $is_chown = false;
         if(posix_geteuid() === 0){
             $is_chown = true;
             File::chown($dir, 'www-data', 'www-data');
         }
+        */
         $write = false;
         if(is_array($options)){
             $options['return'] = $options['return'] ?? File::SIZE;
@@ -673,31 +675,39 @@ class Data {
                 }
                 if($original_byte){
                     $byte = File::write($url, $data, ['return' => File::SIZE]);
+                    /*
                     if($is_chown){
                         File::chown($url, 'www-data', 'www-data');
                     }
+                    */
                     return [
                         'original' => $original_byte,
                         'byte' => $byte,
                     ];
                 } else {
                     $write = File::write($url, $data, $options);
+                    /*
                     if($is_chown){
                         File::chown($url, 'www-data', 'www-data');
                     }
+                    */
                 }
             } else {
                 $write = File::write($url, Core::object($this->data(), Core::OBJECT_JSON), $options);
+                /*
                 if($is_chown){
                     File::chown($url, 'www-data', 'www-data');
                 }
+                */
             }
         }
         elseif(is_string($options)) {
             $write = File::write($url, Core::object($this->data(), Core::OBJECT_JSON), $options);
+            /*
             if($is_chown){
                 File::chown($url, 'www-data', 'www-data');
             }
+            */
         }
         return $write;
     }
