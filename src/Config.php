@@ -507,11 +507,14 @@ class Config extends Data {
             }
             if(!Dir::is($dir_cache)){
                 Dir::create($dir_cache, Dir::CHMOD);
+                breakpoint('check permission: ' . $dir_cache);
                 /* not allowed
                 File::permission($object, [
                     'cache' => $dir_cache
                 ]);
                 */
+            } else {
+                breakpoint('check permission: ' . $dir_cache);
             }
             if(!Dir::is($dir_www_cache)){
                 Dir::create($dir_www_cache, Dir::CHMOD);
