@@ -483,7 +483,7 @@ class Config extends Data {
                 ]);
                 */
             } else {
-                File:chown($dir: 'root', 'root' , true);
+                File:chown($dir, 'root', 'root' , true);
             }
             $dir_www = $dir_temp .
                 Config::WWW_DATA_DIR .
