@@ -735,7 +735,7 @@ class File {
     public static function size_format(float|int $size=0): string
     {
         if($size < 1024){
-            return '0 B';
+            return abs($size) . ' B';
         }
         elseif($size < 1024 * 1024){
             return round($size / 1024, 2) . ' KB';
@@ -751,10 +751,21 @@ class File {
         }
         elseif($size < 1024 * 1024 * 1024 * 1024 * 1024 * 1024){
             return round($size / 1024 / 1024 / 1024 / 1024 / 1024, 2) . ' PB';
-        } else {
+        }
+        elseif($size < 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024) {
             return round($size / 1024 / 1024 / 1024 / 1024 / 1024 / 1024, 2) . ' EB';
         }
-
+        elseif($size < 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024) {
+            return round($size / 1024 / 1024 / 1024 / 1024 / 1024 / 1024 / 1024, 2) . ' ZB';
+        }
+        elseif($size < 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024) {
+            return round($size / 1024 / 1024 / 1024 / 1024 / 1024 / 1024 / 1024 / 1024, 2) . ' RB';
+        }
+        elseif($size < 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024 * 1024) {
+            return round($size / 1024 / 1024 / 1024 / 1024 / 1024 / 1024 / 1024 / 1024 / 1024, 2) . ' QB';
+        } else {
+            return 'Unknown';
+        }
     }
 
     public static function time_format(int $seconds=0, string $string=File::IN): string
