@@ -515,7 +515,7 @@ class Config extends Data {
                 ]);
                 */
             } else {
-                breakpoint('check permission: ' . $dir_cache);
+                File::chown($dir_cache, 'root', 'root' , true);
             }
             if(!Dir::is($dir_www_cache)){
                 Dir::create($dir_www_cache, Dir::CHMOD);
