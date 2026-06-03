@@ -472,7 +472,7 @@ class Config extends Data {
             $dir_temp = $object->config('framework.dir.temp');
             $dir =
                 $dir_temp .
-                $object->config('posix.id') .
+                $object->config(Config::POSIX_ID) .
                 $object->config('ds')
             ;
             if(!Dir::is($dir)) {
@@ -482,6 +482,8 @@ class Config extends Data {
                     'dir' => $dir,
                 ]);
                 */
+            } else {
+                File:chown($dir);
             }
             $dir_www = $dir_temp .
                 Config::WWW_DATA_DIR .
@@ -507,7 +509,6 @@ class Config extends Data {
             }
             if(!Dir::is($dir_cache)){
                 Dir::create($dir_cache, Dir::CHMOD);
-                breakpoint('check permission: ' . $dir_cache);
                 /* not allowed
                 File::permission($object, [
                     'cache' => $dir_cache
