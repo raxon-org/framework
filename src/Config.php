@@ -522,19 +522,17 @@ class Config extends Data {
             }
             if(!Dir::is($dir_node)){
                 Dir::create($dir_node, Dir::CHMOD);
-                /* not allowed
+                // needed for user www (33)
                 File::permission($object, [
                     'dir_node' => $dir_node
                 ]);
-                */
             }
             if(!Dir::is($dir_node_list)){
                 Dir::create($dir_node_list, Dir::CHMOD);
-                /* not allowed
+                // needed for user www (33)
                 File::permission($object, [
                     'dir_node_list' => $dir_node_list
                 ]);
-                */
             }
         }
         elseif($object->config('posix.id') === Config::WWW_DATA_DIR){
