@@ -477,9 +477,11 @@ class Config extends Data {
             ;
             if(!Dir::is($dir)) {
                 Dir::create($dir, Dir::CHMOD);
+                /* not allowed
                 File::permission($object, [
                     'dir' => $dir,
                 ]);
+                */
             }
             $dir_www = $dir_temp .
                 Config::WWW_DATA_DIR .
@@ -498,33 +500,41 @@ class Config extends Data {
             $dir_node_list = $dir_node . 'List' . $object->config('ds');
             if(!Dir::is($dir_www)){
                 Dir::create($dir_www, Dir::CHMOD);
+                // needed for user www (33)
                 File::permission($object, [
                     'dir_www' => $dir_www
                 ]);
             }
             if(!Dir::is($dir_cache)){
                 Dir::create($dir_cache, Dir::CHMOD);
+                /* not allowed
                 File::permission($object, [
                     'cache' => $dir_cache
                 ]);
+                */
             }
             if(!Dir::is($dir_www_cache)){
                 Dir::create($dir_www_cache, Dir::CHMOD);
+                // needed for user www (33)
                 File::permission($object, [
                     'cache' => $dir_www_cache
                 ]);
             }
             if(!Dir::is($dir_node)){
                 Dir::create($dir_node, Dir::CHMOD);
+                /* not allowed
                 File::permission($object, [
                     'dir_node' => $dir_node
                 ]);
+                */
             }
             if(!Dir::is($dir_node_list)){
                 Dir::create($dir_node_list, Dir::CHMOD);
+                /* not allowed
                 File::permission($object, [
                     'dir_node_list' => $dir_node_list
                 ]);
+                */
             }
         }
         elseif($object->config('posix.id') === Config::WWW_DATA_DIR){
