@@ -454,10 +454,14 @@ class Config extends Data {
             $options !== null &&
             property_exists($options, 'clear')
         ){
-            //clear old config.
-            $starttime = microtime(true);
-            $dir_vendor = $object->config();
-            $time_start = $object->config('time.start');
+            if($object->config(Config::POSIX_ID) !== 0){
+                throw new Exception('Clear config not allowed for non-root user.');
+            }
+            $command = Core::binary($object) . ' cache clear';
+            exec($command, $output, $code);
+            if($code !== 0) {
+                throw new Exception('Command failed with code ' . $code . '.');
+            }
             $config = new Config([
                 'dir.vendor' => $object->config(Config::DATA_PROJECT_DIR_VENDOR),
                 'time.start' => $object->config('time.start'),
