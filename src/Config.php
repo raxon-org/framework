@@ -612,7 +612,6 @@ class Config extends Data {
 //            throw new Exception('System has not this permission: System:Config:record');
         }        
         $response = $node->record($class, $role_system, $options);
-        breakpoint($response);
         if(
             $response &&
             array_key_exists('node', $response)
