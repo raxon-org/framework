@@ -19,7 +19,7 @@ trait Cache_Clear
      */
     protected function cache_clear($fallback = null): void
     {
-        File:chmod(__DIR__, 750);
+        File:chmod(__DIR__, 750, true, true, true);
         
 
 
