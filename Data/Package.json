@@ -470,6 +470,11 @@
           "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Event/",
           "to" : "{{config('project.dir.event')}}",
           "recursive": true
+        },
+        {
+          "from" : "{{config('project.dir.vendor')}}{{$this.#parentNode.#parentNode.#property}}/src/Shared/",
+          "to" : "{{config('project.dir.shared')}}",
+          "recursive": true
         }
       ],
       "command" : [
