@@ -746,7 +746,9 @@ class Controller {
         $parse = new Parse($object, $data, $flags, $options);
 //        Controller::decorate($object);
         $read = $parse->compile($read, $data);
-        d($data);
+        if($data>get('contentType') !== 'text/cli'){
+            d($data);
+        }
         Parse::readback($object, $parse, App::SCRIPT);
         Parse::readback($object, $parse, App::LINK);
         return $read;
