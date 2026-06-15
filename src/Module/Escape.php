@@ -64,9 +64,11 @@ class Escape {
             $input = str_replace(
                 [
                     '$',
+                    '"'
                 ],
                 [
                     '\$',
+                    '\"'
                 ],
                 $input
             );
