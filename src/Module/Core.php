@@ -2226,8 +2226,8 @@ class Core
     public static function time_format(float|int $seconds=0, string $string='in', $compact=false): string
     {
         $days = floor($seconds / (3600 * 24));
-        $hours = floor(($seconds / 3600) % 24);
-        $minutes = floor(($seconds / 60) % 60);
+        $hours = floor((int) ($seconds / 3600) % 24);
+        $minutes = floor((int) ($seconds / 60) % 60);
         $explode = explode('.', $seconds);
         $msec = $explode[1] ?? 0;
         $seconds = $seconds % 60;
