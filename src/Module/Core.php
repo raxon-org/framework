@@ -2223,6 +2223,24 @@ class Core
         return $codepoints;
     }
 
+    public static function number_format(float|int $number=0): string
+    {
+        if($number / 1000000000000 > 1){
+            return number_format($number / 1000000000000, 2) . 'T';
+        }
+        if($number / 1000000000 > 1){
+            return number_format($number / 1000000000, 2) . 'B';
+        }
+        if($number / 1000000 > 1){
+            return number_format($number / 1000000, 2) . 'M';
+        }
+        if($number / 1000 > 1){
+            return number_format($number / 1000, 2) . 'K';
+        }
+        return number_format($number, 2);
+    }
+
+
     public static function time_format(float|int $seconds=0, string $string='in', $compact=false): string
     {
         $days = floor($seconds / (3600 * 24));
