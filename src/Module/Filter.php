@@ -47,6 +47,11 @@ class Filter extends Data {
     const OPERATOR_STRICTLY_AFTER = 'strictly-after';
     const OPERATOR_PARTIAL = 'partial';
     const OPERATOR_NOT_PARTIAL = 'not-partial';
+
+    const OPERATOR_STRICTLY_START = 'strictly-start';
+    const OPERATOR_STRICTLY_NOT_START = 'strictly-not-start';
+    const OPERATOR_STRICTLY_END = 'strictly-end';
+    const OPERATOR_STRICTLY_NOT_END = 'strictly-not-end';
     const OPERATOR_START = 'start';
     const OPERATOR_NOT_START = 'not-start';
     const OPERATOR_END = 'end';
@@ -1032,7 +1037,7 @@ class Filter extends Data {
                                         }
                                     }
                                 break;
-                                case Filter::OPERATOR_START :
+                                case Filter::OPERATOR_STRICTLY_START :
                                     $value = $data->get($attribute);
                                     if (
                                         is_string($record['value'])
@@ -1076,7 +1081,7 @@ class Filter extends Data {
                                         }
                                     }
                                 break;
-                                case Filter::OPERATOR_NOT_START :
+                                case Filter::OPERATOR_STRICTLY_NOT_START :
                                     $value = $data->get($attribute);
                                     if (
                                         is_string($record['value'])
@@ -1119,7 +1124,7 @@ class Filter extends Data {
                                         }
                                     }
                                 break;
-                                case Filter::OPERATOR_END :
+                                case Filter::OPERATOR_STRICTLY_END :
                                     $value = $data->get($attribute);
                                     if (is_string($record['value'])) {
                                         if ($record['value'] === '') {
@@ -1164,7 +1169,7 @@ class Filter extends Data {
                                         }
                                     }
                                 break;
-                                case Filter::OPERATOR_NOT_END :
+                                case Filter::OPERATOR_STRICTLY_NOT_END :
                                     $value = $data->get($attribute);
                                     if (
                                         is_string($record['value'])
@@ -1204,6 +1209,185 @@ class Filter extends Data {
                                                         $length
                                                     ),
                                                     $record['value']
+                                                ) === false
+                                            ) {
+                                                $skip = true;
+                                            }
+                                        }
+                                    }
+                                break;
+                                case Filter::OPERATOR_START :
+                                    $value = $data->get($attribute);
+                                    if (
+                                        is_string($record['value'])
+                                    ) {
+                                        if ($record['value'] === '') {
+                                            break;
+                                        }
+                                        elseif (
+                                            is_string($value) &&
+                                            stristr(
+                                                substr(
+                                                    strtolower($value),
+                                                    0,
+                                                    strlen($record['value'])
+                                                ),
+                                                strtolower($record['value'])
+                                            ) !== false
+                                        ) {
+                                            $skip = true;
+                                        }
+                                    }
+                                    elseif (is_array($value)) {
+                                        foreach ($value as $value_key => $value_value) {
+                                            $record_value = (string)$record['value'];
+                                            if ($value_value === '') {
+                                                continue;
+                                            }
+                                            elseif (
+                                                is_string($value_value) &&
+                                                stristr(
+                                                    substr(
+                                                        strtolower($value_value),
+                                                        0,
+                                                        strlen($record_value)
+                                                    ),
+                                                    strtolower($record_value)
+                                                ) !== false
+                                            ) {
+                                                $skip = true;
+                                            }
+                                        }
+                                    }
+                                break;
+                                case Filter::OPERATOR_NOT_START :
+                                    $value = $data->get($attribute);
+                                    if (
+                                        is_string($record['value'])
+                                    ) {
+                                        if ($record['value'] === '') {
+                                            break;
+                                        }
+                                        elseif (
+                                            is_string($value) &&
+                                            stristr(
+                                                substr(
+                                                    strtolower($value),
+                                                    0,
+                                                    strlen($record['value'])
+                                                ),
+                                                strtolower($record['value'])
+                                            ) === false
+                                        ) {
+                                            $skip = true;
+                                        }
+                                        elseif (is_array($value)) {
+                                            foreach ($value as $value_key => $value_value) {
+                                                if ($value_value === '') {
+                                                    continue;
+                                                }
+                                                elseif (
+                                                    is_string($value_value) &&
+                                                    stristr(
+                                                        substr(
+                                                            strtolower($value_value),
+                                                            0,
+                                                            strlen($record['value'])
+                                                        ),
+                                                        strtolower($record['value'])
+                                                    ) === false
+                                                ) {
+                                                    $skip = true;
+                                                }
+                                            }
+                                        }
+                                    }
+                                break;
+                                case Filter::OPERATOR_END :
+                                    $value = $data->get($attribute);
+                                    if (is_string($record['value'])) {
+                                        if ($record['value'] === '') {
+                                            break;
+                                        }
+                                        $length = strlen($record['value']);
+                                        if (is_array($value)) {
+                                            foreach ($value as $value_key => $value_value) {
+                                                if ($value_value === '') {
+                                                    continue;
+                                                }
+                                                $start = strlen($value_value) - $length;
+                                                if (
+                                                    stristr(
+                                                        substr(
+                                                            strtolower($value_value),
+                                                            $start,
+                                                            $length
+                                                        ),
+                                                        strtolower($record['value'])
+                                                    ) !== false
+                                                ) {
+                                                    $skip = true;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        elseif (is_string($value)) {
+                                            $start = strlen($value) - $length;
+                                            if (
+                                                stristr(
+                                                    substr(
+                                                        strtolower($value),
+                                                        $start,
+                                                        $length
+                                                    ),
+                                                    strtolower($record['value'])
+                                                ) !== false
+                                            ) {
+                                                $skip = true;
+                                            }
+                                        }
+                                    }
+                                break;
+                                case Filter::OPERATOR_NOT_END :
+                                    $value = $data->get($attribute);
+                                    if (
+                                        is_string($record['value'])
+                                    ) {
+                                        if ($record['value'] === '') {
+                                            break;
+                                        }
+                                        $length = strlen($record['value']);
+                                        if (is_array($value)) {
+                                            foreach ($value as $value_key => $value_value) {
+                                                if ($value_value === '') {
+                                                    continue;
+                                                }
+                                                $start = strlen($value_value) - $length;
+                                                if (
+                                                    stristr(
+                                                        substr(
+                                                            strtolower($value_value),
+                                                            $start,
+                                                            $length
+                                                        ),
+                                                        strtolower($record['value'])
+                                                    ) === false
+                                                ) {
+                                                    $skip = true;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        elseif (is_string($value)) {
+                                            $start = strlen($value) - $length;
+                                            if (
+                                                stristr(
+                                                    substr(
+                                                        strtolower($value),
+                                                        $start,
+                                                        $length
+                                                    ),
+                                                    strtolower($record['value'])
                                                 ) === false
                                             ) {
                                                 $skip = true;
