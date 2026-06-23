@@ -37,6 +37,8 @@ class Config extends Data {
     const MODE_TEST = 'test';
     const MODE_REPLICA = 'replica';
 
+    const API = 'api';
+    const VALUE_API = 'Api';
     const APPLICATION = 'application';
     const VALUE_APPLICATION = 'Application';
     const DATA = 'data';
@@ -733,6 +735,10 @@ class Config extends Data {
      */
     public function default(): void
     {
+        $key = Config::DICTIONARY . '.' . Config::API;
+        $value = Config::VALUE_API;
+        $this->data($key, $value);
+        
         $key = Config::DICTIONARY . '.' . Config::APPLICATION;
         $value = Config::VALUE_APPLICATION;
         $this->data($key, $value);
