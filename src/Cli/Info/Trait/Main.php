@@ -93,9 +93,14 @@ trait Main {
             $clone_options->set('backend.host', $response_backend['node']->subdomain . '.' . $response_backend['node']->domain . '.' . $response_backend['node']->extension);
         }
         $command = Core::binary($object) . ' reset -patch=true -frontend.host=' . escapeshellarg($clone_options->get('frontend.host')) . ' -backend.host=' . escapeshellarg($clone_options->get('backend.host'));
-        ddd($command);
-        d($response_frontend);
-        d($response_backend);
+        Core::interactive();
+        Core::execute($object, $command, $output, $notification);
+        if($output){
+            echo $output;
+        }
+        if($notification){
+            echo $notification;
+        }
     }
 
 
