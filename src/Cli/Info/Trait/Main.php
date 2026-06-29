@@ -81,7 +81,19 @@ trait Main {
         $node = new Node($object);
         $response_frontend = $node->record($class, $node->role_system(), $frontend_options);
         $response_backend = $node->record($class, $node->role_system(), $backend_options);
-
+        $clone_options = new Data();
+        if(!property_exists($response_frontend['node'],'subdomain')){
+            $clone_options->set('frontend.host', $response_frontend['node']->domain . '.' . $response_frontend['node']->extension);
+        } else {
+            $clone_options->set('frontend.host', $response_frontend['node']->subdomain . '.' . $response_frontend['node']->domain . '.' . $response_frontend['node']->extension);
+        }
+        if(!property_exists($response_backend['node'],'subdomain')){
+            $clone_options->set('backend.host', $response_backend['node']->domain . '.' . $response_backend['node']->extension);
+        } else {
+            $clone_options->set('backend.host', $response_backend['node']->subdomain . '.' . $response_backend['node']->domain . '.' . $response_backend['node']->extension);
+        }
+        $command = Core::binary($object) . ' reset -patch=true -frontend.host=' . escapeshellarg($clone_options->get('frontend.host')) . ' -backend.host=' . escapeshellarg($clone_options->get('backend.host'));
+        ddd($command);
         d($response_frontend);
         d($response_backend);
     }
