@@ -94,7 +94,7 @@ trait Main {
         }
         $command = Core::binary($object) . ' reset -patch=true -frontend.host=' . escapeshellarg($clone_options->get('frontend.host')) . ' -backend.host=' . escapeshellarg($clone_options->get('backend.host'));
         Core::interactive();
-        Core::execute($object, $command, $output, $notification);
+        Core::execute($object, $command, $output, $notification, Core::SHELL_PROCESS);
         if($output){
             echo $output;
         }
