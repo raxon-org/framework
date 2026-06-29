@@ -1,1 +1,1 @@
-{{Raxon.Framework.Cli.Info:App:reset(flags(), options())}}
+{{Raxon.Cli.Info:App:reset(flags(), options())}}
