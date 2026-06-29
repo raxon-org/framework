@@ -738,7 +738,7 @@ class Config extends Data {
         $key = Config::DICTIONARY . '.' . Config::API;
         $value = Config::VALUE_API;
         $this->data($key, $value);
-        
+
         $key = Config::DICTIONARY . '.' . Config::APPLICATION;
         $value = Config::VALUE_APPLICATION;
         $this->data($key, $value);
