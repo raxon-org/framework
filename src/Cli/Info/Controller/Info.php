@@ -38,7 +38,6 @@ class Info extends Controller {
         $command = $object::parameter($object, Info::NAME, 1);
         $url = false;
         try {
-            d(__CLASS__);
             if(empty($command)){
                 $url = Info::locate($object, Info::NAME);
             } else {
