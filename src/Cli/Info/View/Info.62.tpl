@@ -1,5 +1,4 @@
-{{d(constant('__CLASS__'))}}
-{{app.controller.configure('__CLASS__')}}
+{{app.controller.configure('Raxon\Cli\Reset\Controller\Reset')}}
 {{reset(flags(), options())}}
 /*
 {{config('controller.class', 'Raxon\\Cli\\Reset\\Controller\\Reset')}}
