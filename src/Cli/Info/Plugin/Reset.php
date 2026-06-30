@@ -27,7 +27,7 @@ trait Reset
 
         if(property_exists($options, 'application') && !empty($options->application)){            
             //frankenphp  init ?    
-            $commands = $data->get('application.command');            
+            $commands = $data->get('application.command') ?? [];
             foreach($commands as $command){
                 Core::execute($object, $command, $output, $notification);
                 if($output){
