@@ -55,4 +55,10 @@ class Doctrine extends Controller {
         }
         return (object) $result;
     }
+
+    public static function connection(App $object, $response=null): object
+    {
+        ddd($response);
+    }
+
 }

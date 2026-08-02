@@ -43,7 +43,8 @@ class Config extends Data {
     const VALUE_APPLICATION = 'Application';
     const DATA = 'data';
     const VALUE_DATA = 'Data';
-
+    const MAIN = 'main';
+    const VALUE_MAIN = 'Main';
     const MIDDLEWARE = 'middleware';
     const VALUE_MIDDLEWARE = 'Middleware';
     const EVENT = 'event';
@@ -745,6 +746,10 @@ class Config extends Data {
 
         $key = Config::DICTIONARY . '.' . Config::DATA;
         $value = Config::VALUE_DATA;
+        $this->data($key, $value);
+
+        $key = Config::DICTIONARY . '.' . Config::MAIN;
+        $value = Config::VALUE_MAIN;
         $this->data($key, $value);
 
         $key = Config::DICTIONARY . '.' . Config::SHARED;
