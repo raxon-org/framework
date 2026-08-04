@@ -35,14 +35,6 @@
 		"defuse/php-encryption": "^2.3",
 		"spatie/fork": "^1.2.2"
     },
-	"require-dev" : {
-		"pestphp/pest": "^2.34"
-	},
-	"config": {
-		"allow-plugins": {
-			"pestphp/pest-plugin": true
-		}
-	},
 	"license" : "MIT",
 	"authors" : [{
 			"name" : "Remco van der Velde",
