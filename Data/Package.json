@@ -964,7 +964,7 @@
     },
     "raxon/www-workandtravel-world" : {
       "composer.production" : "composer require {{$this.#parentNode.#property}}:~2026",
-      "composer.development" : "composer require {{$this.#parentNode.#property}}:dev-main",
+      "composer" : "composer require {{$this.#parentNode.#property}}:dev-main",
       "route" : [
         "{{config('project.dir.vendor')}}{{$this.#parentNode.#property}}/Data/System.Route.json"
       ],
