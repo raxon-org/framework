@@ -641,6 +641,7 @@ class Autoload {
                         array_pop($tmp);
                     }
                     $item['file'] = implode('.', $tmp);
+                    d($item['file']);
                 } elseif ($is_data === false) {
                     continue; //changed @ 2023-11-16
                     /*
