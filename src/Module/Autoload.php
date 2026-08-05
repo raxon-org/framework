@@ -687,6 +687,7 @@ class Autoload {
                     is_array($fileList[$nr]) &&
                     empty($this->expose())
                 ){
+                    breakpoint($fileList);
                     foreach($fileList[$nr] as $file){
                         /* must become a debug flag?
                         if($logger_error){
