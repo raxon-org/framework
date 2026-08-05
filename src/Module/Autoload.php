@@ -551,8 +551,6 @@ class Autoload {
                 $data[] = $directory.  str_replace('..', '.', $item['dirNameDot']) . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
                 $data[] = $directory.  str_replace('..', '.', $item['dirName']) . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
             }
-            d($item);
-            d($data);
             $data[] = $directory .  str_replace('..', '.', $item['file']) . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
             $explode = explode('.', $item['file_dot'], 2);
             if(
