@@ -540,13 +540,15 @@ class Autoload {
         ){
             $data[] = $this->read->autoload->{$caller}->{$item['load']};
         }
-        foreach($item['directory'] as $nr => $directory){
+        foreach($item['directory'] as $nr => $directory) {
             $item['file_dot'] = str_replace('_', '.', $item['file']);
             $data[] = $directory . str_replace('..', '.', $item['file_dot']) . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
-            $data[] = $directory .  str_replace('..', '.', $item['file']) . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
-            $data[] = $directory.  str_replace('..', '.', $item['file_dot']) . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
-            $data[] = $directory.  str_replace('..', '.', $item['file_dot']) . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
-            d($item);
+            $data[] = $directory . str_replace('..', '.', $item['file']) . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
+            $data[] = $directory . str_replace('..', '.', $item['file_dot']) . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
+            if (array_key_exists('dirName', $item)) {
+                $item['dirName'] = str_replace('..', '.', $item['dirName']);
+                $data[] = $directory.  str_replace('..', '.', $item['dirName']) . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
+            }
             d($data);
             $data[] = $directory .  str_replace('..', '.', $item['file']) . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
             $explode = explode('.', $item['file_dot'], 2);
