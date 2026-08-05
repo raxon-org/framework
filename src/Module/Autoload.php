@@ -685,7 +685,8 @@ class Autoload {
                 foreach($fileList as $nr => $subList){
                     d('sublist:' . $nr);
                     foreach($subList as $file_nr => $item){
-                        d('file exists: ' . $file_nr . ' ' . file_exists($item));
+                        $exists = file_exists($item);
+                        d('file exists: ' . $file_nr . ' ' . $exists);
                     }
                 }
             }
