@@ -55,9 +55,11 @@ config('framework.environment') === 'development' &&
     <label>Trace: </label><br>
     <table class="trace">
         {{foreach($exception.trace as $nr => $trace)}}
+        {{if(is.empty($trace.file))}}
         <tr class="trace">
             <td class="title"><b>File:</b> {{$trace.file|>default:'unknown file'}} (<b>{{$trace.line|>default:'unknown line'}}</b>)</td>
         </tr>
+        {{/if}}
         <tr class="trace">
             <td class="class"><b>Class:</b> {{$trace.class|>default:'unknown class'}}</td>
         </tr>
@@ -66,6 +68,7 @@ config('framework.environment') === 'development' &&
         </tr>
         <tr class="trace-source">
             <td colspan="4">
+                {{if(!is.empty($trace.file))}}
                 <label>Source: </label><br>
                 {{$source = file.read($trace.file)}}
                 {{if($source)}}
@@ -85,6 +88,7 @@ config('framework.environment') === 'development' &&
                     {{/if}}
                     {{/for}}
                 </table>
+                {{/if}}
                 {{/if}}
             </td>
         </tr>
