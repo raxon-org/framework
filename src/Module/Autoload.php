@@ -681,6 +681,7 @@ class Autoload {
             if($mode === Autoload::MODE_LOCATION){
                 return $fileList;
             }
+            /* fucking hackers
             if(!empty($fileList)){
                 foreach($fileList as $nr => $subList){
                     d('sublist:' . $nr);
@@ -691,6 +692,7 @@ class Autoload {
                 }
             }
             d('check');
+            */
             foreach($prefixList as $nr => $item){
                 if (empty($item['prefix'])) {
                     continue;
