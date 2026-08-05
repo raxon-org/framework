@@ -552,8 +552,12 @@ class Autoload {
                 $explode[0] !== $item['file']
             ){
                 $www_dir = str_replace('..', '.', $explode[0]);
-                $www_dir = str_replace('/Www/Raxon/', '/Www/', $www_dir);
-                $data[] = $directory .  $www_dir . $item['file_dot'] . '.' . Autoload::EXT_PHP;
+                $www_dir = str_replace('/Www/Raxon/', '/Www/', $www_dir, $count);
+                if($count > 0){
+                    d($www_dir);
+                    dd($item);
+                }
+                $data[] = $directory .  $www_dir . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
                 $data[] = $directory .  str_replace('..', '.', $explode[0]) . DIRECTORY_SEPARATOR . $item['file_dot'] . '.' . Autoload::EXT_PHP;
                 $data[] = $directory .  str_replace('..', '.', $explode[0]) . DIRECTORY_SEPARATOR . $item['file'] . '.' . Autoload::EXT_PHP;
                 $data[] = $directory .  str_replace('..', '.', $explode[0]) . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
