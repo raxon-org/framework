@@ -682,8 +682,10 @@ class Autoload {
                 return $fileList;
             }
             if(!empty($fileList)){
-                foreach($fileList as $nr => $item){
-                    d('file exists: ' . $nr . ' ' . $item);
+                foreach($fileList as $nr => $subList){
+                    foreach($fileList as $file_nr => $item){
+                        d('file exists: ' . $file_nr . ' ' . $item);
+                    }
                 }
             }
             d('check');
