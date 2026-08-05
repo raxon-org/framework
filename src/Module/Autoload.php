@@ -556,6 +556,7 @@ class Autoload {
                 $data[] = $directory .  str_replace('..', '.', $explode[0]) . DIRECTORY_SEPARATOR . str_replace('_', '.', $item['baseName']) . '.' . Autoload::EXT_PHP;
                 $data[] = $directory .  str_replace('..', '.', $explode[0]) . DIRECTORY_SEPARATOR . $item['baseName'] . '.' . Autoload::EXT_PHP;
             }
+            breakpoint($data);
             $data[] = $directory . $item['file_dot'] . '.' . Autoload::EXT_PHP;
             $data[] = $directory . $item['file'] . '.' . Autoload::EXT_PHP;
             $data[] = $directory . $item['baseName'] . '.' . Autoload::EXT_PHP;
@@ -687,7 +688,6 @@ class Autoload {
                     is_array($fileList[$nr]) &&
                     empty($this->expose())
                 ){
-                    breakpoint($fileList);
                     foreach($fileList[$nr] as $file){
                         /* must become a debug flag?
                         if($logger_error){
