@@ -52,7 +52,6 @@ class Route extends Data {
     public function current(Destination|null $current=null): ?Destination
     {
         if($current !== null){
-            d($current);
             $this->setCurrent($current);
         }
         return $this->getCurrent();
