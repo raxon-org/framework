@@ -681,7 +681,12 @@ class Autoload {
             if($mode === Autoload::MODE_LOCATION){
                 return $fileList;
             }
-            d($fileList);
+            if(!empty($fileList)){
+                foreach($fileList as $nr => $item){
+                    d('file exists: ' . $nr . ' ' . $item);
+                }
+            }
+            d('check');
             foreach($prefixList as $nr => $item){
                 if (empty($item['prefix'])) {
                     continue;
