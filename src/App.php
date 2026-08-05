@@ -643,6 +643,7 @@ class App extends Data {
     {
         $controller = $destination->get('controller');
         if(!empty($controller)){
+            d($controller);
             $check = class_exists($controller);
             if(empty($check)){
                 throw new Exception('Cannot call controller (' . $controller .')');
