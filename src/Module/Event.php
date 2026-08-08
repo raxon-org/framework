@@ -123,6 +123,7 @@ class Event extends Main {
      */
     public static function trigger(App $object, $action, $options=[]): void
     {
+        trace():
         d($options);
         $events = $object->get(App::EVENT)->select(Event::OBJECT, [
             'action' => $action
