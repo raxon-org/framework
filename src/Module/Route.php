@@ -513,7 +513,7 @@ class Route extends Data {
             }
             $host_name = $object->config('host.name');
             if(empty($host_name)){
-                throw new Exception('empty host.name, is the host mapped ?');                
+                throw new Exception('empty host.name, is the host mapped ?');
             }
             $select->method = Handler::method();
             $select->host = strtolower($object->config('host.name'));

@@ -251,7 +251,7 @@ class App extends Data {
                         $object->config(
                             'controller.dir.view',
                             $controller_dir_view
-                        );                    
+                        );
                         $exception = new RouteNotExistException('404 Not Found (route: '. $route .')', 404);
                         $response = new Response(
                             Controller::response(
