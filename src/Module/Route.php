@@ -485,6 +485,9 @@ class Route extends Data {
             if(substr($input->data('request'), -1) != '/'){
                 $input->data('request', $input->data('request') . '/');
             }
+            if(stristr($input->data('request'), '/user/current') !== false){
+                ddd($input);
+            }
             $select = new stdClass();
             $select->input = $input;
             $test = Route::request_explode(urldecode($input->data('request')));
