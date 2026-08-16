@@ -486,7 +486,7 @@ class Route extends Data {
                 $input->data('request', $input->data('request') . '/');
             }
             if(stristr($input->data('request'), '/user/current') !== false){
-                ddd($input);
+                dd($input);
             }
             $select = new stdClass();
             $select->input = $input;
