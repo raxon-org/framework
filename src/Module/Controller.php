@@ -277,7 +277,6 @@ class Controller {
                 $name
             );
             $list[] = $dir . $name . $config->data('extension.tpl');
-            d($object->config());
             d($config->data('extension.tpl'));
             ddd($list);
             if(!empty($object->config('controller.dir.view'))){
