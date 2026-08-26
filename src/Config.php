@@ -613,8 +613,10 @@ class Config extends Data {
         if(!$node->role_has_permission($role_system, 'System:Config:record')){
             return; //clean install needs a return ?
 //            throw new Exception('System has not this permission: System:Config:record');
-        }        
+        }
+        d($options);
         $response = $node->record($class, $role_system, $options);
+        ddd($response);
         if(
             $response &&
             array_key_exists('node', $response)

@@ -344,12 +344,13 @@ class Core
     /**
      * @throws UrlEmptyException
      */
-    public static function redirect(string $url = ''): void
+    public static function redirect(string $url = '', $response_code=302): void
     {
         if (empty($url)) {
             throw new UrlEmptyException('url is empty...');
         }
-        header('Location: ' . $url, true, 302);
+        Server::cors($object);
+        header('Location: ' . $url, true, $response_code);
         exit;
     }
 

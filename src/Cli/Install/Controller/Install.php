@@ -69,6 +69,8 @@ class Install extends Controller {
         Core::interactive();
         $url = $object->config('framework.dir.data') .
             $object->config('dictionary.package') .
+            $object->config('ds') .
+            $object->config('dictionary.package') .
             $object->config('extension.json')
         ;
         $object->set(Controller::PROPERTY_VIEW_URL, $url);
