@@ -78,7 +78,7 @@ class Install extends Controller {
             $url,
             'package.' . $key
         );
-        dd($package);       
+        dd($package);
 
         if($package->has('composer')){
             Dir::change($object->config('project.dir.root'));
