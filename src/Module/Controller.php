@@ -158,6 +158,7 @@ class Controller {
         $name = null;
         $list = [];
         $dir = '';
+        d($template);
         if(
             !empty($template) &&
             is_object($template) &&
@@ -224,6 +225,7 @@ class Controller {
             }
         }
         $config = $object->data(App::CONFIG);
+        d($url);
         if($url){
             $list[] = $url;
         } else {
@@ -275,12 +277,14 @@ class Controller {
                 $name
             );
             $list[] = $dir . $name . $config->data('extension.tpl');
+            d($list);
             if(!empty($object->config('controller.dir.view'))){
                 $list[] = $object->config('controller.dir.view') .
                     str_replace('.', $object->config('ds'), $name) .
                     $object->config('ds') .
                     $basename . $config->data('extension.tpl')
                 ;
+                d($list);
                 if($dotted_last){
                     $list[] = $object->config('controller.dir.view') .
                         str_replace('.', $object->config('ds'), $name) .
@@ -297,6 +301,7 @@ class Controller {
                     $name .
                     $config->data('extension.tpl')
                 ;
+                d($list);
             }
             elseif(!empty($object->config('host.dir.view'))){
                 $list[] = $object->config('host.dir.view') .
@@ -346,6 +351,7 @@ class Controller {
                 $explode[] = $config->data('dictionary.view');
             }
         }
+        d($url);
         $url = false;
         $view_url = false;
         $config_url = false;

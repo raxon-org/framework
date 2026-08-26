@@ -58,9 +58,8 @@ class Ramdisk extends Controller {
                     throw $exception;
             }
             if($name){
-                d($name);
-                d($command);
                 $url = Ramdisk::locate($object, $name);
+
                 d($name);
                 d($url);
                 $response = Ramdisk::response($object, $url);
