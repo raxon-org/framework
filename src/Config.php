@@ -626,10 +626,10 @@ class Config extends Data {
             $server_extension = $object->config('server.extension') ?? (object) [];
             $server_content_type = $object->config('server.contentType') ?? (object) [];
             if(!empty($server_extension)){
-                $object->config('extension', array_merge($extension, $server_extension));
+                $object->config('extension', Core::object_merge($extension, $server_extension));
             }
             if(!empty($server_content_type)){
-                $object->config('contentType', array_merge($content_type, $server_content_type));
+                $object->config('contentType', Core::object_merge($content_type, $server_content_type));
             }
         }
     }
