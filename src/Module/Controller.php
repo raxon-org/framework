@@ -158,6 +158,7 @@ class Controller {
         $name = null;
         $list = [];
         $dir = '';
+        trace();
         ddd($template);
         if(
             !empty($template) &&
