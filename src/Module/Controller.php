@@ -283,7 +283,6 @@ class Controller {
                     $object->config('ds') .
                     $basename . $config->data('extension.tpl')
                 ;
-                d($list);
                 if($dotted_last){
                     $list[] = $object->config('controller.dir.view') .
                         str_replace('.', $object->config('ds'), $name) .
@@ -300,7 +299,6 @@ class Controller {
                     $name .
                     $config->data('extension.tpl')
                 ;
-                d($list);
             }
             elseif(!empty($object->config('host.dir.view'))){
                 $list[] = $object->config('host.dir.view') .
@@ -350,7 +348,6 @@ class Controller {
                 $explode[] = $config->data('dictionary.view');
             }
         }
-        d($url);
         $url = false;
         $view_url = false;
         $config_url = false;
