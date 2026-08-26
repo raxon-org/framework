@@ -158,7 +158,7 @@ class Controller {
         $name = null;
         $list = [];
         $dir = '';
-        d($template);
+        ddd($template);
         if(
             !empty($template) &&
             is_object($template) &&
@@ -225,7 +225,6 @@ class Controller {
             }
         }
         $config = $object->data(App::CONFIG);
-        d($url);
         if($url){
             $list[] = $url;
         } else {

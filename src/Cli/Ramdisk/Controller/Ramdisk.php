@@ -61,7 +61,7 @@ class Ramdisk extends Controller {
                 $url = Ramdisk::locate($object, $name);
 
                 d($name);
-                d($url);
+                ddd($url);
                 $response = Ramdisk::response($object, $url);
                 Event::trigger($object, 'cli.' . strtolower(Ramdisk::NAME) . '.' . strtolower($command), [
                     'name' => $name,
