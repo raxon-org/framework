@@ -158,8 +158,8 @@ class Controller {
         $name = null;
         $list = [];
         $dir = '';
-        trace();
-        ddd($template);
+        //trace();
+        //ddd($template);
         if(
             !empty($template) &&
             is_object($template) &&
@@ -204,6 +204,7 @@ class Controller {
             is_string($template)
         ){
             $called = get_called_class();
+            dd($called);
             if(defined($called .'::DIR')){
                 $dir = $called::DIR;
             } else {
