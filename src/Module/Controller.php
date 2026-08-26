@@ -204,7 +204,6 @@ class Controller {
             is_string($template)
         ){
             $called = get_called_class();
-            dd($called);
             if(defined($called .'::DIR')){
                 $dir = $called::DIR;
             } else {
@@ -214,6 +213,8 @@ class Controller {
                 throw new Exception('Please define const DIR = __DIR__ . DIRECTORY_SEPARATOR; in the controller (' . $called . ').');
             }
             $name = $template;
+            d($name);
+            dd($dir);
         }
         elseif(empty($url)) {
             $called = get_called_class();
