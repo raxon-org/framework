@@ -621,13 +621,15 @@ class Config extends Data {
         ){
             $object->config(Core::object_merge($object->config(), $response['node']));
             //dirty hack below
+            $extension = $object->config('extension') ?? [];
+            $content_type = $object->config('contentType') ?? [];
             $server_extension = $object->config('server.extension') ?? [];
             $server_content_type = $object->config('server.contentType') ?? [];
             if(!empty($server_extension)){
-                $object->config('extension', array_merge($object->config('extension'), $object->config('server.extension')));
+                $object->config('extension', array_merge($extension, $server_extension));
             }
             if(!empty($server_content_type)){
-                $object->config('contentType', array_merge($object->config('contentType'), $object->config('server.contentType')));
+                $object->config('contentType', array_merge($content_type, $server_content_type));
             }
         }
     }
