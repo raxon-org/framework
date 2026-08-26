@@ -625,6 +625,7 @@ class Config extends Data {
             $content_type = $object->config('contentType') ?? [];
             $server_extension = $object->config('server.extension') ?? [];
             $server_content_type = $object->config('server.contentType') ?? [];
+            ddd($server_content_type);
             if(!empty($server_extension)){
                 $object->config('extension', array_merge($extension, $server_extension));
             }
