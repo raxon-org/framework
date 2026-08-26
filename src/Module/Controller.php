@@ -213,8 +213,6 @@ class Controller {
                 throw new Exception('Please define const DIR = __DIR__ . DIRECTORY_SEPARATOR; in the controller (' . $called . ').');
             }
             $name = $template;
-            d($name);
-            dd($dir);
         }
         elseif(empty($url)) {
             $called = get_called_class();
@@ -279,7 +277,8 @@ class Controller {
                 $name
             );
             $list[] = $dir . $name . $config->data('extension.tpl');
-            d($list);
+            d($config->data('extension.tpl'));
+            ddd($list);
             if(!empty($object->config('controller.dir.view'))){
                 $list[] = $object->config('controller.dir.view') .
                     str_replace('.', $object->config('ds'), $name) .
