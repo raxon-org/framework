@@ -277,8 +277,6 @@ class Controller {
                 $name
             );
             $list[] = $dir . $name . $config->data('extension.tpl');
-            d($config->data('extension.tpl'));
-            ddd($list);
             if(!empty($object->config('controller.dir.view'))){
                 $list[] = $object->config('controller.dir.view') .
                     str_replace('.', $object->config('ds'), $name) .
