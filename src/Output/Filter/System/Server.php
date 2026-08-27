@@ -41,7 +41,7 @@ class Server extends Controller {
         if($count > 0){
             return (object) $result;
         }
-        return $response;
+        return (object) $response;
 
     }
 
