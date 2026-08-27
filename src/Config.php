@@ -621,10 +621,11 @@ class Config extends Data {
         ){
             $object->config(Core::object_merge($object->config(), $response['node']));
             //dirty hack below
-            $extension = $object->config('extension') ??  (object) [];
-            $content_type = $object->config('contentType') ?? (object) [];
-            $server_extension = $object->config('server.extension') ?? (object) [];
-            $server_content_type = $object->config('server.contentType') ?? (object) [];
+            //with properties should be an object, with integer index an array.
+            $extension = (object) $object->config('extension') ??  (object) [];
+            $content_type = (object) $object->config('contentType') ?? (object) [];
+            $server_extension = (object) $object->config('server.extension') ?? (object) [];
+            $server_content_type = (object) $object->config('server.contentType') ?? (object) [];
             if(!empty($server_extension)){
                 $object->config('extension', Core::object_merge($extension, $server_extension));
             }
