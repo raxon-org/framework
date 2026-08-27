@@ -55,11 +55,11 @@ class Server extends Controller {
                     if(
                         property_exists($extension, '#class') &&
                         property_exists($extension, 'uuid') &&
-                        property_exists($extension, 'extension') &&
-                        property_exists($extension, 'file_extension')
+                        property_exists($extension, 'name') &&
+                        property_exists($extension, 'extension')
                     ){
-                        if(!in_array($extension->extension, $extension_list, true)){
-                            $extension_list[$extension->extension] = $extension->file_extension;
+                        if(!in_array($extension->name, $extension_list, true)){
+                            $extension_list[$extension->name] = $extension->extension;
                             $is_extension_list = true;
                         }
                     }
@@ -78,9 +78,11 @@ class Server extends Controller {
                         property_exists($contentType, 'extension') &&
                         property_exists($contentType, 'content_type')
                     ){
-                        if(!in_array($contentType->extension, $content_type_list, true)){
-                            $content_type_list[$extension->extension] = $contentType->content_type;
-                            $is_content_type_list = true;
+                        foreach($record->extension as $extension){
+                            if(!in_array($contentType->extension, $content_type_list, true)){
+                                $content_type_list[$extension->name] = $contentType->content_type;
+                                $is_content_type_list = true;
+                            }
                         }
                     }
                 }
