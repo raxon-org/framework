@@ -60,6 +60,7 @@ class FileRequest {
         ;
         if($controller === 'Application'){
             $count_explode = count($explode);
+            d($explode);
             dd($count_explode);
             $explode_3 = [];
             for($i = 0; $i < 2; $i++){
