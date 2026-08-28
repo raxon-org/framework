@@ -72,9 +72,11 @@ class FileRequest {
                 $explode_3[] = $explode_2[$i];
             }
             $explode_4 = [];
+            /*
             for($i = 0; $i < 3; $i++){
 
             }
+            */
             d($explode_2);
             dd($explode_3);
             //10
