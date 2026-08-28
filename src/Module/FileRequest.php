@@ -146,6 +146,7 @@ class FileRequest {
         ;
         $location[] = $object->config('project.dir.public') .
             $dir;
+        d($location);
         return $location;
     }
 
