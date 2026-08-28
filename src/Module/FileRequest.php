@@ -123,7 +123,6 @@ class FileRequest {
                 $type .
                 $object->config('ds')
             ;
-            d(end($location));
         }
         if(
             $dir_type_swap &&
@@ -137,7 +136,6 @@ class FileRequest {
                 $type_swap .
                 $object->config('ds')
             ;
-            d(end($location));
             //10
             $location[] = $object->config('domain.dir.root') .
                 $dir_type_swap .
@@ -155,7 +153,6 @@ class FileRequest {
                 $type_swap .
                 $object->config('ds')
             ;
-            d(end($location));
         }
         //12
         $location[] = $object->config('domain.dir.public') .
@@ -351,7 +348,6 @@ class FileRequest {
                 $url .= $object->config('ds');
             }
             $url .= $file;
-            d(file_Exists($url) . '-> ' . $url);
             if(
                 $is_ram_url === false &&
                 $ram_url !== false &&
