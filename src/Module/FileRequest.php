@@ -140,6 +140,13 @@ class FileRequest {
             d(end($location));
             //10
             $location[] = $object->config('domain.dir.root') .
+                $dir_type_swap .
+                $type_swap .
+                'Public' .
+                $object->config('ds')
+            ;
+            //11
+            $location[] = $object->config('domain.dir.root') .
                 'View' .
                 $object->config('ds') .
                 $dir_type_swap .
@@ -150,19 +157,18 @@ class FileRequest {
             ;
             d(end($location));
         }
-        //11
+        //12
         $location[] = $object->config('domain.dir.public') .
             $dir;
-        //12
+        //13
         $location[] = $object->config('project.dir.asset') .
             $object->config('dictionary.public') .
             $object->config('ds') .
             $dir
         ;
-        //13
+        //14
         $location[] = $object->config('project.dir.public') .
             $dir;
-        d($location);
         return $location;
     }
 
