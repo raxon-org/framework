@@ -59,6 +59,8 @@ class FileRequest {
             $object->config('ds')
         ;
         if($controller === 'Application'){
+            $count_explode = count($explode);
+            dd(($count_explode);
             $explode_3 = [];
             for($i = 0; $i < 2; $i++){
                 $explode_3[] = $explode_2[$i];
@@ -68,6 +70,10 @@ class FileRequest {
             $count_explode_2 = count($explode_2);
             for($i = 2; $i < $count_explode_2; $i++){
                 $explode_3[] = $explode_2[$i];
+            }
+            $explode_4 = [];
+            for($i = 0; $i < 3; $i++){
+
             }
             d($explode_2);
             dd($explode_3);
