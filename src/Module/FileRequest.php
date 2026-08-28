@@ -60,43 +60,36 @@ class FileRequest {
         ;
         if($controller === 'Application'){
             $count_explode = count($explode);
-            d($explode);
-            dd($count_explode);
-            $explode_3 = [];
-            for($i = 0; $i < 2; $i++){
-                $explode_3[] = $explode_2[$i];
+            if($count_explode === 6){
+                $application_explode = $explode;
+                $public = $application_explode[1];
+                $application_explode[1] = $application_explode[2];
+                $application_explode[2] = $application_explode[3];
+                $application_explode[3] = $public;
+                //4
+                $location[] = $object->config('domain.dir.root') .
+                    rtrim(implode($object->config('ds'), $application_explode), '/') .
+                    $object->config('ds')
+                ;
+                //4
+            } else {
+                $explode_3 = [];
+                for($i = 0; $i < 2; $i++){
+                    $explode_3[] = $explode_2[$i];
+                }
+                $object->config('application.name', end($explode_3));
+                $explode_3[] = 'Public';
+                $count_explode_2 = count($explode_2);
+                for($i = 2; $i < $count_explode_2; $i++){
+                    $explode_3[] = $explode_2[$i];
+                }
+                $location[] = $object->config('domain.dir.root') .
+                    rtrim(implode($object->config('ds'), $explode_3), '/') .
+                    $object->config('ds')
+                ;
             }
-            $object->config('application.name', end($explode_3));
-            $explode_3[] = 'Public';
-            $count_explode_2 = count($explode_2);
-            for($i = 2; $i < $count_explode_2; $i++){
-                $explode_3[] = $explode_2[$i];
-            }
-            $explode_4 = [];
-            /*
-            for($i = 0; $i < 3; $i++){
 
-            }
-            */
-            d($explode_2);
-            dd($explode_3);
-            //10
-            d('dir.type.swap: ' .$dir_type_swap);
-            d('dir.type: ' .$dir_type);
-            d('type.swap: ' . $type_swap);
-            d('dir.swap:' . $dir_swap);
-            $location[] = $object->config('domain.dir.root') .
-                $dir_type .
-                $type_swap .
-                $object->config('ds') .
-                'Public' .
-                $object->config('ds')
-            ;
-            //4
-            $location[] = $object->config('domain.dir.root') .
-                rtrim(implode($object->config('ds'), $explode_3), '/') .
-                $object->config('ds')
-            ;
+
         }
         //5
         $location[] = $object->config('domain.dir.root') .
