@@ -71,7 +71,7 @@ class FileRequest {
                     rtrim(implode($object->config('ds'), $application_explode), '/') .
                     $object->config('ds')
                 ;
-                d(file_exists(end($location)));
+                d(File::exist(end($location)));
                 //ddd($location);
                 //4
             } else {
