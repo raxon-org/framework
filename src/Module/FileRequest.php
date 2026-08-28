@@ -71,7 +71,7 @@ class FileRequest {
                     rtrim(implode($object->config('ds'), $application_explode), '/') .
                     $object->config('ds')
                 ;
-                ddd(file_exists(end($location)) . ' ->' . end($location));
+                d(file_exists(end($location)));
                 //ddd($location);
                 //4
             } else {
