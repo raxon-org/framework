@@ -140,6 +140,7 @@ class FileRequest {
             $location[] = $object->config('domain.dir.root') .
                 $dir_type_swap .
                 $type_swap .
+                $object->config('ds') .
                 'Public' .
                 $object->config('ds')
             ;
