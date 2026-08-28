@@ -69,6 +69,20 @@ class FileRequest {
             for($i = 2; $i < $count_explode_2; $i++){
                 $explode_3[] = $explode_2[$i];
             }
+            d($explode_2);
+            dd($explode_3);
+            //10
+            d('dir.type.swap: ' .$dir_type_swap);
+            d('dir.type: ' .$dir_type);
+            d('type.swap: ' . $type_swap);
+            d('dir.swap:' . $dir_swap);
+            $location[] = $object->config('domain.dir.root') .
+                $dir_type .
+                $type_swap .
+                $object->config('ds') .
+                'Public' .
+                $object->config('ds')
+            ;
             //4
             $location[] = $object->config('domain.dir.root') .
                 rtrim(implode($object->config('ds'), $explode_3), '/') .
@@ -134,18 +148,6 @@ class FileRequest {
                 'Public' .
                 $object->config('ds') .
                 $type_swap .
-                $object->config('ds')
-            ;
-            //10
-            d('dir.type.swap: ' .$dir_type_swap);
-            d('dir.type: ' .$dir_type);
-            d('type.swap: ' . $type_swap);
-            d('dir.swap:' . $dir_swap);
-            $location[] = $object->config('domain.dir.root') .
-                $dir_type .
-                $type_swap .
-                $object->config('ds') .
-                'Public' .
                 $object->config('ds')
             ;
             //11
