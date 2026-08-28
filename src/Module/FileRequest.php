@@ -137,6 +137,9 @@ class FileRequest {
                 $object->config('ds')
             ;
             //10
+            d('dir.type.swap: ' .$dir_type_swap);
+            d('dir.type: ' .$dir_type);
+            d('tye.swap: ' . $type_swap);
             $location[] = $object->config('domain.dir.root') .
                 $dir_type_swap .
                 $type_swap .
