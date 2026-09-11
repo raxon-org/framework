@@ -97,6 +97,9 @@ class Config extends Data {
     const VALUE_DS = DIRECTORY_SEPARATOR;
     const VIEW = 'view';
     const VALUE_VIEW = 'View';
+
+    const WHERE = 'where';
+    const VALUE_WHERE = 'Where';
     const MODEL = 'model';
     const VALUE_MODEL = 'Model';
     const COMPONENT = 'component';
@@ -229,6 +232,7 @@ class Config extends Data {
     const DATA_CONTROLLER_DIR_SERVICE = Config::DATA_CONTROLLER_DIR . '.' .'service';
     const DATA_CONTROLLER_DIR_NODE = Config::DATA_CONTROLLER_DIR . '.' .'node';
     const DATA_CONTROLLER_DIR_VIEW = Config::DATA_CONTROLLER_DIR . '.' .'view';
+    const DATA_CONTROLLER_DIR_WHERE = Config::DATA_CONTROLLER_DIR . '.' .'where';
     const DATA_CONTROLLER_DIR_COMPONENT = Config::DATA_CONTROLLER_DIR . '.' .'component';
     const DATA_CONTROLLER_DIR_PUBLIC = Config::DATA_CONTROLLER_DIR . '.' .'public';
     const DATA_ROUTE = 'route';
@@ -875,6 +879,10 @@ class Config extends Data {
 
         $key = Config::DICTIONARY . '.' . Config::VIEW;
         $value = Config::VALUE_VIEW;
+        $this->data($key, $value);
+
+        $key = Config::DICTIONARY . '.' . Config::WHERE;
+        $value = Config::VALUE_WHERE;
         $this->data($key, $value);
 
         $key = Config::DICTIONARY . '.' . Config::MODEL;

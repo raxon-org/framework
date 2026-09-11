@@ -569,6 +569,15 @@ class Controller {
                 ) .
             $config->data(Config::DS)
         );
+        $config->data(Config::DATA_CONTROLLER_DIR_WHERE,
+            $config->data(Config::DATA_CONTROLLER_DIR_ROOT) .
+            $config->data(
+                Config::DICTIONARY .
+                '.' .
+                Config::WHERE
+            ) .
+            $config->data(Config::DS)
+        );
         $config->data(Config::DATA_CONTROLLER_DIR_PUBLIC,
         	$config->data(Config::DATA_CONTROLLER_DIR_ROOT) .
         	$config->data(
