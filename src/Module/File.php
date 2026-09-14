@@ -442,7 +442,7 @@ class File {
         }
     }
 
-    public static function read_part(string $url='', $start=0, $length=(1024*1024), $bytes=0) : string
+    public static function read_chunk(string $url='', $start=0, $length=(1024*1024), $bytes=0) : string
     {
         if(strpos($url, File::SCHEME_HTTP) === 0){
             //check network connection first (@) added for that              //error

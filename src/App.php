@@ -1647,7 +1647,7 @@ class App extends Data {
             $bytes = File::size($url);
             $read = '';
             for($i =0; $i < $bytes; $i += 1024 * 1024){
-                $read .= File::read_part($url, $i, 1024 * 1024, $bytes);
+                $read .= File::read_chunk($url, $i, 1024 * 1024, $bytes);
             }
             $mtime = File::mtime($url);
             $require_disabled = $this->config('require.disabled');
@@ -1835,7 +1835,7 @@ class App extends Data {
             $bytes = File::size($url);
             $read = '';
             for($i =0; $i < $bytes; $i += 1024 * 1024){
-                $read .= File::read_part($url, $i, 1024 * 1024, $bytes);
+                $read .= File::read_chunk($url, $i, 1024 * 1024, $bytes);
             }
 //            $read = File::read($url);
             if($read){
@@ -1942,7 +1942,7 @@ class App extends Data {
             $bytes = File::size($url);
             $read = '';
             for($i =0; $i < $bytes; $i += 1024 * 1024){
-                $read .= File::read_part($url, $i, 1024 * 1024, $bytes);
+                $read .= File::read_chunk($url, $i, 1024 * 1024, $bytes);
             }
             if($read){
                 $mtime = File::mtime($url);
