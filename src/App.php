@@ -2010,7 +2010,7 @@ class App extends Data {
             if($attribute !== null && $cache){
                 $cache->set($attribute, $data);
             }
-            dd($data);
+            d($data);
             return $data;
         } else {
             return false;
