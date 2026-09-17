@@ -1977,8 +1977,9 @@ class App extends Data {
                 $data = clone $this->data();
                 unset($data->{App::NAMESPACE});
                 $data = new Data($data);
+                dd($data);
                 $flags = App::flags($this);
-                $options = (object) [];
+                $options = App::options($this);
                 $options->source = $url;
                 $temp_source = $options->source ?? 'source';
                 $options->source = 'internal_' . Core::uuid();
