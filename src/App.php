@@ -2011,6 +2011,7 @@ class App extends Data {
             if($attribute !== null && $cache){
                 $cache->set($attribute, $data);
             }
+            $this->config('delete','package.raxon/parse.build.state.source.is.json');
             return $data;
         } else {
             return false;
