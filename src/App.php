@@ -1976,6 +1976,7 @@ class App extends Data {
                 $this->data('rdelim', '}');
                 $this->data(App::OPTIONS, App::options($this));
                 $this->data(App::FLAGS, App::flags($this));
+                $this->config('package.raxon/parse.build.state.source.is.json', true);
                 $data = clone $this->data();
                 unset($data->{App::NAMESPACE});
                 $data = new Data($data);
