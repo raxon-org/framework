@@ -1974,12 +1974,13 @@ class App extends Data {
 //                $parse->storage()->data('raxon.org.parse.view.mtime', $mtime);
                 $this->data('ldelim', '{');
                 $this->data('rdelim', '}');
+                $this->data(App::OPTIONS, App::options($this));
+                $this->data(App::FLAGS, App::flags($this));
                 $data = clone $this->data();
                 unset($data->{App::NAMESPACE});
                 $data = new Data($data);
-                dd($data);
                 $flags = App::flags($this);
-                $options = App::options($this);
+                $options = (object) [];
                 $options->source = $url;
                 $temp_source = $options->source ?? 'source';
                 $options->source = 'internal_' . Core::uuid();
