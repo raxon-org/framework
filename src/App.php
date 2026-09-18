@@ -1989,7 +1989,7 @@ class App extends Data {
                 $flags = App::flags($this);
                 $options = (object) [];
                 $options->source = $url;
-                dd($options);
+                ddd($options);
                 $temp_source = $options->source ?? 'source';
                 $options->source = 'internal_' . Core::uuid();
                 $options->source_root = $temp_source;
