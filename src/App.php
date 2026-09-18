@@ -1977,7 +1977,6 @@ class App extends Data {
                 $this->data(App::OPTIONS, App::options($this));
                 $this->data(App::FLAGS, App::flags($this));
                 $extension = File::extension($url);
-                ddd($extension);
                 $is_json = null;
                 if(in_array($extension,['json', 'jsonl'], true)){
                     $is_json = $this->config('package.raxon/parse.build.state.source.is.json') ?? null;
@@ -1990,6 +1989,7 @@ class App extends Data {
                 $flags = App::flags($this);
                 $options = (object) [];
                 $options->source = $url;
+                $options->extension = $extension;
                 d($options);
                 $temp_source = $options->source ?? 'source';
                 $options->source = 'internal_' . Core::uuid();
