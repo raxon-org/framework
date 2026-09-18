@@ -1976,8 +1976,12 @@ class App extends Data {
                 $this->data('rdelim', '}');
                 $this->data(App::OPTIONS, App::options($this));
                 $this->data(App::FLAGS, App::flags($this));
-                $this->config('package.raxon/parse.build.state.source.is.json', true);
-                d($this->config('package.raxon/parse.build.state'));
+                $extension = File::extension($url);
+                $is_json = null;
+                if(in_array($extension,['json', 'jsonl'], true)){
+                    $is_json = $this->config('package.raxon/parse.build.state.source.is.json') ?? null;
+                    $this->config('package.raxon/parse.build.state.source.is.json', true);
+                }
                 $data = clone $this->data();
                 unset($data->{App::NAMESPACE});
                 $data = new Data($data);
@@ -2012,7 +2016,11 @@ class App extends Data {
             if($attribute !== null && $cache){
                 $cache->set($attribute, $data);
             }
-            $this->config('delete','package.raxon/parse.build.state.source.is.json');
+            if($is_json !== null){
+                $this->config('package.raxon/parse.build.state.source.is.json', $is_json);
+            } else {
+                $this->config('delete','package.raxon/parse.build.state.source.is.json');
+            }
             return $data;
         } else {
             return false;
