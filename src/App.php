@@ -1982,7 +1982,6 @@ class App extends Data {
                     $is_json = $this->config('package.raxon/parse.build.state.source.is.json') ?? null;
                     $this->config('package.raxon/parse.build.state.source.is.json', true);
                 }
-                d($this->config('package.raxon/parse.build.state'));
                 $data = clone $this->data();
                 unset($data->{App::NAMESPACE});
                 $data = new Data($data);
@@ -1990,7 +1989,6 @@ class App extends Data {
                 $options = (object) [];
                 $options->source = $url;
                 $options->extension = $extension;
-                d($options);
                 $temp_source = $options->source ?? 'source';
                 $options->source = 'internal_' . Core::uuid() . '.' . $options->extension;
                 $options->source_root = $temp_source;
