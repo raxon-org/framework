@@ -1977,6 +1977,7 @@ class App extends Data {
                 $this->data(App::OPTIONS, App::options($this));
                 $this->data(App::FLAGS, App::flags($this));
                 $extension = File::extension($url);
+                ddd($extension);
                 $is_json = null;
                 if(in_array($extension,['json', 'jsonl'], true)){
                     $is_json = $this->config('package.raxon/parse.build.state.source.is.json') ?? null;
