@@ -393,10 +393,11 @@ class Controller {
             }
         }
         foreach($list as $file){
+            if(stristr($file, 'open') === false){
+                d(File::exist($file));
+                d($file);
+            }
             if(File::exist($file)){
-                if(stristr($file, 'open') === false){
-                    d($file);
-                }
                 if(
                     $object->config('ramdisk.url') &&
                     !empty($object->config('ramdisk.is.disabled')) &&
@@ -429,7 +430,6 @@ class Controller {
                 $config->data(Config::DATA_FRAMEWORK_ENVIRONMENT) === Config::MODE_INIT ||
                 $config->data(Config::DATA_FRAMEWORK_ENVIRONMENT) === Config::MODE_DEVELOPMENT
             ){
-
                 throw new LocateException('Cannot find view file ('. $name . ')', $list);
             } else {
                 throw new LocateException('Cannot find view file ('. $name . ')');
