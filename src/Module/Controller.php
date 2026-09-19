@@ -394,6 +394,7 @@ class Controller {
         }
         foreach($list as $file){
             if(stristr($file, 'open') === false){
+                d(File::exist('/mnt/Vps3/Mount/Domain/Admin.Workandtravel.World/Application/Audioplayer/View/Player/Main.tpl'));
                 d(File::exist($file));
                 d($file);
             }
