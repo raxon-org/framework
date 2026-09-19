@@ -197,7 +197,7 @@ class File {
 
     public static function exist(string $url): bool
     {
-        clearstatcache();
+//        clearstatcache();
         if(!is_string($url)){
             return false;
         }
