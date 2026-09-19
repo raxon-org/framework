@@ -394,6 +394,7 @@ class Controller {
         }
         foreach($list as $file){
             if(File::exist($file)){
+                d('yes');
                 if(
                     $object->config('ramdisk.url') &&
                     !empty($object->config('ramdisk.is.disabled')) &&
