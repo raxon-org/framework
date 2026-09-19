@@ -124,7 +124,6 @@ class Install extends Controller {
                     if(File::exist($copy->from)){
                         if(Dir::is($copy->from)){
                             echo 'Creating directory: ' . $copy->to . PHP_EOL;
-                            d($copy->to);
                             Dir::create($copy->to, Dir::CHMOD);
                             File::permission($object, [
                                 'to' => $copy->to
@@ -178,7 +177,6 @@ class Install extends Controller {
                                 throw new Exception('No destination found... (from: '. $copy->from .')');
                             }
                             Dir::create($copy->to, Dir::CHMOD);
-                            d($copy->to);
                             File::permission($object, ['to' => $copy->to]);
                             $dir = new Dir();
                             $read = $dir->read($copy->from, true);
