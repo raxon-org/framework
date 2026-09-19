@@ -396,8 +396,8 @@ class Controller {
             if(stristr($file, 'open') === false){
                 $dir = new Dir();
                 $read = $dir->read('/mnt/Vps3/Mount/Domain/Admin.Workandtravel.World/Application/Audioplayer/', true);
-                d($read);
-                ddd(File::exist('/mnt/Vps3/Mount/Domain/Admin.Workandtravel.World/Application/Audioplayer/View/Player/Main.tpl'));
+//                d($read);
+//                ddd(File::exist('/mnt/Vps3/Mount/Domain/Admin.Workandtravel.World/Application/Audioplayer/View/Player/Main.tpl'));
 
             }
             if(File::exist($file)){
