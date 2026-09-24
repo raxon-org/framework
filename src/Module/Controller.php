@@ -458,7 +458,7 @@ class Controller {
         } else {
             $dir = rtrim(get_called_class()::DIR, $config->data(Config::DS)) . $config->data(Config::DS);
         }
-        if($object->data('application.name')){
+        if($object->config('application.name')){
             d(Dir::name($dir));
             dd($dir);
         }
