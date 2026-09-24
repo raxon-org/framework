@@ -458,12 +458,12 @@ class Controller {
         } else {
             $dir = rtrim(get_called_class()::DIR, $config->data(Config::DS)) . $config->data(Config::DS);
         }
-        if($object->config('application.name')){
-            d(Dir::name($dir));
-            dd($dir);
-        }
         $config->data(Config::DATA_CONTROLLER_DIR_SOURCE, $dir);
         $config->data(Config::DATA_CONTROLLER_DIR_ROOT, Dir::name($dir));
+
+        if($object->config('application.name')){
+            $config->data(Config::DATA_CONTROLLER_DIR_ROOT, Dir::name($dir, 2));
+        }
         $config->data(Config::DATA_CONTROLLER_DIR_DATA,
             $config->data(Config::DATA_CONTROLLER_DIR_ROOT) .
             $config->data(
