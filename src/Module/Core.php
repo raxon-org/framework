@@ -535,7 +535,7 @@ class Core
                 return '{}';
             }
         } elseif (is_object($input) && $output === Core::OBJECT_JSON) {
-            $json = json_encode($input, JSON_PRETTY_PRINT);
+            $json = json_encode($input, JSON_PRETTY_PRINT && JSON_PARTIAL_OUTPUT_ON_ERROR);
             if (json_last_error()) {
                 throw new ObjectException(json_last_error_msg());
             }
