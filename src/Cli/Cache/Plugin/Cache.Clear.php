@@ -20,9 +20,9 @@ trait Cache_Clear
     protected function cache_clear($fallback = null): void
     {
         $object = $this->object();
-        $temp_dir = $object->config('framework.dir.temp');
+        $dir_temp = $object->config('framework.dir.temp');
         $dir = new Dir();
-        $read = $dir->read($temp_dir, true);
+        $read = $dir->read($dir_temp, true);
         $data  = new Data();
         $options = (object) [];
         $options->source = 'Internal_' . str_replace('-', '_', Core::uuid());
@@ -71,10 +71,12 @@ trait Cache_Clear
         }
         opcache_reset();
         opcache_invalidate('/Application/vendor/raxon/framework/src/Module/Parse.php', true);
-        Dir::create($temp_dir, Dir::CHMOD);
+        Dir::create($dir_temp, Dir::CHMOD);
+        $dir_www = $dir_temp . '33/';
+        Dir::create($dir_www, Dir::CHMOD);
         File::permission($object, [
-            'dir' => $temp_dir,
-            'dir_www' => $temp_dir . '33/'
+            'dir' => $dir_temp,
+            'dir_www' => $dir_www
         ]);
     }
 }
