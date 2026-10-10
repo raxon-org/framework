@@ -99,7 +99,18 @@ class File {
         return $group_info['name'] ?? '';
     }
 
+    /*
+     * @deprecated use mode($url) instead
+     */
     public static function rights(string $url=''): string
+    {
+        if(File::is_link($url)){
+            return '0600';
+        }
+        return substr(sprintf('%o', fileperms($url)), -4);
+    }
+
+    public static function mode(string $url=''): string
     {
         if(File::is_link($url)){
             return '0600';
