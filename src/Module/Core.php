@@ -2242,7 +2242,7 @@ class Core
     }
 
 
-    public static function time_format(float|int $seconds=0, string $string='in', bool $compact=false, int $precision=2): string
+    public static function time_format(float|int $seconds=0, string $string='in ', bool $compact=false, int $precision=2): string
     {
         $days = floor($seconds / (3600 * 24));
         $hours = floor((int) ($seconds / 3600) % 24);
