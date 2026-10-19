@@ -2242,7 +2242,7 @@ class Core
     }
 
 
-    public static function time_format(float|int $seconds=0, string $string='in', $compact=false): string
+    public static function time_format(float|int $seconds=0, string $string='in ', $compact=false, $precision=2): string
     {
         $days = floor($seconds / (3600 * 24));
         $hours = floor((int) ($seconds / 3600) % 24);
@@ -2287,26 +2287,27 @@ class Core
         if($seconds < 1){
             if($days === 0 && $hours === 0 && $minutes === 0){
                 if($compact){
-                    $string = substr($msec, 0, 3) * 1000 . ' ' . 'msec';
+                    $string = substr($msec, 0, $precision) * 1000 . ' ' . 'msec';
                 } else {
                     $string = 'almost there';
                 }
             } else {
                 if($compact){
-                    $string .= $seconds . '.' . substr($msec, 0, 3) . ' sec';
+                    $string .= $seconds . '.' . substr($msec, 0, $precision) . ' sec';
                 } else {
-                    $string .= $seconds . '.' . substr($msec, 0, 3) .  ' seconds';
+                    $string .= $seconds . '.' . substr($msec, 0, $precision) .  ' seconds';
                 }
             }
 
         } else {
             if($compact){
-                $string .= $seconds . '.' . substr($msec, 0, 3) . ' sec';
+                $string .= $seconds . '.' . substr($msec, 0, $precision) . ' sec';
             } else {
                 if($seconds === 1){
-                    $string .= $seconds . '.' . substr($msec, 0,3) . ' second';
+                    $string .= $seconds . '.' . substr($msec, 0,$precision) . ' second';
                 } else {
-                    $string .= $seconds . '.' . substr($msec, 0, 3) . ' seconds';
+                    $string .= $seconds . '.' . substr($msec, 0, $precision) . ' seconds';
+                    $string .= $seconds . '.' . substr($msec, 0, $precision) . ' seconds';
                 }
             }
         }
