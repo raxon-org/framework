@@ -2242,7 +2242,7 @@ class Core
     }
 
 
-    public static function time_format(float|int $seconds=0, string $string='in ', $compact=false, $precision=2): string
+    public static function time_format(float|int $seconds=0, string $string='in', bool $compact=false, int $precision=2): string
     {
         $days = floor($seconds / (3600 * 24));
         $hours = floor((int) ($seconds / 3600) % 24);
@@ -2306,7 +2306,6 @@ class Core
                 if($seconds === 1){
                     $string .= $seconds . '.' . substr($msec, 0,$precision) . ' second';
                 } else {
-                    $string .= $seconds . '.' . substr($msec, 0, $precision) . ' seconds';
                     $string .= $seconds . '.' . substr($msec, 0, $precision) . ' seconds';
                 }
             }
