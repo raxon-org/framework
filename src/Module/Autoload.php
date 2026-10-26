@@ -253,8 +253,7 @@ class Autoload {
             return;
         }
         if($directory === null){
-            trace();
-            die;
+            return;
         }
         $prefix = trim($prefix, '\\\/'); //.'\\';
         $directory = str_replace('\\\/', DIRECTORY_SEPARATOR, rtrim($directory,'\\\/')) . DIRECTORY_SEPARATOR; //see File::dir()
@@ -851,7 +850,10 @@ class Autoload {
         ){
             if(empty($this->expose())){
                 //filtering out doctrine packages, because they use class_exists to enable features
-                if(str_starts_with($load, 'Doctrine\\')){
+                if(
+                    str_starts_with($load, 'Doctrine\\') ||
+                    str_starts_with($load, 'Symfony\\')
+                ){
                     return false;
                 }
                 throw new LocateException('Autoload error, cannot load (' . $load .') class. (see ' . $dir_temp . 'Autoload.log' . ')', Autoload::exception_filelist($fileList));
