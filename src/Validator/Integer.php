@@ -17,6 +17,14 @@ use Raxon\Parse\Module\Token;
  */
 function validate_integer(App $object, object|null $record=null, mixed $string='', mixed $field='', mixed $argument='', mixed $function=false): bool
 {
+    if(is_array($string)){
+        $result = [];
+        foreach($string as $value) {
+            $int = intval($value);
+            $result = validate_integer($object, $record, $int, $field, $argument, $function);
+        }
+        return $result;
+    }
     $int = intval($string);
     $flags = (object) [];
     $options = (object) [];
