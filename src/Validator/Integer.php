@@ -25,6 +25,13 @@ function validate_integer(App $object, object|null $record=null, mixed $string='
         }
         return $result;
     }
+    if(is_array($argument)){
+        $result = [];
+        foreach($argument as $value) {
+            $result = validate_integer($object, $record, $string, $field, $value, $function);
+        }
+        return $result;   
+    }
     $int = intval($string);
     $flags = (object) [];
     $options = (object) [];
