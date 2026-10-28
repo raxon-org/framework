@@ -21,16 +21,22 @@ function validate_integer(App $object, object|null $record=null, mixed $string='
         $result = [];
         foreach($string as $value) {
             $int = intval($value);
-            $result = validate_integer($object, $record, $int, $field, $argument, $function);
+            $result[] = validate_integer($object, $record, $int, $field, $argument, $function);
         }
-        return $result;
+        if (in_array(false, $result, true)) {
+            return false;
+        }
+        return true;
     }
     if(is_array($argument)){
         $result = [];
         foreach($argument as $value) {
-            $result = validate_integer($object, $record, $string, $field, $value, $function);
+            $result[] = validate_integer($object, $record, $string, $field, $value, $function);
         }
-        return $result;   
+        if (in_array(false, $result, true)) {
+            return false;
+        }
+        return true;
     }
     $int = intval($string);
     $flags = (object) [];
