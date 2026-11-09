@@ -98,6 +98,7 @@ class Server extends Controller {
     {
         $extension_list = [];
         $is_extension_list = false;
+        d($response);
         foreach($response as $nr => $extension){
             if(
                 property_exists($extension, '#class') &&
