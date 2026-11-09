@@ -99,7 +99,8 @@ class Server extends Controller {
         $extension_list = [];
         $is_extension_list = false;
         foreach($response as $nr => $extension){
-            d($extension);
+            //d($extension);
+            /*
             if(
                 property_exists($extension, '#class') &&
                 property_exists($extension, 'uuid') &&
@@ -111,6 +112,7 @@ class Server extends Controller {
                     $is_extension_list = true;
                 }
             }
+            */
         }
         if($is_extension_list){
             return (object) $extension_list;
